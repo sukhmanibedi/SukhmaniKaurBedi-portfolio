@@ -96,7 +96,7 @@
       font-weight: 500;
     }
 
-    /* Hero Section with Exact Black-to-White End-to-End Gradient matching reference image */
+    /* Original Dark Hero Section without any dividing bottom border */
     .hero-wrapper {
       position: relative;
       width: 100%;
@@ -107,24 +107,9 @@
       justify-content: flex-start;
       padding-top: 140px;
       padding-bottom: 80px;
-      /* End-to-end black and white gradient across the entire background area */
-      background: linear-gradient(180deg, #18181c 0%, #101013 35%, #08080a 75%, #0b0b0d 100%);
+      background-color: var(--bg);
       overflow: hidden;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* Large atmospheric organic gradient shape identical to reference */
-    .hero-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 5%;
-      left: 10%;
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
+      border-bottom: none;
     }
 
     .hero-centered-frame {
@@ -145,14 +130,15 @@
       line-height: 1.05;
       letter-spacing: -0.035em;
       margin-bottom: 24px;
-      color: #ffffff;
+      color: var(--text);
     }
 
     .hero-body-text {
       font-size: clamp(0.9rem, 1.1vw, 1rem);
-      color: #c7c7cc;
+      color: var(--muted);
       line-height: 1.65;
       margin-bottom: 36px;
+      font-weight: 400;
     }
 
     .hero-body-text p {
@@ -160,23 +146,22 @@
     }
 
     .btn-see-projects {
-      background: linear-gradient(180deg, #222226 0%, #0e0e10 100%);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      border: 1px solid var(--border);
       padding: 12px 32px;
       border-radius: 100px;
       text-decoration: none;
       font-weight: 500;
       font-size: 0.9rem;
-      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
       transition: all 0.2s ease;
       display: inline-block;
       margin-bottom: 45px;
     }
 
     .btn-see-projects:hover {
-      border-color: rgba(255, 255, 255, 0.4);
-      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--border-hover);
     }
 
     .scroll-indicator-strip {
@@ -188,17 +173,17 @@
       color: var(--muted);
       letter-spacing: 0.05em;
       margin-bottom: 50px;
+      font-weight: 500;
     }
 
-    /* Client Ticker Strip inside Hero bottom */
+    /* IBM Client Ticker Strip inside Hero bottom */
     .ticker-container {
       width: 100%;
       max-width: var(--max-width);
       padding: 0 24px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      opacity: 0.75;
+      justify-content: space-around;
       z-index: 2;
     }
 
@@ -206,7 +191,7 @@
       font-family: var(--font-display);
       font-size: 0.9rem;
       font-weight: 600;
-      color: #a1a1aa;
+      color: var(--muted);
       letter-spacing: 0.02em;
     }
 
@@ -480,7 +465,7 @@
     </div>
   </header>
 
-  <!-- Hero Section with End-to-End Black and White Gradient background matching reference image -->
+  <!-- Original Dark Hero Section -->
   <section class="hero-wrapper">
     <div class="hero-centered-frame">
       <h1 class="hero-welcome-title">Welcome</h1>
@@ -490,7 +475,7 @@
         
         <p>Most design problems in complex systems aren't interface problems. They're the result of workflows that were never designed, business logic that was never questioned, and friction that accumulated quietly until users just learned to work around it. Finding that friction — before it reaches the user — is where I spend most of my time.</p>
         
-        <p>I'm Sukhmani. I design enterprise software for high-stakes environments: credit insurance platforms, central bank data systems, cloud infrastructure. Because in this space, empathy alone isn't enough — you have to hold the user's reality and the business's constraints in the same frame, and design the experience that makes both possible.</p>
+        <p>I'm Sukhmani. At IBM, I design enterprise software for high-stakes client environments: IBM PowerVC, Atradius, and European Central Bank core platforms. Because in this space, empathy alone isn't enough — you have to hold the user's reality and the business's constraints in the same frame, and design the experience that makes both possible.</p>
       </div>
 
       <a href="#projects" class="btn-see-projects">See Projects</a>
@@ -502,13 +487,12 @@
       </div>
     </div>
 
-    <!-- Ticker Brands matching reference image layout -->
+    <!-- Updated IBM Client Ticker Strip -->
     <div class="ticker-container">
-      <span class="ticker-brand">✦ Asterisk</span>
-      <span class="ticker-brand">Eooks</span>
-      <span class="ticker-brand">Opal</span>
-      <span class="ticker-brand">Dune</span>
-      <span class="ticker-brand">Oasis</span>
+      <span class="ticker-brand">✦ IBM (Enterprise Experience)</span>
+      <span class="ticker-brand">IBM PowerVC</span>
+      <span class="ticker-brand">Atradius</span>
+      <span class="ticker-brand">European Central Bank</span>
     </div>
   </section>
 
