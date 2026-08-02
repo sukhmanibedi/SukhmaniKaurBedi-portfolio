@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sukhmani Kaur Bedi - About Me & Experience</title>
+  <title>Sukhmani Bedi - Portfolio</title>
   <style>
     @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -81,7 +81,7 @@
       transition: color 0.2s ease;
     }
 
-    .nav-link:hover, .nav-link.active {
+    .nav-link:hover {
       color: var(--text);
     }
 
@@ -96,14 +96,111 @@
       font-weight: 500;
     }
 
+    /* Hero Section */
+    .hero-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 95vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      background-color: var(--bg);
+      overflow: hidden;
+    }
+
+    .hero-centered-frame {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 760px;
+      margin: 0 auto;
+      z-index: 2;
+    }
+
+    .hero-welcome-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .hero-body-text {
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      font-weight: 400;
+    }
+
+    .hero-body-text p {
+      margin-bottom: 16px;
+    }
+
+    .btn-see-projects {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 12px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      display: inline-block;
+      margin-bottom: 45px;
+    }
+
+    .btn-see-projects:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--border-hover);
+    }
+
+    .scroll-indicator-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 50px;
+      font-weight: 500;
+    }
+
+    .ticker-container {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 2;
+    }
+
+    .ticker-brand {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
     .framer-shell {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 140px 24px 80px 24px;
+      padding: 40px 24px 80px 24px;
     }
 
     .section-frame {
-      margin-bottom: 100px;
+      margin-bottom: 120px;
     }
 
     .section-header {
@@ -122,146 +219,276 @@
 
     .section-title {
       font-family: var(--font-display);
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
 
-    /* About Section Grid Styles */
-    .about-main-grid {
+    /* Meet Sukhmani / About Card Section */
+    .meet-sukhmani-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 50px;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 50px;
-      align-items: start;
+      align-items: center;
+      margin-bottom: 120px;
     }
 
-    .about-content-block {
-      font-size: 1.05rem;
-      color: #c4c4cc;
-      line-height: 1.7;
-    }
-
-    .about-content-block p {
+    .meet-sukhmani-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
       margin-bottom: 24px;
+      color: var(--text);
+      line-height: 1.1;
     }
 
-    .about-photo-frame {
+    .meet-sukhmani-content p {
+      font-size: 1.02rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .profile-tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      color: #d1d1d6;
+      font-weight: 500;
+    }
+
+    .profile-meta-footer {
+      display: flex;
+      gap: 40px;
+    }
+
+    .profile-meta-item span:first-child {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .profile-meta-item span:last-child {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .meet-sukhmani-img-frame {
       width: 100%;
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
       border: 1px solid var(--border);
-      background: var(--card-bg);
+      aspect-ratio: 4 / 5;
     }
 
-    .about-photo-frame img {
+    .meet-sukhmani-img-frame img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
       object-fit: cover;
+      display: block;
     }
 
-    /* Experience Section Styles */
-    .exp-timeline-item {
+    /* Articles Section */
+    .articles-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 36px;
-      margin-bottom: 28px;
-      transition: border-color 0.25s ease;
-    }
-
-    .exp-timeline-item:hover {
-      border-color: var(--border-hover);
-    }
-
-    .exp-header-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-      gap: 16px;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+      margin-bottom: 120px;
     }
 
-    .exp-company-role h3 {
+    .articles-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .article-info h3 {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 600;
+      margin-bottom: 8px;
       color: var(--text);
+    }
+
+    .article-info p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      max-width: 700px;
+      line-height: 1.5;
+    }
+
+    .article-action {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .portfolite-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .portfolite-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .card-thumb-frame {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #141417;
+      overflow: hidden;
+    }
+
+    .card-thumb-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-meta-frame {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .card-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
       margin-bottom: 4px;
     }
 
-    .exp-company-role span {
-      color: var(--muted);
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    .exp-duration {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .exp-projects-list {
+    .card-details-block {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 6px;
+      margin-top: 4px;
+      font-size: 0.85rem;
+      color: var(--muted);
     }
 
-    .exp-project-item {
-      font-size: 0.95rem;
-      color: #c4c4cc;
-      line-height: 1.6;
-    }
-
-    .exp-project-item strong {
+    .card-details-block .industry-tag {
       color: var(--text);
-      font-weight: 600;
+      font-weight: 500;
     }
 
-    /* Competencies Grid */
-    .competencies-grid {
+    .card-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .card-casestudy-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease;
+      text-decoration: none;
+    }
+
+    .portfolite-card:hover .card-casestudy-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--border-hover);
+    }
+
+    .process-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 20px;
     }
 
-    .competency-card {
+    .process-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 28px;
     }
 
-    .competency-card h3 {
+    .process-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .process-icon {
+      font-size: 1.1rem;
+    }
+
+    .process-card h3 {
       font-family: var(--font-display);
       font-size: 1.15rem;
       font-weight: 600;
-      margin-bottom: 14px;
-      color: var(--text);
     }
 
-    .competency-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .process-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
     }
 
-    .comp-tag {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 0.82rem;
-      color: #d1d1d6;
-    }
-
-    /* Footer */
     .framer-footer {
       border-top: 1px solid var(--border);
       padding: 60px 0 20px 0;
@@ -298,18 +525,27 @@
       font-weight: 500;
     }
 
-    @media (max-width: 820px) {
-      .about-main-grid, .competencies-grid, .framer-footer {
+    @media (max-width: 900px) {
+      .meet-sukhmani-card, .projects-grid, .process-grid, .articles-card {
         grid-template-columns: 1fr;
+      }
+      .articles-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      .ticker-container {
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+      }
+      .framer-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
       }
       .footer-links {
         align-items: flex-start;
-        margin-top: 24px;
-      }
-      .exp-header-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
       }
     }
   </style>
@@ -322,118 +558,234 @@
       <a href="index.html" class="brand-logo">Sukhmani Bedi</a>
       <nav class="nav-items">
         <a href="index.html#projects" class="nav-link">Projects</a>
-        <a href="about.html" class="nav-link active">About me</a>
+        <a href="about.html" class="nav-link">About me</a>
         <a href="index.html#process" class="nav-link">Contact</a>
       </nav>
       <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch ↗</a>
     </div>
   </header>
 
+  <!-- Hero Section -->
+  <section class="hero-wrapper">
+    <div class="hero-centered-frame">
+      <h1 class="hero-welcome-title">Welcome</h1>
+      
+      <div class="hero-body-text">
+        <p>Enterprise design isn't about building beautiful products. It's about understanding the person who has to use that product at 9am on a Monday, under pressure, with no margin for error — and the business that depends on them getting it right.</p>
+        
+        <p>Most design problems in complex systems aren't interface problems. They're the result of workflows that were never designed, business logic that was never questioned, and friction that accumulated quietly until users just learned to work around it. Finding that friction — before it reaches the user — is where I spend most of my time.</p>
+        
+        <p>I'm Sukhmani. At IBM, I design enterprise software for high-stakes client environments: IBM PowerVC, Atradius, and European Central Bank core platforms. Because in this space, empathy alone isn't enough — you have to hold the user's reality and the business's constraints in the same frame, and design the experience that makes both possible.</p>
+      </div>
+
+      <a href="#projects" class="btn-see-projects">See Projects</a>
+
+      <div class="scroll-indicator-strip">
+        <span>Scroll down</span>
+        <span>⚡</span>
+        <span>to see projects</span>
+      </div>
+    </div>
+
+    <!-- IBM Client Ticker Strip -->
+    <div class="ticker-container">
+      <span class="ticker-brand">✦ IBM (Enterprise Experience)</span>
+      <span class="ticker-brand">IBM PowerVC</span>
+      <span class="ticker-brand">Atradius</span>
+      <span class="ticker-brand">European Central Bank</span>
+    </div>
+  </section>
+
   <div class="framer-shell">
+
+    <!-- Meet Sukhmani / About Section (Restored) -->
+    <div class="meet-sukhmani-card">
+      <div class="meet-sukhmani-content">
+        <h2>Meet Sukhmani</h2>
+        <p>I've learned that the most important design decisions rarely happen in the interface. They happen in the conversation before it, when you're still asking why the problem exists, who it actually belongs to, and what success looks like for the person who has to live with the outcome.</p>
+        <p style="font-size: 0.95rem; color: var(--text); font-weight: 500; margin-bottom: 24px;">That's where I start. Every time.</p>
+
+        <div class="tag-grid">
+          <span class="profile-tag">UX Design</span>
+          <span class="profile-tag">User Research</span>
+          <span class="profile-tag">Enterprise Design Thinking</span>
+          <span class="profile-tag">Design Systems</span>
+          <span class="profile-tag">Generative AI Design</span>
+          <span class="profile-tag">Figma</span>
+        </div>
+
+        <div class="profile-meta-footer">
+          <div class="profile-meta-item">
+            <span>Role</span>
+            <span>UX Designer</span>
+          </div>
+          <div class="profile-meta-item">
+            <span>Company</span>
+            <span>IBM</span>
+          </div>
+          <div class="profile-meta-item">
+            <span>Status</span>
+            <span>Currently Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="meet-sukhmani-img-frame">
+        <img src="Myimage.jpg" alt="Sukhmani Kaur Bedi">
+      </div>
+    </div>
+
+    <!-- Articles Section (Complexity Analysis) -->
+    <div class="section-header" style="margin-bottom: 20px;">
+      <span class="meta-label">WRITINGS & THOUGHT LEADERSHIP</span>
+      <h2 class="section-title">Articles</h2>
+    </div>
+
+    <a href="#" class="articles-card">
+      <div class="article-info">
+        <h3>Complexity Analysis in Enterprise UX</h3>
+        <p>Uncovering hidden user pain points through systematic complexity mapping before touching the UI canvas.</p>
+      </div>
+      <div class="article-action">
+        Read Article ↗
+      </div>
+    </a>
     
-    <!-- About Me Section -->
-    <section class="section-frame">
+    <!-- Selected Projects Frame -->
+    <section id="projects" class="section-frame">
       <div class="section-header">
-        <span class="meta-label">BACKGROUND & PHILOSOPHY</span>
-        <h2 class="section-title">About Me</h2>
+        <span class="meta-label">SELECTED CASE STUDIES</span>
+        <h2 class="section-title">Featured Works</h2>
       </div>
 
-      <div class="about-main-grid">
-        <div class="about-content-block">
-          <p>Enterprise design isn’t about building beautiful products. It’s about understanding the person who has to use that product at 9:00 AM on a Monday, under pressure, with no margin for error—and the business that depends on them getting it right.</p>
-          
-          <p>Most design problems in complex systems aren’t interface problems. They’re the result of workflows that were never designed, business logic that was never questioned, and friction that accumulated quietly. Finding that friction before it reaches the user is where I spend my time.</p>
-          
-          <p>I’m Sukhmani Kaur Bedi. As a Senior UX Designer and Researcher at IBM, I design enterprise software for high-stakes client environments: IBM PowerVC, Atradius, and European Central Bank core platforms. In this space, empathy alone isn’t enough; you have to hold the user’s reality and the business's constraints in the same frame, and design the experience that makes both possible.</p>
-        </div>
+      <div class="projects-grid">
 
-        <div class="about-photo-frame">
-          <img src="Myimage.jpg" alt="Sukhmani Kaur Bedi">
-        </div>
+        <!-- 1. Power VC -->
+        <a href="#" class="portfolite-card">
+          <div class="card-thumb-frame">
+            <img src="PowerVC2.jpg" alt="IBM PowerVC">
+          </div>
+          <div class="card-meta-frame">
+            <div class="card-info">
+              <h3>IBM PowerVC</h3>
+              <div class="card-details-block">
+                <div><span class="industry-tag">Industry</span> | Power virtualisation and cloud management</div>
+                <div><span class="industry-tag">UX Research</span> | UX Design</div>
+                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Website optimisation for creating a consistent experience across IBM products by adapting the Carbon Design System. Reduced complexity by 36%</p>
+              </div>
+            </div>
+            <div class="card-footer-row">
+              <span style="font-size: 0.78rem; color: var(--muted);">IBM Enterprise</span>
+              <span class="card-casestudy-btn">View Casestudy ↗</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2. Atradius -->
+        <a href="#" class="portfolite-card">
+          <div class="card-thumb-frame">
+            <img src="atradius.jpg" alt="Atradius">
+          </div>
+          <div class="card-meta-frame">
+            <div class="card-info">
+              <h3>Atradius</h3>
+              <div class="card-details-block">
+                <div><span class="industry-tag">Industry</span> | Insurance</div>
+                <div><span class="industry-tag">UX Design</span></div>
+                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Migrating from a legacy UI, creating a smarter and efficient processes. Developing UX for new features and optimising the process of creating an insurance contract.</p>
+              </div>
+            </div>
+            <div class="card-footer-row">
+              <span style="font-size: 0.78rem; color: var(--muted);">Enterprise Policy Engine</span>
+              <span class="card-casestudy-btn">View Casestudy ↗</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3. Statistical Data Portal -->
+        <a href="#" class="portfolite-card">
+          <div class="card-thumb-frame">
+            <img src="ECB.jpg" alt="Statistical Data Warehouse Portal - European Central Bank">
+          </div>
+          <div class="card-meta-frame">
+            <div class="card-info">
+              <h3>Statistical Data Portal</h3>
+              <div class="card-details-block">
+                <div><span class="industry-tag">Industry</span> | Banking</div>
+                <div><span class="industry-tag">UX Design</span></div>
+                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Re-design of the European Central Bank data warehouse to create a unified browsing experience.</p>
+              </div>
+            </div>
+            <div class="card-footer-row">
+              <span style="font-size: 0.78rem; color: var(--muted);">European Central Bank</span>
+              <span class="card-casestudy-btn">View case study ↗</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 4. Atlas -->
+        <a href="#" class="portfolite-card">
+          <div class="card-thumb-frame">
+            <img src="atlas.jpg" alt="Atlas - European Central Bank">
+          </div>
+          <div class="card-meta-frame">
+            <div class="card-info">
+              <h3>Atlas</h3>
+              <div class="card-details-block">
+                <div><span class="industry-tag">Industry</span> | Banking</div>
+                <div><span class="industry-tag">UX Design</span></div>
+                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Designing and simplifying the UX for European Central Bank's internal application to enable a smooth and consistent experience</p>
+              </div>
+            </div>
+            <div class="card-footer-row">
+              <span style="font-size: 0.78rem; color: var(--muted);">Governance & Meeting Platform</span>
+              <span class="card-casestudy-btn">View Casestudy ↗</span>
+            </div>
+          </div>
+        </a>
+
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="section-frame">
+    <!-- Process Section -->
+    <section id="process" class="section-frame">
       <div class="section-header">
-        <span class="meta-label">CAREER HISTORY</span>
-        <h2 class="section-title">Experience</h2>
+        <span class="meta-label">MY FRAMEWORK</span>
+        <h2 class="section-title">Process</h2>
+        <p style="color: var(--muted); font-size: 0.95rem; margin-top: 6px;">How enterprise problems get solved: the design framework behind the system.</p>
       </div>
 
-      <div class="exp-timeline-item">
-        <div class="exp-header-row">
-          <div class="exp-company-role">
-            <h3>IBM, India</h3>
-            <span>Senior UX Designer + Researcher</span>
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-card-header">
+            <span class="process-icon">💡</span>
+            <h3>Map the system, not the screen</h3>
           </div>
-          <div class="exp-duration">2019 – Present</div>
+          <p>Every enterprise screen is connected to a larger ecosystem. Before designing an interface, I trace the data flows, dependencies, and business rules that govern it. A screen that looks clean in isolation is useless if it doesn't fit the workflow.</p>
         </div>
 
-        <div class="exp-projects-list">
-          <div class="exp-project-item">
-            <strong>IBM PowerVC (Cloud Virtualization):</strong> Lead user research, complexity analysis, and accessibility frameworks for cloud virtualization infrastructure. Directed beta testing protocols and leveraged qualitative/quantitative customer insights to drive universal design decisions and reduce system complexity.
+        <div class="process-card">
+          <div class="process-card-header">
+            <span class="process-icon">📌</span>
+            <h3>Find where complexity is hiding</h3>
           </div>
-          <div class="exp-project-item">
-            <strong>European Central Bank (Banking & Analytics):</strong> Architected a unified, responsive browsing and data warehouse portal across devices, streamlining information architecture and simplifying complex multi-step data flows for core internal applications like Atlas.
-          </div>
-          <div class="exp-project-item">
-            <strong>Atradius (Trade Credit Insurance):</strong> Partnered cross-functionally with product owners and engineers to migrate legacy UI systems into efficient risk-assessment and policy engine workflows, translating heavy domain logic into intuitive user journeys.
-          </div>
-          <div class="exp-project-item">
-            <strong>IKEA (Retail Agile Framework):</strong> Collaborated within agile product teams to define requirements, mapping out user flows, site maps, and interactive wireframes to balance large-scale retail business objectives with user needs.
-          </div>
-          <div class="exp-project-item">
-            <strong>Design Leadership:</strong> Facilitated Enterprise Design Thinking workshops and authored institutional thought leadership on leveraging complexity analysis to uncover hidden user pain points.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Core Competencies & Toolkit Section -->
-    <section class="section-frame">
-      <div class="section-header">
-        <span class="meta-label">SKILLS & EXPERTISE</span>
-        <h2 class="section-title">Core Competencies & Toolkit</h2>
-      </div>
-
-      <div class="competencies-grid">
-        <div class="competency-card">
-          <h3>Design Strategy & Architecture</h3>
-          <div class="competency-tags">
-            <span class="comp-tag">Complex Systems Architecture</span>
-            <span class="comp-tag">Enterprise UX Strategy</span>
-            <span class="comp-tag">Information Architecture</span>
-            <span class="comp-tag">Data Flow & Complexity Analysis</span>
-          </div>
+          <p>Complex systems don't start out complex—they accumulate edge cases over time. My job is to locate the friction points that users have normalized, separate essential complexity from artificial complexity, and design interfaces that make the hard stuff manageable.</p>
         </div>
 
-        <div class="competency-card">
-          <h3>Research & Validation</h3>
-          <div class="competency-tags">
-            <span class="comp-tag">Advanced User Research</span>
-            <span class="comp-tag">Usability Testing</span>
-            <span class="comp-tag">Beta Testing Protocols</span>
-            <span class="comp-tag">Experience Design Thinking Facilitation</span>
+        <div class="process-card">
+          <div class="process-card-header">
+            <span class="process-icon">⚖️</span>
+            <h3>Design within real constraints</h3>
           </div>
+          <p>Enterprise UX happens at the intersection of technical feasibility, business logic, and regulatory mandates. I work alongside engineers and domain experts from day one, ensuring designs don't just look good in Figma, but ship reliably in production.</p>
         </div>
 
-        <div class="competency-card">
-          <h3>Execution & Systems</h3>
-          <div class="competency-tags">
-            <span class="comp-tag">Interaction Design</span>
-            <span class="comp-tag">UI Prototyping</span>
-            <span class="comp-tag">Wireframing</span>
-            <span class="comp-tag">IBM Carbon Design System</span>
-            <span class="comp-tag">Agile Methodologies</span>
+        <div class="process-card">
+          <div class="process-card-header">
+            <span class="process-icon">🛡️</span>
+            <h3>Validate before it ships to people who can't opt out</h3>
           </div>
-        </div>
-
-        <div class="competency-card">
-          <h3>Tools</h3>
-          <div class="competency-tags">
-            <span class="comp-tag">Figma</span>
-            <span class="comp-tag">Modern Prototyping & System Modeling Suites</span>
-          </div>
+          <p>Consumer apps lose users when they fail; enterprise users lose time, make costly errors, or face burnout. I test with actual operators under realistic conditions—stress-testing workflows before they hit production environments.</p>
         </div>
       </div>
     </section>
