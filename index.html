@@ -3,249 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sukhmani Kaur Bedi — Enterprise UX Designer & Researcher</title>
+  <title>Sukhmani Kaur Bedi — Enterprise UX Lead</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- Navigation -->
   <nav class="navbar">
-    <div class="logo">Sukhmani Kaur Bedi</div>
+    <div class="logo"><span class="logo-dot"></span>Sukhmani Bedi</div>
     <div class="nav-links">
       <a href="#work">Work</a>
-      <a href="#ibm-powervc">Featured Deep Dive</a>
-      <a href="#philosophy">Approach</a>
-      <a href="mailto:sukhmanibedi1@gmail.com" class="cta-link">Get in touch</a>
+      <a href="#about">About</a>
+      <a href="mailto:sukhmanibedi1@gmail.com" class="btn-nav">Get in touch</a>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <header class="hero">
-    <div class="hero-label">ENTERPRISE UX DESIGN & RESEARCH</div>
+    <div class="badge">ENTERPRISE UX DESIGN & RESEARCH</div>
     <h1 class="hero-title">
-      Designing clarity into high-stakes, data-dense systems.
+      Designing clarity into mission-critical software.
     </h1>
     <p class="hero-bio">
-      Most enterprise design challenges aren't about interfaces—they stem from undocumented workflows, business logic legacy, and invisible friction accumulated over years. I specialize in mapping and simplifying complex platforms for cloud infrastructure, credit insurance, and central banking.
+      I simplify complex B2B ecosystems—turning high-density workflows and legacy logic into clear, human-centered platforms for cloud infrastructure, trade insurance, and central banking.
     </p>
-    <div class="meta-row">
-      <span><strong>Track Record:</strong> IBM, Atradius, European Central Bank</span>
-      <span><strong>Core Competencies:</strong> Enterprise Systems, UX Research, Design Systems (Carbon)</span>
+    <div class="meta-pills">
+      <span class="pill">Previously at <strong>IBM</strong></span>
+      <span class="pill"><strong>European Central Bank</strong></span>
+      <span class="pill"><strong>Atradius</strong></span>
     </div>
   </header>
 
-  <!-- CASE STUDY 01: IBM POWERVC (DEEP DIVE) -->
-  <section id="ibm-powervc" class="section">
-    <div class="section-header">
-      <h2>01. IBM PowerVC</h2>
-      <span class="mono-tag">CLOUD INFRASTRUCTURE & VIRTUALIZATION</span>
+  <!-- CASE STUDIES SECTION -->
+  <section id="work" class="section">
+    <div class="section-title">
+      <h2>Featured Case Studies</h2>
+      <p>Select a project to expand the detailed architecture breakdown</p>
     </div>
 
-    <article class="case-study-card featured">
-      <div class="case-meta-grid">
-        <div>
-          <span class="meta-label">INDUSTRY</span>
-          <p>Power Virtualization & Cloud</p>
+    <!-- PROJECT 1: IBM POWERVC -->
+    <details class="case-card" open>
+      <summary class="case-summary">
+        <div class="case-header-main">
+          <div class="company-tag">IBM POWERVC</div>
+          <h3>Cloud Virtualization & Infrastructure Management</h3>
+          <p class="case-desc">Adapting Carbon Design System to reduce multi-node VM deployment complexity by 36%.</p>
         </div>
-        <div>
-          <span class="meta-label">ROLE</span>
-          <p>UX Lead & Research</p>
+        <div class="case-meta-side">
+          <span class="metric-badge">36% Complexity Reduction</span>
+          <span class="expand-btn">View Breakdown ➔</span>
         </div>
-        <div>
-          <span class="meta-label">DESIGN SYSTEM</span>
-          <p>IBM Carbon</p>
+      </summary>
+      
+      <div class="case-expanded-content">
+        <div class="grid-2col">
+          <div class="detail-box">
+            <h4>The Problem</h4>
+            <p>System admins were forced to jump between 12 fragmented views to configure, allocate, and deploy virtual resource clusters under tight time windows with high risk of error.</p>
+          </div>
+          <div class="detail-box">
+            <h4>The Solution</h4>
+            <p>Applied IBM Complexity Analysis research to map end-to-end admin flows, eliminating redundant approval steps and standardizing data density using IBM Carbon tokens.</p>
+          </div>
         </div>
-        <div>
-          <span class="meta-label">IMPACT</span>
-          <p class="accent-metric">36% Complexity Reduction</p>
+        <div class="action-row">
+          <a href="https://medium.com/@sukhmanibedi1/understanding-complexity-analysis-user-research-method-at-ibm-b5553a36c7e9" target="_blank" class="btn-primary">Read Research Method Article on Medium ↗</a>
         </div>
       </div>
+    </details>
 
-      <div class="case-content-grid">
-        <div class="case-text">
-          <h3>Designing clarity for virtual machine management under pressure</h3>
-          <p>
-            System administrators managing enterprise cloud environments face high-stress, zero-margin-for-error workflows. PowerVC suffered from fragmented task flows and legacy UI inconsistencies.
-          </p>
-          <p>
-            By applying IBM’s Complexity Analysis framework and adapting the Carbon Design System, we unified multi-node VM deployment workflows, removing manual overhead and visual clutter.
-          </p>
-          <a href="#ibm-details" class="btn-primary">View Deep Dive Architecture ↓</a>
+    <!-- PROJECT 2: ATRADIUS -->
+    <details class="case-card">
+      <summary class="case-summary">
+        <div class="case-header-main">
+          <div class="company-tag">ATRADIUS</div>
+          <h3>Credit Insurance Policy Engine</h3>
+          <p class="case-desc">Migrating legacy UI systems into an optimized, low-friction policy creation flow.</p>
         </div>
-        <div class="case-media-placeholder">
-          <div class="ui-mockup-frame">
-            <div class="ui-header-bar">
-              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-              <span class="ui-title">PowerVC / Infrastructure Overview</span>
-            </div>
-            <div class="ui-preview-body">
-              <div class="metric-row">
-                <div class="stat-box"><strong>99.98%</strong> Host Health</div>
-                <div class="stat-box"><strong>1,420</strong> Active VMs</div>
-                <div class="stat-box"><strong>03</strong> Critical Alerts</div>
-              </div>
-              <div class="wireframe-block"></div>
-            </div>
+        <div class="case-meta-side">
+          <span class="metric-badge">Legacy UI Migration</span>
+          <span class="expand-btn">View Breakdown ➔</span>
+        </div>
+      </summary>
+
+      <div class="case-expanded-content">
+        <div class="grid-2col">
+          <div class="detail-box">
+            <h4>The Challenge</h4>
+            <p>Underwriters were bogged down by dense policy rules and outdated UI software, causing slow contract turnaround times and high training overhead for new agents.</p>
+          </div>
+          <div class="detail-box">
+            <h4>The Impact</h4>
+            <p>Designed a modernized policy engine that automated risk scoring visual checks while maintaining strict legal and regulatory compliance controls.</p>
           </div>
         </div>
       </div>
+    </details>
 
-      <!-- Extended Architectural Breakdown for IBM PowerVC -->
-      <div id="ibm-details" class="case-details-breakdown">
-        <div class="detail-block">
-          <h4>The Challenge & Complexity</h4>
-          <p>Administrators were navigating up to 12 disconnected views just to configure, allocate, and deploy virtualized resource clusters. The risk of misconfiguration in live enterprise environments was high.</p>
+    <!-- PROJECT 3: EUROPEAN CENTRAL BANK -->
+    <details class="case-card">
+      <summary class="case-summary">
+        <div class="case-header-main">
+          <div class="company-tag">EUROPEAN CENTRAL BANK</div>
+          <h3>Statistical Data Warehouse & Atlas</h3>
+          <p class="case-desc">A unified browsing and analytics experience for central bank statistical data.</p>
         </div>
-        <div class="detail-block">
-          <h4>The Execution</h4>
-          <p>Uncovered hidden workflow friction through contextual research, mapped end-to-end admin behaviors, and standardized component behavior using Carbon Design System UI tokens.</p>
+        <div class="case-meta-side">
+          <span class="metric-badge">Central Bank System</span>
+          <span class="expand-btn">View Breakdown ➔</span>
         </div>
-        <div class="detail-block">
-          <h4>Key Outcome</h4>
-          <p>Streamlined the core VM provisioning pipeline, cutting required interaction steps by 36% and establishing a repeatable visual model across product variants.</p>
-        </div>
-      </div>
-    </article>
-  </section>
+      </summary>
 
-  <!-- CASE STUDY 02: ATRADIUS -->
-  <section id="atradius" class="section">
-    <div class="section-header">
-      <h2>02. Atradius</h2>
-      <span class="mono-tag">CREDIT INSURANCE PLATFORM</span>
-    </div>
-
-    <article class="case-study-card">
-      <div class="case-meta-grid">
-        <div>
-          <span class="meta-label">INDUSTRY</span>
-          <p>Trade Credit Insurance</p>
-        </div>
-        <div>
-          <span class="meta-label">FOCUS</span>
-          <p>Legacy Migration & UX Design</p>
-        </div>
-        <div>
-          <span class="meta-label">PRIMARY WORKFLOW</span>
-          <p>Contract Creation & Risk Scoring</p>
-        </div>
-        <div>
-          <span class="meta-label">OUTCOME</span>
-          <p class="accent-metric">Optimized Underwriting</p>
-        </div>
-      </div>
-
-      <div class="case-content-grid">
-        <div class="case-text">
-          <h3>Migrating legacy UI into a modern, low-friction policy workflow</h3>
-          <p>
-            Credit insurance underwriting involves dense policy logic and manual risk evaluation. We migrated legacy interfaces into a streamlined experience that accelerates policy creation while preserving strict regulatory validation rules.
-          </p>
-          <a href="#" class="btn-secondary">Request Case Study Brief →</a>
-        </div>
-        <div class="case-media-placeholder">
-          <div class="ui-mockup-frame">
-            <div class="ui-header-bar">
-              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-              <span class="ui-title">Atradius / Policy Underwriting Flow</span>
-            </div>
-            <div class="ui-preview-body">
-              <div class="wireframe-block text-dense"></div>
-            </div>
+      <div class="case-expanded-content">
+        <div class="grid-2col">
+          <div class="detail-box">
+            <h4>The Challenge</h4>
+            <p>Financial analysts struggled to query and cross-reference complex economic indicators due to disconnected data silos across internal applications.</p>
+          </div>
+          <div class="detail-box">
+            <h4>The Solution</h4>
+            <p>Re-architected the Information Architecture (IA) for the Statistical Data Portal and Atlas system, introducing structured filtering and unified data views.</p>
           </div>
         </div>
       </div>
-    </article>
-  </section>
-
-  <!-- CASE STUDY 03: EUROPEAN CENTRAL BANK -->
-  <section id="ecb" class="section">
-    <div class="section-header">
-      <h2>03. European Central Bank</h2>
-      <span class="mono-tag">STATISTICAL DATA PORTAL & ATLAS</span>
-    </div>
-
-    <article class="case-study-card">
-      <div class="case-meta-grid">
-        <div>
-          <span class="meta-label">INDUSTRY</span>
-          <p>Central Banking / Finance</p>
-        </div>
-        <div>
-          <span class="meta-label">FOCUS</span>
-          <p>Information Architecture & Data Visualization</p>
-        </div>
-        <div>
-          <span class="meta-label">PLATFORMS</span>
-          <p>Data Warehouse & Atlas Internal App</p>
-        </div>
-        <div>
-          <span class="meta-label">OUTCOME</span>
-          <p class="accent-metric">Unified Data Browsing</p>
-        </div>
-      </div>
-
-      <div class="case-content-grid">
-        <div class="case-text">
-          <h3>Unifying high-density statistical data for central bank analysts</h3>
-          <p>
-            Central bank analysts deal with complex economic indicators and vast datasets daily. Redesigned the Statistical Data Portal and Atlas internal system to establish a consistent, accessible navigation model across complex financial query environments.
-          </p>
-          <a href="#" class="btn-secondary">Request Case Study Brief →</a>
-        </div>
-        <div class="case-media-placeholder">
-          <div class="ui-mockup-frame">
-            <div class="ui-header-bar">
-              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-              <span class="ui-title">ECB / Statistical Data Warehouse</span>
-            </div>
-            <div class="ui-preview-body">
-              <div class="wireframe-block graph-dense"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-  </section>
-
-  <!-- Working Philosophy -->
-  <section id="philosophy" class="section">
-    <div class="section-header">
-      <h2>Systems Thinking Philosophy</h2>
-      <span class="mono-tag">RESEARCH & DESIGN APPROACH</span>
-    </div>
-
-    <div class="principles-grid">
-      <div class="principle-card">
-        <span class="card-num">01</span>
-        <h3>Map the system, not just the screen</h3>
-        <p>Enterprise users don't operate in isolated interfaces. They navigate policy constraints, legacy tech stack limits, and high-pressure operational windows.</p>
-      </div>
-      <div class="principle-card">
-        <span class="card-num">02</span>
-        <h3>Expose hidden complexity early</h3>
-        <p>Friction accumulates quietly in workaround spreadsheets and manual off-system approvals. Complexity Analysis uncovers these operational gaps before code is written.</p>
-      </div>
-      <div class="principle-card">
-        <span class="card-num">03</span>
-        <h3>Design for density without cognitive overload</h3>
-        <p>Enterprise tools require high information density. I structure data views that empower power users to scan, evaluate, and execute accurately.</p>
-      </div>
-    </div>
+    </details>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div>
-      <h3>Let’s build functional, clear enterprise software.</h3>
-      <p>Open to Senior/Lead Enterprise UX opportunities.</p>
+    <div class="footer-content">
+      <h3>Ready to build clear, scalable enterprise products?</h3>
+      <p>Let's talk about lead and senior UX design roles.</p>
     </div>
     <div class="footer-links">
       <a href="mailto:sukhmanibedi1@gmail.com">sukhmanibedi1@gmail.com</a>
-      <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank">LinkedIn ↗</a>
     </div>
   </footer>
 
