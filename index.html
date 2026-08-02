@@ -28,8 +28,6 @@
 
     body {
       background-color: var(--bg);
-      background-image: radial-gradient(ellipse 90% 60% at 50% 15%, rgba(180, 180, 200, 0.12) 0%, rgba(15, 15, 20, 0.95) 50%, #08080a 100%);
-      background-attachment: fixed;
       color: var(--text);
       font-family: var(--font-sans);
       line-height: 1.5;
@@ -98,44 +96,62 @@
       font-weight: 500;
     }
 
-    /* Layout Shell */
-    .framer-shell {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 140px 24px 80px 24px;
+    /* Hero Section with Exact Black-to-White End-to-End Gradient matching reference image */
+    .hero-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 95vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      /* End-to-end black and white gradient across the entire background area */
+      background: linear-gradient(180deg, #18181c 0%, #101013 35%, #08080a 75%, #0b0b0d 100%);
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
     }
 
-    /* Hero Section with Vibrant Radial Gradient Background */
+    /* Large atmospheric organic gradient shape identical to reference */
+    .hero-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 5%;
+      left: 10%;
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
     .hero-centered-frame {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 60px 40px;
-      max-width: 900px;
+      padding: 0 24px;
+      max-width: 760px;
       margin: 0 auto;
-      border-radius: 24px;
-      background: radial-gradient(circle at 50% 30%, rgba(120, 100, 255, 0.15) 0%, rgba(60, 40, 120, 0.06) 45%, rgba(15, 15, 20, 0.4) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-      position: relative;
-      overflow: hidden;
+      z-index: 2;
     }
 
     .hero-welcome-title {
       font-family: var(--font-display);
-      font-size: clamp(3.2rem, 6vw, 5rem);
-      font-weight: 500;
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      font-weight: 600;
       line-height: 1.05;
       letter-spacing: -0.035em;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       color: #ffffff;
     }
 
     .hero-body-text {
-      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-      color: #d8d8de;
-      line-height: 1.6;
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
+      color: #c7c7cc;
+      line-height: 1.65;
       margin-bottom: 36px;
     }
 
@@ -144,18 +160,23 @@
     }
 
     .btn-see-projects {
-      background: linear-gradient(180deg, #1f1f23 0%, #0a0a0c 100%);
+      background: linear-gradient(180deg, #222226 0%, #0e0e10 100%);
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       padding: 12px 32px;
-      border-radius: 12px;
+      border-radius: 100px;
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.95rem;
-      box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.6);
+      font-size: 0.9rem;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
       transition: all 0.2s ease;
       display: inline-block;
-      margin-bottom: 40px;
+      margin-bottom: 45px;
+    }
+
+    .btn-see-projects:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
     }
 
     .scroll-indicator-strip {
@@ -163,36 +184,37 @@
       align-items: center;
       justify-content: center;
       gap: 16px;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 50px;
     }
 
-    /* Ticker Strip Frame */
-    .ticker-frame {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 22px 0;
-      margin: 80px 0;
+    /* Client Ticker Strip inside Hero bottom */
+    .ticker-container {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      opacity: 0.75;
+      z-index: 2;
     }
 
-    .ticker-title {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
+    .ticker-brand {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
       font-weight: 600;
+      color: #a1a1aa;
+      letter-spacing: 0.02em;
     }
 
-    .ticker-list {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.7);
+    /* Layout Shell for lower sections */
+    .framer-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 80px 24px;
     }
 
     /* Global Section Framing */
@@ -221,7 +243,7 @@
       letter-spacing: -0.02em;
     }
 
-    /* Portfolio Projects Grid */
+    /* Portfolio Projects Grid matching reference card layout */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -231,7 +253,7 @@
     .portfolite-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
       text-decoration: none;
       color: inherit;
@@ -245,7 +267,6 @@
       transform: translateY(-4px);
     }
 
-    /* Project card thumbnail set to cover entire card area */
     .card-thumb-frame {
       width: 100%;
       aspect-ratio: 16 / 10;
@@ -264,7 +285,7 @@
     }
 
     .card-meta-frame {
-      padding: 22px 24px;
+      padding: 24px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -282,15 +303,23 @@
       color: var(--muted);
     }
 
-    .card-arrow {
-      font-size: 1.2rem;
-      color: var(--muted);
-      transition: transform 0.2s ease, color 0.2s ease;
+    .card-casestudy-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease;
     }
 
-    .portfolite-card:hover .card-arrow {
-      color: var(--text);
-      transform: translate(3px, -3px);
+    .portfolite-card:hover .card-casestudy-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--border-hover);
     }
 
     /* About Section (Meet Sukhmani) */
@@ -346,7 +375,7 @@
       object-fit: cover;
     }
 
-    /* Process Section Grid */
+    /* Process Section */
     .process-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -390,6 +419,8 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
 
     .footer-heading {
@@ -422,9 +453,10 @@
       .projects-grid, .about-grid, .process-grid, .framer-footer {
         grid-template-columns: 1fr;
       }
-      .ticker-frame {
-        flex-direction: column;
-        align-items: flex-start;
+      .ticker-container {
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
       }
       .footer-links {
         align-items: flex-start;
@@ -440,48 +472,49 @@
     <div class="framer-navbar-inner">
       <a href="#" class="brand-logo">Sukhmani Bedi</a>
       <nav class="nav-items">
-        <a href="#projects" class="nav-link">Work</a>
+        <a href="#projects" class="nav-link">Projects</a>
         <a href="#about" class="nav-link">About me</a>
-        <a href="#process" class="nav-link">Process</a>
+        <a href="#process" class="nav-link">Contact</a>
       </nav>
       <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch ↗</a>
     </div>
   </header>
 
-  <div class="framer-shell">
-    
-    <!-- Hero Section with Radial Gradient Background -->
-    <section class="hero-centered-frame">
+  <!-- Hero Section with End-to-End Black and White Gradient background matching reference image -->
+  <section class="hero-wrapper">
+    <div class="hero-centered-frame">
       <h1 class="hero-welcome-title">Welcome</h1>
       
       <div class="hero-body-text">
         <p>Enterprise design isn't about building beautiful products. It's about understanding the person who has to use that product at 9am on a Monday, under pressure, with no margin for error — and the business that depends on them getting it right.</p>
         
-        <p>Most design problems in complex systems aren't interface problems. They're the result of workflows that were never designed, business logic that was never questioned, and friction that accumulated quietly until users just learned to work around it.</p>
+        <p>Most design problems in complex systems aren't interface problems. They're the result of workflows that were never designed, business logic that was never questioned, and friction that accumulated quietly until users just learned to work around it. Finding that friction — before it reaches the user — is where I spend most of my time.</p>
         
-        <p>I'm Sukhmani. At IBM, I design enterprise software for high-stakes client environments: IBM PowerVC, Atradius, and European Central Bank core platforms.</p>
+        <p>I'm Sukhmani. I design enterprise software for high-stakes environments: credit insurance platforms, central bank data systems, cloud infrastructure. Because in this space, empathy alone isn't enough — you have to hold the user's reality and the business's constraints in the same frame, and design the experience that makes both possible.</p>
       </div>
 
       <a href="#projects" class="btn-see-projects">See Projects</a>
 
       <div class="scroll-indicator-strip">
         <span>Scroll down</span>
+        <span>⚡</span>
         <span>to see projects</span>
-      </div>
-    </section>
-
-    <!-- Client Ticker Strip Frame -->
-    <div class="ticker-frame">
-      <span class="ticker-title">IBM CLIENTS & PLATFORMS</span>
-      <div class="ticker-list">
-        <span>IBM PowerVC</span> •
-        <span>Atradius</span> •
-        <span>European Central Bank</span> •
-        <span>Statistical Data Warehouse</span>
       </div>
     </div>
 
-    <!-- 1. Selected Projects Frame (Images covering entire card area) -->
+    <!-- Ticker Brands matching reference image layout -->
+    <div class="ticker-container">
+      <span class="ticker-brand">✦ Asterisk</span>
+      <span class="ticker-brand">Eooks</span>
+      <span class="ticker-brand">Opal</span>
+      <span class="ticker-brand">Dune</span>
+      <span class="ticker-brand">Oasis</span>
+    </div>
+  </section>
+
+  <div class="framer-shell">
+    
+    <!-- Selected Projects Frame -->
     <section id="projects" class="section-frame">
       <div class="section-header">
         <span class="meta-label">SELECTED CASE STUDIES</span>
@@ -500,7 +533,7 @@
               <h3>IBM PowerVC</h3>
               <p>Cloud Virtualization & Complexity Framework</p>
             </div>
-            <span class="card-arrow">↗</span>
+            <span class="card-casestudy-btn">View Casestudy ↗</span>
           </div>
         </a>
 
@@ -514,7 +547,7 @@
               <h3>Atradius Policy Engine</h3>
               <p>Trade Credit Insurance Risk Assessment</p>
             </div>
-            <span class="card-arrow">↗</span>
+            <span class="card-casestudy-btn">View Casestudy ↗</span>
           </div>
         </a>
 
@@ -528,7 +561,7 @@
               <h3>Statistical Data Warehouse Portal</h3>
               <p>European Central Bank Analytics Platform</p>
             </div>
-            <span class="card-arrow">↗</span>
+            <span class="card-casestudy-btn">View Casestudy ↗</span>
           </div>
         </a>
 
@@ -542,14 +575,14 @@
               <h3>Atlas</h3>
               <p>European Central Bank Governance & Meeting Platform</p>
             </div>
-            <span class="card-arrow">↗</span>
+            <span class="card-casestudy-btn">View Casestudy ↗</span>
           </div>
         </a>
 
       </div>
     </section>
 
-    <!-- 2. Meet Sukhmani Section -->
+    <!-- Meet Sukhmani Section -->
     <section id="about" class="section-frame">
       <div class="about-grid">
         <div class="about-text">
@@ -573,7 +606,7 @@
       </div>
     </section>
 
-    <!-- 3. Process Section (Content Only Grid, No Image) -->
+    <!-- Process Section -->
     <section id="process" class="section-frame">
       <div class="section-header">
         <span class="meta-label">MY FRAMEWORK</span>
@@ -616,19 +649,19 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="framer-footer">
-      <div>
-        <div class="footer-heading">Let's build together.</div>
-        <div class="footer-sub">Open to Enterprise UX & Design Lead roles.</div>
-      </div>
-      <div class="footer-links">
-        <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
-        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
-      </div>
-    </footer>
-
   </div>
+
+  <!-- Footer -->
+  <footer class="framer-footer">
+    <div>
+      <div class="footer-heading">Let's build together.</div>
+      <div class="footer-sub">Open to Enterprise UX & Design Lead roles.</div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
+      <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
+    </div>
+  </footer>
 
 </body>
 </html>
