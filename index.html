@@ -1,238 +1,459 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sukhmani Kaur Bedi — Enterprise UX Designer</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
-<body>
+:root {
+  --bg-color: #07080a;
+  --card-bg: #0f1117;
+  --card-border: #1a1f2c;
+  --card-border-hover: #2e374a;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent: #ffffff;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="logo">Sukhmani Bedi</div>
-    <div class="nav-links">
-      <a href="#projects">Work</a>
-      <a href="#about">About</a>
-      <a href="#articles">Articles</a>
-      <a href="#process">Process</a>
-      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch</a>
-    </div>
-  </nav>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- Hero Section -->
-  <header class="hero-section">
-    <div class="hero-bg-container">
-      <!-- Replace hero-bg.jpg with your uploaded hero background file name -->
-      <img src="hero-bg.jpg" alt="Hero Background" class="hero-bg-img" onerror="this.style.display='none'">
-      <div class="hero-overlay"></div>
-    </div>
-    
-    <div class="hero-content">
-      <span class="hero-badge">Enterprise UX Designer & Researcher</span>
-      <h1 class="hero-heading">Designing Clarity for Complex Systems</h1>
-      <p class="hero-subtext">
-        Simplifying high-density operational platforms across cloud virtualization, trade credit insurance, and statistical banking software.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn-primary">View Featured Work ↗</a>
-      </div>
-    </div>
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
 
-    <!-- Ticker / Client Strip -->
-    <div class="client-strip">
-      <span>IBM PowerVC</span>
-      <span class="dot">•</span>
-      <span>Atradius</span>
-      <span class="dot">•</span>
-      <span>European Central Bank</span>
-      <span class="dot">•</span>
-      <span>Statistical Data Warehouse</span>
-    </div>
-  </header>
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-  <!-- Projects Grid (Portfolite Card Layout) -->
-  <section id="projects" class="section container">
-    <div class="section-header">
-      <span class="mono-label">SELECTED PROJECTS</span>
-      <h2 class="section-title">Featured Case Studies</h2>
-    </div>
+/* Nav */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
 
-    <div class="projects-grid">
-      
-      <!-- Project 1 -->
-      <a href="#powervc-case" class="project-card">
-        <div class="project-image-wrapper">
-          <!-- Replace powervc.png with your file name -->
-          <img src="powervc.png" alt="IBM PowerVC UX Design" class="project-img" onerror="this.src='https://placehold.co/800x500/121620/FFF?text=IBM+PowerVC'">
-        </div>
-        <div class="project-meta">
-          <div class="project-info">
-            <h3>IBM PowerVC</h3>
-            <p>Cloud Virtualization Management & Complexity Analysis</p>
-          </div>
-          <span class="project-arrow">↗</span>
-        </div>
-      </a>
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
 
-      <!-- Project 2 -->
-      <a href="#atradius-case" class="project-card">
-        <div class="project-image-wrapper">
-          <!-- Replace atradius.png with your file name -->
-          <img src="atradius.png" alt="Atradius Trade Credit Insurance" class="project-img" onerror="this.src='https://placehold.co/800x500/121620/FFF?text=Atradius'">
-        </div>
-        <div class="project-meta">
-          <div class="project-info">
-            <h3>Atradius Policy Engine</h3>
-            <p>Trade Credit Insurance & Risk Assessment Platform</p>
-          </div>
-          <span class="project-arrow">↗</span>
-        </div>
-      </a>
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
 
-      <!-- Project 3 -->
-      <a href="#ecb-case" class="project-card">
-        <div class="project-image-wrapper">
-          <!-- Replace ecb.png with your file name -->
-          <img src="ecb.png" alt="European Central Bank Software" class="project-img" onerror="this.src='https://placehold.co/800x500/121620/FFF?text=European+Central+Bank'">
-        </div>
-        <div class="project-meta">
-          <div class="project-info">
-            <h3>European Central Bank</h3>
-            <p>Statistical Data Warehouse & Data Atlas Visualization</p>
-          </div>
-          <span class="project-arrow">↗</span>
-        </div>
-      </a>
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
 
-      <!-- Project 4 -->
-      <a href="#design-systems" class="project-card">
-        <div class="project-image-wrapper">
-          <!-- Replace carbon-system.png with your file name -->
-          <img src="carbon-system.png" alt="IBM Carbon Design System" class="project-img" onerror="this.src='https://placehold.co/800x500/121620/FFF?text=Carbon+Design+System'">
-        </div>
-        <div class="project-meta">
-          <div class="project-info">
-            <h3>Carbon Systems Integration</h3>
-            <p>Scalable Design Systems for Enterprise Software</p>
-          </div>
-          <span class="project-arrow">↗</span>
-        </div>
-      </a>
+.nav-links a:hover {
+  color: var(--text-primary);
+}
 
-    </div>
-  </section>
+.nav-cta {
+  border: 1px solid var(--card-border);
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.03);
+}
 
-  <!-- Meet Sukhmani (Bio + Portrait Split) -->
-  <section id="about" class="section container">
-    <div class="about-grid">
-      <div class="about-text-col">
-        <span class="mono-label">ABOUT ME</span>
-        <h2 class="section-title">Meet Sukhmani</h2>
-        <p class="about-bio">
-          I'm an Enterprise UX Designer and Researcher driven by systems-level thinking. I work closely with cross-functional technical teams to untangle legacy codebases, design intuitive data-dense interfaces, and drive impactful business outcomes.
-        </p>
-        <p class="about-location">📍 Based in Delhi NCR, India</p>
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10rem 2rem 4rem 2rem;
+  overflow: hidden;
+}
 
-        <div class="skills-wrapper">
-          <span class="skill-tag">UX Research</span>
-          <span class="skill-tag">Complexity Analysis</span>
-          <span class="skill-tag">Enterprise Design Systems</span>
-          <span class="skill-tag">IBM Carbon</span>
-          <span class="skill-tag">Information Architecture</span>
-          <span class="skill-tag">Data Visualization</span>
-        </div>
-      </div>
+.hero-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
 
-      <div class="about-photo-col">
-        <div class="portrait-frame">
-          <!-- Replace portrait.jpg with your uploaded portrait file name -->
-          <img src="portrait.jpg" alt="Sukhmani Kaur Bedi" class="portrait-img" onerror="this.src='https://placehold.co/600x700/121620/FFF?text=Sukhmani+Kaur+Bedi'">
-        </div>
-      </div>
-    </div>
-  </section>
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  filter: blur(4px);
+}
 
-  <!-- Published Article Card -->
-  <section id="articles" class="section container">
-    <div class="article-card">
-      <div class="article-content">
-        <span class="mono-label">PUBLISHED ARTICLE</span>
-        <h3 class="article-title">Understanding Complexity Analysis: User Research Method at IBM</h3>
-        <p class="article-description">
-          An in-depth guide on measuring, mapping, and eliminating systemic friction points in high-density enterprise software environments.
-        </p>
-        <a href="https://medium.com/@sukhmanibedi1/understanding-complexity-analysis-user-research-method-at-ibm-b5553a36c7e9" target="_blank" class="btn-secondary">Read Article on Medium ↗</a>
-      </div>
-      <div class="article-visual">
-        <div class="graphic-box">
-          <div class="graphic-bar bar-1"></div>
-          <div class="graphic-bar bar-2"></div>
-          <div class="graphic-bar bar-3"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(7,8,10,0.4) 0%, rgba(7,8,10,0.95) 100%);
+}
 
-  <!-- Process / Methodology Section -->
-  <section id="process" class="section container">
-    <div class="process-grid">
-      <div class="process-left-col">
-        <div class="sticky-process">
-          <span class="mono-label">MY METHODOLOGY</span>
-          <h2 class="section-title">Design Process</h2>
-          <p class="process-intro">How I turn high-density, messy enterprise challenges into clear, actionable product designs.</p>
-          <div class="process-image-frame">
-            <!-- Replace process.png with your uploaded process diagram -->
-            <img src="process.png" alt="UX Process & Workflow Mapping" class="process-img" onerror="this.src='https://placehold.co/500x600/121620/FFF?text=Process+Workflow'">
-          </div>
-        </div>
-      </div>
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+}
 
-      <div class="process-steps">
-        <div class="step-card">
-          <span class="step-number">01</span>
-          <h3>Map system topology</h3>
-          <p>Before touching screens, I map end-to-end user workflows, API boundaries, and off-system workarounds.</p>
-        </div>
+.hero-badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
 
-        <div class="step-card">
-          <span class="step-number">02</span>
-          <h3>Identify friction points</h3>
-          <p>Using IBM Complexity Analysis, I quantify operational friction and pinpoint high-leverage targets for UX optimization.</p>
-        </div>
+.hero-heading {
+  font-family: var(--font-heading);
+  font-size: 4.2rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
 
-        <div class="step-card">
-          <span class="step-number">03</span>
-          <h3>Design with scalable systems</h3>
-          <p>I utilize modular enterprise design systems (such as IBM Carbon) to maintain visual consistency and speed up engineering deployment.</p>
-        </div>
+.hero-subtext {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
 
-        <div class="step-card">
-          <span class="step-number">04</span>
-          <h3>Test with subject matter experts</h3>
-          <p>I validate prototypes directly with specialized domain operators to ensure accuracy and workflow efficiency.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+.btn-primary {
+  display: inline-block;
+  background: var(--text-primary);
+  color: var(--bg-color);
+  padding: 0.85rem 2.2rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.2s;
+}
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <div>
-        <h2>Let's build something together</h2>
-        <p>Available for Enterprise UX Design & Leadership roles.</p>
-      </div>
-      <div class="footer-links">
-        <a href="mailto:sukhmanibedi1@gmail.com">sukhmanibedi1@gmail.com ↗</a>
-        <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank">LinkedIn Profile ↗</a>
-      </div>
-    </div>
-  </footer>
+.btn-primary:hover {
+  transform: translateY(-3px);
+}
 
-</body>
-</html>
+.client-strip {
+  position: relative;
+  z-index: 2;
+  margin-top: 5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Sections */
+.section {
+  padding: 6rem 0;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.mono-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  letter-spacing: -0.02em;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: var(--card-border-hover);
+  transform: translateY(-6px);
+}
+
+.project-image-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #141824;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.03);
+}
+
+.project-meta {
+  padding: 1.5rem 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.project-info p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.project-arrow {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  transition: transform 0.2s;
+}
+
+.project-card:hover .project-arrow {
+  transform: translate(3px, -3px);
+  color: var(--text-primary);
+}
+
+/* About Section */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-bio {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.about-location {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.skills-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skill-tag {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--card-border);
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.portrait-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Articles Section */
+.article-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 3.5rem;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.article-title {
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+}
+
+.article-description {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.btn-secondary {
+  display: inline-block;
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  padding: 0.65rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Process Section */
+.process-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 4rem;
+}
+
+.sticky-process {
+  position: sticky;
+  top: 6rem;
+}
+
+.process-intro {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.process-image-frame {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+}
+
+.process-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.step-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2.2rem;
+}
+
+.step-number {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.step-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.step-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--card-border);
+  padding: 5rem 0;
+  margin-top: 6rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content h2 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-content p {
+  color: var(--text-secondary);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.footer-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .projects-grid, .about-grid, .article-card, .process-grid, .footer-content {
+    grid-template-columns: 1fr;
+  }
+  .hero-heading {
+    font-size: 2.8rem;
+  }
+  .navbar {
+    padding: 1.5rem 2rem;
+  }
+}
