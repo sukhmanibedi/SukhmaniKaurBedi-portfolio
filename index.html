@@ -3,221 +3,633 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sukhmani Kaur Bedi — Enterprise UX Designer</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Portfolite - Rebuilt Canvas Layout Code</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg: #0d0d0f;
+      --card-bg: #141417;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.22);
+      --text: #f4f4f5;
+      --muted: #8e8e93;
+      --accent: #ffffff;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-display: 'Space Grotesk', -apple-system, sans-serif;
+      --max-width: 1120px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Fixed Top App Bar */
+    .framer-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 68px;
+      background: rgba(13, 13, 15, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .framer-navbar-inner {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-items {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      border-color: var(--border-hover);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Main Container Shell */
+    .framer-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 120px 24px 80px 24px;
+    }
+
+    /* Canvas Section 1: Hero Block */
+    .hero-frame {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 0 60px 0;
+      max-width: 840px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #22c55e;
+      border-radius: 50%;
+    }
+
+    .hero-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      padding: 12px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* Canvas Section 2: Logo / Experience Ticker Strip */
+    .ticker-frame {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 22px 0;
+      margin-bottom: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .ticker-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .ticker-list {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.02em;
+    }
+
+    .ticker-dot {
+      color: var(--border);
+    }
+
+    /* Canvas Section 3: Portfolio Grid (Portfolite Card Engine) */
+    .section-frame {
+      margin-bottom: 100px;
+    }
+
+    .section-header {
+      margin-bottom: 36px;
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .portfolite-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .portfolite-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .card-thumb-frame {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #1a1a1e;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-thumb-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .portfolite-card:hover .card-thumb-frame img {
+      transform: scale(1.04);
+    }
+
+    .card-meta-frame {
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .card-info p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .card-arrow {
+      font-size: 1.2rem;
+      color: var(--muted);
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .portfolite-card:hover .card-arrow {
+      color: var(--text);
+      transform: translate(3px, -3px);
+    }
+
+    /* Canvas Section 4: About Frame */
+    .about-split-frame {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px;
+    }
+
+    .about-text h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .skills-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill-item {
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .portrait-frame {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #1a1a1e;
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Canvas Section 5: Process Frame */
+    .process-layout-frame {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 48px;
+    }
+
+    .process-sticky {
+      position: sticky;
+      top: 96px;
+    }
+
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .step-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .step-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* Footer Frame */
+    .framer-footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 0 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .footer-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 820px) {
+      .projects-grid, .about-split-frame, .process-layout-frame, .framer-footer {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .ticker-frame {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-links {
+        align-items: flex-start;
+        margin-top: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Navigation Frame -->
-  <header class="frame-nav">
-    <div class="nav-inner">
-      <a href="#" class="logo">Sukhmani Bedi</a>
-      <nav class="nav-links">
-        <a href="#projects">Work</a>
-        <a href="#about">About</a>
-        <a href="#articles">Articles</a>
-        <a href="#process">Process</a>
+  <header class="framer-navbar">
+    <div class="framer-navbar-inner">
+      <a href="#" class="brand-logo">Sukhmani Bedi</a>
+      <nav class="nav-items">
+        <a href="#projects" class="nav-link">Work</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#process" class="nav-link">Process</a>
       </nav>
-      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-btn">Get in Touch ↗</a>
+      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch ↗</a>
     </div>
   </header>
 
-  <main class="app-shell">
+  <div class="framer-shell">
     
     <!-- Hero Frame -->
-    <section class="frame-hero">
-      <div class="badge">
-        <span class="badge-dot"></span> Enterprise UX Designer & Researcher
+    <section class="hero-frame">
+      <div class="status-badge">
+        <span class="status-dot"></span> Enterprise UX Designer & Researcher
       </div>
-      <h1 class="hero-title">Designing clarity for complex enterprise systems.</h1>
-      <p class="hero-desc">
-        Specializing in simplifying high-density software across cloud virtualization, trade credit insurance, and statistical banking platforms.
-      </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn-main">Explore Selected Work ↓</a>
+      <h1 class="hero-heading">Designing clarity for complex enterprise systems.</h1>
+      <p class="hero-sub">Specializing in simplifying high-density software across cloud virtualization, trade credit insurance, and statistical banking platforms.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">Explore Selected Work ↓</a>
       </div>
     </section>
 
-    <!-- Client Ticker Strip -->
-    <div class="frame-ticker">
-      <span class="ticker-label">EXPERIENCE WITH</span>
-      <div class="ticker-items">
-        <span>IBM PowerVC</span><span class="sep">•</span>
-        <span>Atradius</span><span class="sep">•</span>
-        <span>European Central Bank</span><span class="sep">•</span>
+    <!-- Client Ticker Strip Frame -->
+    <div class="ticker-frame">
+      <span class="ticker-title">EXPERIENCE WITH</span>
+      <div class="ticker-list">
+        <span>IBM PowerVC</span> <span class="ticker-dot">•</span>
+        <span>Atradius</span> <span class="ticker-dot">•</span>
+        <span>European Central Bank</span> <span class="ticker-dot">•</span>
         <span>Statistical Data Warehouse</span>
       </div>
     </div>
 
     <!-- Selected Projects Frame -->
-    <section id="projects" class="frame-section">
-      <div class="section-head">
-        <span class="meta-tag">SELECTED CASE STUDIES</span>
-        <h2 class="head-title">Featured Works</h2>
+    <section id="projects" class="section-frame">
+      <div class="section-header">
+        <span class="meta-label">SELECTED CASE STUDIES</span>
+        <h2 class="section-title">Featured Works</h2>
       </div>
 
-      <div class="grid-2col">
-        <!-- Project 1 -->
-        <a href="#powervc" class="card-project">
-          <div class="card-media">
-            <img src="powervc.png" alt="IBM PowerVC" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80'">
+      <div class="projects-grid">
+        <a href="#" class="portfolite-card">
+          <div class="card-thumb-frame">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" alt="IBM PowerVC">
           </div>
-          <div class="card-footer">
+          <div class="card-meta-frame">
             <div class="card-info">
               <h3>IBM PowerVC</h3>
-              <p>Cloud Virtualization & Complexity Analysis Framework</p>
+              <p>Cloud Virtualization & Complexity Framework</p>
             </div>
-            <span class="card-icon">↗</span>
+            <span class="card-arrow">↗</span>
           </div>
         </a>
 
-        <!-- Project 2 -->
-        <a href="#atradius" class="card-project">
-          <div class="card-media">
-            <img src="atradius.png" alt="Atradius Policy Engine" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80'">
+        <a href="#" class="portfolite-card">
+          <div class="card-thumb-frame">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80" alt="Atradius">
           </div>
-          <div class="card-footer">
+          <div class="card-meta-frame">
             <div class="card-info">
               <h3>Atradius Policy Engine</h3>
-              <p>Trade Credit Insurance & Risk Assessment Workflow</p>
+              <p>Trade Credit Insurance Risk Assessment</p>
             </div>
-            <span class="card-icon">↗</span>
+            <span class="card-arrow">↗</span>
           </div>
         </a>
 
-        <!-- Project 3 -->
-        <a href="#ecb" class="card-project">
-          <div class="card-media">
-            <img src="ecb.png" alt="European Central Bank" onerror="this.src='https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80'">
+        <a href="#" class="portfolite-card">
+          <div class="card-thumb-frame">
+            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1000&q=80" alt="ECB">
           </div>
-          <div class="card-footer">
+          <div class="card-meta-frame">
             <div class="card-info">
               <h3>European Central Bank</h3>
-              <p>Statistical Data Warehouse & Atlas Visualization</p>
+              <p>Statistical Data Warehouse & Visualization</p>
             </div>
-            <span class="card-icon">↗</span>
+            <span class="card-arrow">↗</span>
           </div>
         </a>
 
-        <!-- Project 4 -->
-        <a href="#carbon" class="card-project">
-          <div class="card-media">
-            <img src="carbon-system.png" alt="Carbon Systems" onerror="this.src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80'">
+        <a href="#" class="portfolite-card">
+          <div class="card-thumb-frame">
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80" alt="Carbon System">
           </div>
-          <div class="card-footer">
+          <div class="card-meta-frame">
             <div class="card-info">
               <h3>Enterprise Carbon Systems</h3>
-              <p>Scalable Component Design for Enterprise Apps</p>
+              <p>Scalable Design Component Architecture</p>
             </div>
-            <span class="card-icon">↗</span>
+            <span class="card-arrow">↗</span>
           </div>
         </a>
       </div>
     </section>
 
     <!-- About Frame -->
-    <section id="about" class="frame-section">
-      <div class="grid-split-about">
-        <div class="about-content">
-          <span class="meta-tag">BACKGROUND</span>
-          <h2 class="head-title">Meet Sukhmani</h2>
-          <p class="about-body">
-            I'm an Enterprise UX Designer and Researcher driven by systems-level thinking. I partner closely with technical teams to dismantle legacy bottlenecks, streamline complex logic, and build polished, scalable software.
-          </p>
-          <p class="about-loc">📍 Based in Delhi NCR, India</p>
-          <div class="pills-group">
-            <span class="pill">UX Research</span>
-            <span class="pill">Complexity Analysis</span>
-            <span class="pill">IBM Carbon System</span>
-            <span class="pill">Information Architecture</span>
-            <span class="pill">Data Visualization</span>
+    <section id="about" class="section-frame">
+      <div class="about-split-frame">
+        <div class="about-text">
+          <span class="meta-label">BACKGROUND</span>
+          <h2>Meet Sukhmani</h2>
+          <p>I am an Enterprise UX Designer and Researcher specializing in deep systems domain problems. I partner with engineering teams to simplify workflows and structure complex data platforms.</p>
+          <div class="skills-pills">
+            <span class="pill-item">UX Research</span>
+            <span class="pill-item">Complexity Analysis</span>
+            <span class="pill-item">IBM Carbon Design</span>
+            <span class="pill-item">Information Architecture</span>
           </div>
         </div>
-        <div class="about-portrait">
-          <img src="portrait.jpg" alt="Sukhmani Kaur Bedi" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'">
+        <div class="portrait-frame">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Portrait">
         </div>
       </div>
     </section>
 
-    <!-- Published Article Frame -->
-    <section id="articles" class="frame-section">
-      <div class="card-article">
-        <div class="article-info">
-          <span class="meta-tag">PUBLISHED INSIGHT</span>
-          <h3 class="article-title">Understanding Complexity Analysis: User Research Method at IBM</h3>
-          <p class="article-body">
-            An in-depth breakdown of how we measure, map, and reduce systemic friction across multi-node enterprise platforms.
-          </p>
-          <a href="https://medium.com/@sukhmanibedi1/understanding-complexity-analysis-user-research-method-at-ibm-b5553a36c7e9" target="_blank" class="btn-sub">Read on Medium ↗</a>
-        </div>
-        <div class="article-graphic">
-          <div class="chart-bars">
-            <span class="b1"></span>
-            <span class="b2"></span>
-            <span class="b3"></span>
-            <span class="b4"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Process Methodology Frame -->
-    <section id="process" class="frame-section">
-      <div class="grid-split-process">
-        <div class="process-sidebar">
-          <div class="sticky-frame">
-            <span class="meta-tag">METHODOLOGY</span>
-            <h2 class="head-title">Design Process</h2>
-            <p class="process-desc">How chaotic enterprise software is translated into seamless user flows.</p>
-            <div class="process-preview">
-              <img src="process.png" alt="Process Preview" onerror="this.src='https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80'">
-            </div>
-          </div>
+    <!-- Process Frame -->
+    <section id="process" class="section-frame">
+      <div class="process-layout-frame">
+        <div class="process-sticky">
+          <span class="meta-label">METHODOLOGY</span>
+          <h2 class="section-title">Design Process</h2>
+          <p style="color: var(--muted); margin-top: 8px;">Deconstructing complex workflows into seamless end-to-end operational software.</p>
         </div>
 
-        <div class="process-list">
-          <div class="card-step">
-            <span class="step-id">01</span>
+        <div class="process-steps">
+          <div class="step-card">
+            <span class="step-num">01</span>
             <h3>Map System Topology</h3>
-            <p>Before touching wireframes, I map end-to-end user journeys, off-system workarounds, and underlying technical APIs.</p>
+            <p>Deconstruct technical architectures, user journeys, and off-system domain workarounds before designing.</p>
           </div>
-          <div class="card-step">
-            <span class="step-id">02</span>
+          <div class="step-card">
+            <span class="step-num">02</span>
             <h3>Quantify Friction Points</h3>
-            <p>Using frameworks like IBM Complexity Analysis, I isolate operational friction points to prioritize high-impact redesign targets.</p>
+            <p>Utilize IBM Complexity Analysis to quantify and prioritize systemic bottlenecks for maximum UX impact.</p>
           </div>
-          <div class="card-step">
-            <span class="step-id">03</span>
+          <div class="step-card">
+            <span class="step-num">03</span>
             <h3>Deploy Scalable Systems</h3>
-            <p>I design using modular enterprise design systems (such as IBM Carbon) to guarantee developer speed and visual compliance.</p>
-          </div>
-          <div class="card-step">
-            <span class="step-id">04</span>
-            <h3>Validate with Experts</h3>
-            <p>Rigorous usability testing with actual domain operators ensures absolute operational precision prior to production release.</p>
+            <p>Implement structured component systems (Carbon Design) for rapid developer velocity and UI consistency.</p>
           </div>
         </div>
       </div>
     </section>
 
-  </main>
+    <footer class="framer-footer">
+      <div>
+        <div class="footer-heading">Let's build together.</div>
+        <div class="footer-sub">Open to Enterprise UX & Design Lead roles.</div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
+        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
+      </div>
+    </footer>
 
-  <!-- Footer Frame -->
-  <footer class="frame-footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <h2>Let's build something exceptional.</h2>
-        <p>Open to Senior Enterprise UX & Lead Research opportunities.</p>
-      </div>
-      <div class="footer-right">
-        <a href="mailto:sukhmanibedi1@gmail.com">sukhmanibedi1@gmail.com ↗</a>
-        <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank">LinkedIn Profile ↗</a>
-      </div>
-    </div>
-  </footer>
+  </div>
 
 </body>
 </html>
