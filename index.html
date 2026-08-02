@@ -7,36 +7,42 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="logo">Sukhmani Bedi</div>
     <div class="nav-links">
-      <a href="#projects">Projects</a>
+      <a href="#projects">Work</a>
       <a href="#about">About</a>
       <a href="#articles">Articles</a>
       <a href="#process">Process</a>
-      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Contact</a>
+      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch</a>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <header class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-heading">Welcome</h1>
-      <p class="hero-subtext">
-        I’m an Enterprise UX Designer & Researcher specializing in simplifying high-density software systems. I transform complex operational logic into clear, human-centered experiences across cloud virtualization, trade credit insurance, and statistical banking platforms.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn-hero-primary">See Work</a>
-      </div>
+    <div class="hero-bg-container">
+      <!-- Replace hero-bg.jpg with your uploaded hero background file name -->
+      <img src="hero-bg.jpg" alt="Hero Background" class="hero-bg-img" onerror="this.style.display='none'">
+      <div class="hero-overlay"></div>
     </div>
     
-    <!-- Client Marquee / Badges -->
+    <div class="hero-content">
+      <span class="hero-badge">Enterprise UX Designer & Researcher</span>
+      <h1 class="hero-heading">Designing Clarity for Complex Systems</h1>
+      <p class="hero-subtext">
+        Simplifying high-density operational platforms across cloud virtualization, trade credit insurance, and statistical banking software.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Featured Work ↗</a>
+      </div>
+    </div>
+
+    <!-- Ticker / Client Strip -->
     <div class="client-strip">
       <span>IBM PowerVC</span>
       <span class="dot">•</span>
@@ -48,197 +54,182 @@
     </div>
   </header>
 
-  <!-- Projects Grid (2x2 Layout) -->
+  <!-- Projects Grid (Portfolite Card Layout) -->
   <section id="projects" class="section container">
+    <div class="section-header">
+      <span class="mono-label">SELECTED PROJECTS</span>
+      <h2 class="section-title">Featured Case Studies</h2>
+    </div>
+
     <div class="projects-grid">
       
       <!-- Project 1 -->
       <a href="#powervc-case" class="project-card">
         <div class="project-image-wrapper">
-          <div class="ui-mockup-placeholder ibm-bg">
-            <span class="mockup-tag">IBM PowerVC</span>
-            <div class="mockup-ui-lines">
-              <div class="uiline short"></div>
-              <div class="uiline long"></div>
-              <div class="uiline mid"></div>
-            </div>
-          </div>
+          <!-- Replace powervc.png with your file name -->
+          <img src="powervc.png" alt="IBM PowerVC UX Design" class="project-img" onerror="this.src='https://placehold.co/800x500/121620/FFF?text=IBM+PowerVC'">
         </div>
         <div class="project-meta">
-          <h3>IBM PowerVC Case Study</h3>
-          <span class="project-link-arrow">View Case Study ↗</span>
+          <div class="project-info">
+            <h3>IBM PowerVC</h3>
+            <p>Cloud Virtualization Management & Complexity Analysis</p>
+          </div>
+          <span class="project-arrow">↗</span>
         </div>
       </a>
 
       <!-- Project 2 -->
       <a href="#atradius-case" class="project-card">
         <div class="project-image-wrapper">
-          <div class="ui-mockup-placeholder atradius-bg">
-            <span class="mockup-tag">Atradius</span>
-            <div class="mockup-ui-lines">
-              <div class="uiline long"></div>
-              <div class="uiline short"></div>
-            </div>
-          </div>
+          <!-- Replace atradius.png with your file name -->
+          <img src="atradius.png" alt="Atradius Trade Credit Insurance" class="project-img" onerror="this.src='https://placehold.co/800x500/121620/FFF?text=Atradius'">
         </div>
         <div class="project-meta">
-          <h3>Atradius Policy Engine</h3>
-          <span class="project-link-arrow">View Case Study ↗</span>
+          <div class="project-info">
+            <h3>Atradius Policy Engine</h3>
+            <p>Trade Credit Insurance & Risk Assessment Platform</p>
+          </div>
+          <span class="project-arrow">↗</span>
         </div>
       </a>
 
       <!-- Project 3 -->
       <a href="#ecb-case" class="project-card">
         <div class="project-image-wrapper">
-          <div class="ui-mockup-placeholder ecb-bg">
-            <span class="mockup-tag">European Central Bank</span>
-            <div class="mockup-ui-lines">
-              <div class="uiline mid"></div>
-              <div class="uiline long"></div>
-            </div>
-          </div>
+          <!-- Replace ecb.png with your file name -->
+          <img src="ecb.png" alt="European Central Bank Software" class="project-img" onerror="this.src='https://placehold.co/800x500/121620/FFF?text=European+Central+Bank'">
         </div>
         <div class="project-meta">
-          <h3>ECB Data Warehouse & Atlas</h3>
-          <span class="project-link-arrow">View Case Study ↗</span>
+          <div class="project-info">
+            <h3>European Central Bank</h3>
+            <p>Statistical Data Warehouse & Data Atlas Visualization</p>
+          </div>
+          <span class="project-arrow">↗</span>
         </div>
       </a>
 
-      <!-- Project 4 / Extra -->
+      <!-- Project 4 -->
       <a href="#design-systems" class="project-card">
         <div class="project-image-wrapper">
-          <div class="ui-mockup-placeholder system-bg">
-            <span class="mockup-tag">Carbon Systems</span>
-            <div class="mockup-ui-lines">
-              <div class="uiline short"></div>
-              <div class="uiline mid"></div>
-            </div>
-          </div>
+          <!-- Replace carbon-system.png with your file name -->
+          <img src="carbon-system.png" alt="IBM Carbon Design System" class="project-img" onerror="this.src='https://placehold.co/800x500/121620/FFF?text=Carbon+Design+System'">
         </div>
         <div class="project-meta">
-          <h3>Enterprise Carbon Integration</h3>
-          <span class="project-link-arrow">View Overview ↗</span>
+          <div class="project-info">
+            <h3>Carbon Systems Integration</h3>
+            <p>Scalable Design Systems for Enterprise Software</p>
+          </div>
+          <span class="project-arrow">↗</span>
         </div>
       </a>
 
     </div>
   </section>
 
-  <!-- Meet Sukhmani (About Section) -->
+  <!-- Meet Sukhmani (Bio + Portrait Split) -->
   <section id="about" class="section container">
     <div class="about-grid">
       <div class="about-text-col">
+        <span class="mono-label">ABOUT ME</span>
         <h2 class="section-title">Meet Sukhmani</h2>
         <p class="about-bio">
           I'm an Enterprise UX Designer and Researcher driven by systems-level thinking. I work closely with cross-functional technical teams to untangle legacy codebases, design intuitive data-dense interfaces, and drive impactful business outcomes.
         </p>
-        <p class="about-bio-sub">
-          Based in Delhi NCR, India.
-        </p>
-        <div class="skills-pills">
-          <span class="skill-pill">UX Research</span>
-          <span class="skill-pill">Complexity Analysis</span>
-          <span class="skill-pill">Enterprise Design Systems</span>
-          <span class="skill-pill">Carbon System</span>
-          <span class="skill-pill">Information Architecture</span>
-          <span class="skill-pill">Data Visualization</span>
+        <p class="about-location">📍 Based in Delhi NCR, India</p>
+
+        <div class="skills-wrapper">
+          <span class="skill-tag">UX Research</span>
+          <span class="skill-tag">Complexity Analysis</span>
+          <span class="skill-tag">Enterprise Design Systems</span>
+          <span class="skill-tag">IBM Carbon</span>
+          <span class="skill-tag">Information Architecture</span>
+          <span class="skill-tag">Data Visualization</span>
         </div>
       </div>
+
       <div class="about-photo-col">
-        <div class="photo-frame">
-          <!-- You can replace this src with your portrait photo URL -->
-          <div class="portrait-placeholder">
-            <span>Sukhmani Bedi</span>
-          </div>
+        <div class="portrait-frame">
+          <!-- Replace portrait.jpg with your uploaded portrait file name -->
+          <img src="portrait.jpg" alt="Sukhmani Kaur Bedi" class="portrait-img" onerror="this.src='https://placehold.co/600x700/121620/FFF?text=Sukhmani+Kaur+Bedi'">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Articles Section -->
+  <!-- Published Article Card -->
   <section id="articles" class="section container">
-    <div class="article-card-wrapper">
-      <div class="article-info">
+    <div class="article-card">
+      <div class="article-content">
         <span class="mono-label">PUBLISHED ARTICLE</span>
         <h3 class="article-title">Understanding Complexity Analysis: User Research Method at IBM</h3>
-        <p class="article-excerpt">
-          An in-depth look at how we measure, map, and reduce systemic friction in multi-node cloud management software using IBM's proprietary research frameworks.
+        <p class="article-description">
+          An in-depth guide on measuring, mapping, and eliminating systemic friction points in high-density enterprise software environments.
         </p>
         <a href="https://medium.com/@sukhmanibedi1/understanding-complexity-analysis-user-research-method-at-ibm-b5553a36c7e9" target="_blank" class="btn-secondary">Read Article on Medium ↗</a>
       </div>
-      <div class="article-illustration">
-        <div class="illustration-graphic">
-          <div class="bar-chart-mockup">
-            <div class="bar b1"></div>
-            <div class="bar b2"></div>
-            <div class="bar b3"></div>
-            <div class="bar b4"></div>
-          </div>
+      <div class="article-visual">
+        <div class="graphic-box">
+          <div class="graphic-bar bar-1"></div>
+          <div class="graphic-bar bar-2"></div>
+          <div class="graphic-bar bar-3"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Process Section -->
+  <!-- Process / Methodology Section -->
   <section id="process" class="section container">
     <div class="process-grid">
-      <div class="process-hero-col">
-        <div class="process-sticky-wrapper">
+      <div class="process-left-col">
+        <div class="sticky-process">
           <span class="mono-label">MY METHODOLOGY</span>
-          <h2 class="process-heading">Design Process</h2>
-          <p class="process-sub">How I take messy enterprise problems and make them clear, actionable, and scalable.</p>
-          <div class="process-tall-image">
-            <div class="sketch-placeholder">
-              <span>Systems Design & Workflow Mapping</span>
-            </div>
+          <h2 class="section-title">Design Process</h2>
+          <p class="process-intro">How I turn high-density, messy enterprise challenges into clear, actionable product designs.</p>
+          <div class="process-image-frame">
+            <!-- Replace process.png with your uploaded process diagram -->
+            <img src="process.png" alt="UX Process & Workflow Mapping" class="process-img" onerror="this.src='https://placehold.co/500x600/121620/FFF?text=Process+Workflow'">
           </div>
         </div>
       </div>
 
-      <div class="process-steps-col">
-        
-        <!-- Step 1 -->
-        <div class="process-card">
-          <span class="step-num">01</span>
-          <h3>Map the system, not the screen</h3>
-          <p>Enterprise users operate inside complex policy rules and multi-step workflows. Before designing interfaces, I chart end-to-end user journeys, off-system workarounds, and legacy technology dependencies.</p>
+      <div class="process-steps">
+        <div class="step-card">
+          <span class="step-number">01</span>
+          <h3>Map system topology</h3>
+          <p>Before touching screens, I map end-to-end user workflows, API boundaries, and off-system workarounds.</p>
         </div>
 
-        <!-- Step 2 -->
-        <div class="process-card">
-          <span class="step-num">02</span>
-          <h3>Find where complexity is hiding</h3>
-          <p>Complexity accumulates silently in manual spreadsheets and email chains. Utilizing methods like IBM Complexity Analysis, I quantify friction points to prioritize high-value redesign targets.</p>
+        <div class="step-card">
+          <span class="step-number">02</span>
+          <h3>Identify friction points</h3>
+          <p>Using IBM Complexity Analysis, I quantify operational friction and pinpoint high-leverage targets for UX optimization.</p>
         </div>
 
-        <!-- Step 3 -->
-        <div class="process-card">
-          <span class="step-num">03</span>
-          <h3>Design within real constraints</h3>
-          <p>I build using scalable component libraries (like IBM Carbon) to ensure rapid developer handoff, strict regulatory compliance, and consistent data density across views.</p>
+        <div class="step-card">
+          <span class="step-number">03</span>
+          <h3>Design with scalable systems</h3>
+          <p>I utilize modular enterprise design systems (such as IBM Carbon) to maintain visual consistency and speed up engineering deployment.</p>
         </div>
 
-        <!-- Step 4 -->
-        <div class="process-card">
-          <span class="step-num">04</span>
-          <h3>Validate before shipping</h3>
-          <p>Enterprise software impacts daily operational output. I conduct rigorous usability testing with domain experts and operators to confirm accuracy before deployment.</p>
+        <div class="step-card">
+          <span class="step-number">04</span>
+          <h3>Test with subject matter experts</h3>
+          <p>I validate prototypes directly with specialized domain operators to ensure accuracy and workflow efficiency.</p>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <h2>Let's connect</h2>
-        <p>Open to Senior Enterprise UX & Lead Research opportunities.</p>
+    <div class="container footer-content">
+      <div>
+        <h2>Let's build something together</h2>
+        <p>Available for Enterprise UX Design & Leadership roles.</p>
       </div>
-      <div class="footer-right">
-        <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com</a>
-        <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank" class="footer-link">LinkedIn ↗</a>
+      <div class="footer-links">
+        <a href="mailto:sukhmanibedi1@gmail.com">sukhmanibedi1@gmail.com ↗</a>
+        <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank">LinkedIn Profile ↗</a>
       </div>
     </div>
   </footer>
