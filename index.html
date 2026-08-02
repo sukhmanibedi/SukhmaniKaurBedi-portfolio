@@ -268,7 +268,9 @@
     .card-meta-frame {
       padding: 24px 28px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      gap: 16px;
+      flex-grow: 1;
       justify-content: space-between;
     }
 
@@ -279,9 +281,27 @@
       margin-bottom: 4px;
     }
 
-    .card-info p {
+    .card-details-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
       font-size: 0.85rem;
       color: var(--muted);
+    }
+
+    .card-details-block .industry-tag {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .card-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
     }
 
     .card-casestudy-btn {
@@ -296,6 +316,7 @@
       align-items: center;
       gap: 6px;
       transition: background 0.2s ease;
+      text-decoration: none;
     }
 
     .portfolite-card:hover .card-casestudy-btn {
@@ -322,7 +343,7 @@
       color: #c4c4cc;
       font-size: 0.95rem;
       line-height: 1.6;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .skills-tags {
@@ -339,6 +360,37 @@
       border-radius: 100px;
       font-size: 0.8rem;
       color: #d1d1d6;
+    }
+
+    .article-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 16px;
+      margin-top: 24px;
+    }
+
+    .article-box h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .article-box p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .article-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .about-photo-frame {
@@ -508,9 +560,16 @@
           <div class="card-meta-frame">
             <div class="card-info">
               <h3>IBM PowerVC</h3>
-              <p>Cloud Virtualization & Complexity Framework</p>
+              <div class="card-details-block">
+                <div><span class="industry-tag">Industry</span> | Power virtualisation and cloud management</div>
+                <div><span class="industry-tag">UX Research</span> | UX Design</div>
+                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Website optimisation for creating a consistent experience across IBM products by adapting the Carbon Design System. Reduced complexity by 36%</p>
+              </div>
             </div>
-            <span class="card-casestudy-btn">View Casestudy ↗</span>
+            <div class="card-footer-row">
+              <span style="font-size: 0.78rem; color: var(--muted);">IBM Enterprise</span>
+              <span class="card-casestudy-btn">View Casestudy ↗</span>
+            </div>
           </div>
         </a>
 
@@ -521,28 +580,42 @@
           </div>
           <div class="card-meta-frame">
             <div class="card-info">
-              <h3>Atradius Policy Engine</h3>
-              <p>Trade Credit Insurance Risk Assessment</p>
+              <h3>Atradius</h3>
+              <div class="card-details-block">
+                <div><span class="industry-tag">Industry</span> | Insurance</div>
+                <div><span class="industry-tag">UX Design</span></div>
+                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Migrating from a legacy UI, creating a smarter and efficient processes. Developing UX for new features and optimising the process of creating an insurance contract.</p>
+              </div>
             </div>
-            <span class="card-casestudy-btn">View Casestudy ↗</span>
+            <div class="card-footer-row">
+              <span style="font-size: 0.78rem; color: var(--muted);">Enterprise Policy Engine</span>
+              <span class="card-casestudy-btn">View Casestudy ↗</span>
+            </div>
           </div>
         </a>
 
-        <!-- 3. Statistical Data Warehouse Portal: European Central Bank -->
+        <!-- 3. Statistical Data Portal -->
         <a href="#" class="portfolite-card">
           <div class="card-thumb-frame">
             <img src="ECB.jpg" alt="Statistical Data Warehouse Portal - European Central Bank">
           </div>
           <div class="card-meta-frame">
             <div class="card-info">
-              <h3>Statistical Data Warehouse Portal</h3>
-              <p>European Central Bank Analytics Platform</p>
+              <h3>Statistical Data Portal</h3>
+              <div class="card-details-block">
+                <div><span class="industry-tag">Industry</span> | Banking</div>
+                <div><span class="industry-tag">UX Design</span></div>
+                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Re-design of the European Central Bank data warehouse to create a unified browsing experience.</p>
+              </div>
             </div>
-            <span class="card-casestudy-btn">View Casestudy ↗</span>
+            <div class="card-footer-row">
+              <span style="font-size: 0.78rem; color: var(--muted);">European Central Bank</span>
+              <span class="card-casestudy-btn">View case study ↗</span>
+            </div>
           </div>
         </a>
 
-        <!-- 4. Atlas: European Central Bank (Updated filename to atlas.jpg based on repository) -->
+        <!-- 4. Atlas -->
         <a href="#" class="portfolite-card">
           <div class="card-thumb-frame">
             <img src="atlas.jpg" alt="Atlas - European Central Bank">
@@ -550,9 +623,16 @@
           <div class="card-meta-frame">
             <div class="card-info">
               <h3>Atlas</h3>
-              <p>European Central Bank Governance & Meeting Platform</p>
+              <div class="card-details-block">
+                <div><span class="industry-tag">Industry</span> | Banking</div>
+                <div><span class="industry-tag">UX Design</span></div>
+                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Designing and simplifying the UX for European Central Banks internal application to enable a smooth and consistent experience</p>
+              </div>
             </div>
-            <span class="card-casestudy-btn">View Casestudy ↗</span>
+            <div class="card-footer-row">
+              <span style="font-size: 0.78rem; color: var(--muted);">Governance & Meeting Platform</span>
+              <span class="card-casestudy-btn">View Casestudy ↗</span>
+            </div>
           </div>
         </a>
 
@@ -574,6 +654,12 @@
             <span class="tag">User Testing</span>
             <span class="tag">Interaction Design</span>
             <span class="tag">Figma</span>
+          </div>
+
+          <div class="article-box">
+            <h4>Complexity Analysis in Enterprise Systems</h4>
+            <p>Read my deep-dive framework on unpacking cognitive loads, untangling legacy systems, and designing intuitive enterprise workflows.</p>
+            <a href="#" class="article-link">Read Article ↗</a>
           </div>
         </div>
 
