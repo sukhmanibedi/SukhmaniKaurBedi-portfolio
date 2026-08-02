@@ -11,223 +11,210 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header class="nav-container">
-    <nav class="navbar">
-      <div class="logo">Sukhmani Bedi</div>
-      <div class="nav-links">
+  <!-- Navigation Frame -->
+  <header class="frame-nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">Sukhmani Bedi</a>
+      <nav class="nav-links">
         <a href="#projects">Work</a>
         <a href="#about">About</a>
         <a href="#articles">Articles</a>
         <a href="#process">Process</a>
-        <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch</a>
-      </div>
-    </nav>
+      </nav>
+      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-btn">Get in Touch ↗</a>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="container hero-inner">
-      <div class="hero-badge">
-        <span class="status-dot"></span> Enterprise UX Designer & Researcher
+  <main class="app-shell">
+    
+    <!-- Hero Frame -->
+    <section class="frame-hero">
+      <div class="badge">
+        <span class="badge-dot"></span> Enterprise UX Designer & Researcher
       </div>
-      <h1 class="hero-heading">Designing clarity for complex enterprise systems.</h1>
-      <p class="hero-subtext">
+      <h1 class="hero-title">Designing clarity for complex enterprise systems.</h1>
+      <p class="hero-desc">
         Specializing in simplifying high-density software across cloud virtualization, trade credit insurance, and statistical banking platforms.
       </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn-primary">Explore Selected Work <span>↓</span></a>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-main">Explore Selected Work ↓</a>
       </div>
-    </div>
+    </section>
 
     <!-- Client Ticker Strip -->
-    <div class="client-strip-wrapper">
-      <div class="container client-strip">
-        <span class="client-label">EXPERIENCE WITH</span>
-        <div class="client-items">
-          <span>IBM PowerVC</span>
-          <span class="dot">•</span>
-          <span>Atradius</span>
-          <span class="dot">•</span>
-          <span>European Central Bank</span>
-          <span class="dot">•</span>
-          <span>Statistical Data Warehouse</span>
-        </div>
+    <div class="frame-ticker">
+      <span class="ticker-label">EXPERIENCE WITH</span>
+      <div class="ticker-items">
+        <span>IBM PowerVC</span><span class="sep">•</span>
+        <span>Atradius</span><span class="sep">•</span>
+        <span>European Central Bank</span><span class="sep">•</span>
+        <span>Statistical Data Warehouse</span>
       </div>
     </div>
-  </section>
 
-  <!-- Projects Grid Section -->
-  <section id="projects" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">SELECTED CASE STUDIES</span>
-        <h2 class="section-title">Featured Works</h2>
+    <!-- Selected Projects Frame -->
+    <section id="projects" class="frame-section">
+      <div class="section-head">
+        <span class="meta-tag">SELECTED CASE STUDIES</span>
+        <h2 class="head-title">Featured Works</h2>
       </div>
 
-      <div class="projects-grid">
+      <div class="grid-2col">
         <!-- Project 1 -->
-        <a href="#powervc" class="project-card">
-          <div class="project-media">
+        <a href="#powervc" class="card-project">
+          <div class="card-media">
             <img src="powervc.png" alt="IBM PowerVC" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80'">
           </div>
-          <div class="project-content">
-            <div class="project-info">
+          <div class="card-footer">
+            <div class="card-info">
               <h3>IBM PowerVC</h3>
               <p>Cloud Virtualization & Complexity Analysis Framework</p>
             </div>
-            <span class="project-arrow">↗</span>
+            <span class="card-icon">↗</span>
           </div>
         </a>
 
         <!-- Project 2 -->
-        <a href="#atradius" class="project-card">
-          <div class="project-media">
+        <a href="#atradius" class="card-project">
+          <div class="card-media">
             <img src="atradius.png" alt="Atradius Policy Engine" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80'">
           </div>
-          <div class="project-content">
-            <div class="project-info">
+          <div class="card-footer">
+            <div class="card-info">
               <h3>Atradius Policy Engine</h3>
               <p>Trade Credit Insurance & Risk Assessment Workflow</p>
             </div>
-            <span class="project-arrow">↗</span>
+            <span class="card-icon">↗</span>
           </div>
         </a>
 
         <!-- Project 3 -->
-        <a href="#ecb" class="project-card">
-          <div class="project-media">
+        <a href="#ecb" class="card-project">
+          <div class="card-media">
             <img src="ecb.png" alt="European Central Bank" onerror="this.src='https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80'">
           </div>
-          <div class="project-content">
-            <div class="project-info">
+          <div class="card-footer">
+            <div class="card-info">
               <h3>European Central Bank</h3>
               <p>Statistical Data Warehouse & Atlas Visualization</p>
             </div>
-            <span class="project-arrow">↗</span>
+            <span class="card-icon">↗</span>
           </div>
         </a>
 
         <!-- Project 4 -->
-        <a href="#carbon" class="project-card">
-          <div class="project-media">
+        <a href="#carbon" class="card-project">
+          <div class="card-media">
             <img src="carbon-system.png" alt="Carbon Systems" onerror="this.src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80'">
           </div>
-          <div class="project-content">
-            <div class="project-info">
+          <div class="card-footer">
+            <div class="card-info">
               <h3>Enterprise Carbon Systems</h3>
               <p>Scalable Component Design for Enterprise Apps</p>
             </div>
-            <span class="project-arrow">↗</span>
+            <span class="card-icon">↗</span>
           </div>
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About / Meet Sukhmani Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-text">
-          <span class="section-tag">BACKGROUND</span>
-          <h2 class="section-title">Meet Sukhmani</h2>
-          <p class="about-lead">
+    <!-- About Frame -->
+    <section id="about" class="frame-section">
+      <div class="grid-split-about">
+        <div class="about-content">
+          <span class="meta-tag">BACKGROUND</span>
+          <h2 class="head-title">Meet Sukhmani</h2>
+          <p class="about-body">
             I'm an Enterprise UX Designer and Researcher driven by systems-level thinking. I partner closely with technical teams to dismantle legacy bottlenecks, streamline complex logic, and build polished, scalable software.
           </p>
-          <p class="about-location">📍 Based in Delhi NCR, India</p>
-          
-          <div class="skills-list">
-            <span class="skill-pill">UX Research</span>
-            <span class="skill-pill">Complexity Analysis</span>
-            <span class="skill-pill">IBM Carbon System</span>
-            <span class="skill-pill">Information Architecture</span>
-            <span class="skill-pill">Data Visualization</span>
+          <p class="about-loc">📍 Based in Delhi NCR, India</p>
+          <div class="pills-group">
+            <span class="pill">UX Research</span>
+            <span class="pill">Complexity Analysis</span>
+            <span class="pill">IBM Carbon System</span>
+            <span class="pill">Information Architecture</span>
+            <span class="pill">Data Visualization</span>
           </div>
         </div>
-
-        <div class="about-image-wrapper">
-          <img src="portrait.jpg" alt="Sukhmani Kaur Bedi" class="portrait-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'">
+        <div class="about-portrait">
+          <img src="portrait.jpg" alt="Sukhmani Kaur Bedi" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'">
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Published Article Section -->
-  <section id="articles" class="section">
-    <div class="container">
-      <div class="article-card">
-        <div class="article-text">
-          <span class="section-tag">PUBLISHED INSIGHT</span>
-          <h3 class="article-heading">Understanding Complexity Analysis: User Research Method at IBM</h3>
-          <p class="article-desc">
+    <!-- Published Article Frame -->
+    <section id="articles" class="frame-section">
+      <div class="card-article">
+        <div class="article-info">
+          <span class="meta-tag">PUBLISHED INSIGHT</span>
+          <h3 class="article-title">Understanding Complexity Analysis: User Research Method at IBM</h3>
+          <p class="article-body">
             An in-depth breakdown of how we measure, map, and reduce systemic friction across multi-node enterprise platforms.
           </p>
-          <a href="https://medium.com/@sukhmanibedi1/understanding-complexity-analysis-user-research-method-at-ibm-b5553a36c7e9" target="_blank" class="btn-secondary">Read on Medium ↗</a>
+          <a href="https://medium.com/@sukhmanibedi1/understanding-complexity-analysis-user-research-method-at-ibm-b5553a36c7e9" target="_blank" class="btn-sub">Read on Medium ↗</a>
         </div>
-        <div class="article-visual">
-          <div class="chart-mockup">
-            <div class="c-bar"></div>
-            <div class="c-bar tall"></div>
-            <div class="c-bar med"></div>
-            <div class="c-bar highlight"></div>
+        <div class="article-graphic">
+          <div class="chart-bars">
+            <span class="b1"></span>
+            <span class="b2"></span>
+            <span class="b3"></span>
+            <span class="b4"></span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Process Methodology Section -->
-  <section id="process" class="section">
-    <div class="container">
-      <div class="process-grid">
+    <!-- Process Methodology Frame -->
+    <section id="process" class="frame-section">
+      <div class="grid-split-process">
         <div class="process-sidebar">
-          <div class="sticky-box">
-            <span class="section-tag">METHODOLOGY</span>
-            <h2 class="section-title">Design Process</h2>
-            <p class="process-sub">How chaotic enterprise software is translated into seamless user flows.</p>
-            <div class="process-preview-img">
-              <img src="process.png" alt="Process Map" onerror="this.src='https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80'">
+          <div class="sticky-frame">
+            <span class="meta-tag">METHODOLOGY</span>
+            <h2 class="head-title">Design Process</h2>
+            <p class="process-desc">How chaotic enterprise software is translated into seamless user flows.</p>
+            <div class="process-preview">
+              <img src="process.png" alt="Process Preview" onerror="this.src='https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80'">
             </div>
           </div>
         </div>
 
-        <div class="process-steps">
-          <div class="step-card">
-            <span class="step-num">01</span>
+        <div class="process-list">
+          <div class="card-step">
+            <span class="step-id">01</span>
             <h3>Map System Topology</h3>
             <p>Before touching wireframes, I map end-to-end user journeys, off-system workarounds, and underlying technical APIs.</p>
           </div>
-          <div class="step-card">
-            <span class="step-num">02</span>
+          <div class="card-step">
+            <span class="step-id">02</span>
             <h3>Quantify Friction Points</h3>
             <p>Using frameworks like IBM Complexity Analysis, I isolate operational friction points to prioritize high-impact redesign targets.</p>
           </div>
-          <div class="step-card">
-            <span class="step-num">03</span>
+          <div class="card-step">
+            <span class="step-id">03</span>
             <h3>Deploy Scalable Systems</h3>
             <p>I design using modular enterprise design systems (such as IBM Carbon) to guarantee developer speed and visual compliance.</p>
           </div>
-          <div class="step-card">
-            <span class="step-num">04</span>
+          <div class="card-step">
+            <span class="step-id">04</span>
             <h3>Validate with Experts</h3>
             <p>Rigorous usability testing with actual domain operators ensures absolute operational precision prior to production release.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer-section">
-    <div class="container footer-content">
+  </main>
+
+  <!-- Footer Frame -->
+  <footer class="frame-footer">
+    <div class="footer-inner">
       <div class="footer-left">
         <h2>Let's build something exceptional.</h2>
         <p>Open to Senior Enterprise UX & Lead Research opportunities.</p>
       </div>
       <div class="footer-right">
-        <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
-        <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank" class="footer-link">LinkedIn Profile ↗</a>
+        <a href="mailto:sukhmanibedi1@gmail.com">sukhmanibedi1@gmail.com ↗</a>
+        <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank">LinkedIn Profile ↗</a>
       </div>
     </div>
   </footer>
