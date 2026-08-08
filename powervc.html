@@ -173,8 +173,27 @@
       color: var(--text);
     }
 
-    /* Featured Image / Media Frames */
-    .case-hero-img, .media-container {
+    /* Initial Hero Image: Big, Uncropped, Natural Fit */
+    .case-hero-img {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 60px;
+      background: #121215;
+    }
+
+    .case-hero-img img {
+      width: 100%;
+      height: auto;
+      max-height: 85vh;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Standard Media Containers */
+    .media-container {
       width: 100%;
       aspect-ratio: 16 / 9;
       border-radius: 18px;
@@ -185,7 +204,7 @@
       position: relative;
     }
 
-    .case-hero-img img, .media-container img {
+    .media-container img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -433,8 +452,9 @@
       </div>
     </div>
 
+    <!-- Big, Uncropped Initial Dashboard Image -->
     <div class="case-hero-img">
-      <img src="PowerVC2.jpg" alt="IBM PowerVC Dashboard Overview">
+      <img src="PowerVC2.jpg" alt="IBM PowerVC Dashboard Full Overview">
     </div>
 
     <div class="case-content">
@@ -444,7 +464,7 @@
 
       <h2>Snippets of the legacy UI</h2>
       <div class="media-container">
-        <img src="legacy-ui-snippets.jpg" alt="Snippets of the legacy UI showing cluttered hierarchies">
+        <img src="legacy-ui-snippets.jpg" alt="Snippets of the legacy UI">
       </div>
 
       <h2>Problem statement</h2>
@@ -465,7 +485,7 @@
 
       <h2>Persona</h2>
       <div class="media-container">
-        <img src="persona.jpg" alt="PowerVC User Persona breakdown">
+        <img src="persona.jpg" alt="Persona Overview">
       </div>
 
       <div class="stats-row">
@@ -485,10 +505,10 @@
       <p>To identify usability issues and improve the overall user experience of the PowerVC application, we conducted a comprehensive heuristic evaluation. This review involved systematically examining the interface against established usability principles. The goal was to uncover pain points, inconsistencies, and barriers that users might face during typical workflows, especially in managing virtual machines and system operations.</p>
       <p>The evaluation provided valuable insights into areas where the design could be streamlined, clarified, or enhanced—helping us prioritize improvements that directly impact efficiency, user satisfaction, and error reduction.</p>
 
-      <!-- Dashboard Carousel (1/7) -->
+      <!-- Dashboard 1/7 Carousel -->
       <div class="carousel-container">
         <div class="carousel-slide-viewport">
-          <img src="dashboard-evaluation-1.jpg" alt="Dashboard Evaluation Slide 1 of 7">
+          <img src="dashboard-eval-1.jpg" alt="Dashboard Evaluation 1/7">
         </div>
         <div class="carousel-controls">
           <span class="carousel-counter">dashboard 2 &nbsp;&bull;&nbsp; 1 / 7</span>
@@ -531,20 +551,20 @@
 
       <h3>The Three Final Hills</h3>
       <div class="highlight-box">
-        <p><strong>1. Alan:</strong> “Alan, a system architect, can ensure his PowerVC UI is secure by applying updates on the fly.”<br><small style="color:var(--muted); font-weight:normal;">This Hill was derived from Alan's need for real-time patching and system integrity without causing downtime or disruption. The team prioritized a design that supports seamless updates with minimal risk.</small></p>
+        <p>“Alan, a system architect, can ensure his PowerVC UI is secure by applying updates on the fly.”<br><small style="color:var(--muted); font-weight:normal;">This Hill was derived from Alan's need for real-time patching and system integrity without causing downtime or disruption. The team prioritized a design that supports seamless updates with minimal risk.</small></p>
       </div>
       <div class="highlight-box">
-        <p><strong>2. Monica:</strong> “Monica, a system admin, can manage 10K VMs and 25K volumes using PowerVC, without any significant performance lag.”<br><small style="color:var(--muted); font-weight:normal;">Research showed Monica frequently works with high VM volume, and existing performance bottlenecks slowed her work. This Hill guided backend optimization and interface efficiency improvements.</small></p>
+        <p>“Monica, a system admin, can manage 10K VMs and 25K volumes using PowerVC, without any significant performance lag.”<br><small style="color:var(--muted); font-weight:normal;">Research showed Monica frequently works with high VM volume, and existing performance bottlenecks slowed her work. This Hill guided backend optimization and interface efficiency improvements.</small></p>
       </div>
       <div class="highlight-box">
-        <p><strong>3. Steve:</strong> “Steve, a technical user, can request a new VM in less than 1 minute.”<br><small style="color:var(--muted); font-weight:normal;">Steve needed to execute high-frequency tasks quickly. Research highlighted frustration with multi-step processes and delays, leading to a focus on simplifying and speeding up routine workflows.</small></p>
+        <p>“Steve, a technical user, can request a new VM in less than 1 minute.”<br><small style="color:var(--muted); font-weight:normal;">Steve needed to execute high-frequency tasks quickly. Research highlighted frustration with multi-step processes and delays, leading to a focus on simplifying and speeding up routine workflows.</small></p>
       </div>
 
       <h2>Approach</h2>
       <h3>Recruiting Design Partners</h3>
       <p>During the generative research phase, we fostered partnerships with 6-8 customers for a span of six months, extending our reach to a fresh set of customers to ensure ongoing interest and invaluable insights.</p>
       <p>This was accomplished by talking to product owners to gather data about customers using the product. Identifying customers from various sectors to ensure a well rounded feedback, it included contacting their sales/technical representatives providing a brief of the program and if they agreed then following it up with the formal requirements.</p>
-      <p>In my role as a user advocate, I orchestrated research calls, ensuring focused discussions and meaningful insights. This involved selecting research topics, creating discussion guides, collaborating with designers and developers to understand what information they require from the customers, and post the sessions gathering notes, grouping and creating themes.</p>
+      <p>In my role as a user advocate, I orchestrated research calls, ensuring focused discussions and meaningful insights. This involved selecting research topics, creating discussion guides. Collaborating with designers and developers to understand what information they require from the customers. Post the sessions gathering notes, grouping and creating themes.</p>
       <p>An intriguing challenge arose in efficiently recording and tracking gathered feedback. To address this, I devised a structured Excel sheet that harmonized both development and design perspectives, allowing for clear filtering, prioritization, classification, and status tracking of key findings.</p>
 
       <h3>Design Sessions</h3>
@@ -586,18 +606,21 @@
       <h2>OOBE Workshop: Redesigning the PowerVC Onboarding Experience</h2>
       <p>Following extensive user research on the Out-of-Box Experience (OOBE), we conducted a focused internal workshop to translate insights into actionable design improvements.</p>
       <p><strong>🎯 Objective:</strong> To streamline the onboarding journey for PowerVC by addressing user pain points, clarifying setup flows, and identifying quick wins.</p>
-      <p><strong>🧠 Process:</strong> We kicked off with a mind mapping session, clustering user feedback into key themes like installation complexity, unclear prerequisites, and first-time setup confusion. Using dot voting, we prioritized issues based on impact and frequency. Next, we grouped findings under key topics: Environment Planning, Installation Flow, GUI Setup, First VM Creation. Each team member then individually collaborated and mapped a revised onboarding flow, tailored to their assigned topic.</p>
-      <p><strong>✅ Outcome:</strong> The workshop led to a draft of an improved, role-based OOBE, several feasible design enhancements, and clear next steps for prototyping. It also reinforced cross-functional alignment between design, product, and development teams.</p>
+      <p><strong>🧠 Process:</strong> We kicked off with a mind mapping session, clustering user feedback into key themes like installation complexity, unclear prerequisites, and first-time setup confusion. Using dot voting, we prioritized issues based on impact and frequency.</p>
+      <p>Next, we grouped findings under key topics: Environment Planning, Installation Flow, GUI Setup, First VM Creation.</p>
+      <p>Each team member then individually brainstormed and mapped a revised onboarding flow, tailored to their assigned topic. We reconvened to present and evaluate ideas, focusing on feasibility, user impact, and alignment with technical constraints.</p>
+      <p><strong>✅ Outcome:</strong> The workshop led to a draft of an improved, role-based OOBE, several feasible design enhancements, and clear next steps for prototyping. It also reinforced cross-functional alignment between design, product, and development team.</p>
 
       <h2>Learning</h2>
       <p>Leading the research efforts in this project offered a rich learning experience and helped sharpen my skills in planning, execution, and stakeholder engagement.</p>
+      
       <h3>🔍 Structuring Research for Impact</h3>
       <p>I led the end-to-end research process, which involved defining relevant themes for each research round, crafting discussion guides to ensure we targeted the right user scenarios, and conducting detailed analyses after each session. One of the key challenges I faced was ensuring that every insight was actionable and traceable. As a user advocate, it was critical that no valuable feedback got lost in translation.</p>
       <p>After experimenting with several methods, I developed a structured Excel-based tracking system that bridged both design and development perspectives. This document evolved into a single source of truth, enabling the team to filter and prioritize findings, classify insights by theme or feature, track status and ownership, and document decisions and comments from cross-functional reviews.</p>
 
       <h3>🤝 Sustaining Partner Engagement</h3>
       <p>Maintaining consistent engagement with design partners over several months was another significant challenge. Midway through, I observed a drop in participation — session cancellations and reduced interest indicated a need to reinvigorate the experience.</p>
-      <p>To address this, I redesigned the research sessions to be more interactive and engaging by introducing a variety of methods: card sorting exercises, scenario-based discussions, and clickable prototypes with task flows. This refreshed format not only reignited partner interest but also enhanced the richness of the feedback.</p>
+      <p>To address this, I redesigned the research sessions to be more interactive and engaging by introducing a variety of methods: card sorting exercises, scenario-based discussions, and clickable prototypes with task flows. This refreshed format not only reignited partner interest but also enhanced the richness of the feedback. Sessions became more collaborative, and the insights gathered were more grounded in real use cases.</p>
 
       <h3>🎯 Takeaways</h3>
       <ul>
@@ -608,18 +631,28 @@
 
       <h2>Peak into the user interface</h2>
       <div class="media-container">
-        <img src="peak-user-interface.jpg" alt="Peak into the new PowerVC user interface">
+        <img src="peak-user-interface.jpg" alt="Peak into the new user interface">
       </div>
       <div class="highlight-box">
         <p>“View critical & important information upfront, Act quickly on ‘Errors, Warnings & Pending’ issues, Personalize dashboard on need basis”</p>
       </div>
-      <p>Visual representation of important data for quickly grabbing attention. Providing take action buttons right next to Errors, warnings, pending issues for a quicker response.</p>
+      <p>Visual representation of important data for quickly grabbing attention. Providing take action buttons right next to Errors, warnings, pending issues for a quicker response</p>
 
       <h2>Design validation & Complexity Analysis</h2>
       <p>Conducting design demonstrations and performing Complexity Analysis work hand‑in‑hand to ensure every release of PowerVC delivers an intuitive, friction‑free experience.</p>
+      
+      <h3>Demo‑driven validation</h3>
       <ul>
-        <li><strong>Demo‑driven validation:</strong> Live walk‑throughs let us observe users moving end‑to‑end through new flows, capture real‑time feedback, and spot hidden friction. Step‑by‑step guidance during the session surfaces language gaps, confusing transitions, or missing cues we might overlook in static reviews.</li>
-        <li><strong>Complexity Analysis:</strong> Borrowed from IBM’s internal research toolbox, Complexity Analysis quantifies how difficult each step of a task feels to users. Participants rate steps on six dimensions—context shifts, input parameters, navigational guidance, system feedback, error feedback, and new concepts. The resulting “complexity map” highlights high‑load moments, helping teams prioritise simplification efforts where they matter most.</li>
+        <li>Live walk‑throughs let us observe users moving end‑to‑end through new flows, capture real‑time feedback, and spot hidden friction.</li>
+        <li>Step‑by‑step guidance during the session surfaces language gaps, confusing transitions, or missing cues we might overlook in static reviews.</li>
+        <li>Insights gathered feed directly into rapid iterations, tightening the loop between research and design and guaranteeing the UI stays grounded in actual user behaviour.</li>
+      </ul>
+
+      <h3>Complexity Analysis</h3>
+      <ul>
+        <li>Borrowed from IBM’s internal research toolbox, Complexity Analysis quantifies how difficult each step of a task feels to users.</li>
+        <li>Participants rate steps on six dimensions—context shifts, input parameters, navigational guidance, system feedback, error feedback, and new concepts.</li>
+        <li>The resulting “complexity map” highlights high‑load moments, helping teams prioritise simplification efforts where they matter most.</li>
       </ul>
 
       <h2>Unified impact</h2>
@@ -637,7 +670,7 @@
       <h3>👩‍💼 My Responsibilities</h3>
       <ul>
         <li><strong>Customer Recruitment:</strong> Identified and onboarded a mix of new and existing users from different regions and domains to ensure diversity in feedback.</li>
-        <li><strong>Trial Planning:</strong> Designed multiple testing environments (Hosted simulated environments, on-site installs, and remote guided testing sessions).</li>
+        <li><strong>Trial Planning:</strong> Designed multiple testing environments (Hosted, On-site, and Remote).</li>
         <li><strong>Legal Coordination:</strong> Acted as a liaison between the legal team and customers to complete all contractual requirements (NDAs, usage agreements).</li>
         <li><strong>Test Plans & Surveys:</strong> Created targeted test plans and feedback surveys focused on usability, performance, and onboarding experience.</li>
         <li><strong>1:1 Research Sessions:</strong> Conducted in-depth interviews and observation-based sessions to identify latent issues not surfaced through surveys alone.</li>
@@ -645,10 +678,13 @@
       </ul>
 
       <h3>Key Signature Moments to Improve</h3>
+      <div class="media-container">
+        <img src="key-moments.jpg" alt="Key Signature Moments Flow">
+      </div>
       <ul>
-        <li><strong>Before:</strong> Installation prep and onboarding – unclear steps and lack of guidance.</li>
-        <li><strong>During:</strong> Real-time feedback – users expect confirmation or loading indicators.</li>
-        <li><strong>After:</strong> Post-deployment diagnostics and support – error messages are unclear, and issue resolution is slow.</li>
+        <li><strong>Before:</strong> Installation prep and onboarding (icons 1–3) – unclear steps and lack of guidance.</li>
+        <li><strong>During:</strong> Real-time feedback (icons 5–6) – users expect confirmation or loading indicators.</li>
+        <li><strong>After:</strong> Post-deployment diagnostics and support (icons 6–7) – error messages are unclear, and issue resolution is slow.</li>
       </ul>
 
       <h2>Outcome & Impact</h2>
@@ -657,7 +693,7 @@
       <div class="stats-row">
         <div class="stat-card">
           <div class="stat-number">25%</div>
-          <div class="stat-label">Faster onboarding time (Redesigned OOBE reduced setup complexity)</div>
+          <div class="stat-label">Faster onboarding time (Redesigned Out-of-Box Experience reduced setup complexity)</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">40%</div>
