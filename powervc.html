@@ -174,16 +174,10 @@
       color: var(--text);
     }
 
-    /* Edge-to-Edge Full-Bleed Hero Image */
+    /* Hero Image: Slightly smaller, clean, zero background */
     .case-hero-img {
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      margin-top: 40px;
-      margin-bottom: 60px;
+      max-width: 760px;
+      margin: 40px auto 60px auto;
       background: transparent;
       border: none;
       border-radius: 0;
@@ -193,11 +187,10 @@
     .case-hero-img img {
       width: 100%;
       height: auto;
-      max-height: none;
       display: block;
-      border-radius: 0;
-      border: none;
-      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: transparent;
     }
 
     /* Standard Media Containers */
@@ -459,14 +452,12 @@
         <span>23 months</span>
       </div>
     </div>
-  </main>
 
-  <!-- Edge-to-Edge Full-Bleed Dashboard Image -->
-  <div class="case-hero-img">
-    <img src="PowerVC2.jpg" alt="IBM PowerVC Dashboard Full Overview">
-  </div>
+    <!-- Centered, Clean Hero Image (Slightly Smaller, No Background Wrapper) -->
+    <div class="case-hero-img">
+      <img src="PowerVC2.jpg" alt="IBM PowerVC Dashboard Full Overview">
+    </div>
 
-  <main class="case-study-shell" style="padding-top: 0;">
     <div class="case-content">
       <h2>Project overview</h2>
       <p>System administrators and technical users managing virtual machines (VMs) on IBM Power Systems via PowerVC face significant usability challenges due to a complex and cluttered user interface. The existing UI suffers from deep navigation hierarchies, visual clutter, and inadequate contextual guidance, leading to inefficiencies in performing critical tasks such as VM provisioning, patch management, and system scaling. These issues result in increased cognitive load, slower task completion times, and a suboptimal user experience, particularly when managing large-scale environments with thousands of VMs and volumes.</p>
