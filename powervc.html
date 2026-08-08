@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBM PowerVC Case Study - Sukhmani Bedi</title>
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --bg: #0b0b0d;
+      --card-bg: rgba(20, 20, 23, 0.75);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.22);
+      --text: #f4f4f5;
+      --muted: #8e8e93;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 900px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Fixed Navigation Bar */
+    .framer-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 68px;
+      background: rgba(10, 10, 12, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .framer-navbar-inner {
+      width: 100%;
+      max-width: 1120px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-items {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* Main Container */
+    .case-study-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 140px 24px 100px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 32px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .case-subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* Metadata Grid */
+    .case-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 60px;
+    }
+
+    .meta-item span:first-child {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .meta-item span:last-child {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Featured Image Frame */
+    .case-hero-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 60px;
+      background: #141417;
+    }
+
+    .case-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Content Typography */
+    .case-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .case-content p {
+      font-size: 1.02rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .case-content ul {
+      margin-bottom: 24px;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .case-content li {
+      margin-bottom: 10px;
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    .highlight-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--text);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .framer-footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 0 30px 0;
+      margin-top: 100px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .footer-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .case-meta-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .footer-links {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="framer-navbar">
+    <div class="framer-navbar-inner">
+      <a href="index.html" class="brand-logo">Sukhmani Bedi</a>
+      <nav class="nav-items">
+        <a href="index.html#projects" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About me</a>
+        <a href="index.html#process" class="nav-link">Contact</a>
+      </nav>
+      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch ↗</a>
+    </div>
+  </header>
+
+  <!-- Case Study Main Content -->
+  <main class="case-study-shell">
+    <a href="index.html" class="back-link">← Back to Projects</a>
+
+    <span class="meta-label">IBM ENTERPRISE CASE STUDY</span>
+    <h1 class="case-title">IBM PowerVC</h1>
+    <p class="case-subtitle">Website optimisation and interface streamlining for virtualisation and cloud management, creating a consistent enterprise experience using the Carbon Design System.</p>
+
+    <div class="case-meta-grid">
+      <div class="meta-item">
+        <span>Role</span>
+        <span>UX Research & Design</span>
+      </div>
+      <div class="meta-item">
+        <span>Industry</span>
+        <span>Cloud Management</span>
+      </div>
+      <div class="meta-item">
+        <span>Company</span>
+        <span>IBM</span>
+      </div>
+      <div class="meta-item">
+        <span>Impact</span>
+        <span>36% Less Complexity</span>
+      </div>
+    </div>
+
+    <div class="case-hero-img">
+      <img src="PowerVC2.jpg" alt="IBM PowerVC Dashboard Overview">
+    </div>
+
+    <div class="case-content">
+      <h2>Overview</h2>
+      <p>IBM PowerVC (Power Virtualization Center) is an advanced virtualization and cloud management offering that provides simplified virtualization management and cloud deployments for Power Systems. System administrators rely on it under high-pressure environments where clarity, speed, and precision are paramount.</p>
+      <p>The goal of this initiative was to audit legacy interaction patterns, unify disparate workflows, and adapt IBM's rigorous Carbon Design System to drastically reduce cognitive friction across core management tasks.</p>
+
+      <h2>The Challenge</h2>
+      <p>In enterprise virtualization software, feature bloat and legacy architectures often lead to overly dense interfaces. Administrators were forced to navigate multi-step flows and scattered dashboards just to perform routine provisioning and resource allocation tasks.</p>
+      <ul>
+        <li>Inconsistent component behaviors across older modules causing user errors.</li>
+        <li>High cognitive load during critical VM deployments and troubleshooting cycles.</li>
+        <li>Lack of adherence to unified IBM design guidelines across secondary views.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>Key Objective: Reduce operational friction points and streamline administrative workflows, achieving a measurable drop in task completion time and user cognitive load.</p>
+      </div>
+
+      <h2>Design Strategy & Execution</h2>
+      <p>Working closely with domain experts, product managers, and software engineers, we established a systematic restructuring plan:</p>
+      <ul>
+        <li><strong>Carbon Design System Integration:</strong> Replaced custom legacy UI elements with standard, accessible Carbon components to ensure cross-product consistency.</li>
+        <li><strong>Workflow Rationalization:</strong> Mapped out end-to-end admin tasks to eliminate redundant verification screens and surface crucial system statuses proactively.</li>
+        <li><strong>Information Hierarchy Re-prioritization:</strong> Redesigned dashboard layouts to highlight critical alerts and resource health metrics immediately upon login.</li>
+      </ul>
+
+      <h2>Results & Impact</h2>
+      <p>By modernizing the interface architecture and standardizing interactions around the Carbon Design System, the updated PowerVC platform achieved a <strong>36% reduction in overall workflow complexity</strong>. Administrators reported faster onboarding times, fewer configuration errors, and significantly smoother daily operations in production environments.</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="framer-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-heading">Let's build together.</div>
+        <div class="footer-sub">Open to Enterprise UX & Design Lead roles.</div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
+        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
