@@ -173,23 +173,21 @@
       color: var(--text);
     }
 
-    /* Initial Hero Image: Big, Uncropped, Natural Fit */
+    /* Edge-to-Edge Hero Image (No box wrapper, clean display) */
     .case-hero-img {
       width: 100%;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      margin-bottom: 60px;
-      background: #121215;
+      margin: 40px 0 60px 0;
+      background: transparent;
+      border: none;
+      border-radius: 0;
     }
 
     .case-hero-img img {
       width: 100%;
       height: auto;
-      max-height: 85vh;
-      object-fit: contain;
       display: block;
-      margin: 0 auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
     }
 
     /* Standard Media Containers */
@@ -452,7 +450,7 @@
       </div>
     </div>
 
-    <!-- Big, Uncropped Initial Dashboard Image -->
+    <!-- Edge-to-Edge Big Uncropped Dashboard Image -->
     <div class="case-hero-img">
       <img src="PowerVC2.jpg" alt="IBM PowerVC Dashboard Full Overview">
     </div>
