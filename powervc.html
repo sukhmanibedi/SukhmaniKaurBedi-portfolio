@@ -190,6 +190,7 @@
       border-radius: 12px;
       overflow: hidden;
       background: #ffffff;
+      cursor: zoom-in;
     }
 
     .case-hero-img img {
@@ -198,35 +199,23 @@
       display: block;
     }
 
-    /* Standard Media Containers with macOS Window Frame Styling */
+    /* Standard media frame — clean border, no fake browser chrome */
     .media-container {
       width: 100%;
-      border-radius: 16px;
+      border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--border);
       margin: 40px 0;
       background: #ffffff;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      cursor: zoom-in;
+      transition: border-color 0.15s ease, transform 0.15s ease;
     }
 
-    .window-header {
-      background: #f1f3f5;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid #e9ecef;
+    .media-container:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
     }
-
-    .window-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .dot-red { background: #ff5f56; }
-    .dot-yellow { background: #ffbd2e; }
-    .dot-green { background: #27c93f; }
 
     .media-container img {
       width: 100%;
@@ -549,6 +538,117 @@
         align-items: flex-start;
       }
     }
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-hover);
+      border-radius: 100px;
+      padding: 8px 18px;
+      cursor: pointer;
+    }
+
+    /* Persona carousel */
+    .persona-carousel {
+      margin: 32px 0;
+    }
+
+    .persona-track {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .persona-slide {
+      display: none;
+    }
+
+    .persona-slide.active {
+      display: block;
+    }
+
+    .persona-slide .media-container {
+      margin: 0;
+      cursor: zoom-in;
+    }
+
+    .persona-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .persona-nav-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-hover);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: background 0.15s ease;
+    }
+
+    .persona-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .persona-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .persona-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-hover);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .persona-dot.active {
+      background: var(--text);
+      transform: scale(1.3);
+    }
+
   </style>
 </head>
 <body>
@@ -595,11 +695,6 @@
 
     <!-- Framed Hero Image Container -->
     <div class="case-hero-container">
-      <div class="window-header">
-        <div class="window-dot dot-red"></div>
-        <div class="window-dot dot-yellow"></div>
-        <div class="window-dot dot-green"></div>
-      </div>
       <div class="case-hero-img">
         <img src="assets/dashboard-redesign.png" alt="IBM PowerVC Dashboard Full Overview">
       </div>
@@ -613,19 +708,9 @@
       <h2>Snippets of the legacy UI</h2>
       <div class="media-grid-2">
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/app-dashboard-real.png" alt="Legacy PowerVC Home dashboard">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/app-networks-real.png" alt="Legacy PowerVC Networks page">
         </div>
       </div>
@@ -649,14 +734,34 @@
 
       <h2>Persona</h2>
       <p>Three core personas emerged from the research, grounded in real roles and responsibilities rather than assumed ones — each with distinct goals, challenges, and needs that shaped the Hill Statements below.</p>
-      <div class="media-container">
-        <img src="assets/persona-alan.png" alt="Alan — System Architect persona">
-      </div>
-      <div class="media-container">
-        <img src="assets/persona-monica.png" alt="Monica — Cloud Systems Administrator persona">
-      </div>
-      <div class="media-container">
-        <img src="assets/persona-steve.png" alt="Steve — Technical User persona">
+
+      <div class="persona-carousel">
+        <div class="persona-track">
+          <div class="persona-slide active" data-index="0">
+            <div class="media-container">
+              <img src="assets/persona-alan.png" alt="Alan — System Architect persona">
+            </div>
+          </div>
+          <div class="persona-slide" data-index="1">
+            <div class="media-container">
+              <img src="assets/persona-monica.png" alt="Monica — Cloud Systems Administrator persona">
+            </div>
+          </div>
+          <div class="persona-slide" data-index="2">
+            <div class="media-container">
+              <img src="assets/persona-steve.png" alt="Steve — Technical User persona">
+            </div>
+          </div>
+        </div>
+        <div class="persona-nav">
+          <button class="persona-nav-btn" onclick="personaPrev()" aria-label="Previous persona">&#8592;</button>
+          <div class="persona-dots">
+            <button class="persona-dot active" onclick="personaGoTo(0)" aria-label="Alan"></button>
+            <button class="persona-dot" onclick="personaGoTo(1)" aria-label="Monica"></button>
+            <button class="persona-dot" onclick="personaGoTo(2)" aria-label="Steve"></button>
+          </div>
+          <button class="persona-nav-btn" onclick="personaNext()" aria-label="Next persona">&#8594;</button>
+        </div>
       </div>
 
       <div class="stats-row">
@@ -950,27 +1055,12 @@
 
       <div class="media-grid-3">
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/complexity-old-ui.png" alt="Complexity analysis: old UI">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/complexity-design-mockup.png" alt="Complexity analysis: 2nd design mockup">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/complexity-live-ui.png" alt="Complexity analysis: live UI">
         </div>
       </div>
@@ -995,35 +1085,15 @@
 
       <div class="media-grid-4">
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="https://static.wixstatic.com/media/0fd14c_bcd01c8512254c47886ed5264a16a677~mv2.png" alt="Redesigned configuration screen with guided wizard">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="https://static.wixstatic.com/media/0fd14c_7ebd2d7da3d34ef9a5e8869fac9b547e~mv2.png" alt="Improved message panel with clearer feedback">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="https://static.wixstatic.com/media/0fd14c_40bc65bcf5cb4457bc89c9f4e24e033c~mv2.jpg" alt="Host creation flow with recognition-based options">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="https://static.wixstatic.com/media/0fd14c_6a0e6a684e024d4c801d6de605b9cfcf~mv2.png" alt="Redesigned dashboard with simplified navigation">
         </div>
       </div>
@@ -1046,11 +1116,6 @@
       <p><strong>Process:</strong> We kicked off with a mind mapping session, clustering user feedback into key themes like installation complexity, unclear prerequisites, and first-time setup confusion. Using dot voting, we prioritized issues based on impact and frequency.</p>
 
       <div class="media-container">
-        <div class="window-header">
-          <div class="window-dot dot-red"></div>
-          <div class="window-dot dot-yellow"></div>
-          <div class="window-dot dot-green"></div>
-        </div>
         <img src="assets/oobe-workshop-photo.png" alt="OOBE workshop affinity mapping session">
       </div>
       <p class="media-caption">Affinity-mapping the raw feedback wall into themes — ease of use, guidance requests, terminology confusion — before dot-voting on priorities.</p>
@@ -1063,35 +1128,15 @@
       <p>One design response coming out of the workshop was a tiered, proactive support pattern built directly into first-time setup: the interface anticipates when a user might need help rather than waiting for them to go searching for it, and hands off cleanly to a human when it can't resolve something itself.</p>
       <div class="media-grid-4">
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/quick-assist-popup.png" alt="Quick Assist proactive prompt on first setup">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/accessibility-button-active.png" alt="Persistent help entry point in the accessibility menu">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/chatbot-conversation.png" alt="Chatbot answering a setup question conversationally">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/chatbot-asks-for-person.png" alt="Chatbot escalating to a human team member">
         </div>
       </div>
@@ -1118,19 +1163,9 @@
       <h2>Peek into the user interface</h2>
       <div class="media-grid-2">
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/dashboard-redesign.png" alt="Redesigned PowerVC dashboard">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/create-network-redesign.png" alt="Redesigned Create Network flow">
         </div>
       </div>
@@ -1144,19 +1179,9 @@
       <p>Alan and Monica manage hosts daily. The redesigned list surfaces status, VM count, and utilization at a glance, with common actions — maintenance mode, remote restart, edit connections — one click away instead of buried in a detail page. The detail view keeps power state, processor, and memory visible immediately, without requiring a tab switch first.</p>
       <div class="media-grid-2">
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/hosts-list.png" alt="Redesigned Hosts list with quick actions">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/host-detail-view.png" alt="Redesigned Host detail view">
         </div>
       </div>
@@ -1165,19 +1190,9 @@
       <p>Steve's day-to-day work is dominated by routine VM tasks, so the list view exposes status and quick actions — capture, migrate, restart, stop — directly from a row-level menu. The detail view keeps processor, memory, and task state pinned in a persistent side panel, so checking health no longer means navigating away from the record you're editing.</p>
       <div class="media-grid-2">
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/vm-list.png" alt="Redesigned Virtual Machines list with row actions">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/vm-detail.png" alt="Redesigned Virtual Machine detail with persistent metrics panel">
         </div>
       </div>
@@ -1186,19 +1201,9 @@
       <p>The Discovery findings named this directly: "there is no flow in completing a task, a lot of context shifts are there." Running and scheduled tasks are now consolidated into a single view with editable columns, so users can surface exactly the fields — duration, owner, comments — they need for their workflow, instead of hunting across disconnected screens.</p>
       <div class="media-grid-2">
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/tasks-running.png" alt="Redesigned running tasks view">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="assets/tasks-scheduled.png" alt="Redesigned scheduled tasks view with editable columns">
         </div>
       </div>
@@ -1206,11 +1211,6 @@
       <h3>Resource usage</h3>
       <p>Alan's Hill Statement centered on running his environment without disruption — which means he needs to see resource pressure building before it becomes a problem. The Resource usage view breaks consumption down by owner across virtual processors, memory, and storage, replacing what had been manual, spreadsheet-driven tracking with a single, live source of truth.</p>
       <div class="media-container">
-        <div class="window-header">
-          <div class="window-dot dot-red"></div>
-          <div class="window-dot dot-yellow"></div>
-          <div class="window-dot dot-green"></div>
-        </div>
         <img src="assets/resource-usage.png" alt="Redesigned Resource usage view broken down by owner">
       </div>
 
@@ -1250,19 +1250,9 @@
       <h3>Key Signature Moments to Improve</h3>
       <div class="media-grid-2">
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="https://static.wixstatic.com/media/0fd14c_19ad38ebbf8444d2be12eb58d274af77~mv2.jpeg" alt="Feedback collected from beta users">
         </div>
         <div class="media-container">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
-          </div>
           <img src="https://static.wixstatic.com/media/0fd14c_6e91866afe0b4646b7f58e5bbc9dc195~mv2.jpeg" alt="Beta feedback synthesis">
         </div>
       </div>
@@ -1309,5 +1299,65 @@
     </div>
   </footer>
 
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox(event)">Close ✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    // ---- Lightbox: click any case-study image to view full size ----
+    function openLightbox(src, alt) {
+      const overlay = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      img.alt = alt || '';
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      const nav = document.querySelector('.framer-navbar');
+      if (nav) nav.style.visibility = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+      const nav = document.querySelector('.framer-navbar');
+      if (nav) nav.style.visibility = '';
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Wire up every framed image (hero + all media-containers) to open the lightbox
+      const clickableImgs = document.querySelectorAll('.case-hero-img img, .media-container img');
+      clickableImgs.forEach(function (img) {
+        img.addEventListener('click', function (e) {
+          e.stopPropagation();
+          openLightbox(img.getAttribute('src'), img.getAttribute('alt'));
+        });
+      });
+    });
+
+    // ---- Persona carousel ----
+    let personaIndex = 0;
+    const personaTotal = 3;
+
+    function personaShow(i) {
+      personaIndex = (i + personaTotal) % personaTotal;
+      document.querySelectorAll('.persona-slide').forEach(function (slide) {
+        slide.classList.toggle('active', Number(slide.dataset.index) === personaIndex);
+      });
+      document.querySelectorAll('.persona-dot').forEach(function (dot, idx) {
+        dot.classList.toggle('active', idx === personaIndex);
+      });
+    }
+
+    function personaNext() { personaShow(personaIndex + 1); }
+    function personaPrev() { personaShow(personaIndex - 1); }
+    function personaGoTo(i) { personaShow(i); }
+  </script>
 </body>
 </html>
