@@ -217,6 +217,12 @@
       transform: translateY(-2px);
     }
 
+    .media-container:focus-visible,
+    .case-hero-img:focus-visible {
+      outline: 2px solid #c4a7ff;
+      outline-offset: 3px;
+    }
+
     .media-container img {
       width: 100%;
       height: auto;
@@ -258,6 +264,12 @@
 
     .eval-shot {
       border-bottom: 1px solid var(--border);
+      cursor: zoom-in;
+    }
+
+    .eval-shot:focus-visible {
+      outline: 2px solid #c4a7ff;
+      outline-offset: -2px;
     }
 
     .eval-shot img {
@@ -314,9 +326,9 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       font-weight: 600;
-      color: #8ea8ff;
-      background: rgba(142, 168, 255, 0.1);
-      border: 1px solid rgba(142, 168, 255, 0.25);
+      color: #c4a7ff;
+      background: rgba(196, 167, 255, 0.1);
+      border: 1px solid rgba(196, 167, 255, 0.25);
       border-radius: 100px;
       padding: 3px 10px;
       margin-bottom: 8px;
@@ -638,9 +650,10 @@
       height: 8px;
       border-radius: 50%;
       background: var(--border-hover);
+      background-clip: content-box;
       border: none;
       cursor: pointer;
-      padding: 0;
+      padding: 6px;
       transition: background 0.15s ease, transform 0.15s ease;
     }
 
@@ -1248,14 +1261,10 @@
       </ul>
 
       <h3>Key Signature Moments to Improve</h3>
-      <div class="media-grid-2">
-        <div class="media-container">
-          <img src="https://static.wixstatic.com/media/0fd14c_19ad38ebbf8444d2be12eb58d274af77~mv2.jpeg" alt="Feedback collected from beta users">
-        </div>
-        <div class="media-container">
-          <img src="https://static.wixstatic.com/media/0fd14c_6e91866afe0b4646b7f58e5bbc9dc195~mv2.jpeg" alt="Beta feedback synthesis">
-        </div>
+      <div class="media-container">
+        <img src="assets/distinction-grid.png" alt="Distinction Grid mapping before, during, and after moments against what PowerVC delivers well and where it falls short">
       </div>
+      <p class="media-caption">The Distinction Grid plotted feedback against two axes — what we deliver well vs. where we fall short, and what users want vs. what they care about — to pinpoint exactly which before/during/after moments needed design attention.</p>
       <ul>
         <li><strong>Before:</strong> Installation prep and onboarding (icons 1–3) – unclear steps and lack of guidance.</li>
         <li><strong>During:</strong> Real-time feedback (icons 5–6) – users expect confirmation or loading indicators.</li>
@@ -1264,6 +1273,12 @@
 
       <h2>Outcome & Impact</h2>
       <p>The PowerVC UX redesign initiative delivered a measurable improvement in user experience, onboarding, and system usability. Grounded in Enterprise Design Thinking and driven by extensive customer research, the project redefined the way technical users interact with PowerVC — from initial setup to large-scale VM management.</p>
+      <p>Insights from the Value Opportunity Analysis and Distinction Grid also informed the long-term roadmap, positioning the product for competitive differentiation beyond this release.</p>
+
+      <div class="media-container">
+        <img src="assets/value-judgment-table.png" alt="Value judgment table comparing the old version against PowerVC 2.0 Beta across GUI, deployment speed, integration, stability, customization, error messaging, and documentation">
+      </div>
+      <p class="media-caption">A structured value judgment tracked measurable gains against the old version — alongside an honest read on what still needs work, like scripting flexibility and error messaging.</p>
       
       <div class="stats-row">
         <div class="stat-card">
@@ -1300,14 +1315,16 @@
   </footer>
 
   <!-- Lightbox overlay -->
-  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Image preview">
     <button class="lightbox-close" onclick="closeLightbox(event)">Close ✕</button>
     <img id="lightbox-img" src="" alt="">
   </div>
 
   <script>
-    // ---- Lightbox: click any case-study image to view full size ----
-    function openLightbox(src, alt) {
+    // ---- Lightbox: click or press Enter/Space on any case-study image to view full size ----
+    let lastFocusedTrigger = null;
+
+    function openLightbox(src, alt, triggerEl) {
       const overlay = document.getElementById('lightbox');
       const img = document.getElementById('lightbox-img');
       img.src = src;
@@ -1316,6 +1333,9 @@
       document.body.style.overflow = 'hidden';
       const nav = document.querySelector('.framer-navbar');
       if (nav) nav.style.visibility = 'hidden';
+      lastFocusedTrigger = triggerEl || document.activeElement;
+      // Move focus into the dialog for keyboard/screen reader users
+      document.querySelector('.lightbox-close').focus();
     }
 
     function closeLightbox(e) {
@@ -1324,6 +1344,8 @@
       document.body.style.overflow = '';
       const nav = document.querySelector('.framer-navbar');
       if (nav) nav.style.visibility = '';
+      // Return focus to whatever triggered the lightbox
+      if (lastFocusedTrigger) lastFocusedTrigger.focus();
     }
 
     document.addEventListener('keydown', function (e) {
@@ -1331,12 +1353,28 @@
     });
 
     document.addEventListener('DOMContentLoaded', function () {
-      // Wire up every framed image (hero + all media-containers) to open the lightbox
-      const clickableImgs = document.querySelectorAll('.case-hero-img img, .media-container img');
-      clickableImgs.forEach(function (img) {
-        img.addEventListener('click', function (e) {
+      // Wire up every framed image (hero + all media-containers) to open the lightbox —
+      // keyboard-accessible: each frame is a tabbable, Enter/Space-operable button.
+      const frames = document.querySelectorAll('.case-hero-img, .media-container, .eval-shot');
+      frames.forEach(function (frame) {
+        const img = frame.querySelector('img');
+        if (!img) return;
+
+        frame.setAttribute('tabindex', '0');
+        frame.setAttribute('role', 'button');
+        frame.setAttribute('aria-label', 'View larger: ' + (img.getAttribute('alt') || 'image'));
+
+        function trigger(e) {
           e.stopPropagation();
-          openLightbox(img.getAttribute('src'), img.getAttribute('alt'));
+          openLightbox(img.getAttribute('src'), img.getAttribute('alt'), frame);
+        }
+
+        frame.addEventListener('click', trigger);
+        frame.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            trigger(e);
+          }
         });
       });
     });
