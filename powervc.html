@@ -234,6 +234,123 @@
       display: block;
     }
 
+    /* Multi-image grid variants (reuse media-container framing per tile) */
+    .media-grid-2, .media-grid-3, .media-grid-4 {
+      display: grid;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .media-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .media-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .media-grid-4 { grid-template-columns: repeat(2, 1fr); }
+
+    .media-grid-2 .media-container,
+    .media-grid-3 .media-container,
+    .media-grid-4 .media-container {
+      margin: 0;
+    }
+
+    .media-caption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* Heuristic evaluation: per-screen finding cards */
+    .eval-card {
+      margin: 40px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+
+    .eval-shot {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eval-shot img {
+      width: 100%;
+      display: block;
+    }
+
+    .eval-screen-name {
+      padding: 18px 24px 0 24px;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .eval-list {
+      padding: 8px 24px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .eval-item {
+      display: flex;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .eval-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .eval-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .heuristic-tag {
+      display: inline-block;
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #8ea8ff;
+      background: rgba(142, 168, 255, 0.1);
+      border: 1px solid rgba(142, 168, 255, 0.25);
+      border-radius: 100px;
+      padding: 3px 10px;
+      margin-bottom: 8px;
+    }
+
+    .eval-issue {
+      font-size: 0.92rem;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .eval-fix {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .eval-fix strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
     /* Carousel Specific Component Styling */
     .carousel-container {
       width: 100%;
@@ -420,6 +537,9 @@
       .case-meta-grid, .stats-row {
         grid-template-columns: repeat(2, 1fr);
       }
+      .media-grid-2, .media-grid-3, .media-grid-4 {
+        grid-template-columns: 1fr;
+      }
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -481,24 +601,35 @@
         <div class="window-dot dot-green"></div>
       </div>
       <div class="case-hero-img">
-        <img src="PowerVC2.jpg" alt="IBM PowerVC Dashboard Full Overview">
+        <img src="assets/dashboard-redesign.png" alt="IBM PowerVC Dashboard Full Overview">
       </div>
     </div>
 
     <div class="case-content">
       <h2>Project overview</h2>
       <p>System administrators and technical users managing virtual machines (VMs) on IBM Power Systems via PowerVC face significant usability challenges due to a complex and cluttered user interface. The existing UI suffers from deep navigation hierarchies, visual clutter, and inadequate contextual guidance, leading to inefficiencies in performing critical tasks such as VM provisioning, patch management, and system scaling. These issues result in increased cognitive load, slower task completion times, and a suboptimal user experience, particularly when managing large-scale environments with thousands of VMs and volumes.</p>
-      <p>The project aims to redesign the PowerVC interface to provide a secure, scalable, and streamlined user experience that aligns with the workflows of system architects, administrators, and technical users. This involves conducting comprehensive user research, including generative and qualitative methods, to identify pain points and user needs. The goal is to enhance information architecture, reduce visual clutter, improve performance feedback, and incorporate contextual help, thereby enabling users to perform tasks more efficiently and with greater confidence.</p>
+      <p>The project redesigns the PowerVC interface to deliver a secure, scalable, and streamlined experience aligned to the actual workflows of system architects, administrators, and technical users — grounded in comprehensive generative and qualitative research into pain points and needs. The goal: sharpen information architecture, cut visual clutter, surface performance feedback clearly, and build in contextual help, so users complete critical tasks faster and with more confidence.</p>
 
       <h2>Snippets of the legacy UI</h2>
-      <div class="media-container">
-        <div class="window-header">
-          <div class="window-dot dot-red"></div>
-          <div class="window-dot dot-yellow"></div>
-          <div class="window-dot dot-green"></div>
+      <div class="media-grid-2">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/app-dashboard-real.png" alt="Legacy PowerVC Home dashboard">
         </div>
-        <img src="legacy-ui-snippets.jpg" alt="Snippets of the legacy UI">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/app-networks-real.png" alt="Legacy PowerVC Networks page">
+        </div>
       </div>
+      <p class="media-caption">Left: the Home dashboard. Right: the Networks page — both show the visual density and inconsistent status treatment users struggled with.</p>
 
       <h2>Problem statement</h2>
       <p>PowerVC users were struggling with:</p>
@@ -517,13 +648,15 @@
       <p>Our qualitative research efforts were equally comprehensive, leveraging active participation in user forums where PowerVC users openly discussed their experiences, needs, and challenges. These organic insights were critical in shaping our understanding of real-world usage. To enrich our findings, we conducted a Heuristic Evaluation to identify usability issues from an expert perspective, and supplemented this with data from a targeted TechU survey, further grounding our research in user sentiment and behaviour.</p>
 
       <h2>Persona</h2>
+      <p>Three core personas emerged from the research, grounded in real roles and responsibilities rather than assumed ones — each with distinct goals, challenges, and needs that shaped the Hill Statements below.</p>
       <div class="media-container">
-        <div class="window-header">
-          <div class="window-dot dot-red"></div>
-          <div class="window-dot dot-yellow"></div>
-          <div class="window-dot dot-green"></div>
-        </div>
-        <img src="persona.jpg" alt="Persona Overview">
+        <img src="assets/persona-alan.png" alt="Alan — System Architect persona">
+      </div>
+      <div class="media-container">
+        <img src="assets/persona-monica.png" alt="Monica — Cloud Systems Administrator persona">
+      </div>
+      <div class="media-container">
+        <img src="assets/persona-steve.png" alt="Steve — Technical User persona">
       </div>
 
       <div class="stats-row">
@@ -540,24 +673,221 @@
       <p>The invaluable input received through the Net Promoter Score (NPS) feedback and the detailed Request for Enhancements (RFEs) played a pivotal role in pinpointing the critical focal points that warranted our utmost consideration. With precision and care, we undertook the task of methodically categorizing and skillfully prioritizing the wealth of insights we had accumulated. This deliberate process not only crystallized our understanding of the user landscape but also paved the way for the inception of the research and design stages. By meticulously organizing and ranking these insights, we laid a solid foundation, ensuring that our subsequent endeavors were guided by a comprehensive awareness of user needs and aspirations. In essence, the NPS feedback and RFEs acted as guiding beacons, illuminating our path forward and empowering us to embark on a journey of purposeful and user-centered exploration and creation.</p>
 
       <h2>Heuristic Evaluation</h2>
-      <p>To identify usability issues and improve the overall user experience of the PowerVC application, we conducted a comprehensive heuristic evaluation. This review involved systematically examining the interface against established usability principles. The goal was to uncover pain points, inconsistencies, and barriers that users might face during typical workflows, especially in managing virtual machines and system operations.</p>
-      <p>The evaluation provided valuable insights into areas where the design could be streamlined, clarified, or enhanced—helping us prioritize improvements that directly impact efficiency, user satisfaction, and error reduction.</p>
+      <p>I conducted a heuristic evaluation of the live PowerVC application against Nielsen's usability heuristics, screen by screen, flagging specific violations and recommendations across the dashboard, VM management, host configuration, and diagnostics flows.</p>
 
-      <!-- Dashboard 1/7 Carousel -->
-      <div class="carousel-container">
-        <div class="carousel-slide-viewport">
-          <div class="window-header">
-            <div class="window-dot dot-red"></div>
-            <div class="window-dot dot-yellow"></div>
-            <div class="window-dot dot-green"></div>
+      <div class="eval-card">
+        <div class="eval-shot"><img src="assets/heuristic-dashboard.png" alt="Heuristic evaluation: Dashboard"></div>
+        <div class="eval-screen-name">Dashboard</div>
+        <div class="eval-list">
+          <div class="eval-item">
+            <div class="eval-num">1</div>
+            <div>
+              <span class="heuristic-tag">Aesthetic &amp; Minimalist Design</span>
+              <p class="eval-issue">Status cards lack a strong visual identity, forcing users to map each icon and label to the underlying state.</p>
+              <p class="eval-fix"><strong>Fix:</strong> give each status a clear, distinct visual treatment for faster recognition.</p>
+            </div>
           </div>
-          <img src="dashboard-eval-1.jpg" alt="Dashboard Evaluation 1/7">
+          <div class="eval-item">
+            <div class="eval-num">2</div>
+            <div>
+              <span class="heuristic-tag">Consistency &amp; Standards</span>
+              <p class="eval-issue">Doughnut graphs look clickable but aren't, creating false affordance.</p>
+              <p class="eval-fix"><strong>Fix:</strong> follow standard interaction patterns so clickable and static elements are visually distinct.</p>
+            </div>
+          </div>
         </div>
-        <div class="carousel-controls">
-          <span class="carousel-counter">dashboard 2 &nbsp;&bull;&nbsp; 1 / 7</span>
-          <div class="carousel-btns">
-            <button class="carousel-btn">Prev</button>
-            <button class="carousel-btn">Next</button>
+      </div>
+
+      <div class="eval-card">
+        <div class="eval-shot"><img src="assets/heuristic-vm-details.png" alt="Heuristic evaluation: Virtual Machine Details"></div>
+        <div class="eval-screen-name">Virtual Machine Details</div>
+        <div class="eval-list">
+          <div class="eval-item">
+            <div class="eval-num">1</div>
+            <div>
+              <span class="heuristic-tag">Visibility of System Status</span>
+              <p class="eval-issue">Processor utilization is buried several clicks deep instead of visible on load.</p>
+              <p class="eval-fix"><strong>Fix:</strong> surface key status metrics directly on the landing view.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">2</div>
+            <div>
+              <span class="heuristic-tag">Flexibility &amp; Efficiency of Use</span>
+              <p class="eval-issue">Key details sit below the fold inside an accordion, adding scroll effort for common tasks.</p>
+              <p class="eval-fix"><strong>Fix:</strong> surface high-use information above the fold.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">3</div>
+            <div>
+              <span class="heuristic-tag">Help &amp; Documentation</span>
+              <p class="eval-issue">The VM filter is visually de-emphasized and disappears on scroll — hard to find at scale with 2,000+ VMs.</p>
+              <p class="eval-fix"><strong>Fix:</strong> keep the filter persistently visible and prominent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eval-card">
+        <div class="eval-shot"><img src="assets/heuristic-vm-landing.png" alt="Heuristic evaluation: Virtual Machines Landing Page"></div>
+        <div class="eval-screen-name">Virtual Machines Landing Page</div>
+        <div class="eval-list">
+          <div class="eval-item">
+            <div class="eval-num">1</div>
+            <div>
+              <span class="heuristic-tag">Consistency &amp; Standards</span>
+              <p class="eval-issue">The virtual machine icon doesn't visually match its meaning.</p>
+              <p class="eval-fix"><strong>Fix:</strong> replace it with a more literal, recognizable icon.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">2</div>
+            <div>
+              <span class="heuristic-tag">Flexibility &amp; Efficiency of Use</span>
+              <p class="eval-issue">Too many icon-only actions (Restart, Stop, Start, Resize) force users to read each one every time.</p>
+              <p class="eval-fix"><strong>Fix:</strong> pair icons with labels to remove the lookup cost.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">3</div>
+            <div>
+              <span class="heuristic-tag">Recognition Rather Than Recall</span>
+              <p class="eval-issue">VM names aren't visually prioritized, so users must scan the full row to identify the right machine.</p>
+              <p class="eval-fix"><strong>Fix:</strong> give the VM name stronger visual weight in the row.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eval-card">
+        <div class="eval-shot"><img src="assets/heuristic-nav-panel.png" alt="Heuristic evaluation: Dashboard and Navigation Panel"></div>
+        <div class="eval-screen-name">Dashboard &amp; Navigation Panel</div>
+        <div class="eval-list">
+          <div class="eval-item">
+            <div class="eval-num">1</div>
+            <div>
+              <span class="heuristic-tag">Consistency &amp; Standards</span>
+              <p class="eval-issue">Nav icons rely on numeric badges instead of labels, which disorients users.</p>
+              <p class="eval-fix"><strong>Fix:</strong> pair every icon with a meaningful label.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">2</div>
+            <div>
+              <span class="heuristic-tag">Consistency &amp; Standards</span>
+              <p class="eval-issue">Doughnut-graph legends appear inconsistently — sometimes on load, sometimes only on hover.</p>
+              <p class="eval-fix"><strong>Fix:</strong> standardize the interaction pattern across all graphs.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">3</div>
+            <div>
+              <span class="heuristic-tag">Consistency &amp; Standards</span>
+              <p class="eval-issue">Some card headers are clickable links, others aren't, with no visual distinction between them.</p>
+              <p class="eval-fix"><strong>Fix:</strong> make link affordance consistent across all cards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eval-card">
+        <div class="eval-shot"><img src="assets/heuristic-add-host.png" alt="Heuristic evaluation: Add Host"></div>
+        <div class="eval-screen-name">Add Host</div>
+        <div class="eval-list">
+          <div class="eval-item">
+            <div class="eval-num">1</div>
+            <div>
+              <span class="heuristic-tag">Consistency &amp; Standards</span>
+              <p class="eval-issue">Action buttons are scattered across multiple locations, forcing users to hunt for them.</p>
+              <p class="eval-fix"><strong>Fix:</strong> consolidate into one consistent action area.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">2</div>
+            <div>
+              <span class="heuristic-tag">Consistency &amp; Standards</span>
+              <p class="eval-issue">The filter icon doesn't follow standard iconography and is hard to interpret.</p>
+              <p class="eval-fix"><strong>Fix:</strong> use conventional, recognizable icon patterns.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">3</div>
+            <div>
+              <span class="heuristic-tag">Aesthetic &amp; Minimalist Design</span>
+              <p class="eval-issue">The host list popup isn't built to scale — with 20+ hosts it becomes visually cluttered.</p>
+              <p class="eval-fix"><strong>Fix:</strong> design the popup to handle large host counts gracefully.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eval-card">
+        <div class="eval-shot"><img src="assets/heuristic-config-landing.png" alt="Heuristic evaluation: Configuration Landing Page"></div>
+        <div class="eval-screen-name">Configuration Landing Page</div>
+        <div class="eval-list">
+          <div class="eval-item">
+            <div class="eval-num">1</div>
+            <div>
+              <span class="heuristic-tag">Match Between System &amp; Real World</span>
+              <p class="eval-issue">Too many nested options surface at once, including a redundant double-dropdown pattern per section.</p>
+              <p class="eval-fix"><strong>Fix:</strong> relocate settings like Virtual Machines and Storage into their own dedicated pages.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">2</div>
+            <div>
+              <span class="heuristic-tag">Match Between System &amp; Real World</span>
+              <p class="eval-issue">User Management and Email Notifications are used so rarely they don't belong at this level.</p>
+              <p class="eval-fix"><strong>Fix:</strong> move them under a general Settings area — the term users actually expect.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">3</div>
+            <div>
+              <span class="heuristic-tag">Recognition Rather Than Recall</span>
+              <p class="eval-issue">Dense, text-only sub-headings with no icons make the page feel heavy and hard to scan.</p>
+              <p class="eval-fix"><strong>Fix:</strong> add icons and trim text to ease recognition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eval-card">
+        <div class="eval-shot"><img src="assets/heuristic-env-checker.png" alt="Heuristic evaluation: Environment Checker"></div>
+        <div class="eval-screen-name">Environment Checker</div>
+        <div class="eval-list">
+          <div class="eval-item">
+            <div class="eval-num">1</div>
+            <div>
+              <span class="heuristic-tag">Consistency &amp; Standards</span>
+              <p class="eval-issue">Broken links in the results waste user time and erode trust in the tool.</p>
+              <p class="eval-fix"><strong>Fix:</strong> audit and fix all links before release.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">2</div>
+            <div>
+              <span class="heuristic-tag">Aesthetic &amp; Minimalist Design</span>
+              <p class="eval-issue">Overly wide table columns force excessive horizontal scanning to read a single row.</p>
+              <p class="eval-fix"><strong>Fix:</strong> tighten column widths and keep actions easily reachable.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">3</div>
+            <div>
+              <span class="heuristic-tag">Aesthetic &amp; Minimalist Design</span>
+              <p class="eval-issue">Helper text repeats information already shown elsewhere on screen, adding no value.</p>
+              <p class="eval-fix"><strong>Fix:</strong> remove redundant helper copy.</p>
+            </div>
+          </div>
+          <div class="eval-item">
+            <div class="eval-num">4</div>
+            <div>
+              <span class="heuristic-tag">Aesthetic &amp; Minimalist Design</span>
+              <p class="eval-issue">Selecting a row has no visible effect or follow-up action.</p>
+              <p class="eval-fix"><strong>Fix:</strong> give row selection a clear, meaningful next step.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -618,6 +948,34 @@
       <p>Complexity analysis, an innovative method pioneered by IBM experts, helps understand UI enhancements. It identifies key areas, crucial for refined user experiences. In my role, I conducted extensive analysis comparing the old and new UI, unveiling transformative shifts. This enriched user encounters and productivity. The scrutiny spanned scenarios, revealing design and code differences, guiding rational enhancements and offering fresh evaluation lenses.</p>
       <p>Though new to me, Complexity Analysis fostered mindfulness and detailed design consideration. It instilled a holistic outlook anchored in vital aspects: Context shifts, Input parameters, Navigational guidance, System feedback, Error feedback, and New concepts. My design approach is now steeped in this ethos, vital in design ventures and diverse UIs, as these components serve as catalysts for proficiency and excellence.</p>
 
+      <div class="media-grid-3">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/complexity-old-ui.png" alt="Complexity analysis: old UI">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/complexity-design-mockup.png" alt="Complexity analysis: 2nd design mockup">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/complexity-live-ui.png" alt="Complexity analysis: live UI">
+        </div>
+      </div>
+      <p class="media-caption">Complexity scoring for the same task — "create a new image and deploy a VM" — across three stages: legacy UI, 2nd design mockup, and live redesigned UI. Scoring dropped as context shifts and input parameters were designed out step by step.</p>
+
       <h3>Conducting Demos & Hosting Beta Trials</h3>
       <p>Conducting demonstrations serves as a pivotal step in ensuring design validation and a seamless user journey. These demos provide a platform to meticulously navigate users through the entire experience, validating the efficacy of our designs. By guiding users step by step, we gain valuable insights into usability, identifying potential hurdles, and refining the design to enhance user satisfaction. This iterative process of demo-based validation enables us to fine-tune each aspect, ensuring a user-centric journey that meets expectations and fosters a sense of ease and accomplishment.</p>
       <p>We empowered users by granting them the capability to download the PowerVC test environment, allowing them to conduct testing on predefined scenarios. This hands-on approach enabled users to provide valuable feedback based on their experiences.</p>
@@ -635,6 +993,42 @@
         <li><strong>Improve navigation:</strong> Information architecture is very deep and it is difficult to find certain features.</li>
       </ul>
 
+      <div class="media-grid-4">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="https://static.wixstatic.com/media/0fd14c_bcd01c8512254c47886ed5264a16a677~mv2.png" alt="Redesigned configuration screen with guided wizard">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="https://static.wixstatic.com/media/0fd14c_7ebd2d7da3d34ef9a5e8869fac9b547e~mv2.png" alt="Improved message panel with clearer feedback">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="https://static.wixstatic.com/media/0fd14c_40bc65bcf5cb4457bc89c9f4e24e033c~mv2.jpg" alt="Host creation flow with recognition-based options">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="https://static.wixstatic.com/media/0fd14c_6a0e6a684e024d4c801d6de605b9cfcf~mv2.png" alt="Redesigned dashboard with simplified navigation">
+        </div>
+      </div>
+      <p class="media-caption">Left to right, top to bottom: guided configuration wizard, clearer system messaging, recognition-based host creation, and simplified dashboard navigation.</p>
+
       <h2>The discovery</h2>
       <p>We pinpointed primarily minor issues, which can be readily resolved without encountering any critical problems. However, these seemingly minor issues, from a user experience standpoint, do hinder a seamless and intuitive journey. General sentiment from NPS is that PowerVC is a great product that simplifies deployments and management and offers the possibility of a private cloud, but it can be quirky.</p>
       <ol>
@@ -648,59 +1042,187 @@
 
       <h2>OOBE Workshop: Redesigning the PowerVC Onboarding Experience</h2>
       <p>Following extensive user research on the Out-of-Box Experience (OOBE), we conducted a focused internal workshop to translate insights into actionable design improvements.</p>
-      <p><strong>🎯 Objective:</strong> To streamline the onboarding journey for PowerVC by addressing user pain points, clarifying setup flows, and identifying quick wins.</p>
-      <p><strong>🧠 Process:</strong> We kicked off with a mind mapping session, clustering user feedback into key themes like installation complexity, unclear prerequisites, and first-time setup confusion. Using dot voting, we prioritized issues based on impact and frequency.</p>
-      <p>Next, we grouped findings under key topics: Environment Planning, Installation Flow, GUI Setup, First VM Creation.</p>
-      <p>Each team member then individually brainstormed and mapped a revised onboarding flow, tailored to their assigned topic. We reconvened to present and evaluate ideas, focusing on feasibility, user impact, and alignment with technical constraints.</p>
-      <p><strong>✅ Outcome:</strong> The workshop led to a draft of an improved, role-based OOBE, several feasible design enhancements, and clear next steps for prototyping. It also reinforced cross-functional alignment between design, product, and development team.</p>
+      <p><strong>Objective:</strong> To streamline the onboarding journey for PowerVC by addressing user pain points, clarifying setup flows, and identifying quick wins.</p>
+      <p><strong>Process:</strong> We kicked off with a mind mapping session, clustering user feedback into key themes like installation complexity, unclear prerequisites, and first-time setup confusion. Using dot voting, we prioritized issues based on impact and frequency.</p>
 
-      <h2>Learning</h2>
-      <p>Leading the research efforts in this project offered a rich learning experience and helped sharpen my skills in planning, execution, and stakeholder engagement.</p>
-      
-      <h3>🔍 Structuring Research for Impact</h3>
-      <p>I led the end-to-end research process, which involved defining relevant themes for each research round, crafting discussion guides to ensure we targeted the right user scenarios, and conducting detailed analyses after each session. One of the key challenges I faced was ensuring that every insight was actionable and traceable. As a user advocate, it was critical that no valuable feedback got lost in translation.</p>
-      <p>After experimenting with several methods, I developed a structured Excel-based tracking system that bridged both design and development perspectives. This document evolved into a single source of truth, enabling the team to filter and prioritize findings, classify insights by theme or feature, track status and ownership, and document decisions and comments from cross-functional reviews.</p>
-
-      <h3>🤝 Sustaining Partner Engagement</h3>
-      <p>Maintaining consistent engagement with design partners over several months was another significant challenge. Midway through, I observed a drop in participation — session cancellations and reduced interest indicated a need to reinvigorate the experience.</p>
-      <p>To address this, I redesigned the research sessions to be more interactive and engaging by introducing a variety of methods: card sorting exercises, scenario-based discussions, and clickable prototypes with task flows. This refreshed format not only reignited partner interest but also enhanced the richness of the feedback. Sessions became more collaborative, and the insights gathered were more grounded in real use cases.</p>
-
-      <h3>🎯 Takeaways</h3>
-      <ul>
-        <li><strong>Process matters:</strong> A well-structured system for documenting and surfacing insights helps drive better decisions and cross-functional alignment.</li>
-        <li><strong>Flexibility is key:</strong> Adapting methods based on stakeholder behavior and feedback can significantly improve participation and research outcomes.</li>
-        <li><strong>Advocating for users is ongoing:</strong> It’s not just about collecting feedback — it's about making sure that feedback drives meaningful change.</li>
-      </ul>
-
-      <h2>Peak into the user interface</h2>
       <div class="media-container">
         <div class="window-header">
           <div class="window-dot dot-red"></div>
           <div class="window-dot dot-yellow"></div>
           <div class="window-dot dot-green"></div>
         </div>
-        <img src="peak-user-interface.jpg" alt="Peak into the new user interface">
+        <img src="assets/oobe-workshop-photo.png" alt="OOBE workshop affinity mapping session">
       </div>
-      <div class="highlight-box">
-        <p>“View critical & important information upfront, Act quickly on ‘Errors, Warnings & Pending’ issues, Personalize dashboard on need basis”</p>
-      </div>
-      <p>Visual representation of important data for quickly grabbing attention. Providing take action buttons right next to Errors, warnings, pending issues for a quicker response</p>
+      <p class="media-caption">Affinity-mapping the raw feedback wall into themes — ease of use, guidance requests, terminology confusion — before dot-voting on priorities.</p>
 
-      <h2>Design validation & Complexity Analysis</h2>
-      <p>Conducting design demonstrations and performing Complexity Analysis work hand‑in‑hand to ensure every release of PowerVC delivers an intuitive, friction‑free experience.</p>
+      <p>Next, we grouped findings under key topics: Environment Planning, Installation Flow, GUI Setup, First VM Creation.</p>
+      <p>Each team member then individually brainstormed and mapped a revised onboarding flow, tailored to their assigned topic. We reconvened to present and evaluate ideas, focusing on feasibility, user impact, and alignment with technical constraints.</p>
+      <p><strong>Outcome:</strong> The workshop led to a draft of an improved, role-based OOBE, several feasible design enhancements, and clear next steps for prototyping. It also reinforced cross-functional alignment between design, product, and development team.</p>
+
+      <h3>Proactive Onboarding Assistance</h3>
+      <p>One design response coming out of the workshop was a tiered, proactive support pattern built directly into first-time setup: the interface anticipates when a user might need help rather than waiting for them to go searching for it, and hands off cleanly to a human when it can't resolve something itself.</p>
+      <div class="media-grid-4">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/quick-assist-popup.png" alt="Quick Assist proactive prompt on first setup">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/accessibility-button-active.png" alt="Persistent help entry point in the accessibility menu">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/chatbot-conversation.png" alt="Chatbot answering a setup question conversationally">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/chatbot-asks-for-person.png" alt="Chatbot escalating to a human team member">
+        </div>
+      </div>
+      <p class="media-caption">Left to right: Quick Assist surfaces contextual help unprompted at the start of setup; a persistent accessibility-menu entry point keeps help available throughout; the chatbot handles direct questions conversationally; and unresolved queries escalate cleanly to a human team member.</p>
+
+      <h2>Learning</h2>
+      <p>Leading the research efforts in this project offered a rich learning experience and helped sharpen my skills in planning, execution, and stakeholder engagement.</p>
       
+      <h3>Structuring Research for Impact</h3>
+      <p>I led the end-to-end research process, which involved defining relevant themes for each research round, crafting discussion guides to ensure we targeted the right user scenarios, and conducting detailed analyses after each session. One of the key challenges I faced was ensuring that every insight was actionable and traceable. As a user advocate, it was critical that no valuable feedback got lost in translation.</p>
+      <p>After experimenting with several methods, I developed a structured Excel-based tracking system that bridged both design and development perspectives. This document evolved into a single source of truth, enabling the team to filter and prioritize findings, classify insights by theme or feature, track status and ownership, and document decisions and comments from cross-functional reviews.</p>
+
+      <h3>Sustaining Partner Engagement</h3>
+      <p>Maintaining consistent engagement with design partners over several months was another significant challenge. Midway through, I observed a drop in participation — session cancellations and reduced interest indicated a need to reinvigorate the experience.</p>
+      <p>To address this, I redesigned the research sessions to be more interactive and engaging by introducing a variety of methods: card sorting exercises, scenario-based discussions, and clickable prototypes with task flows. This refreshed format not only reignited partner interest but also enhanced the richness of the feedback. Sessions became more collaborative, and the insights gathered were more grounded in real use cases.</p>
+
+      <h3>Takeaways</h3>
+      <ul>
+        <li><strong>Process matters:</strong> A well-structured system for documenting and surfacing insights helps drive better decisions and cross-functional alignment.</li>
+        <li><strong>Flexibility is key:</strong> Adapting methods based on stakeholder behavior and feedback can significantly improve participation and research outcomes.</li>
+        <li><strong>Advocating for users is ongoing:</strong> It’s not just about collecting feedback — it's about making sure that feedback drives meaningful change.</li>
+      </ul>
+
+      <h2>Peek into the user interface</h2>
+      <div class="media-grid-2">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/dashboard-redesign.png" alt="Redesigned PowerVC dashboard">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/create-network-redesign.png" alt="Redesigned Create Network flow">
+        </div>
+      </div>
+      <p class="media-caption">The redesigned dashboard surfaces errors, warnings, and pending issues upfront with direct action buttons (left). The Create Network flow groups general info, SE adapters, and SR-IOV adapters into one tabbed view, cutting the context-shifting from the legacy flow (right).</p>
+      <div class="highlight-box">
+        <p>“View critical & important information upfront, act quickly on errors, warnings & pending issues, personalize the dashboard on a need basis.”</p>
+      </div>
+      <p>Every critical number — errors, warnings, pending, live resource usage — is visible without a click, with a direct "Take action" path next to each. History charts carry inline tooltips and flexible time windows, so diagnosing a spike no longer means leaving the page.</p>
+
+      <h3>Hosts</h3>
+      <p>Alan and Monica manage hosts daily. The redesigned list surfaces status, VM count, and utilization at a glance, with common actions — maintenance mode, remote restart, edit connections — one click away instead of buried in a detail page. The detail view keeps power state, processor, and memory visible immediately, without requiring a tab switch first.</p>
+      <div class="media-grid-2">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/hosts-list.png" alt="Redesigned Hosts list with quick actions">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/host-detail-view.png" alt="Redesigned Host detail view">
+        </div>
+      </div>
+
+      <h3>Virtual Machines</h3>
+      <p>Steve's day-to-day work is dominated by routine VM tasks, so the list view exposes status and quick actions — capture, migrate, restart, stop — directly from a row-level menu. The detail view keeps processor, memory, and task state pinned in a persistent side panel, so checking health no longer means navigating away from the record you're editing.</p>
+      <div class="media-grid-2">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/vm-list.png" alt="Redesigned Virtual Machines list with row actions">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/vm-detail.png" alt="Redesigned Virtual Machine detail with persistent metrics panel">
+        </div>
+      </div>
+
+      <h3>Tasks</h3>
+      <p>The Discovery findings named this directly: "there is no flow in completing a task, a lot of context shifts are there." Running and scheduled tasks are now consolidated into a single view with editable columns, so users can surface exactly the fields — duration, owner, comments — they need for their workflow, instead of hunting across disconnected screens.</p>
+      <div class="media-grid-2">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/tasks-running.png" alt="Redesigned running tasks view">
+        </div>
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="assets/tasks-scheduled.png" alt="Redesigned scheduled tasks view with editable columns">
+        </div>
+      </div>
+
+      <h3>Resource usage</h3>
+      <p>Alan's Hill Statement centered on running his environment without disruption — which means he needs to see resource pressure building before it becomes a problem. The Resource usage view breaks consumption down by owner across virtual processors, memory, and storage, replacing what had been manual, spreadsheet-driven tracking with a single, live source of truth.</p>
+      <div class="media-container">
+        <div class="window-header">
+          <div class="window-dot dot-red"></div>
+          <div class="window-dot dot-yellow"></div>
+          <div class="window-dot dot-green"></div>
+        </div>
+        <img src="assets/resource-usage.png" alt="Redesigned Resource usage view broken down by owner">
+      </div>
+
+
+      <h2>Design validation</h2>
+      <p>Design demonstrations were a pivotal step in validating our designs and ensuring a seamless user journey before code was hardened.</p>
+
       <h3>Demo‑driven validation</h3>
       <ul>
         <li>Live walk‑throughs let us observe users moving end‑to‑end through new flows, capture real‑time feedback, and spot hidden friction.</li>
         <li>Step‑by‑step guidance during the session surfaces language gaps, confusing transitions, or missing cues we might overlook in static reviews.</li>
         <li>Insights gathered feed directly into rapid iterations, tightening the loop between research and design and guaranteeing the UI stays grounded in actual user behaviour.</li>
-      </ul>
-
-      <h3>Complexity Analysis</h3>
-      <ul>
-        <li>Borrowed from IBM’s internal research toolbox, Complexity Analysis quantifies how difficult each step of a task feels to users.</li>
-        <li>Participants rate steps on six dimensions—context shifts, input parameters, navigational guidance, system feedback, error feedback, and new concepts.</li>
-        <li>The resulting “complexity map” highlights high‑load moments, helping teams prioritise simplification efforts where they matter most.</li>
       </ul>
 
       <h2>Unified impact</h2>
@@ -715,7 +1237,7 @@
       <h2>Beta testing</h2>
       <p>After the first release of PowerVC, we launched a formal Beta Testing Program to evaluate the product in real-world usage. I was responsible for the strategic planning and execution of this phase, ensuring it went beyond simple feature checks and contributed directly to shaping the product’s evolution.</p>
       
-      <h3>👩‍💼 My Responsibilities</h3>
+      <h3>My Responsibilities</h3>
       <ul>
         <li><strong>Customer Recruitment:</strong> Identified and onboarded a mix of new and existing users from different regions and domains to ensure diversity in feedback.</li>
         <li><strong>Trial Planning:</strong> Designed multiple testing environments (Hosted, On-site, and Remote).</li>
@@ -726,13 +1248,23 @@
       </ul>
 
       <h3>Key Signature Moments to Improve</h3>
-      <div class="media-container">
-        <div class="window-header">
-          <div class="window-dot dot-red"></div>
-          <div class="window-dot dot-yellow"></div>
-          <div class="window-dot dot-green"></div>
+      <div class="media-grid-2">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="https://static.wixstatic.com/media/0fd14c_19ad38ebbf8444d2be12eb58d274af77~mv2.jpeg" alt="Feedback collected from beta users">
         </div>
-        <img src="key-moments.jpg" alt="Key Signature Moments Flow">
+        <div class="media-container">
+          <div class="window-header">
+            <div class="window-dot dot-red"></div>
+            <div class="window-dot dot-yellow"></div>
+            <div class="window-dot dot-green"></div>
+          </div>
+          <img src="https://static.wixstatic.com/media/0fd14c_6e91866afe0b4646b7f58e5bbc9dc195~mv2.jpeg" alt="Beta feedback synthesis">
+        </div>
       </div>
       <ul>
         <li><strong>Before:</strong> Installation prep and onboarding (icons 1–3) – unclear steps and lack of guidance.</li>
