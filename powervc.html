@@ -1082,11 +1082,10 @@
       <p class="media-caption">Complexity scoring for the same task — "create a new image and deploy a VM" — across three stages: legacy UI, 2nd design mockup, and live redesigned UI. Scoring dropped as context shifts and input parameters were designed out step by step.</p>
 
       <h3>Conducting Demos</h3>
-      <p>Conducting demonstrations serves as a pivotal step in ensuring design validation and a seamless user journey. These demos provide a platform to meticulously navigate users through the entire experience, validating the efficacy of our designs. By guiding users step by step, we gain valuable insights into usability, identifying potential hurdles, and refining the design to enhance user satisfaction. This iterative process of demo-based validation enables us to fine-tune each aspect, ensuring a user-centric journey that meets expectations and fosters a sense of ease and accomplishment.</p>
-      <p>We empowered users by granting them the capability to download the PowerVC test environment, allowing them to conduct testing on predefined scenarios. This hands-on approach enabled users to provide valuable feedback based on their experiences.</p>
+      <p>Once design concepts existed, we ran structured demonstrations that walked customers through the full experience end to end — validating whether our designs actually solved the problems research had surfaced, not just whether they looked right. We also gave users a downloadable PowerVC test environment to try predefined scenarios independently, generating hands-on feedback outside the guided sessions. How this paired with Complexity Analysis to validate designs quantitatively is covered under Design Validation below.</p>
 
       <h3>Hosting Beta Trials</h3>
-      <p>We facilitated hosted beta testing, engaging in one-hour remote sessions with customers. During these sessions, users collaboratively reviewed the environment with our research and design team, fostering a dynamic exchange of insights. Subsequent to these trials, we distributed a survey to gather comprehensive feedback, further enriching our understanding and refining the product based on user input.</p>
+      <p>Beyond demos, we ran hosted beta sessions — one-hour remote walkthroughs where customers reviewed the live environment alongside our research and design team, followed by a feedback survey. This fed directly into the formal Beta Testing Program, covered in full later in this case study.</p>
 
       <h2>Key insights</h2>
       <p>Based on the initial data gathered there were areas that required to be addressed:</p>
@@ -1102,29 +1101,29 @@
 
       <div class="media-grid-4">
         <div class="media-container">
-          <img src="https://static.wixstatic.com/media/0fd14c_bcd01c8512254c47886ed5264a16a677~mv2.png" alt="Redesigned configuration screen with guided wizard">
+          <img src="assets/create-network-redesign.png" alt="Guided multi-step Create Network flow">
         </div>
         <div class="media-container">
-          <img src="https://static.wixstatic.com/media/0fd14c_7ebd2d7da3d34ef9a5e8869fac9b547e~mv2.png" alt="Improved message panel with clearer feedback">
+          <img src="assets/messages-panel.png" alt="Improved message panel with hover detail and delete confirmation">
         </div>
         <div class="media-container">
-          <img src="https://static.wixstatic.com/media/0fd14c_40bc65bcf5cb4457bc89c9f4e24e033c~mv2.jpg" alt="Host creation flow with recognition-based options">
+          <img src="assets/host-detail-clean.png" alt="Host detail view with status visible at a glance, no drill-down required">
         </div>
         <div class="media-container">
-          <img src="https://static.wixstatic.com/media/0fd14c_6a0e6a684e024d4c801d6de605b9cfcf~mv2.png" alt="Redesigned dashboard with simplified navigation">
+          <img src="assets/config-screen.png" alt="Configuration screen grouped into clear, navigable sections">
         </div>
       </div>
-      <p class="media-caption">Left to right, top to bottom: guided configuration wizard, clearer system messaging, recognition-based host creation, and simplified dashboard navigation.</p>
+      <p class="media-caption">Left to right, top to bottom: guided multi-step network creation, clearer message feedback with delete confirmation, at-a-glance host status, and clearly grouped configuration navigation.</p>
 
       <h2>The discovery</h2>
-      <p>We pinpointed primarily minor issues, which can be readily resolved without encountering any critical problems. However, these seemingly minor issues, from a user experience standpoint, do hinder a seamless and intuitive journey. General sentiment from NPS is that PowerVC is a great product that simplifies deployments and management and offers the possibility of a private cloud, but it can be quirky.</p>
+      <p>Research didn't overturn the problem statement — it confirmed it and gave it sharper edges. None of what surfaced was a single critical blocker; it was a pattern of smaller frictions that, together, meaningfully slowed people down. General sentiment from NPS was consistent with this: PowerVC is a genuinely strong product that simplifies deployments and management, but the day-to-day experience of using it could be quirky in ways that added up.</p>
       <ol>
-        <li>The information architecture, which extended quite deeply, reaching up to 6 levels. Users were occasionally able to link to other panels in ways that lacked coherence, a sentiment confirmed through customer research sessions.</li>
-        <li>There is no flow in completing a task, a lot of context shifts are there.</li>
+        <li>The "fragmented workflows" flagged upfront had a clear shape in practice: an information architecture reaching up to 6 levels deep, with panels occasionally linking to each other in ways that lacked coherence — a pattern confirmed directly in customer research sessions, not just assumed.</li>
+        <li>Within those workflows specifically, there was no coherent flow from one step of a task to the next — a lot of context shifts, with little sense of progression.</li>
         <li>The system's performance occasionally lags, while certain feedback messages prove perplexing or irrelevant.</li>
         <li>The pace of interaction suffers delays due to misleading cues, technical intricacies, and inadequate feedback messages.</li>
-        <li>An absence of upfront contextual information or help demands extra time and effort from users.</li>
-        <li>Panels tend to be overcrowded, hosting multiple focal points that contribute to an overall sense of chaos and disharmony.</li>
+        <li>The high training costs flagged upfront traced back to a specific gap: an absence of upfront contextual information or help, demanding extra time and effort from new users.</li>
+        <li>And the inconsistency users described wasn't abstract — it showed up as overcrowded panels hosting multiple competing focal points, giving the interface an overall sense of chaos and disharmony rather than a coherent hierarchy.</li>
       </ol>
 
       <h2>OOBE Workshop: Redesigning the PowerVC Onboarding Experience</h2>
@@ -1230,6 +1229,19 @@
       <div class="media-container">
         <img src="assets/resource-usage.png" alt="Redesigned Resource usage view broken down by owner">
       </div>
+
+      <h3>Security Updates</h3>
+      <p>This is the flow behind Alan's Hill Statement directly: <em>"Alan, a system architect, can ensure his PowerVC UI is secure by applying updates on the fly."</em> Rather than patching becoming a disruptive, manually-coordinated event, the system surfaces a security update as a persistent but non-blocking banner. Alan can act immediately, preview exactly what the update changes before committing, or schedule it for a maintenance window — without losing track of what's pending or opening a separate change-management tool.</p>
+      <div class="media-container">
+        <img src="assets/security-update-banner.png" alt="Persistent, non-blocking security update banner on the Virtual Machines list">
+      </div>
+      <div class="media-container">
+        <img src="assets/security-update-modal.png" alt="Security update modal previewing new features before committing, with Update now, Schedule for later, or Ignore">
+      </div>
+      <div class="media-container">
+        <img src="assets/security-update-schedule.png" alt="Scheduling the update for a specific date and maintenance window">
+      </div>
+      <p class="media-caption">Banner → preview what's changing → commit now or schedule for a maintenance window. Patch management becomes a planned decision, not an interruption.</p>
 
 
       <h2>Design validation</h2>
