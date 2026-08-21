@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atradius Case Study - Sukhmani Bedi</title>
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --bg: #0b0b0d;
+      --card-bg: rgba(20, 20, 23, 0.75);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.22);
+      --text: #f4f4f5;
+      --muted: #8e8e93;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 900px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Navigation Bar */
+    .framer-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 68px;
+      background: rgba(10, 10, 12, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .framer-navbar-inner {
+      width: 100%;
+      max-width: 1120px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-items {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* Main Container */
+    .case-study-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 140px 24px 100px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 32px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .case-subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* Metadata Grid */
+    .case-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 60px;
+    }
+
+    .meta-item span:first-child {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .meta-item span:last-child {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Framed Hero Image Container */
+    .case-hero-container {
+      max-width: 740px;
+      margin: 40px auto 60px auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .case-hero-img {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      cursor: zoom-in;
+    }
+
+    .case-hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Standard media frame — clean border, no fake browser chrome */
+    .media-container {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 40px 0;
+      background: #ffffff;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      cursor: zoom-in;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .media-container:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .media-container:focus-visible,
+    .case-hero-img:focus-visible {
+      outline: 2px solid #c4a7ff;
+      outline-offset: 3px;
+    }
+
+    .media-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Multi-image grid variants (reuse media-container framing per tile) */
+    .media-grid-2, .media-grid-3, .media-grid-4 {
+      display: grid;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .media-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .media-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .media-grid-4 { grid-template-columns: repeat(2, 1fr); }
+
+    .media-grid-2 .media-container,
+    .media-grid-3 .media-container,
+    .media-grid-4 .media-container {
+      margin: 0;
+    }
+
+    .media-caption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* Heuristic evaluation: per-screen finding cards */
+    .eval-card {
+      margin: 40px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+
+    .eval-shot {
+      border-bottom: 1px solid var(--border);
+      cursor: zoom-in;
+    }
+
+    .eval-shot:focus-visible {
+      outline: 2px solid #c4a7ff;
+      outline-offset: -2px;
+    }
+
+    .eval-shot img {
+      width: 100%;
+      display: block;
+    }
+
+    .eval-screen-name {
+      padding: 18px 24px 0 24px;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .eval-list {
+      padding: 8px 24px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .eval-item {
+      display: flex;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .eval-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .eval-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .heuristic-tag {
+      display: inline-block;
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #c4a7ff;
+      background: rgba(196, 167, 255, 0.1);
+      border: 1px solid rgba(196, 167, 255, 0.25);
+      border-radius: 100px;
+      padding: 3px 10px;
+      margin-bottom: 8px;
+    }
+
+    .eval-issue {
+      font-size: 0.92rem;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .eval-fix {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .eval-fix strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Carousel Specific Component Styling */
+    .carousel-container {
+      width: 100%;
+      margin: 40px 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .carousel-slide-viewport {
+      width: 100%;
+      position: relative;
+      background: #ffffff;
+    }
+
+    .carousel-slide-viewport img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      background: rgba(15, 15, 18, 0.9);
+    }
+
+    .carousel-counter {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .carousel-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .carousel-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--border-hover);
+    }
+
+    /* Content Typography */
+    .case-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .case-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .case-content p {
+      font-size: 1.02rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .case-content ul, .case-content ol {
+      margin-bottom: 24px;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .case-content li {
+      margin-bottom: 10px;
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    .highlight-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--text);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    .framer-footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 0 30px 0;
+      margin-top: 100px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .footer-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .case-meta-grid, .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .media-grid-2, .media-grid-3, .media-grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .footer-links {
+        align-items: flex-start;
+      }
+    }
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-hover);
+      border-radius: 100px;
+      padding: 8px 18px;
+      cursor: pointer;
+    }
+
+    /* Persona carousel */
+    .persona-carousel {
+      margin: 32px 0;
+    }
+
+    .persona-track {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .persona-slide {
+      display: none;
+    }
+
+    .persona-slide.active {
+      display: block;
+    }
+
+    .persona-slide .media-container {
+      margin: 0;
+      cursor: zoom-in;
+    }
+
+    .persona-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .persona-nav-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-hover);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: background 0.15s ease;
+    }
+
+    .persona-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .persona-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .persona-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-hover);
+      background-clip: content-box;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .persona-dot.active {
+      background: var(--text);
+      transform: scale(1.3);
+    }
+
+    /* Placeholder for screenshots not yet supplied */
+    .img-placeholder {
+      width: 100%;
+      min-height: 220px;
+      border: 1px dashed var(--border-hover);
+      border-radius: 12px;
+      margin: 32px 0;
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .img-placeholder .ph-icon {
+      font-size: 1.4rem;
+      opacity: 0.4;
+    }
+
+    .img-placeholder .ph-label {
+      font-family: var(--font-mono, var(--font-sans));
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .img-placeholder .ph-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 480px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="framer-navbar">
+    <div class="framer-navbar-inner">
+      <a href="index.html" class="brand-logo">Sukhmani Bedi</a>
+      <nav class="nav-items">
+        <a href="index.html#projects" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About me</a>
+        <a href="index.html#process" class="nav-link">Contact</a>
+      </nav>
+      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch ↗</a>
+    </div>
+  </header>
+
+  <!-- Case Study Main Content -->
+  <main class="case-study-shell">
+    <a href="index.html" class="back-link">← Back to Projects</a>
+
+    <span class="meta-label">CREDIT INSURANCE — ENTERPRISE CASE STUDY</span>
+    <h1 class="case-title">Atradius</h1>
+    <p class="case-subtitle">Atradius is a global provider of credit insurance, surety, and debt collection services, helping businesses manage trade risk and grow with confidence. With a presence in over 50 countries, Atradius supports companies of all sizes with tools to protect receivables and make informed credit decisions in an ever-changing market.</p>
+
+    <div class="case-meta-grid">
+      <div class="meta-item">
+        <span>Focus Group</span>
+        <span>Brokers, Financial Advisors, Insurers</span>
+      </div>
+      <div class="meta-item">
+        <span>Sector</span>
+        <span>Credit Insurance</span>
+      </div>
+      <div class="meta-item">
+        <span>Role</span>
+        <span>UX Designer</span>
+      </div>
+      <div class="meta-item">
+        <span>Duration</span>
+        <span>24 months — Ongoing</span>
+      </div>
+    </div>
+
+    <!-- Framed Hero Image Container -->
+    <div class="case-hero-container">
+      <div class="img-placeholder" style="margin: 0; border: none;">
+        <div class="ph-icon">🖼</div>
+        <div class="ph-label">Hero screenshot needed</div>
+        <div class="ph-desc">The performance dashboard, or another flagship screen, works well here — matches the treatment used on the PowerVC case study.</div>
+      </div>
+    </div>
+
+    <div class="case-content">
+      <h2>Project overview</h2>
+      <p>Atradius embarked on a strategic transformation initiative to modernize its legacy credit insurance platform — internally known as the "Symphony Application" — which had become outdated, complex, and difficult to maintain. The redesign, part of the broader Arcade program, aimed to deliver a next-generation digital solution that would enhance user experience, streamline business processes, and support long-term technological scalability.</p>
+      <p>The project applied the <strong>Coexistence Principle</strong>: legacy systems continued running in parallel with the new platform through the transition, minimizing disruption while paving the way for incremental improvement.</p>
+
+      <h2>Problem statement</h2>
+      <p>Atradius was operating on an outdated legacy system — Symphony — that was difficult to maintain, unintuitive for users, and unable to scale with the evolving needs of the business. Outdated workflows led to inefficient processes, user frustration, and high support overhead. The legacy infrastructure also limited the company's ability to innovate and respond quickly to market demands.</p>
+      <p>There was a pressing need to:</p>
+      <ul>
+        <li>Simplify and automate complex workflows.</li>
+        <li>Improve usability and user guidance.</li>
+        <li>Transition to a more modern, scalable IT architecture.</li>
+        <li>Strengthen customer value through improved service accessibility and experience.</li>
+      </ul>
+
+      <h2>Design process</h2>
+
+      <h3>Discovery</h3>
+      <p>To ensure the redesigned platform aligned with the real needs of its end users, we developed key user personas grounded in stakeholder interviews — including Mike, an Account Manager, and Daphne, a Customer Credit Manager. These personas helped the team empathize with users' daily challenges, prioritize features, and design workflows that genuinely supported their goals, rather than just digitizing the old ones.</p>
+      <p>After synthesizing insights from stakeholder interviews, user observations, and workflow analysis, we moved into the definition phase — translating findings into a strategic foundation for the rest of the design process.</p>
+
+      <div class="img-placeholder">
+        <div class="ph-icon">🖼</div>
+        <div class="ph-label">Discovery / persona artifacts needed</div>
+        <div class="ph-desc">Two images from the original deck go here — likely persona summaries or research synthesis boards.</div>
+      </div>
+
+      <h3>User Journey Mapping & Opportunity Identification</h3>
+      <p>We created detailed user journey maps for the core personas — Mike and Daphne — visualizing the end-to-end experience across tasks like policy creation, credit risk analysis, and customer communication. Mapping each touchpoint let us:</p>
+      <ul>
+        <li>Pinpoint moments of friction, such as redundant data entry or unclear navigation.</li>
+        <li>Identify delays caused by manual processes or system dependencies.</li>
+        <li>Recognize emotional pain points, like frustration from slow data retrieval or limited visibility into account status.</li>
+      </ul>
+      <p>That mapping surfaced clear opportunities for simplification:</p>
+      <ul>
+        <li>Streamlining multi-step workflows into guided, linear processes.</li>
+        <li>Reducing toggling between multiple legacy interfaces.</li>
+        <li>Consolidating key information on dashboards and summary screens.</li>
+        <li>Automating repetitive tasks such as data population and risk validation.</li>
+      </ul>
+      <p>These opportunities directly informed the early wireframes.</p>
+
+      <div class="media-grid-2">
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Journey map needed</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Opportunity map needed</div>
+        </div>
+      </div>
+
+      <h3>Expert Evaluation</h3>
+      <p>Alongside the generative research, a heuristic pass on the existing Symphony application surfaced several structural issues. The application is data-heavy, but screen space wasn't being used effectively due to a low target resolution. While the interface aimed to align with company branding, the style guide had real discrepancies — red tertiary buttons, for instance, could easily be misread as error states. Visual hierarchy was thin overall, leaving the interface feeling flat.</p>
+      <p>Two takeaways guided the redesign directly:</p>
+      <ul>
+        <li>Navigation needed a clear structure so users could find their way around without guesswork.</li>
+        <li>Data on screen needed to be actionable, not just present — information users could immediately act on, not just read.</li>
+      </ul>
+
+      <h2>Defining Success Metrics</h2>
+      <p>Establishing meaningful success metrics was critical to ensuring the redesigned platform delivered measurable value, not just a fresh coat of paint. We approached it in three steps.</p>
+
+      <h3>1. Stakeholder Alignment Workshops</h3>
+      <p>We ran collaborative workshops with cross-functional stakeholders — Product Managers, Business Analysts, UX Researchers, IT Leads, and Customer Support Managers — exploring business priorities for the Arcade platform, known pain points from internal and external users, operational KPIs already in use, and opportunities to introduce UX-specific measures like satisfaction and efficiency. This aligned the team on what "success" meant from both a strategic and a practical, day-to-day perspective.</p>
+
+      <h3>2. Mapping User Goals to Business Objectives</h3>
+      <p>We used persona insights — Mike's need for faster client servicing, Daphne's need for better data access — to map individual user goals to high-level business outcomes:</p>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0;">
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 8px;">01</div>
+          <div style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 600;">Improved Productivity</div>
+        </div>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 8px;">02</div>
+          <div style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 600;">Enhanced Customer Service</div>
+        </div>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 8px;">03</div>
+          <div style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 600;">Operational Efficiency</div>
+        </div>
+      </div>
+
+      <h3>3. Identifying Observable Indicators</h3>
+      <p>Once goals were aligned, we worked with data and IT teams to identify observable, trackable indicators already available in the system:</p>
+      <ul>
+        <li>Time-on-task, measured via system logs.</li>
+        <li>Support ticket volume, tracked pre- and post-launch.</li>
+        <li>Adoption rate, measured via login frequency and feature usage.</li>
+      </ul>
+
+      <h2>How might we?</h2>
+      <p>Moving into the design and validation phase, the focus shifted to migrating legacy functionality while addressing pain points across roles — admins, brokers, underwriters — across critical workflows like offer creation through invoicing. We framed key design opportunities as "How Might We" questions to keep the team anchored on outcomes, not just features.</p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0;">
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: #c4a7ff; margin-bottom: 10px;">01</div>
+          <div style="font-weight: 600; margin-bottom: 8px;">How might we provide a valuable and engaging experience to our users?</div>
+          <div style="font-size: 0.88rem; color: var(--muted);">Ensure interfaces are intuitive, responsive, and personalized to each user role's needs.</div>
+        </div>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: #c4a7ff; margin-bottom: 10px;">02</div>
+          <div style="font-weight: 600; margin-bottom: 8px;">How might we surface critical information at the right time to reduce errors?</div>
+          <div style="font-size: 0.88rem; color: var(--muted);">Highlight mandatory fields, validations, and review checkpoints during data entry or approval stages.</div>
+        </div>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: #c4a7ff; margin-bottom: 10px;">03</div>
+          <div style="font-weight: 600; margin-bottom: 8px;">How might we support users in completing complex workflows with ease and clarity?</div>
+          <div style="font-size: 0.88rem; color: var(--muted);">Break down large processes into manageable steps and provide contextual guidance at each stage.</div>
+        </div>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: #c4a7ff; margin-bottom: 10px;">04</div>
+          <div style="font-weight: 600; margin-bottom: 8px;">How might we reduce cognitive load while preserving access to legacy system knowledge?</div>
+          <div style="font-size: 0.88rem; color: var(--muted);">Layer in contextual guidance and progressive disclosure so experienced users aren't slowed down, and new users aren't lost.</div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <p>"Better customer experience, better control and transparency of data — the system should deliver accurate output in multiple formats depending on customer preference."</p>
+      </div>
+
+      <h3>Continuous Feedback Loop</h3>
+      <p>To keep these questions honest, the process stayed iterative throughout:</p>
+      <ul>
+        <li>Regular review sessions with subject matter experts (SMEs) to evaluate user stories.</li>
+        <li>Design hypotheses validated through early and frequent low- and high-fidelity prototypes.</li>
+        <li>Customer demo sessions to test baseline designs and gather actionable feedback.</li>
+        <li>Real-time input used to refine user flows, sharpen clarity, and stay aligned with business needs.</li>
+      </ul>
+
+      <h2>Focus Areas</h2>
+      <p>Research consistently surfaced the same three needs, in different words, across personas and workshops. Three pillars organized the design work going forward:</p>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0;">
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+          <div style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: 10px;">More Automation</div>
+          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.5;">Bulk uploads for multiple entries — configuring or updating offers, policies, declarations, invoices — removed a major source of repetitive manual work.</div>
+        </div>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+          <div style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: 10px;">More Control</div>
+          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.5;">Less manual work didn't mean less oversight — clear audit trails and the option to pause or undo an automated process kept users in control as tasks got faster.</div>
+        </div>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+          <div style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: 10px;">Fewer Errors</div>
+          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.5;">A review-and-preview step before submission caught mistakes before they became support tickets — and better data transparency reduced errors at the source.</div>
+        </div>
+      </div>
+      <p>The same principle extended to actionability and notifications: surfacing what a user should do next when a dashboard sat empty, and flagging meaningful account activity — a policy update, a new offer requiring review — so nothing important got missed.</p>
+
+      <h2>Wireframes & Prototyping</h2>
+
+      <h3>Experience 1 — Compare Policies & Offers</h3>
+      <p>The "Compare Policies & Offers (Complex)" feature streamlines decision-making in MSA and renewal processes by letting users compare multiple policies, multiple offers, or a single policy against related offers. It supports advanced filtering and customizable comparisons across modules, variables, document groups, and bank accounts, with both on-screen and Excel export options. The tool only surfaces currently effective or non-end-dated records, keeping comparisons accurate for complex commercial case evaluations.</p>
+      <div class="media-grid-2">
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Compare Policies & Offers — main screen</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Compare Policies & Offers — detail / export</div>
+        </div>
+      </div>
+
+      <h3>Experience 2 — Performance Dashboard</h3>
+      <p>As part of a data-driven reporting solution, I designed and developed a dynamic dashboard giving users a real-time overview of transaction activity and operational performance. It displays event types and transaction counts for the current and previous two months, graphical summaries of support touchpoints (open/closed errors and business tasks), and conversion percentages across the same rolling three-month window — built for clarity, quick comparison, and actionable insight through visual cues and data segmentation.</p>
+      <p>Alongside it, a report generation module lets users filter and request detailed reports by branch, legal entity, geography, and date range, downloadable in Excel with options to view details or run custom trend analysis. Together, this significantly improved visibility, traceability, and operational decision-making for business units across regions.</p>
+      <div class="media-grid-2">
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Performance dashboard — overview</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Performance dashboard — report generation</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Performance dashboard — trend view</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Performance dashboard — export detail</div>
+        </div>
+      </div>
+      <p>Once screens were designed and user journeys updated, I built detailed UI flows and interactive prototypes so stakeholders could clearly understand each feature — including multiple scenarios and contextual explanations. These assets were central to a smooth handoff, giving development, services, and testing teams comprehensive documentation to work from.</p>
+
+      <h2>Usability Testing</h2>
+      <p>We ran multiple demo sessions with subject matter experts (SMEs) and product owners to showcase the features we'd designed. For these, I built interactive prototypes that let users experience key flows, behaviors, and system interactions firsthand — a hands-on approach that helped stakeholders understand design intent, not just look at static screens.</p>
+      <p>Alongside the demos, I created a structured feedback survey so users could share ratings, suggestions, and overall impressions. Combining real-time interaction with targeted feedback gave a clear read on how well the designs matched user needs and expectations, and directly informed the next round of iteration.</p>
+
+      <h2>Next steps</h2>
+      <p>As the project continues, the focus is on optimizing the design process itself to deliver a more cohesive, user-centric product:</p>
+      <ul>
+        <li><strong>Style Guide Enhancements</strong> — proposing improvements to consistency, accessibility, and scalability. Since the guide has been in use since the standard release, this included a thorough impact analysis to ensure changes land without disrupting established workflows.</li>
+        <li><strong>Expanded Usability Testing</strong> — extending testing to cover additional features, surfacing further pain points and supporting continued iterative improvement.</li>
+        <li><strong>Complexity Analysis for Workflow Optimization</strong> — applying the same complexity-scoring method used on PowerVC to identify friction and over-engineering in the Atradius journey, guiding where simplification will have the most impact.</li>
+      </ul>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Features designed and delivered across the Arcade platform</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Stakeholder demo sessions run to validate designs</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="framer-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-heading">Next case study</div>
+        <a href="powervc.html" class="footer-sub" style="color: var(--text); text-decoration: none;">IBM PowerVC ↗</a>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
+        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lightbox-close" onclick="closeLightbox(event)">Close ✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    let lastFocusedTrigger = null;
+
+    function openLightbox(src, alt, triggerEl) {
+      const overlay = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      img.alt = alt || '';
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      const nav = document.querySelector('.framer-navbar');
+      if (nav) nav.style.visibility = 'hidden';
+      lastFocusedTrigger = triggerEl || document.activeElement;
+      document.querySelector('.lightbox-close').focus();
+    }
+
+    function closeLightbox(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+      const nav = document.querySelector('.framer-navbar');
+      if (nav) nav.style.visibility = '';
+      if (lastFocusedTrigger) lastFocusedTrigger.focus();
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const frames = document.querySelectorAll('.case-hero-img, .media-container');
+      frames.forEach(function (frame) {
+        const img = frame.querySelector('img');
+        if (!img) return;
+
+        frame.setAttribute('tabindex', '0');
+        frame.setAttribute('role', 'button');
+        frame.setAttribute('aria-label', 'View larger: ' + (img.getAttribute('alt') || 'image'));
+
+        function trigger(e) {
+          e.stopPropagation();
+          openLightbox(img.getAttribute('src'), img.getAttribute('alt'), frame);
+        }
+
+        frame.addEventListener('click', trigger);
+        frame.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            trigger(e);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
