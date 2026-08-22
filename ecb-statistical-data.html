@@ -733,10 +733,8 @@
     </div>
 
     <div class="case-hero-container">
-      <div class="img-placeholder" style="margin: 0; border: none;">
-        <div class="ph-icon">🖼</div>
-        <div class="ph-label">Hero screenshot needed</div>
-        <div class="ph-desc">Homepage or a key dashboard view of the new EDP works well here.</div>
+      <div class="case-hero-img">
+        <img src="assets/sdw-homepage-dashboard.png" alt="ECB Data Portal homepage with live economic indicator dashboard">
       </div>
     </div>
 
@@ -798,16 +796,31 @@
         <li><strong>Personalized dashboards:</strong> users could save favorite datasets, set up notifications, and manage data carts.</li>
       </ul>
       <p>These changes streamlined the user journey — reducing friction and improving overall satisfaction.</p>
+      <div class="media-container">
+        <img src="assets/sdw-nav-megamenu.png" alt="Global navigation mega-menu revealing four levels of the site hierarchy through progressive disclosure">
+      </div>
+      <p class="media-caption">The header's navigation menu, expanded — four levels deep (Financial markets and interest rates → Bank interest rates → Interest rates → Loans/Deposits), revealed one column at a time so the full depth of the site never has to be shown at once.</p>
       <div class="media-grid-2">
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">New navigation structure</div>
+        <div class="media-container">
+          <img src="assets/sdw-data-landing.png" alt="Data landing page with Browse by Categories, Tags, Geography, and Datasets">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Search & filtering</div>
+        <div class="media-container">
+          <img src="assets/sdw-categories-filtered.png" alt="Data categories with live keyword filtering, showing results narrow as you type">
         </div>
       </div>
+
+      <h3>Search Experience</h3>
+      <p>The original design strategy described this as "enhanced search functionality" — one line in a much bigger plan. In practice it became one of the most detailed parts of the redesign, because for a portal with this much data, search isn't a feature bolted onto navigation — it's how most users actually find what they came for.</p>
+      <p>The search bar sits persistently in the header and opens straight into <strong>popular searches</strong> before a user types anything — Inflation, Monetary aggregate, Population, Government debt — giving people a starting point instead of a blank box. Once typing begins, the system tolerates typos rather than failing silently: searching "Infalton" surfaces a "Do you mean: Inflation" correction alongside ranked results, the most relevant hits (Economic Bulletin, Inflation rate HICP), and the user's own recent queries. That combination — forgiving input, ranked relevance, and personal history — is what turns a search box into something people trust enough to use as their primary way into the data, rather than a fallback when navigation fails them.</p>
+      <div class="media-grid-2">
+        <div class="media-container">
+          <img src="assets/sdw-search-popular.png" alt="Search bar showing popular searches before the user types anything">
+        </div>
+        <div class="media-container">
+          <img src="assets/sdw-search-autocomplete.png" alt="Search with typo tolerance showing a Do you mean correction, most relevant hits, and recent queries">
+        </div>
+      </div>
+      <p class="media-caption">Left: the empty-state search, surfacing popular queries as a starting point. Right: typo-tolerant search mid-query, correcting "Infalton" to "Inflation" while showing ranked results and recent history.</p>
 
       <h3>Responsive & Accessible Design</h3>
       <p>Recognizing growing mobile usage, we prioritized a responsive approach:</p>
@@ -816,6 +829,10 @@
         <li><strong>Accessibility compliance:</strong> adherence to WCAG guidelines, including keyboard navigation and screen reader compatibility.</li>
       </ul>
       <p>This commitment to inclusivity expanded who could actually use the portal.</p>
+      <div class="media-container">
+        <img src="assets/sdw-mobile-homepage-full.png" alt="Full mobile homepage showing the indicator dashboard, latest updates, data portal news, popular topics, and upcoming statistical releases">
+      </div>
+      <p class="media-caption">The mobile homepage carries the full desktop experience — indicator dashboard, latest updates, news, popular topics, and upcoming releases — reflowed rather than stripped down.</p>
 
       <h3>Interactive Data Visualization</h3>
       <p>To serve both expert and non-expert users, we integrated advanced visualization tools:</p>
@@ -825,10 +842,10 @@
         <li><strong>Export options:</strong> download visualizations for offline analysis or presentation.</li>
       </ul>
       <p>These tools demystified complex data, making it more approachable and genuinely actionable.</p>
-      <div class="img-placeholder">
-        <div class="ph-icon">🖼</div>
-        <div class="ph-label">Interactive data visualization view</div>
+      <div class="media-container">
+        <img src="assets/sdw-timeseries-detail.png" alt="Time series detail page with interactive chart, and Edit, Store, Favourite, Compare, Notification, Download, and Share actions">
       </div>
+      <p class="media-caption">Every dataset opens into a detail view built around the chart itself — compare, favourite, get notified on updates, or export, all without leaving the page.</p>
 
       <h3>Editorial Content & Community Engagement</h3>
       <p>Data without context is easy to misread, so we enriched the portal editorially:</p>
@@ -858,21 +875,17 @@
 
       <h2>UI Designs</h2>
       <div class="media-grid-2">
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Final UI — screen 1</div>
+        <div class="media-container">
+          <img src="assets/sdw-dataset-table.png" alt="Dataset table with status indicators and CSV/SDMX bulk download">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Final UI — screen 2</div>
+        <div class="media-container">
+          <img src="assets/sdw-monetary-results.png" alt="Monetary aggregates results with tag-based filter sidebar">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Final UI — screen 3</div>
+        <div class="media-container">
+          <img src="assets/sdw-advanced-filters.png" alt="Advanced filters modal with faceted filtering across frequency, counterpart area, and reference sector">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Final UI — screen 4</div>
+        <div class="media-container">
+          <img src="assets/sdw-mobile-dashboard.png" alt="Mobile view of the homepage indicator dashboard">
         </div>
       </div>
 
