@@ -868,37 +868,17 @@
       </div>
 
       <h3>Search Experience</h3>
-      <p>The original design strategy described this as "enhanced search functionality" — one line in a much bigger plan. In practice it became one of the most detailed parts of the redesign, because for a portal with this much data, search isn't a feature bolted onto navigation — it's how most users actually find what they came for. Four moments in that journey mattered most:</p>
-      <div class="shot-carousel" id="search-carousel">
-        <div class="shot-track">
-          <div class="shot-slide active" data-index="0">
-            <div class="media-container"><img src="assets/sdw-search-1-empty.png" alt="Search bar showing popular searches before the user types anything"></div>
-            <p class="media-caption"><strong>1. Searching</strong> — the search bar opens straight into popular queries (Inflation, Monetary aggregate, Population, Government debt) before a user types anything, giving people a starting point instead of a blank box.</p>
-          </div>
-          <div class="shot-slide" data-index="1">
-            <div class="media-container"><img src="assets/sdw-search-2-suggestions.png" alt="System suggesting completions and most relevant hits as the user types Inflat"></div>
-            <p class="media-caption"><strong>2. System suggests</strong> — mid-query ("Inflat"), the system offers likely completions, ranks the most relevant hits (Economic Bulletin, Inflation rate HICP), and surfaces the user's own recent queries, all before they've finished typing.</p>
-          </div>
-          <div class="shot-slide" data-index="2">
-            <div class="media-container"><img src="assets/sdw-search-3-typo.png" alt="Search catching a misspelling, showing a Do you mean Inflation correction, with the results page visible underneath"></div>
-            <p class="media-caption"><strong>3. Misspelling caught</strong> — searching "Infalton" doesn't fail silently. A "Do you mean: Inflation" correction sits right above the suggestion list, so a typo never becomes a dead end.</p>
-          </div>
-          <div class="shot-slide" data-index="3">
-            <div class="media-container"><img src="assets/sdw-search-4-results.png" alt="Full search results page for the corrected query, with result count, tabs, and filter sidebar"></div>
-            <p class="media-caption"><strong>4. Results</strong> — "831 time series for infalton," with the "Did you mean Inflation?" prompt still available, tabbed by Data/Publications/Data information, and the same filter sidebar used throughout the Data section — one consistent pattern, not a separate results experience.</p>
-          </div>
+      <p>The original design strategy described this as "enhanced search functionality" — one line in a much bigger plan. In practice it became one of the most detailed parts of the redesign, because for a portal with this much data, search isn't a feature bolted onto navigation — it's how most users actually find what they came for.</p>
+      <p>The search bar sits persistently in the header and opens straight into <strong>popular searches</strong> before a user types anything — Inflation, Monetary aggregate, Population, Government debt — giving people a starting point instead of a blank box. Once typing begins, the system tolerates typos rather than failing silently: searching "Infalton" surfaces a "Do you mean: Inflation" correction alongside ranked results, the most relevant hits (Economic Bulletin, Inflation rate HICP), and the user's own recent queries. That combination — forgiving input, ranked relevance, and personal history — is what turns a search box into something people trust enough to use as their primary way into the data, rather than a fallback when navigation fails them.</p>
+      <div class="media-grid-2">
+        <div class="media-container">
+          <img src="assets/sdw-search-popular.png" alt="Search bar showing popular searches before the user types anything">
         </div>
-        <div class="shot-nav">
-          <button class="shot-nav-btn" onclick="searchPrev()" aria-label="Previous screen">&#8592;</button>
-          <div class="shot-dots">
-            <button class="shot-dot active" onclick="searchGoTo(0)" aria-label="Searching"></button>
-            <button class="shot-dot" onclick="searchGoTo(1)" aria-label="System suggests"></button>
-            <button class="shot-dot" onclick="searchGoTo(2)" aria-label="Misspelling caught"></button>
-            <button class="shot-dot" onclick="searchGoTo(3)" aria-label="Results"></button>
-          </div>
-          <button class="shot-nav-btn" onclick="searchNext()" aria-label="Next screen">&#8594;</button>
+        <div class="media-container">
+          <img src="assets/sdw-search-autocomplete.png" alt="Search with typo tolerance showing a Do you mean correction, most relevant hits, and recent queries">
         </div>
       </div>
+      <p class="media-caption">Left: the empty-state search, surfacing popular queries as a starting point. Right: typo-tolerant search mid-query, correcting "Infalton" to "Inflation" while showing ranked results and recent history.</p>
 
       <h3>Account, Login & Personalization</h3>
       <p>This is where the "Personal Accounts" pillar from the design strategy actually lives — saving favorite datasets, notifications, and data carts all depend on a login system that's trustworthy and forgiving when things go wrong. Rather than treat login as a solved, boring problem, we designed for the full path: a first-time login, a wrong password, a forgotten password, and a new registration — each with its own validation and recovery state, not just a single happy-path mockup.</p>
@@ -1145,23 +1125,6 @@
     function uiDesignsNext() { uiDesignsShow(uiDesignsIndex + 1); }
     function uiDesignsPrev() { uiDesignsShow(uiDesignsIndex - 1); }
     function uiDesignsGoTo(i) { uiDesignsShow(i); }
-
-    // ---- Search Experience carousel ----
-    let searchIndex = 0;
-    const searchTotal = 4;
-
-    function searchShow(i) {
-      searchIndex = (i + searchTotal) % searchTotal;
-      document.querySelectorAll('#search-carousel .shot-slide').forEach(function (slide) {
-        slide.classList.toggle('active', Number(slide.dataset.index) === searchIndex);
-      });
-      document.querySelectorAll('#search-carousel .shot-dot').forEach(function (dot, idx) {
-        dot.classList.toggle('active', idx === searchIndex);
-      });
-    }
-    function searchNext() { searchShow(searchIndex + 1); }
-    function searchPrev() { searchShow(searchIndex - 1); }
-    function searchGoTo(i) { searchShow(i); }
   </script>
 </body>
 </html>
