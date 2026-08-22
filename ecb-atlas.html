@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECB Atlas Case Study - Sukhmani Bedi</title>
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --bg: #0b0b0d;
+      --card-bg: rgba(20, 20, 23, 0.75);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.22);
+      --text: #f4f4f5;
+      --muted: #8e8e93;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 900px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Navigation Bar */
+    .framer-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 68px;
+      background: rgba(10, 10, 12, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .framer-navbar-inner {
+      width: 100%;
+      max-width: 1120px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-items {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* Main Container */
+    .case-study-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 140px 24px 100px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 32px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .case-subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* Metadata Grid */
+    .case-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 60px;
+    }
+
+    .meta-item span:first-child {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .meta-item span:last-child {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Framed Hero Image Container */
+    .case-hero-container {
+      max-width: 740px;
+      margin: 40px auto 60px auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .case-hero-img {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      cursor: zoom-in;
+    }
+
+    .case-hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Standard media frame — clean border, no fake browser chrome */
+    .media-container {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 40px 0;
+      background: #ffffff;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      cursor: zoom-in;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .media-container:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .media-container:focus-visible,
+    .case-hero-img:focus-visible {
+      outline: 2px solid #c4a7ff;
+      outline-offset: 3px;
+    }
+
+    .media-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Multi-image grid variants (reuse media-container framing per tile) */
+    .media-grid-2, .media-grid-3, .media-grid-4 {
+      display: grid;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .media-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .media-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .media-grid-4 { grid-template-columns: repeat(2, 1fr); }
+
+    .media-grid-2 .media-container,
+    .media-grid-3 .media-container,
+    .media-grid-4 .media-container {
+      margin: 0;
+    }
+
+    .media-caption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* Heuristic evaluation: per-screen finding cards */
+    .eval-card {
+      margin: 40px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+
+    .eval-shot {
+      border-bottom: 1px solid var(--border);
+      cursor: zoom-in;
+    }
+
+    .eval-shot:focus-visible {
+      outline: 2px solid #c4a7ff;
+      outline-offset: -2px;
+    }
+
+    .eval-shot img {
+      width: 100%;
+      display: block;
+    }
+
+    .eval-screen-name {
+      padding: 18px 24px 0 24px;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .eval-list {
+      padding: 8px 24px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .eval-item {
+      display: flex;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .eval-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .eval-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .heuristic-tag {
+      display: inline-block;
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #c4a7ff;
+      background: rgba(196, 167, 255, 0.1);
+      border: 1px solid rgba(196, 167, 255, 0.25);
+      border-radius: 100px;
+      padding: 3px 10px;
+      margin-bottom: 8px;
+    }
+
+    .eval-issue {
+      font-size: 0.92rem;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .eval-fix {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .eval-fix strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Carousel Specific Component Styling */
+    .carousel-container {
+      width: 100%;
+      margin: 40px 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .carousel-slide-viewport {
+      width: 100%;
+      position: relative;
+      background: #ffffff;
+    }
+
+    .carousel-slide-viewport img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      background: rgba(15, 15, 18, 0.9);
+    }
+
+    .carousel-counter {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .carousel-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .carousel-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--border-hover);
+    }
+
+    /* Content Typography */
+    .case-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .case-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .case-content p {
+      font-size: 1.02rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .case-content ul, .case-content ol {
+      margin-bottom: 24px;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .case-content li {
+      margin-bottom: 10px;
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    .highlight-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--text);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    .framer-footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 0 30px 0;
+      margin-top: 100px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .footer-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .case-meta-grid, .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .media-grid-2, .media-grid-3, .media-grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .footer-links {
+        align-items: flex-start;
+      }
+    }
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-hover);
+      border-radius: 100px;
+      padding: 8px 18px;
+      cursor: pointer;
+    }
+
+    /* Persona carousel */
+    .persona-carousel {
+      margin: 32px 0;
+    }
+
+    .persona-track {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .persona-slide {
+      display: none;
+    }
+
+    .persona-slide.active {
+      display: block;
+    }
+
+    .persona-slide .media-container {
+      margin: 0;
+      cursor: zoom-in;
+    }
+
+    .persona-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .persona-nav-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-hover);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: background 0.15s ease;
+    }
+
+    .persona-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .persona-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .persona-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-hover);
+      background-clip: content-box;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .persona-dot.active {
+      background: var(--text);
+      transform: scale(1.3);
+    }
+
+
+    /* Placeholder for screenshots not yet supplied */
+    .img-placeholder {
+      width: 100%;
+      min-height: 220px;
+      border: 1px dashed var(--border-hover);
+      border-radius: 12px;
+      margin: 32px 0;
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 32px;
+      text-align: center;
+    }
+    .img-placeholder .ph-icon { font-size: 1.4rem; opacity: 0.4; }
+    .img-placeholder .ph-label {
+      font-family: var(--font-mono, var(--font-sans));
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .img-placeholder .ph-desc { font-size: 0.85rem; color: var(--muted); max-width: 480px; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="framer-navbar">
+    <div class="framer-navbar-inner">
+      <a href="index.html" class="brand-logo">Sukhmani Bedi</a>
+      <nav class="nav-items">
+        <a href="index.html#projects" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About me</a>
+        <a href="index.html#process" class="nav-link">Contact</a>
+      </nav>
+      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch ↗</a>
+    </div>
+  </header>
+
+  <main class="case-study-shell">
+    <a href="index.html" class="back-link">← Back to Projects</a>
+
+    <span class="meta-label">CENTRAL BANKING — INTERNAL PLATFORM CASE STUDY</span>
+    <h1 class="case-title">ECB Atlas</h1>
+    <p class="case-subtitle">Atlas is the European Central Bank's internal platform for digitalizing the decision-making processes of ECB secretariats, including the Supervisory Board and the Governing Council — built to enhance the efficiency and transparency of internal workflows as part of the ECB's broader digital transformation.</p>
+
+    <div class="case-meta-grid">
+      <div class="meta-item">
+        <span>Focus Group</span>
+        <span>Bank Officials</span>
+      </div>
+      <div class="meta-item">
+        <span>Sector</span>
+        <span>Financial Services</span>
+      </div>
+      <div class="meta-item">
+        <span>Role</span>
+        <span>UX Designer</span>
+      </div>
+      <div class="meta-item">
+        <span>Duration</span>
+        <span>10 months</span>
+      </div>
+    </div>
+
+    <div class="case-hero-container">
+      <div class="img-placeholder" style="margin: 0; border: none;">
+        <div class="ph-icon">🖼</div>
+        <div class="ph-label">Hero screenshot needed</div>
+        <div class="ph-desc">The Atlas homepage — likely the same shot used on the original site — works well here.</div>
+      </div>
+    </div>
+
+    <div class="case-content">
+      <h2>Project overview</h2>
+      <p>Atlas is used daily by ECB officials to manage procedures, plan meetings, and formulate policy. The redesign's primary objective was to enhance the user experience by rebuilding the interface on up-to-date technology — making a genuinely intuitive, efficient workflow for people managing high-stakes governance processes, not just a visual refresh.</p>
+
+      <h2>Objectives</h2>
+      <ul>
+        <li><strong>Enhance user experience:</strong> a more intuitive, user-friendly interface aligned with ECB officials' daily workflows.</li>
+        <li><strong>Improve efficiency:</strong> streamline processes to reduce the time and effort spent managing procedures and meetings.</li>
+        <li><strong>Ensure technological relevance:</strong> update the platform's technology stack to meet current standards and future scalability.</li>
+      </ul>
+
+      <h2>Discovery</h2>
+      <p>The initial phase centered on understanding user stories provided directly by clients — narratives that surfaced the daily challenges ECB officials actually faced. One secretariat official, for instance, described needing a clear overview of every XFile they coordinate, with up-to-date information readily available rather than scattered across tools.</p>
+      <p>To structure that discovery work:</p>
+      <ul>
+        <li><strong>Documentation:</strong> user stories were logged in an Excel sheet, detailing required data fields, features, and functionality.</li>
+        <li><strong>Validation:</strong> co-design sessions validated our understanding and surfaced additional insight.</li>
+        <li><strong>Analysis:</strong> the existing Atlas platform was analyzed directly to identify pain points and areas for improvement.</li>
+      </ul>
+      <div class="img-placeholder">
+        <div class="ph-icon">🖼</div>
+        <div class="ph-label">User story tracking spreadsheet</div>
+      </div>
+
+      <h2>Design strategy</h2>
+      <p>As UX Lead, I ran a multifaceted approach integrating stakeholder collaboration, iterative design, and UX best practices — anchored in four pillars.</p>
+
+      <h3>1. User-Centered Research and Co-Design</h3>
+      <p>In-depth user research explored the diverse needs of ECB officials relying on Atlas to manage procedures and meetings. Co-design sessions with stakeholders, including secretariat officials, surfaced real workflows and pain points — grounding the redesign in actual user experience rather than assumption.</p>
+
+      <h3>2. Iterative Design and Rapid Prototyping</h3>
+      <p>Wireframes and interactive prototypes, built from research insight, were shared with stakeholders through InVision — enabling rapid feedback and quick iteration. Regular playbacks with business and development teams kept everyone aligned and surfaced emerging challenges early, before they became expensive to fix.</p>
+
+      <h3>3. Comprehensive Documentation and Developer Collaboration</h3>
+      <p>Detailed design specification documents outlined design rationale, user interactions, and technical requirements — a reference for developers and a review point for stakeholders to validate that every requirement had been accurately captured. Close collaboration with development teams, including IBM's, ensured the final build faithfully reflected the design intent.</p>
+
+      <h3>4. Continuous Improvement and Future-Proofing</h3>
+      <p>Recognizing that user needs and technology both keep moving, we built in mechanisms for ongoing feedback and iterative improvement — keeping Atlas responsive to ECB's evolving operational landscape rather than static the moment it shipped.</p>
+
+      <h2>Implementation</h2>
+      <p>The homepage was the key focal point of the transformation — it's the user's gateway into the system, used daily by secretariat staff, meeting coordinators, and data managers handling a genuinely high volume of information. We prioritized clarity, control, and customization to enable efficiency at scale.</p>
+
+      <h3>1. Personalization and Contextual Entry Point</h3>
+      <p>The design opens with a warm, contextual greeting ("Good morning, Eve") — humanizing the interface while confirming user identity, and quietly framing the system as responsive and personal rather than institutional and cold. Frequently used filters (Meeting Status, Meeting Body, Year) sit just below the welcome message for frictionless access to relevant data, letting users jump straight into their specific workflow instead of navigating through menu layers.</p>
+
+      <h3>2. Streamlined Left Navigation</h3>
+      <p>Two responsive navigation states were offered:</p>
+      <ul>
+        <li><strong>Expanded left navigation:</strong> clearly labeled categories — Supervisory Board (SB), SC, SCDA, and others — give immediate visibility into organizational divisions.</li>
+        <li><strong>Collapsed left navigation:</strong> saves screen real estate for data-dense interactions, while icon-based access with tooltips keeps usability intact.</li>
+      </ul>
+      <p>The design supports fast switching between meeting groups while keeping users oriented throughout.</p>
+
+      <h3>3. Table-Centric Information Architecture</h3>
+      <p>The homepage centers on a dynamic data table — the essential feature for ECB's procedural and meeting management needs:</p>
+      <ul>
+        <li><strong>Column flexibility:</strong> users can scan meetings by status, date, location, editing history, and comments.</li>
+        <li><strong>Inline editing:</strong> fields can be updated directly in the table, without navigating away from the main view.</li>
+        <li><strong>Selectable rows with bulk actions:</strong> power users can export, delete, or copy across multiple entries at once — a real efficiency gain for administrative work.</li>
+      </ul>
+      <p>This wasn't a new coat of paint — it's a deeply informed, user-validated design solving real workflow challenges, delivered through careful planning, co-design sessions, and agile prototyping.</p>
+
+      <h3>Homepage</h3>
+      <div class="media-grid-2">
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Homepage — expanded navigation</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Homepage — collapsed navigation</div>
+        </div>
+      </div>
+
+      <h2>Written Procedures</h2>
+      <p>Written procedures are a critical part of ECB's formal decision-making process — structured, documented workflows spanning initiation, review, feedback, approval, and archival. The challenge was real complexity: multiple stakeholders, status stages, and document exchanges previously managed through email or offline tools with no single source of truth.</p>
+      <p>We centralized this into a streamlined, auditable, intuitive experience — designed with the same user empathy applied to the homepage, so procedural integrity could actually be tracked, operational metrics measured, and departments could collaborate without losing the thread.</p>
+      <div class="media-grid-2">
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Written Procedures — workflow view</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Written Procedures — status tracking</div>
+        </div>
+      </div>
+
+      <h2>Conclusion</h2>
+      <p>The Atlas redesign succeeded through close collaboration, a genuinely user-centered approach, and clear communication with business stakeholders. Facilitating design sessions directly with the business established a continuous feedback loop that let us iteratively improve the experience while delivering something both functional and intuitive.</p>
+      <p>Working under Alberto Valentin Cococi's guidance gave me valuable feedback that refined my design process, and the support to introduce new tools and design artifacts that streamlined how we communicated ideas with stakeholders.</p>
+      <p>One of the harder challenges was complexity introduced by multiple secretariats, each with unique requirements and data fields — fragmentation that made it difficult to track which features applied to which secretariat, with real risk of misalignment and feature gaps. Drawing on my experience as the "Voice of the User" on the PowerVC project, I introduced a structured feedback tracking process: a shared tracker mapping user stories to their corresponding design solutions and current status. It became a living document used by both IBM and ECB stakeholders, ensuring transparency, accountability, and traceability of feedback throughout the sprint cycles — reducing information overload and making sure no critical insight got lost. The result was a robust, scalable, user-friendly platform supporting ECB's internal operations with real clarity and precision.</p>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="framer-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-heading">Next case study</div>
+        <a href="powervc.html" class="footer-sub" style="color: var(--text); text-decoration: none;">IBM PowerVC ↗</a>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
+        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lightbox-close" onclick="closeLightbox(event)">Close ✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    let lastFocusedTrigger = null;
+    function openLightbox(src, alt, triggerEl) {
+      const overlay = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src; img.alt = alt || '';
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      const nav = document.querySelector('.framer-navbar');
+      if (nav) nav.style.visibility = 'hidden';
+      lastFocusedTrigger = triggerEl || document.activeElement;
+      document.querySelector('.lightbox-close').focus();
+    }
+    function closeLightbox(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+      const nav = document.querySelector('.framer-navbar');
+      if (nav) nav.style.visibility = '';
+      if (lastFocusedTrigger) lastFocusedTrigger.focus();
+    }
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+    document.addEventListener('DOMContentLoaded', function () {
+      const frames = document.querySelectorAll('.case-hero-img, .media-container');
+      frames.forEach(function (frame) {
+        const img = frame.querySelector('img');
+        if (!img) return;
+        frame.setAttribute('tabindex', '0');
+        frame.setAttribute('role', 'button');
+        frame.setAttribute('aria-label', 'View larger: ' + (img.getAttribute('alt') || 'image'));
+        function trigger(e) { e.stopPropagation(); openLightbox(img.getAttribute('src'), img.getAttribute('alt'), frame); }
+        frame.addEventListener('click', trigger);
+        frame.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); trigger(e); }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
