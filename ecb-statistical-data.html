@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECB Statistical Data Portal Case Study - Sukhmani Bedi</title>
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --bg: #0b0b0d;
+      --card-bg: rgba(20, 20, 23, 0.75);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.22);
+      --text: #f4f4f5;
+      --muted: #8e8e93;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 900px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Navigation Bar */
+    .framer-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 68px;
+      background: rgba(10, 10, 12, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .framer-navbar-inner {
+      width: 100%;
+      max-width: 1120px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-items {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* Main Container */
+    .case-study-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 140px 24px 100px 24px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 32px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .case-subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* Metadata Grid */
+    .case-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 60px;
+    }
+
+    .meta-item span:first-child {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .meta-item span:last-child {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Framed Hero Image Container */
+    .case-hero-container {
+      max-width: 740px;
+      margin: 40px auto 60px auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .case-hero-img {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      cursor: zoom-in;
+    }
+
+    .case-hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Standard media frame — clean border, no fake browser chrome */
+    .media-container {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 40px 0;
+      background: #ffffff;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      cursor: zoom-in;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .media-container:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .media-container:focus-visible,
+    .case-hero-img:focus-visible {
+      outline: 2px solid #c4a7ff;
+      outline-offset: 3px;
+    }
+
+    .media-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Multi-image grid variants (reuse media-container framing per tile) */
+    .media-grid-2, .media-grid-3, .media-grid-4 {
+      display: grid;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .media-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .media-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .media-grid-4 { grid-template-columns: repeat(2, 1fr); }
+
+    .media-grid-2 .media-container,
+    .media-grid-3 .media-container,
+    .media-grid-4 .media-container {
+      margin: 0;
+    }
+
+    .media-caption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* Heuristic evaluation: per-screen finding cards */
+    .eval-card {
+      margin: 40px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+
+    .eval-shot {
+      border-bottom: 1px solid var(--border);
+      cursor: zoom-in;
+    }
+
+    .eval-shot:focus-visible {
+      outline: 2px solid #c4a7ff;
+      outline-offset: -2px;
+    }
+
+    .eval-shot img {
+      width: 100%;
+      display: block;
+    }
+
+    .eval-screen-name {
+      padding: 18px 24px 0 24px;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .eval-list {
+      padding: 8px 24px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .eval-item {
+      display: flex;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .eval-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .eval-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .heuristic-tag {
+      display: inline-block;
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #c4a7ff;
+      background: rgba(196, 167, 255, 0.1);
+      border: 1px solid rgba(196, 167, 255, 0.25);
+      border-radius: 100px;
+      padding: 3px 10px;
+      margin-bottom: 8px;
+    }
+
+    .eval-issue {
+      font-size: 0.92rem;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .eval-fix {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .eval-fix strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Carousel Specific Component Styling */
+    .carousel-container {
+      width: 100%;
+      margin: 40px 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .carousel-slide-viewport {
+      width: 100%;
+      position: relative;
+      background: #ffffff;
+    }
+
+    .carousel-slide-viewport img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      background: rgba(15, 15, 18, 0.9);
+    }
+
+    .carousel-counter {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .carousel-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .carousel-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--border-hover);
+    }
+
+    /* Content Typography */
+    .case-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .case-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .case-content p {
+      font-size: 1.02rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .case-content ul, .case-content ol {
+      margin-bottom: 24px;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .case-content li {
+      margin-bottom: 10px;
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    .highlight-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--text);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    .framer-footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 0 30px 0;
+      margin-top: 100px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .footer-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .case-meta-grid, .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .media-grid-2, .media-grid-3, .media-grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .footer-links {
+        align-items: flex-start;
+      }
+    }
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 32px;
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-hover);
+      border-radius: 100px;
+      padding: 8px 18px;
+      cursor: pointer;
+    }
+
+    /* Persona carousel */
+    .persona-carousel {
+      margin: 32px 0;
+    }
+
+    .persona-track {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .persona-slide {
+      display: none;
+    }
+
+    .persona-slide.active {
+      display: block;
+    }
+
+    .persona-slide .media-container {
+      margin: 0;
+      cursor: zoom-in;
+    }
+
+    .persona-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .persona-nav-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-hover);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: background 0.15s ease;
+    }
+
+    .persona-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .persona-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .persona-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-hover);
+      background-clip: content-box;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .persona-dot.active {
+      background: var(--text);
+      transform: scale(1.3);
+    }
+
+
+    /* Placeholder for screenshots not yet supplied */
+    .img-placeholder {
+      width: 100%;
+      min-height: 220px;
+      border: 1px dashed var(--border-hover);
+      border-radius: 12px;
+      margin: 32px 0;
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 32px;
+      text-align: center;
+    }
+    .img-placeholder .ph-icon { font-size: 1.4rem; opacity: 0.4; }
+    .img-placeholder .ph-label {
+      font-family: var(--font-mono, var(--font-sans));
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .img-placeholder .ph-desc { font-size: 0.85rem; color: var(--muted); max-width: 480px; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="framer-navbar">
+    <div class="framer-navbar-inner">
+      <a href="index.html" class="brand-logo">Sukhmani Bedi</a>
+      <nav class="nav-items">
+        <a href="index.html#projects" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About me</a>
+        <a href="index.html#process" class="nav-link">Contact</a>
+      </nav>
+      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch ↗</a>
+    </div>
+  </header>
+
+  <main class="case-study-shell">
+    <a href="index.html" class="back-link">← Back to Projects</a>
+
+    <span class="meta-label">CENTRAL BANKING — ENTERPRISE CASE STUDY</span>
+    <h1 class="case-title">ECB Statistical Data Portal</h1>
+    <p class="case-subtitle">The European Central Bank Data Portal (EDP) is the ECB's primary platform for accessing euro area statistical data and related publications — serving everyone from casual visitors looking up a single figure to market participants, journalists, analysts, and researchers who work with the data daily.</p>
+
+    <div class="case-meta-grid">
+      <div class="meta-item">
+        <span>Focus Group</span>
+        <span>Bank Officials</span>
+      </div>
+      <div class="meta-item">
+        <span>Sector</span>
+        <span>Financial Services</span>
+      </div>
+      <div class="meta-item">
+        <span>Role</span>
+        <span>UX Designer</span>
+      </div>
+      <div class="meta-item">
+        <span>Duration</span>
+        <span>10 months</span>
+      </div>
+    </div>
+
+    <div class="case-hero-container">
+      <div class="img-placeholder" style="margin: 0; border: none;">
+        <div class="ph-icon">🖼</div>
+        <div class="ph-label">Hero screenshot needed</div>
+        <div class="ph-desc">Homepage or a key dashboard view of the new EDP works well here.</div>
+      </div>
+    </div>
+
+    <div class="case-content">
+      <h2>Project overview</h2>
+      <p>The European Central Bank transitioned from its long-standing Statistical Data Warehouse (SDW) to the more advanced ECB Data Portal (EDP) — a significant upgrade in user experience while preserving the same underlying data structures, time-series keys, dataset identifiers, and codifications the SDW's expert users already relied on. That constraint shaped everything: this wasn't a from-scratch redesign, it was making a genuinely complex, trusted data system approachable to a much wider audience without breaking what already worked for the experts who used it daily.</p>
+
+      <div class="media-grid-2">
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Existing SDW portal — snippet 1</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Existing SDW portal — snippet 2</div>
+        </div>
+      </div>
+      <p class="media-caption">Snippets of the legacy SDW portal.</p>
+
+      <h2>Objectives</h2>
+      <ul>
+        <li><strong>Streamline data access:</strong> simplify the process of finding and retrieving statistical data.</li>
+        <li><strong>Enhance user experience:</strong> design an interface that works for both novice and expert users.</li>
+        <li><strong>Improve data visualization:</strong> integrate interactive tools for better data interpretation.</li>
+        <li><strong>Ensure accessibility:</strong> comply with accessibility standards for inclusive usage.</li>
+        <li><strong>Facilitate personalization:</strong> let users customize their data interaction experience.</li>
+      </ul>
+
+      <h2>Design strategy</h2>
+      <p>The mission was to transform a complex statistical repository into an accessible, intuitive, engaging platform for a genuinely diverse user base — policymakers, analysts, journalists, researchers, and the general public — without compromising the integrity and reliability of the data itself. Four pillars anchored that strategy, each detailed below: user-centric navigation, interactive dashboards, personal accounts, and responsive design.</p>
+
+      <h3>Wireframing & Prototyping</h3>
+      <p>The business had an existing style guide designers had to work within — the real design leverage was in deciding component choice, page layout, and information structure to improve the browsing experience. The process started by gathering input on Mural, where the business and IBM laid out what each page needed to contain, alongside release details and information architecture.</p>
+      <div class="img-placeholder">
+        <div class="ph-icon">🖼</div>
+        <div class="ph-label">Mural board — information architecture planning</div>
+      </div>
+      <p class="media-caption">Using a Miro board to brainstorm with clients and map user journeys for each segment of the site.</p>
+      <div class="media-grid-3">
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Low-fidelity wireframe 1</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Low-fidelity wireframe 2</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Low-fidelity wireframe 3</div>
+        </div>
+      </div>
+
+      <h3>Information Architecture & Navigation</h3>
+      <p>To address dataset discoverability, we overhauled the portal's information architecture:</p>
+      <ul>
+        <li><strong>Hierarchical navigation:</strong> a structured system organized by economic concepts and report types, for intuitive browsing.</li>
+        <li><strong>Enhanced search:</strong> a robust search engine with advanced filtering, so users could locate datasets efficiently instead of hunting.</li>
+        <li><strong>Personalized dashboards:</strong> users could save favorite datasets, set up notifications, and manage data carts.</li>
+      </ul>
+      <p>These changes streamlined the user journey — reducing friction and improving overall satisfaction.</p>
+      <div class="media-grid-2">
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">New navigation structure</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Search & filtering</div>
+        </div>
+      </div>
+
+      <h3>Responsive & Accessible Design</h3>
+      <p>Recognizing growing mobile usage, we prioritized a responsive approach:</p>
+      <ul>
+        <li><strong>Mobile optimization:</strong> seamless functionality across devices, with content adapting to screen size.</li>
+        <li><strong>Accessibility compliance:</strong> adherence to WCAG guidelines, including keyboard navigation and screen reader compatibility.</li>
+      </ul>
+      <p>This commitment to inclusivity expanded who could actually use the portal.</p>
+
+      <h3>Interactive Data Visualization</h3>
+      <p>To serve both expert and non-expert users, we integrated advanced visualization tools:</p>
+      <ul>
+        <li><strong>Dynamic charts and graphs:</strong> customizable visual representations users could interact with directly.</li>
+        <li><strong>Comparative analysis tools:</strong> compare datasets across different timeframes and regions.</li>
+        <li><strong>Export options:</strong> download visualizations for offline analysis or presentation.</li>
+      </ul>
+      <p>These tools demystified complex data, making it more approachable and genuinely actionable.</p>
+      <div class="img-placeholder">
+        <div class="ph-icon">🖼</div>
+        <div class="ph-label">Interactive data visualization view</div>
+      </div>
+
+      <h3>Editorial Content & Community Engagement</h3>
+      <p>Data without context is easy to misread, so we enriched the portal editorially:</p>
+      <ul>
+        <li><strong>Data stories and articles:</strong> narratives interpreting data trends, giving insight into economic developments.</li>
+        <li><strong>User feedback mechanisms:</strong> rating and commenting on datasets, building a sense of community and continuous improvement.</li>
+        <li><strong>Social media integration:</strong> stronger presence on platforms like Twitter and LinkedIn for broader dissemination.</li>
+      </ul>
+      <div class="media-grid-2">
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Editorial content view</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Community feedback feature</div>
+        </div>
+      </div>
+
+      <h3>Agile Development & Continuous Improvement</h3>
+      <p>The team worked in an agile methodology to stay flexible and responsive:</p>
+      <ul>
+        <li><strong>Iterative design cycles:</strong> regular sprints with user testing at each stage, allowing timely adjustments based on feedback.</li>
+        <li><strong>Cross-functional collaboration:</strong> close coordination between designers, developers, and stakeholders to stay aligned and streamline workflows.</li>
+        <li><strong>Performance monitoring:</strong> analytics tools tracking user behavior to inform ongoing enhancements and feature prioritization.</li>
+      </ul>
+
+      <h2>UI Designs</h2>
+      <div class="media-grid-2">
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Final UI — screen 1</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Final UI — screen 2</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Final UI — screen 3</div>
+        </div>
+        <div class="img-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-label">Final UI — screen 4</div>
+        </div>
+      </div>
+
+      <h2>Learnings</h2>
+      <p>Clear communication and collaborative workflows were as important to this project's success as the design decisions themselves.</p>
+
+      <h3>Design Iteration & Feedback Integration</h3>
+      <p>The design process began with co-design sessions with stakeholders to gather insight and feedback, which shaped the initial screen designs against identified user needs and business goals. Designs were then uploaded to InVision, letting stakeholders leave prompt, contextual feedback directly on the work — enabling fast, informed iteration. When a discussion needed deeper exploration, we scheduled dedicated meetings with business stakeholders rather than letting it stall in comment threads.</p>
+
+      <h3>Ensuring Development Alignment & Sprint Closure</h3>
+      <p>Approaching the end of each sprint, we produced comprehensive design specification documents detailing design rationale, user interactions, and technical requirements. These served three purposes: knowledge transfer to developers, a review point for stakeholder validation, and a place to resolve open questions before they became misinterpretations in development. That discipline gave the development team a solid foundation to implement designs faithfully, and made sprint closure far smoother.</p>
+
+      <h2>Conclusion</h2>
+      <p>Redesigning the ECB Data Portal meant engaging deeply with a genuinely diverse user base — policymakers, analysts, researchers, and the general public — to find the real pain points and opportunities hiding inside a system that already worked, just not for everyone. The result: streamlined navigation, advanced search, interactive visualizations, and personalization, all built without disrupting the data integrity expert users depended on. It's a solid example of how thoughtful UX can bridge the gap between a complex, trusted data system and a genuinely user-friendly interface — without asking either side to compromise.</p>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="framer-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-heading">Next case study</div>
+        <a href="ecb-atlas.html" class="footer-sub" style="color: var(--text); text-decoration: none;">Atlas ↗</a>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
+        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lightbox-close" onclick="closeLightbox(event)">Close ✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    let lastFocusedTrigger = null;
+    function openLightbox(src, alt, triggerEl) {
+      const overlay = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src; img.alt = alt || '';
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      const nav = document.querySelector('.framer-navbar');
+      if (nav) nav.style.visibility = 'hidden';
+      lastFocusedTrigger = triggerEl || document.activeElement;
+      document.querySelector('.lightbox-close').focus();
+    }
+    function closeLightbox(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+      const nav = document.querySelector('.framer-navbar');
+      if (nav) nav.style.visibility = '';
+      if (lastFocusedTrigger) lastFocusedTrigger.focus();
+    }
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+    document.addEventListener('DOMContentLoaded', function () {
+      const frames = document.querySelectorAll('.case-hero-img, .media-container');
+      frames.forEach(function (frame) {
+        const img = frame.querySelector('img');
+        if (!img) return;
+        frame.setAttribute('tabindex', '0');
+        frame.setAttribute('role', 'button');
+        frame.setAttribute('aria-label', 'View larger: ' + (img.getAttribute('alt') || 'image'));
+        function trigger(e) { e.stopPropagation(); openLightbox(img.getAttribute('src'), img.getAttribute('alt'), frame); }
+        frame.addEventListener('click', trigger);
+        frame.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); trigger(e); }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
