@@ -722,6 +722,31 @@
       text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: 12px;
     }
 
+    /* Responsive breakpoint comparison */
+    .breakpoint-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 0.7fr;
+      gap: 20px;
+      margin: 32px 0;
+      align-items: start;
+    }
+    .breakpoint-col { display: flex; flex-direction: column; }
+    .breakpoint-col .media-container { margin: 0 0 10px 0; max-height: 420px; overflow: hidden; }
+    .breakpoint-col .media-container img { object-fit: cover; object-position: top; height: 420px; }
+    .breakpoint-label {
+      text-align: center;
+      font-family: var(--font-mono, var(--font-sans));
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    @media (max-width: 768px) {
+      .breakpoint-row { grid-template-columns: 1fr; }
+      .breakpoint-col .media-container { max-height: none; }
+      .breakpoint-col .media-container img { height: auto; }
+    }
+
   </style>
 </head>
 <body>
@@ -903,11 +928,27 @@
         <li><strong>Mobile optimization:</strong> seamless functionality across devices, with content adapting to screen size.</li>
         <li><strong>Accessibility compliance:</strong> adherence to WCAG guidelines, including keyboard navigation and screen reader compatibility.</li>
       </ul>
-      <p>This commitment to inclusivity expanded who could actually use the portal.</p>
-      <div class="media-container">
-        <img src="assets/sdw-mobile-homepage-full.png" alt="Full mobile homepage showing the indicator dashboard, latest updates, data portal news, popular topics, and upcoming statistical releases">
+      <p>This commitment to inclusivity expanded who could actually use the portal. The same homepage — indicator dashboard, latest updates, news, popular topics — carries across all three breakpoints without cutting content, only reflowing how it's presented: a tabbed 3-across grid on desktop becomes a 2×2 grid with a dropdown selector on tablet, then a single-column swipeable carousel on mobile.</p>
+      <div class="breakpoint-row">
+        <div class="breakpoint-col">
+          <div class="media-container">
+            <img src="assets/sdw-responsive-desktop.png" alt="Desktop view of the homepage dashboard">
+          </div>
+          <div class="breakpoint-label">Desktop</div>
+        </div>
+        <div class="breakpoint-col">
+          <div class="media-container">
+            <img src="assets/sdw-responsive-tablet.png" alt="Tablet view of the same homepage dashboard, reflowed to a 2x2 grid">
+          </div>
+          <div class="breakpoint-label">Tablet</div>
+        </div>
+        <div class="breakpoint-col">
+          <div class="media-container">
+            <img src="assets/sdw-mobile-homepage-full.png" alt="Mobile view of the same homepage dashboard, reflowed to a swipeable single-column carousel">
+          </div>
+          <div class="breakpoint-label">Mobile</div>
+        </div>
       </div>
-      <p class="media-caption">The mobile homepage carries the full desktop experience — indicator dashboard, latest updates, news, popular topics, and upcoming releases — reflowed rather than stripped down.</p>
 
       <h3>Interactive Data Visualization</h3>
       <p>To serve both expert and non-expert users, we integrated advanced visualization tools:</p>
@@ -949,18 +990,30 @@
       </ul>
 
       <h2>UI Designs</h2>
-      <div class="media-grid-2">
-        <div class="media-container">
-          <img src="assets/sdw-dataset-table.png" alt="Dataset table with status indicators and CSV/SDMX bulk download">
+      <p>Three finished screens, each solving a different problem: bulk access to raw data, filtering a results set down to what matters, and combining multiple filter dimensions without losing track of what's applied.</p>
+      <div class="shot-carousel" id="ui-designs-carousel">
+        <div class="shot-track">
+          <div class="shot-slide active" data-index="0">
+            <div class="media-container"><img src="assets/sdw-dataset-table.png" alt="Dataset table with status indicators and CSV/SDMX bulk download"></div>
+            <p class="media-caption">Dataset table — every series at a glance with live/discontinued status, and one-click bulk download in CSV or SDMX2.1 for users who want to work with the raw data directly.</p>
+          </div>
+          <div class="shot-slide" data-index="1">
+            <div class="media-container"><img src="assets/sdw-monetary-results.png" alt="Monetary aggregates results with tag-based filter sidebar"></div>
+            <p class="media-caption">Search results with a persistent tag-based filter sidebar — narrow a large result set without losing the search itself or starting over.</p>
+          </div>
+          <div class="shot-slide" data-index="2">
+            <div class="media-container"><img src="assets/sdw-advanced-filters.png" alt="Advanced filters modal with faceted filtering across frequency, counterpart area, and reference sector"></div>
+            <p class="media-caption">Advanced filters — stacking multiple facets (frequency, counterpart area, reference sector) at once, with the resulting series count updating live so users can see the effect before committing.</p>
+          </div>
         </div>
-        <div class="media-container">
-          <img src="assets/sdw-monetary-results.png" alt="Monetary aggregates results with tag-based filter sidebar">
-        </div>
-        <div class="media-container">
-          <img src="assets/sdw-advanced-filters.png" alt="Advanced filters modal with faceted filtering across frequency, counterpart area, and reference sector">
-        </div>
-        <div class="media-container">
-          <img src="assets/sdw-mobile-dashboard.png" alt="Mobile view of the homepage indicator dashboard">
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="uiDesignsPrev()" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots">
+            <button class="shot-dot active" onclick="uiDesignsGoTo(0)" aria-label="Dataset table"></button>
+            <button class="shot-dot" onclick="uiDesignsGoTo(1)" aria-label="Monetary aggregates results"></button>
+            <button class="shot-dot" onclick="uiDesignsGoTo(2)" aria-label="Advanced filters"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="uiDesignsNext()" aria-label="Next screen">&#8594;</button>
         </div>
       </div>
 
@@ -1055,6 +1108,23 @@
     function loginFlowNext() { loginFlowShow(loginFlowIndex + 1); }
     function loginFlowPrev() { loginFlowShow(loginFlowIndex - 1); }
     function loginFlowGoTo(i) { loginFlowShow(i); }
+
+    // ---- UI Designs carousel ----
+    let uiDesignsIndex = 0;
+    const uiDesignsTotal = 3;
+
+    function uiDesignsShow(i) {
+      uiDesignsIndex = (i + uiDesignsTotal) % uiDesignsTotal;
+      document.querySelectorAll('#ui-designs-carousel .shot-slide').forEach(function (slide) {
+        slide.classList.toggle('active', Number(slide.dataset.index) === uiDesignsIndex);
+      });
+      document.querySelectorAll('#ui-designs-carousel .shot-dot').forEach(function (dot, idx) {
+        dot.classList.toggle('active', idx === uiDesignsIndex);
+      });
+    }
+    function uiDesignsNext() { uiDesignsShow(uiDesignsIndex + 1); }
+    function uiDesignsPrev() { uiDesignsShow(uiDesignsIndex - 1); }
+    function uiDesignsGoTo(i) { uiDesignsShow(i); }
   </script>
 </body>
 </html>
