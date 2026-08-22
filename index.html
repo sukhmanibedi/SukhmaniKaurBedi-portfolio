@@ -553,55 +553,37 @@
 <body>
 
   <!-- Top Navbar -->
-<header>
-  <div>
-    <a href="index.html">Sukhmani Bedi</a>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="about.html">About me</a>
-      <a href="#footer">Contact</a>
-    </nav>
-    <a href="mailto:sukhmanibedi1@gmail.com">Get in Touch ↗</a>
-  </div>
-</header>
+  <header class="framer-navbar">
+    <div class="framer-navbar-inner">
+      <a href="index.html" class="brand-logo">Sukhmani Bedi</a>
+      <nav class="nav-items">
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About me</a>
+        <a href="#process" class="nav-link">Contact</a>
+      </nav>
+      <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch ↗</a>
+    </div>
+  </header>
 
   <!-- Hero Section -->
-  <section>
-  <div>
-    <h1>Designing complex software for high-stakes enterprise environments.</h1>
-    
-    <div>
-      <p class="hero-lead">
-        <strong>I’m Sukhmani Bedi. At IBM, I design enterprise software for high-stakes client environments: IBM PowerVC, Atradius, and European Central Bank core platforms.</strong>
-      </p>
+  <section class="hero-wrapper">
+    <div class="hero-centered-frame">
+      <h1 class="hero-welcome-title">Welcome</h1>
       
-      <p>
-        Enterprise design isn't about making screens look clean. It's about understanding the operator under pressure at 9 AM on a Monday with zero margin for error—and holding their reality alongside business constraints to make both possible.
-      </p>
-      
-      <ul class="hero-pillars">
-        <li><strong>System Mapping:</strong> Untangling workflows that were never formally designed.</li>
-        <li><strong>Business Logic:</strong> Uncovering hidden friction before touching the UI canvas.</li>
-        <li><strong>Risk Reduction:</strong> Stress-testing complex systems before they hit production.</li>
-      </ul>
-    </div>
+      <div class="hero-body-text">
+        <p>Enterprise design isn't about building beautiful products. It's about understanding the person who has to use that product at 9am on a Monday, under pressure, with no margin for error — and the business that depends on them getting it right.</p>
+        
+        <p>Most design problems in complex systems aren't interface problems. They're the result of workflows that were never designed, business logic that was never questioned, and friction that accumulated quietly until users just learned to work around it. Finding that friction — before it reaches the user — is where I spend most of my time.</p>
+        
+        <p>I'm Sukhmani. At IBM, I design enterprise software for high-stakes client environments: IBM PowerVC, Atradius, and European Central Bank core platforms. Because in this space, empathy alone isn't enough — you have to hold the user's reality and the business's constraints in the same frame, and design the experience that makes both possible.</p>
+      </div>
 
-    <a href="#projects" class="btn-primary">See Projects</a>
+      <a href="#projects" class="btn-see-projects">See Projects</a>
 
-    <div>
-      <span>Scroll down</span>
-      <span>⚡</span>
-      <span>to see projects</span>
-    </div>
-  </div>
-
-  <div>
-    <span>✦ IBM (Enterprise Experience)</span>
-    <span>IBM PowerVC</span>
-    <span>Atradius</span>
-    <span>European Central Bank</span>
-  </div>
-</section>
+      <div class="scroll-indicator-strip">
+        <span>Scroll down</span>
+        <span>⚡</span>
+        <span>to see projects</span>
       </div>
     </div>
 
@@ -811,18 +793,18 @@
   </div>
 
   <!-- Footer -->
-<footer id="footer">
-  <div>
-    <div>
-      <div>Let's build together.</div>
-      <div>Open to Enterprise UX & Design Lead roles.</div>
+  <footer class="framer-footer">
+    <div style="max-width: var(--max-width); margin: 0 auto; width: 100%; padding: 0 24px; display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div class="footer-heading">Let's build together.</div>
+        <div class="footer-sub">Open to Enterprise UX & Design Lead roles.</div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
+        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
+      </div>
     </div>
-    <div>
-      <a href="mailto:sukhmanibedi1@gmail.com">sukhmanibedi1@gmail.com ↗</a>
-      <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
