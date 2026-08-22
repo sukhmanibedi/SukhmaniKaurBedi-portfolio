@@ -689,6 +689,39 @@
     }
     .img-placeholder .ph-desc { font-size: 0.85rem; color: var(--muted); max-width: 480px; }
 
+    /* Reusable shot carousel (adapted from the persona carousel pattern) */
+    .shot-carousel { margin: 32px 0; }
+    .shot-track { position: relative; overflow: hidden; border-radius: 16px; }
+    .shot-slide { display: none; }
+    .shot-slide.active { display: block; }
+    .shot-slide .media-container { margin: 0; }
+    .shot-nav { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 20px; }
+    .shot-nav-btn {
+      background: var(--card-bg); border: 1px solid var(--border-hover); color: var(--text);
+      width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+      transition: background 0.15s ease;
+    }
+    .shot-nav-btn:hover { background: rgba(255,255,255,0.1); }
+    .shot-dots { display: flex; gap: 8px; }
+    .shot-dot {
+      width: 20px; height: 20px; border-radius: 50%; background: transparent;
+      border: none; cursor: pointer; padding: 0; position: relative;
+      transition: transform 0.15s ease;
+    }
+    .shot-dot::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      transform: translate(-50%, -50%);
+      transition: background 0.15s ease;
+    }
+    .shot-dot.active::after { background: var(--text); }
+    .shot-dot.active { transform: scale(1.15); }
+    .shot-label {
+      text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: 12px;
+    }
+
   </style>
 </head>
 <body>
@@ -821,6 +854,48 @@
         </div>
       </div>
       <p class="media-caption">Left: the empty-state search, surfacing popular queries as a starting point. Right: typo-tolerant search mid-query, correcting "Infalton" to "Inflation" while showing ranked results and recent history.</p>
+
+      <h3>Account, Login & Personalization</h3>
+      <p>This is where the "Personal Accounts" pillar from the design strategy actually lives — saving favorite datasets, notifications, and data carts all depend on a login system that's trustworthy and forgiving when things go wrong. Rather than treat login as a solved, boring problem, we designed for the full path: a first-time login, a wrong password, a forgotten password, and a new registration — each with its own validation and recovery state, not just a single happy-path mockup.</p>
+      <div class="shot-carousel" id="login-flow-carousel">
+        <div class="shot-track">
+          <div class="shot-slide active" data-index="0">
+            <div class="media-container"><img src="assets/sdw-login-empty.png" alt="Login modal with email, password, remember me, and forgot password link"></div>
+          </div>
+          <div class="shot-slide" data-index="1">
+            <div class="media-container"><img src="assets/sdw-login-error.png" alt="Login modal showing an incorrect email or password error"></div>
+          </div>
+          <div class="shot-slide" data-index="2">
+            <div class="media-container"><img src="assets/sdw-reset-request.png" alt="Forgot password request form asking for an email address"></div>
+          </div>
+          <div class="shot-slide" data-index="3">
+            <div class="media-container"><img src="assets/sdw-reset-success-validation.png" alt="New password form showing real-time validation with green checkmarks for policy compliance and matching passwords"></div>
+          </div>
+          <div class="shot-slide" data-index="4">
+            <div class="media-container"><img src="assets/sdw-register-empty.png" alt="Registration form with email, password, confirm password, usage context, and data privacy acknowledgment"></div>
+          </div>
+          <div class="shot-slide" data-index="5">
+            <div class="media-container"><img src="assets/sdw-register-password-error.png" alt="Registration form showing a real-time password policy validation error"></div>
+          </div>
+          <div class="shot-slide" data-index="6">
+            <div class="media-container"><img src="assets/sdw-reset-check-email.png" alt="Password reset confirmation screen telling the user to check their email"></div>
+          </div>
+        </div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="loginFlowPrev()" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots">
+            <button class="shot-dot active" onclick="loginFlowGoTo(0)" aria-label="Login"></button>
+            <button class="shot-dot" onclick="loginFlowGoTo(1)" aria-label="Login error"></button>
+            <button class="shot-dot" onclick="loginFlowGoTo(2)" aria-label="Forgot password"></button>
+            <button class="shot-dot" onclick="loginFlowGoTo(3)" aria-label="New password validated"></button>
+            <button class="shot-dot" onclick="loginFlowGoTo(4)" aria-label="Register"></button>
+            <button class="shot-dot" onclick="loginFlowGoTo(5)" aria-label="Register password error"></button>
+            <button class="shot-dot" onclick="loginFlowGoTo(6)" aria-label="Check your email"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="loginFlowNext()" aria-label="Next screen">&#8594;</button>
+        </div>
+        <div class="shot-label" id="login-flow-label">Login</div>
+      </div>
 
       <h3>Responsive & Accessible Design</h3>
       <p>Recognizing growing mobile usage, we prioritized a responsive approach:</p>
@@ -960,6 +1035,26 @@
         });
       });
     });
+
+    // ---- Generic shot carousel (used for the login/account flow) ----
+    let loginFlowIndex = 0;
+    const loginFlowTotal = 7;
+
+    function loginFlowShow(i) {
+      loginFlowIndex = (i + loginFlowTotal) % loginFlowTotal;
+      document.querySelectorAll('#login-flow-carousel .shot-slide').forEach(function (slide) {
+        slide.classList.toggle('active', Number(slide.dataset.index) === loginFlowIndex);
+      });
+      document.querySelectorAll('#login-flow-carousel .shot-dot').forEach(function (dot, idx) {
+        dot.classList.toggle('active', idx === loginFlowIndex);
+      });
+      const labels = ['Login', 'Login — incorrect credentials', 'Forgot password — request form', 'New password — validated', 'Register', 'Register — password policy error', 'Reset — check your email confirmation'];
+      const labelEl = document.getElementById('login-flow-label');
+      if (labelEl) labelEl.textContent = labels[loginFlowIndex];
+    }
+    function loginFlowNext() { loginFlowShow(loginFlowIndex + 1); }
+    function loginFlowPrev() { loginFlowShow(loginFlowIndex - 1); }
+    function loginFlowGoTo(i) { loginFlowShow(i); }
   </script>
 </body>
 </html>
