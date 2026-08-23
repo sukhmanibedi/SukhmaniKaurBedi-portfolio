@@ -124,10 +124,10 @@
 
     .hero-welcome-title {
       font-family: var(--font-display);
-      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
       font-weight: 600;
-      line-height: 1.05;
-      letter-spacing: -0.035em;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
       margin-bottom: 24px;
       color: var(--text);
     }
@@ -142,6 +142,43 @@
 
     .hero-body-text p {
       margin-bottom: 16px;
+    }
+
+    .hero-lead-hook {
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .hero-focus-intro {
+      margin-bottom: 12px;
+    }
+
+    .hero-focus-list {
+      list-style: none;
+      display: inline-block;
+      text-align: left;
+      margin: 0 0 16px 0;
+    }
+
+    .hero-focus-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    .hero-focus-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--muted);
     }
 
     .btn-see-projects {
@@ -559,7 +596,7 @@
       <nav class="nav-items">
         <a href="#projects" class="nav-link">Projects</a>
         <a href="about.html" class="nav-link">About me</a>
-        <a href="#process" class="nav-link">Contact</a>
+        <a href="mailto:sukhmanibedi1@gmail.com" class="nav-link">Contact</a>
       </nav>
       <a href="mailto:sukhmanibedi1@gmail.com" class="nav-cta">Get in Touch ↗</a>
     </div>
@@ -568,14 +605,19 @@
   <!-- Hero Section -->
   <section class="hero-wrapper">
     <div class="hero-centered-frame">
-      <h1 class="hero-welcome-title">Welcome</h1>
+      <h1 class="hero-welcome-title">Enterprise UX Designer</h1>
       
       <div class="hero-body-text">
-        <p>Enterprise design isn't about building beautiful products. It's about understanding the person who has to use that product at 9am on a Monday, under pressure, with no margin for error — and the business that depends on them getting it right.</p>
-        
-        <p>Most design problems in complex systems aren't interface problems. They're the result of workflows that were never designed, business logic that was never questioned, and friction that accumulated quietly until users just learned to work around it. Finding that friction — before it reaches the user — is where I spend most of my time.</p>
-        
-        <p>I'm Sukhmani. At IBM, I design enterprise software for high-stakes client environments: IBM PowerVC, Atradius, and European Central Bank core platforms. Because in this space, empathy alone isn't enough — you have to hold the user's reality and the business's constraints in the same frame, and design the experience that makes both possible.</p>
+        <p class="hero-lead-hook">I'm Sukhmani. At IBM, I design enterprise software for high-stakes client environments.</p>
+
+        <p>Enterprise design isn't about building beautiful products. It's about understanding the person who has to use that product at 9am on a Monday, under pressure, with no margin for error — and the business that depends on them getting it right. Empathy alone isn't enough here — you have to hold the user's reality and the business's constraints in the same frame.</p>
+
+        <p class="hero-focus-intro">Most design problems in complex systems aren't interface problems. That's where I spend most of my time:</p>
+        <ul class="hero-focus-list">
+          <li>Untangling workflows that were never actually designed.</li>
+          <li>Questioning business logic before it reaches the interface.</li>
+          <li>Catching friction before users quietly learn to work around it.</li>
+        </ul>
       </div>
 
       <a href="#projects" class="btn-see-projects">See Projects</a>
@@ -623,7 +665,7 @@
             </div>
             <div class="card-footer-row">
               <span style="font-size: 0.78rem; color: var(--muted);">IBM Enterprise</span>
-              <span class="card-casestudy-btn">View Casestudy ↗</span>
+              <span class="card-casestudy-btn">View Case Study ↗</span>
             </div>
           </div>
         </a>
@@ -644,7 +686,7 @@
             </div>
             <div class="card-footer-row">
               <span style="font-size: 0.78rem; color: var(--muted);">Enterprise Policy Engine</span>
-              <span class="card-casestudy-btn">View Casestudy ↗</span>
+              <span class="card-casestudy-btn">View Case Study ↗</span>
             </div>
           </div>
         </a>
@@ -665,7 +707,7 @@
             </div>
             <div class="card-footer-row">
               <span style="font-size: 0.78rem; color: var(--muted);">European Central Bank</span>
-              <span class="card-casestudy-btn">View case study ↗</span>
+              <span class="card-casestudy-btn">View Case Study ↗</span>
             </div>
           </div>
         </a>
@@ -686,7 +728,7 @@
             </div>
             <div class="card-footer-row">
               <span style="font-size: 0.78rem; color: var(--muted);">Governance & Meeting Platform</span>
-              <span class="card-casestudy-btn">View Casestudy ↗</span>
+              <span class="card-casestudy-btn">View Case Study ↗</span>
             </div>
           </div>
         </a>
@@ -737,7 +779,7 @@
       <h2 class="section-title">Articles</h2>
     </div>
 
-    <a href="#" class="articles-card">
+    <a href="https://medium.com/@sukhmanibedi1/understanding-complexity-analysis-user-research-method-at-ibm-b5553a36c7e9" target="_blank" class="articles-card">
       <div class="article-info">
         <h3>Complexity Analysis in Enterprise UX</h3>
         <p>Uncovering hidden user pain points through systematic complexity mapping before touching the UI canvas.</p>
