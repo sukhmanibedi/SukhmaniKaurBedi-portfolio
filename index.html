@@ -78,11 +78,58 @@
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 500;
-      transition: color 0.2s ease;
+      padding: 10px 8px;
+      margin: -10px -8px;
+      border-radius: 8px;
+      display: inline-block;
+      transition: color 0.2s ease, background-color 0.2s ease;
     }
 
-    .nav-link:hover {
+    .nav-link:hover,
+    .nav-link:focus-visible {
       color: var(--text);
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-link:active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-items {
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .nav-link {
+        padding: 12px 10px;
+        margin: -12px -6px;
+        font-size: 0.9rem;
+      }
+      .nav-items {
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .framer-navbar-inner {
+        flex-wrap: nowrap;
+      }
+      .brand-logo {
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+      .nav-items {
+        gap: 2px;
+      }
+      .nav-link {
+        font-size: 0.78rem;
+        padding: 10px 6px;
+        margin: -10px -4px;
+        white-space: nowrap;
+      }
+      .nav-cta {
+        display: none;
+      }
     }
 
     .nav-cta {
@@ -200,34 +247,51 @@
       border-color: var(--border-hover);
     }
 
-    .scroll-indicator-strip {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      margin-bottom: 50px;
-      font-weight: 500;
-    }
-
     .ticker-container {
       width: 100%;
       max-width: var(--max-width);
       padding: 0 24px;
+      margin-top: 20px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-around;
+      gap: 16px;
       z-index: 2;
     }
 
-    .ticker-brand {
+    .trust-strip-label {
       font-family: var(--font-display);
-      font-size: 0.9rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--muted);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .trust-badge {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 9px 22px;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .trust-badge:hover {
+      border-color: var(--border-hover);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .framer-shell {
@@ -442,9 +506,10 @@
 
     .card-info h3 {
       font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 4px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
     }
 
     .card-details-block {
@@ -458,16 +523,49 @@
 
     .card-details-block .industry-tag {
       color: var(--text);
+      font-weight: 600;
+    }
+
+    .card-desc {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+
+    .card-metric {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      font-size: 0.82rem;
+      color: var(--text);
       font-weight: 500;
+    }
+
+    .card-metric .metric-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #7dd3fc;
     }
 
     .card-footer-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 8px;
-      padding-top: 14px;
+      margin-top: 16px;
+      padding-top: 16px;
       border-top: 1px solid var(--border);
+    }
+
+    .card-footer-tag {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
     }
 
     .card-casestudy-btn {
@@ -524,6 +622,23 @@
       font-size: 0.88rem;
       color: var(--muted);
       line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .process-case-link {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-hover);
+      padding-bottom: 2px;
+      transition: opacity 0.2s ease;
+    }
+
+    .process-case-link:hover {
+      opacity: 0.75;
     }
 
     .framer-footer {
@@ -571,11 +686,6 @@
         align-items: flex-start;
         gap: 20px;
       }
-      .ticker-container {
-        flex-wrap: wrap;
-        gap: 16px;
-        justify-content: center;
-      }
       .framer-footer {
         flex-direction: column;
         align-items: flex-start;
@@ -620,21 +730,17 @@
         </ul>
       </div>
 
-      <a href="#projects" class="btn-see-projects">See Projects</a>
-
-      <div class="scroll-indicator-strip">
-        <span>Scroll down</span>
-        <span>⚡</span>
-        <span>to see projects</span>
-      </div>
+      <a href="#projects" class="btn-see-projects">See Projects ↓</a>
     </div>
 
-    <!-- IBM Client Ticker Strip -->
+    <!-- IBM Client Trust Strip -->
     <div class="ticker-container">
-      <span class="ticker-brand">✦ IBM (Enterprise Experience)</span>
-      <span class="ticker-brand">IBM PowerVC</span>
-      <span class="ticker-brand">Atradius</span>
-      <span class="ticker-brand">European Central Bank</span>
+      <span class="trust-strip-label">✦ IBM Enterprise Experience</span>
+      <div class="trust-badges">
+        <span class="trust-badge">IBM PowerVC</span>
+        <span class="trust-badge">Atradius</span>
+        <span class="trust-badge">European Central Bank</span>
+      </div>
     </div>
   </section>
 
@@ -660,11 +766,12 @@
               <div class="card-details-block">
                 <div><span class="industry-tag">Industry</span> | Power virtualisation and cloud management</div>
                 <div><span class="industry-tag">UX Research</span> | UX Design</div>
-                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Website optimisation for creating a consistent experience across IBM products by adapting the Carbon Design System. Reduced complexity by 36%</p>
+                <p class="card-desc">Website optimisation for creating a consistent experience across IBM products by adapting the Carbon Design System.</p>
+                <div class="card-metric"><span class="metric-value">36%</span> reduction in interface complexity</div>
               </div>
             </div>
             <div class="card-footer-row">
-              <span style="font-size: 0.78rem; color: var(--muted);">IBM Enterprise</span>
+              <span class="card-footer-tag">IBM Enterprise</span>
               <span class="card-casestudy-btn">View Case Study ↗</span>
             </div>
           </div>
@@ -681,11 +788,12 @@
               <div class="card-details-block">
                 <div><span class="industry-tag">Industry</span> | Insurance</div>
                 <div><span class="industry-tag">UX Design</span></div>
-                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Migrating from a legacy UI, creating a smarter and efficient processes. Developing UX for new features and optimising the process of creating an insurance contract.</p>
+                <p class="card-desc">Migrating from a legacy UI, creating smarter and efficient processes. Developing UX for new features and optimising the process of creating an insurance contract.</p>
+                <div class="card-metric"><span class="metric-value">20+</span> features shipped across the redesigned platform</div>
               </div>
             </div>
             <div class="card-footer-row">
-              <span style="font-size: 0.78rem; color: var(--muted);">Enterprise Policy Engine</span>
+              <span class="card-footer-tag">Enterprise Policy Engine</span>
               <span class="card-casestudy-btn">View Case Study ↗</span>
             </div>
           </div>
@@ -702,11 +810,12 @@
               <div class="card-details-block">
                 <div><span class="industry-tag">Industry</span> | Banking</div>
                 <div><span class="industry-tag">UX Design</span></div>
-                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Re-design of the European Central Bank data warehouse to create a unified browsing experience.</p>
+                <p class="card-desc">Re-design of the European Central Bank data warehouse to create a unified browsing experience.</p>
+                <div class="card-metric"><span class="metric-value">Daily</span> use by analysts, journalists & market researchers</div>
               </div>
             </div>
             <div class="card-footer-row">
-              <span style="font-size: 0.78rem; color: var(--muted);">European Central Bank</span>
+              <span class="card-footer-tag">European Central Bank</span>
               <span class="card-casestudy-btn">View Case Study ↗</span>
             </div>
           </div>
@@ -723,11 +832,12 @@
               <div class="card-details-block">
                 <div><span class="industry-tag">Industry</span> | Banking</div>
                 <div><span class="industry-tag">UX Design</span></div>
-                <p style="margin-top: 6px; color: var(--text); font-size: 0.83rem;">Designing and simplifying the UX for European Central Bank's internal application to enable a smooth and consistent experience</p>
+                <p class="card-desc">Designing and simplifying the UX for European Central Bank's internal application to enable a smooth and consistent experience.</p>
+                <div class="card-metric"><span class="metric-value">2</span> governance bodies unified — Supervisory Board & Governing Council</div>
               </div>
             </div>
             <div class="card-footer-row">
-              <span style="font-size: 0.78rem; color: var(--muted);">Governance & Meeting Platform</span>
+              <span class="card-footer-tag">Governance & Meeting Platform</span>
               <span class="card-casestudy-btn">View Case Study ↗</span>
             </div>
           </div>
@@ -744,12 +854,14 @@
         <p style="font-size: 0.95rem; color: var(--text); font-weight: 500; margin-bottom: 24px;">That's where I start. Every time.</p>
 
         <div class="tag-grid">
-          <span class="profile-tag">UX Design</span>
+          <span class="profile-tag">Systems Architecture & Information Architecture</span>
+          <span class="profile-tag">Legacy System Migration</span>
+          <span class="profile-tag">Complex Workflow Optimization</span>
+          <span class="profile-tag">Cross-Functional Alignment</span>
           <span class="profile-tag">User Research</span>
           <span class="profile-tag">Enterprise Design Thinking</span>
           <span class="profile-tag">Design Systems</span>
           <span class="profile-tag">Generative AI Design</span>
-          <span class="profile-tag">Figma</span>
         </div>
 
         <div class="profile-meta-footer">
@@ -804,6 +916,7 @@
             <h3>Map the system, not the screen</h3>
           </div>
           <p>Every enterprise screen is connected to a larger ecosystem. Before designing an interface, I trace the data flows, dependencies, and business rules that govern it. A screen that looks clean in isolation is useless if it doesn't fit the workflow.</p>
+          <a href="ecb-atlas.html" class="process-case-link">Applied in the ECB Atlas redesign ↗</a>
         </div>
 
         <div class="process-card">
@@ -812,6 +925,7 @@
             <h3>Find where complexity is hiding</h3>
           </div>
           <p>Complex systems don't start out complex—they accumulate edge cases over time. My job is to locate the friction points that users have normalized, separate essential complexity from artificial complexity, and design interfaces that make the hard stuff manageable.</p>
+          <a href="powervc.html" class="process-case-link">Applied in the IBM PowerVC Complexity Analysis ↗</a>
         </div>
 
         <div class="process-card">
@@ -820,6 +934,7 @@
             <h3>Design within real constraints</h3>
           </div>
           <p>Enterprise UX happens at the intersection of technical feasibility, business logic, and regulatory mandates. I work alongside engineers and domain experts from day one, ensuring designs don't just look good in Figma, but ship reliably in production.</p>
+          <a href="atradius.html" class="process-case-link">Applied in the Atradius legacy migration ↗</a>
         </div>
 
         <div class="process-card">
@@ -828,6 +943,7 @@
             <h3>Validate before it ships to people who can't opt out</h3>
           </div>
           <p>Consumer apps lose users when they fail; enterprise users lose time, make costly errors, or face burnout. I test with actual operators under realistic conditions—stress-testing workflows before they hit production environments.</p>
+          <a href="ecb-statistical-data.html" class="process-case-link">Applied in the ECB Statistical Data Portal ↗</a>
         </div>
       </div>
     </section>
@@ -843,7 +959,7 @@
       </div>
       <div class="footer-links">
         <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
-        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
+        <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank" class="footer-link">LinkedIn ↗</a>
       </div>
     </div>
   </footer>
