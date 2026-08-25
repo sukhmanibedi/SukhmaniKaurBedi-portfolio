@@ -1182,69 +1182,57 @@
         <div class="shot-track">
         <div class="shot-slide active" data-index="0">
           <div class="media-container">
-            <img src="assets/declaration-edit-details-view.jpg" alt="View Declaration — the landing view with the full populated list and an Edit details action">
+            <img src="assets/declaration-flow-01-cash-transactions.jpg" alt="Cash Transactions tab — declaration list with configurable columns and the Create Additional Declaration entry point">
           </div>
-          <p class="media-caption">Opening a declaration — the landing view, with Edit details one click away</p>
+          <p class="media-caption">Starting from Cash Transactions — declarations, premium and CL fee balances, with Create Additional Declaration one click away</p>
         </div>
         <div class="shot-slide" data-index="1">
           <div class="media-container">
-            <img src="assets/declaration-create-additional-modal.png" alt="Create additional declaration — selecting the declaration period">
+            <img src="assets/declaration-flow-02-create-modal.png" alt="Create Additional Declaration — selecting the declaration period">
           </div>
-          <p class="media-caption">Or starting a new one — selecting the period before creation</p>
+          <p class="media-caption">Create Additional Declaration — selecting the period before creation</p>
         </div>
         <div class="shot-slide" data-index="2">
           <div class="media-container">
-            <img src="assets/declaration-list-add-column.jpg" alt="Declaration list with configurable columns — buyer organisation, trade sector, region">
+            <img src="assets/declaration-flow-03-country-dropdown.jpg" alt="New declaration with a single empty row — country dropdown open">
           </div>
-          <p class="media-caption">Configurable columns — buyer organisation, trade sector, region</p>
+          <p class="media-caption">A new declaration opens to a single empty row — country first</p>
         </div>
         <div class="shot-slide" data-index="3">
           <div class="media-container">
-            <img src="assets/declaration-add-column-expanded.jpg" alt="Add Column menu open, with an expanded row showing special and customer reference notes">
+            <img src="assets/declaration-flow-04-payment-conditions.jpg" alt="Declaration row with country selected — payment conditions dropdown open">
           </div>
-          <p class="media-caption">Add Column menu open, row expanded to show reference notes</p>
+          <p class="media-caption">Payment conditions — options scoped to the country just selected</p>
         </div>
         <div class="shot-slide" data-index="4">
           <div class="media-container">
-            <img src="assets/declaration-region-dropdown.jpg" alt="Declaration row with region populated — New South Wales, Victoria">
+            <img src="assets/declaration-flow-05-add-column-region.jpg" alt="Multiple country rows added, one expanded for special and customer reference notes, Add Column menu open with Region selected">
           </div>
-          <p class="media-caption">Region populated once added as a column</p>
+          <p class="media-caption">Multiple countries added, one row expanded for reference notes — adding Region as a column</p>
         </div>
         <div class="shot-slide" data-index="5">
           <div class="media-container">
-            <img src="assets/declaration-payment-conditions-dropdown.jpg" alt="Declaration row — payment conditions dropdown open">
+            <img src="assets/declaration-flow-06-region-populated.jpg" alt="Region column populated — Australia broken out by state, Canada by province">
           </div>
-          <p class="media-caption">Payment conditions — selecting from policy-level options</p>
+          <p class="media-caption">Region populated once added — Australia by state, Canada by province</p>
         </div>
         <div class="shot-slide" data-index="6">
           <div class="media-container">
-            <img src="assets/declaration-payment-conditions-options.jpg" alt="Declaration row — full payment conditions option set">
+            <img src="assets/declaration-flow-07-buyer-org-search.jpg" alt="Buyer organisation and trade sector added as columns, with an autocomplete search for the buyer">
           </div>
-          <p class="media-caption">Payment conditions — full option set for the selected country</p>
+          <p class="media-caption">Buyer organisation and trade sector added, with an autocomplete buyer search</p>
         </div>
         <div class="shot-slide" data-index="7">
           <div class="media-container">
-            <img src="assets/declaration-reference-tooltip.jpg" alt="Special reference detail surfaced on hover">
-          </div>
-          <p class="media-caption">Special reference detail on hover, without opening the row</p>
-        </div>
-        <div class="shot-slide" data-index="8">
-          <div class="media-container">
-            <img src="assets/declaration-multi-row-expanded.jpg" alt="Declaration with multiple country rows, one expanded">
-          </div>
-          <p class="media-caption">Multiple countries on one declaration, each independently expandable</p>
-        </div>
-        <div class="shot-slide" data-index="9">
-          <div class="media-container">
-            <img src="assets/declaration-same-country-warning.jpg" alt="Inline warning — policy and buyer are the same country">
+            <img src="assets/declaration-flow-08-same-country-warning.jpg" alt="Inline error banner — the policy and buyer are the same country, prompting for a region-level column">
           </div>
           <p class="media-caption">Inline validation — flagging when policy and buyer share a country</p>
         </div>
-        <div class="shot-slide" data-index="10">
+        <div class="shot-slide" data-index="8">
           <div class="media-container">
-            <img src="assets/declaration-cash-transactions-tab.jpg" alt="Declarations and invoices — Cash Transactions tab with premium and CL fee balances">
+            <img src="assets/declaration-flow-09-edit-details-final.jpg" alt="Completed declaration in its read-only list view, with Edit details one click away and the converted premium totalled">
           </div>
-          <p class="media-caption">Cash Transactions tab — declarations, premium and CL fees rolled into running balances</p>
+          <p class="media-caption">The completed declaration — read-only list view, Edit details one click away, premium totalled and converted</p>
         </div>
         </div>
         <div class="shot-nav">
@@ -1259,12 +1247,10 @@
           <button class="shot-dot" onclick="shotGoTo('declaration', 6)" aria-label="Screen 7"></button>
           <button class="shot-dot" onclick="shotGoTo('declaration', 7)" aria-label="Screen 8"></button>
           <button class="shot-dot" onclick="shotGoTo('declaration', 8)" aria-label="Screen 9"></button>
-          <button class="shot-dot" onclick="shotGoTo('declaration', 9)" aria-label="Screen 10"></button>
-          <button class="shot-dot" onclick="shotGoTo('declaration', 10)" aria-label="Screen 11"></button>
           </div>
           <button class="shot-nav-btn" onclick="shotNext('declaration')" aria-label="Next screen">&#8594;</button>
         </div>
-        <div class="shot-counter" id="shotCounter-declaration">1 / 11</div>
+        <div class="shot-counter" id="shotCounter-declaration">1 / 9</div>
       </div>
 
       <p>The carousel above is a curated walk-through — the actual flow behind it branches considerably further: column-level validation (a disabled region field outside Canada/Australia, an error when a buyer-level premium rate doesn't match the country level), an autocomplete buyer-organisation picker, an auto-populated trade sector, and a save-time validation that blocks submission if a required region was never entered. I mapped the full thing before narrowing down to the screens worth showing individually.</p>
