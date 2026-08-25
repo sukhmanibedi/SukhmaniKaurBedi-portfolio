@@ -79,11 +79,58 @@
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 500;
-      transition: color 0.2s ease;
+      padding: 10px 8px;
+      margin: -10px -8px;
+      border-radius: 8px;
+      display: inline-block;
+      transition: color 0.2s ease, background-color 0.2s ease;
     }
 
-    .nav-link:hover {
+    .nav-link:hover,
+    .nav-link:focus-visible {
       color: var(--text);
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-link:active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-items {
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .nav-link {
+        padding: 12px 10px;
+        margin: -12px -6px;
+        font-size: 0.9rem;
+      }
+      .nav-items {
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .framer-navbar-inner {
+        flex-wrap: nowrap;
+      }
+      .brand-logo {
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+      .nav-items {
+        gap: 2px;
+      }
+      .nav-link {
+        font-size: 0.78rem;
+        padding: 10px 6px;
+        margin: -10px -4px;
+        white-space: nowrap;
+      }
+      .nav-cta {
+        display: none;
+      }
     }
 
     .nav-cta {
@@ -1088,6 +1135,13 @@
       </div>
       <p class="media-caption">Complexity scoring for the same task — "create a new image and deploy a VM" — across three stages: legacy UI, 2nd design mockup, and live redesigned UI. Scoring dropped as context shifts and input parameters were designed out step by step.</p>
 
+      <div class="stats-row" style="margin-top: 20px;">
+        <div class="stat-card" style="grid-column: span 2;">
+          <div class="stat-number">36%</div>
+          <div class="stat-label">Reduction in complexity score for the "create a new image and deploy a VM" task, legacy UI vs. live redesigned UI — scored across the six weighted factors above: context shifts, input parameters, navigational guidance, system feedback, error feedback, and new concepts introduced.</div>
+        </div>
+      </div>
+
       <h3>Conducting Demos</h3>
       <p>Once design concepts existed, we ran structured demonstrations that walked customers through the full experience end to end — validating whether our designs actually solved the problems research had surfaced, not just whether they looked right. We also gave users a downloadable PowerVC test environment to try predefined scenarios independently, generating hands-on feedback outside the guided sessions. How this paired with Complexity Analysis to validate designs quantitatively is covered under Design Validation below.</p>
 
@@ -1332,7 +1386,7 @@
       </div>
       <div class="footer-links">
         <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
-        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
+        <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank" class="footer-link">LinkedIn ↗</a>
       </div>
     </div>
   </footer>
