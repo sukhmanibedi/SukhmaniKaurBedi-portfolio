@@ -1148,78 +1148,58 @@
       </div>
 
       <h3>Experience 2 — Performance & Portfolio Dashboards</h3>
-      <p>As part of a data-driven reporting solution, I designed a set of dashboards giving account managers and operations teams a real-time view of both policy performance and operational health. At the policy level, turnover, premium and APR estimates sit alongside credit limit indications, credit limit applications, claims &amp; collections, and cash transaction balances — all on one screen, replacing what used to be a multi-system lookup. At the operational level, a separate Performance dashboard under Cash Events rolls up monthly transactions issued, exception handling (error tasks and incidents split by BE/BCT, open vs. closed business tasks), and BCT/FCT conversion rates within SLA — filterable by business unit, branch, steering unit and date range — so operations can see the health of the conversion pipeline month over month rather than policy by policy (see the hero screen above).</p>
+      <p>As part of a data-driven reporting solution, I designed a set of dashboards giving account managers and operations teams a real-time view of both policy performance and operational health. At the policy level, turnover, premium and APR estimates sit alongside credit limit indications, credit limit applications, claims &amp; collections, and cash transaction balances — all on one screen, replacing what used to be a multi-system lookup. At the operational level, a separate Performance dashboard under Cash Events rolls up monthly transactions issued, exception handling (error tasks and incidents split by BE/BCT, open vs. closed business tasks), and BCT/FCT conversion rates within SLA — filterable by business unit, branch, steering unit and date range — so operations can see the health of the conversion pipeline month over month rather than policy by policy (see the hero screen above). Reports out of that dashboard aren't just viewed live, either — operations teams need to pull point-in-time exports (audit trails, tax summaries, event summaries, exceptions, BCT/FCT and FCT/FIS conversion detail) for downstream use. The Export tab treats that as a proper background job rather than a blocking download: pick a report type (each with its own conditional fields — an Event type selector only appears for an Event summary report), scope it to one of branch, business unit or steering unit — picking one disables the other two — and the system generates the file asynchronously, alerts the user once it's ready, and keeps a running table of everything that's been exported.</p>
       <div class="shot-carousel" data-carousel="performance">
         <div class="shot-track">
         <div class="shot-slide active" data-index="0">
           <div class="media-container">
-            <img src="assets/performance-dashboard-arcade.png" alt="Atradius Arcade Performance dashboard — transactions issued, exception handling, and BCT/FCT conversion rates within SLA">
+            <img src="assets/pd-dashboard-01-month-dropdown.png" alt="Performance dashboard — Transactions Issued and Exception Handling, with the Month dropdown open">
           </div>
-          <p class="media-caption">Operational Performance dashboard (Cash Events) — transaction volume, exception handling, and conversion-rate SLAs, filterable by business unit, branch, steering unit and date range</p>
+          <p class="media-caption">Performance dashboard — transaction volume and exception handling, filterable by month</p>
         </div>
         <div class="shot-slide" data-index="1">
           <div class="media-container">
-            <img src="assets/policy-performance-overview.jpg" alt="Policy overview — Performance tab showing turnover, premium, credit limits, claims, collections and cash transactions">
+            <img src="assets/pd-dashboard-02-fromdate-picker.png" alt="Performance dashboard with the From date picker open, selecting a custom date range">
           </div>
-          <p class="media-caption">Policy-level performance overview — one screen replacing several legacy lookups</p>
+          <p class="media-caption">Selecting a custom date range — From date, bounded by the same rules mapped in the flow diagram below</p>
         </div>
-        </div>
-        <div class="shot-nav">
-          <button class="shot-nav-btn" onclick="shotPrev('performance')" aria-label="Previous screen">&#8592;</button>
-          <div class="shot-dots" id="shotDots-performance">
-          <button class="shot-dot active" onclick="shotGoTo('performance', 0)" aria-label="Screen 1"></button>
-          <button class="shot-dot" onclick="shotGoTo('performance', 1)" aria-label="Screen 2"></button>
-          </div>
-          <button class="shot-nav-btn" onclick="shotNext('performance')" aria-label="Next screen">&#8594;</button>
-        </div>
-        <div class="shot-counter" id="shotCounter-performance">1 / 2</div>
-      </div>
-      <p>Once screens were designed and user journeys updated, I built detailed UI flows and interactive prototypes so stakeholders could clearly understand each feature — including multiple scenarios and contextual explanations. These assets were central to a smooth handoff, giving development, services, and testing teams comprehensive documentation to work from.</p>
-      <div class="media-container">
-        <img src="assets/performance-dashboard-ui-flow.png" alt="Performance dashboard UI flow — full flowchart from opening the dashboard through date-range validation and the export/report-generation flow">
-      </div>
-      <p class="media-caption">The underlying UI flow for the Performance dashboard — date-range validation rules and the full export/report-generation branch, mapped in the same format as the Create Declaration flow below. Click to open it full-size.</p>
-
-      <p>That flow's export branch is a feature in its own right: operations teams need to pull point-in-time reports out of the dashboard for downstream use, not just view it live — audit trails, rules, tax summaries, event summaries, exceptions, and BCT/FCT (and FCT/FIS) conversion detail. The Export tab treats this as a proper background job rather than a blocking download: pick a report type (each with its own conditional fields — an Event type selector only appears for an Event summary report, for instance), scope it to one of branch, business unit or steering unit — picking one disables the other two — and the system generates the file asynchronously, alerts the user once it's ready, and keeps a running table of everything that's been exported.</p>
-      <div class="shot-carousel" data-carousel="performanceExport">
-        <div class="shot-track">
-        <div class="shot-slide active" data-index="0">
+        <div class="shot-slide" data-index="2">
           <div class="media-container">
             <img src="assets/pd-export-01-entry.png" alt="Performance dashboard — Export tab, empty exported-reports table with Generate report as the entry point">
           </div>
-          <p class="media-caption">Export tab — empty state, Generate report the only action</p>
+          <p class="media-caption">Switching to the Export tab — empty state, Generate report the only action</p>
         </div>
-        <div class="shot-slide" data-index="1">
+        <div class="shot-slide" data-index="3">
           <div class="media-container">
             <img src="assets/pd-export-02-request-modal.png" alt="Request for Report modal — report type, date range, and a choice of branch, business unit or steering unit">
           </div>
           <p class="media-caption">Request for Report — type, date range, and one of branch / business unit / steering unit</p>
         </div>
-        <div class="shot-slide" data-index="2">
+        <div class="shot-slide" data-index="4">
           <div class="media-container">
             <img src="assets/pd-export-03-branch-selected.png" alt="Request for Report modal with a branch selected — business unit and steering unit fields disabled">
           </div>
           <p class="media-caption">Selecting one scope disables the other two, keeping the request unambiguous</p>
         </div>
-        <div class="shot-slide" data-index="3">
+        <div class="shot-slide" data-index="5">
           <div class="media-container">
             <img src="assets/pd-export-04-todate-picker.png" alt="Request for Report modal with the To date picker open">
           </div>
-          <p class="media-caption">To date — bounded by the same date-range rules mapped in the flow diagram above</p>
+          <p class="media-caption">To date — bounded by the same date-range rules</p>
         </div>
-        <div class="shot-slide" data-index="4">
+        <div class="shot-slide" data-index="6">
           <div class="media-container">
             <img src="assets/pd-export-05-reports-table.png" alt="Export tab with a generated report now listed in the Exported reports table">
           </div>
           <p class="media-caption">Once generated, the report lands in the Exported reports table</p>
         </div>
-        <div class="shot-slide" data-index="5">
+        <div class="shot-slide" data-index="7">
           <div class="media-container">
             <img src="assets/pd-export-06-document-detail.png" alt="Document detail view for a generated report, with file attachment ready to open">
           </div>
           <p class="media-caption">Opening a generated report — document detail, ready to download</p>
         </div>
-        <div class="shot-slide" data-index="6">
+        <div class="shot-slide" data-index="8">
           <div class="media-container">
             <img src="assets/pd-export-07-mobile-alerts.png" alt="Mobile alerts panel showing a file-exported-correctly notification">
           </div>
@@ -1227,20 +1207,27 @@
         </div>
         </div>
         <div class="shot-nav">
-          <button class="shot-nav-btn" onclick="shotPrev('performanceExport')" aria-label="Previous screen">&#8592;</button>
-          <div class="shot-dots" id="shotDots-performanceExport">
-          <button class="shot-dot active" onclick="shotGoTo('performanceExport', 0)" aria-label="Screen 1"></button>
-          <button class="shot-dot" onclick="shotGoTo('performanceExport', 1)" aria-label="Screen 2"></button>
-          <button class="shot-dot" onclick="shotGoTo('performanceExport', 2)" aria-label="Screen 3"></button>
-          <button class="shot-dot" onclick="shotGoTo('performanceExport', 3)" aria-label="Screen 4"></button>
-          <button class="shot-dot" onclick="shotGoTo('performanceExport', 4)" aria-label="Screen 5"></button>
-          <button class="shot-dot" onclick="shotGoTo('performanceExport', 5)" aria-label="Screen 6"></button>
-          <button class="shot-dot" onclick="shotGoTo('performanceExport', 6)" aria-label="Screen 7"></button>
+          <button class="shot-nav-btn" onclick="shotPrev('performance')" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots" id="shotDots-performance">
+          <button class="shot-dot active" onclick="shotGoTo('performance', 0)" aria-label="Screen 1"></button>
+          <button class="shot-dot" onclick="shotGoTo('performance', 1)" aria-label="Screen 2"></button>
+          <button class="shot-dot" onclick="shotGoTo('performance', 2)" aria-label="Screen 3"></button>
+          <button class="shot-dot" onclick="shotGoTo('performance', 3)" aria-label="Screen 4"></button>
+          <button class="shot-dot" onclick="shotGoTo('performance', 4)" aria-label="Screen 5"></button>
+          <button class="shot-dot" onclick="shotGoTo('performance', 5)" aria-label="Screen 6"></button>
+          <button class="shot-dot" onclick="shotGoTo('performance', 6)" aria-label="Screen 7"></button>
+          <button class="shot-dot" onclick="shotGoTo('performance', 7)" aria-label="Screen 8"></button>
+          <button class="shot-dot" onclick="shotGoTo('performance', 8)" aria-label="Screen 9"></button>
           </div>
-          <button class="shot-nav-btn" onclick="shotNext('performanceExport')" aria-label="Next screen">&#8594;</button>
+          <button class="shot-nav-btn" onclick="shotNext('performance')" aria-label="Next screen">&#8594;</button>
         </div>
-        <div class="shot-counter" id="shotCounter-performanceExport">1 / 7</div>
+        <div class="shot-counter" id="shotCounter-performance">1 / 9</div>
       </div>
+      <p>Once screens were designed and user journeys updated, I built detailed UI flows and interactive prototypes so stakeholders could clearly understand each feature — including multiple scenarios and contextual explanations. These assets were central to a smooth handoff, giving development, services, and testing teams comprehensive documentation to work from.</p>
+      <div class="media-container">
+        <img src="assets/performance-dashboard-ui-flow.png" alt="Performance dashboard UI flow — full flowchart from opening the dashboard through date-range validation and the export/report-generation flow">
+      </div>
+      <p class="media-caption">The underlying UI flow for the Performance dashboard — date-range validation rules and the full export/report-generation branch, mapped in the same format as the Create Declaration flow below. Click to open it full-size.</p>
 
       <h3>Experience 3 — Declarations &amp; Invoicing</h3>
       <p>Declarations sit at the center of the policy lifecycle — customers report turnover by country, buyer and trade sector, and the system calculates premium against it. The redesigned declaration table lets users configure which columns matter to them (buyer organisation, trade sector, region), expand any row for special or customer-reference notes, and switch into an "Edit details" mode for bulk changes — replacing a rigid, one-size-fits-all legacy grid. A dedicated Cash Transactions tab rolls declarations, premium &amp; other fees, and CL fees into running balances, so an account manager can see what's unpaid, issued, or pending without leaving the policy.</p>
