@@ -78,11 +78,58 @@
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 500;
-      transition: color 0.2s ease;
+      padding: 10px 8px;
+      margin: -10px -8px;
+      border-radius: 8px;
+      display: inline-block;
+      transition: color 0.2s ease, background-color 0.2s ease;
     }
 
-    .nav-link:hover {
+    .nav-link:hover,
+    .nav-link:focus-visible {
       color: var(--text);
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-link:active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-items {
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .nav-link {
+        padding: 12px 10px;
+        margin: -12px -6px;
+        font-size: 0.9rem;
+      }
+      .nav-items {
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .framer-navbar-inner {
+        flex-wrap: nowrap;
+      }
+      .brand-logo {
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+      .nav-items {
+        gap: 2px;
+      }
+      .nav-link {
+        font-size: 0.78rem;
+        padding: 10px 6px;
+        margin: -10px -4px;
+        white-space: nowrap;
+      }
+      .nav-cta {
+        display: none;
+      }
     }
 
     .nav-cta {
@@ -431,7 +478,7 @@
       </div>
       <div class="footer-links">
         <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
-        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
+        <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank" class="footer-link">LinkedIn ↗</a>
       </div>
     </div>
   </footer>
