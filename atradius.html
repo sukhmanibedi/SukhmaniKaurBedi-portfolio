@@ -534,11 +534,26 @@
       font-weight: 500;
     }
 
+    .impact-card {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 32px;
+      align-items: center;
+      margin: 36px 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
     @media (max-width: 768px) {
       .case-meta-grid, .stats-row {
         grid-template-columns: repeat(2, 1fr);
       }
       .media-grid-2, .media-grid-3, .media-grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .impact-card {
         grid-template-columns: 1fr;
       }
       .footer-inner {
@@ -662,6 +677,95 @@
       transform: scale(1.3);
     }
 
+    /* Feature screenshot carousel (Compare / Declaration / Manual Event) */
+    .shot-carousel {
+      margin: 40px 0;
+    }
+
+    .shot-track {
+      position: relative;
+      border-radius: 16px;
+    }
+
+    .shot-slide {
+      display: none;
+    }
+
+    .shot-slide.active {
+      display: block;
+    }
+
+    .shot-slide .media-container {
+      margin: 0;
+      cursor: zoom-in;
+    }
+
+    .shot-slide .media-caption {
+      margin-top: 14px;
+    }
+
+    .shot-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 18px;
+    }
+
+    .shot-nav-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-hover);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex: none;
+      transition: background 0.15s ease;
+    }
+
+    .shot-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .shot-dots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+      max-width: 280px;
+    }
+
+    .shot-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border-hover);
+      background-clip: content-box;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .shot-dot.active {
+      background: var(--text);
+      transform: scale(1.3);
+    }
+
+    .shot-counter {
+      text-align: center;
+      margin-top: 10px;
+      font-family: var(--font-mono, var(--font-sans));
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
     /* Placeholder for screenshots not yet supplied */
     .img-placeholder {
       width: 100%;
@@ -752,7 +856,7 @@
     <div class="case-content">
       <h2>Project overview</h2>
       <p>Atradius embarked on a strategic transformation initiative to modernize its legacy credit insurance platform — internally known as the "Symphony Application" — which had become outdated, complex, and difficult to maintain. The redesign, part of the broader Arcade program, aimed to deliver a next-generation digital solution that would enhance user experience, streamline business processes, and support long-term technological scalability.</p>
-      <p>The project applied the <strong>Coexistence Principle</strong>: legacy systems continued running in parallel with the new platform through the transition, minimizing disruption while paving the way for incremental improvement.</p>
+      <p>The project applied the <strong>Coexistence Principle</strong>: legacy systems continued running in parallel with the new platform through the transition, minimizing disruption while paving the way for incremental improvement. I led design on this engagement, mentoring a junior designer alongside me for the duration of the project.</p>
 
       <h2>Problem statement</h2>
       <p>Atradius was operating on an outdated legacy system — Symphony — that was difficult to maintain, unintuitive for users, and unable to scale with the evolving needs of the business. Outdated workflows led to inefficient processes, user frustration, and high support overhead. The legacy infrastructure also limited the company's ability to innovate and respond quickly to market demands.</p>
@@ -764,11 +868,15 @@
         <li>Strengthen customer value through improved service accessibility and experience.</li>
       </ul>
 
+      <h3>The constraint underneath all of it: one interface, fifty regulatory regimes</h3>
+      <p>Atradius writes credit insurance in more than 50 countries, and that shows up in the product, not just the sales deck. The same declaration screen has to calculate GST in Australia and a different tax treatment in the EU; the same manual event form has to support region-specific tax suppression rules, per-country premium and CL fee structures, and business units like "Portugal Local" that carry their own language, currency and broker relationships. None of that can be hidden behind a single generic form the way a domestic product could get away with.</p>
+      <p>That's the constraint that actually shaped most of the harder decisions in this project — not "make it prettier," but "make one interface flexible enough to stay correct across fifty regulatory contexts without turning into a maze of conditional fields." The configurable-column declaration table, the region and tax-suppression fields on manual events, and the currency-aware summary screens later in this case study are all direct answers to that constraint, not generic best practice.</p>
+
       <h2>Design process</h2>
 
       <h3>Discovery</h3>
-      <p>To ensure the redesigned platform aligned with the real needs of its end users, we developed key user personas grounded in stakeholder interviews — including Mike, an Account Manager, and Daphne, a Customer Credit Manager. These personas helped the team empathize with users' daily challenges, prioritize features, and design workflows that genuinely supported their goals, rather than just digitizing the old ones.</p>
-      <p>After synthesizing insights from stakeholder interviews, user observations, and workflow analysis, we moved into the definition phase — translating findings into a strategic foundation for the rest of the design process.</p>
+      <p>To ensure the redesigned platform aligned with the real needs of its end users, I developed key user personas grounded in stakeholder interviews — including Mike, an Account Manager, and Daphne, a Customer Credit Manager. These personas helped the team empathize with users' daily challenges, prioritize features, and design workflows that genuinely supported their goals, rather than just digitizing the old ones.</p>
+      <p>After synthesizing insights from stakeholder interviews, user observations, and workflow analysis, I moved into the definition phase — translating findings into a strategic foundation for the rest of the design process.</p>
 
       <div class="persona-carousel">
         <div class="persona-track">
@@ -794,7 +902,7 @@
       </div>
 
       <h3>User Journey Mapping & Opportunity Identification</h3>
-      <p>We created detailed user journey maps for the core personas — Mike and Daphne — visualizing the end-to-end experience across tasks like policy creation, credit risk analysis, and customer communication. Mapping each touchpoint let us:</p>
+      <p>I created detailed user journey maps for the core personas — Mike and Daphne — visualizing the end-to-end experience across tasks like policy creation, credit risk analysis, and customer communication. Mapping each touchpoint let me:</p>
       <ul>
         <li>Pinpoint moments of friction, such as redundant data entry or unclear navigation.</li>
         <li>Identify delays caused by manual processes or system dependencies.</li>
@@ -834,13 +942,13 @@
       </ul>
 
       <h2>Defining Success Metrics</h2>
-      <p>Establishing meaningful success metrics was critical to ensuring the redesigned platform delivered measurable value, not just a fresh coat of paint. We approached it in three steps.</p>
+      <p>Establishing meaningful success metrics was critical to ensuring the redesigned platform delivered measurable value, not just a fresh coat of paint. I approached it in three steps.</p>
 
       <h3>1. Stakeholder Alignment Workshops</h3>
-      <p>We ran collaborative workshops with cross-functional stakeholders — Product Managers, Business Analysts, UX Researchers, IT Leads, and Customer Support Managers — exploring business priorities for the Arcade platform, known pain points from internal and external users, operational KPIs already in use, and opportunities to introduce UX-specific measures like satisfaction and efficiency. This aligned the team on what "success" meant from both a strategic and a practical, day-to-day perspective.</p>
+      <p>I organized and ran workshops with cross-functional stakeholders — Product Managers, Business Analysts, UX Researchers, IT Leads, and Customer Support Managers — exploring business priorities for the Arcade platform, known pain points from internal and external users, operational KPIs already in use, and opportunities to introduce UX-specific measures like satisfaction and efficiency. This aligned the group on what "success" meant from both a strategic and a practical, day-to-day perspective.</p>
 
       <h3>2. Mapping User Goals to Business Objectives</h3>
-      <p>We used persona insights — Mike's need for faster client servicing, Daphne's need for better data access — to map individual user goals to high-level business outcomes:</p>
+      <p>I used persona insights — Mike's need for faster client servicing, Daphne's need for better data access — to map individual user goals to high-level business outcomes:</p>
 
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0;">
         <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
@@ -858,7 +966,7 @@
       </div>
 
       <h3>3. Identifying Observable Indicators</h3>
-      <p>Once goals were aligned, we worked with data and IT teams to identify observable, trackable indicators already available in the system:</p>
+      <p>Once goals were aligned, I worked with data and IT teams to identify observable, trackable indicators already available in the system:</p>
       <ul>
         <li>Time-on-task, measured via system logs.</li>
         <li>Support ticket volume, tracked pre- and post-launch.</li>
@@ -866,7 +974,7 @@
       </ul>
 
       <h2>How might we?</h2>
-      <p>Moving into the design and validation phase, the focus shifted to migrating legacy functionality while addressing pain points across roles — admins, brokers, underwriters — across critical workflows like offer creation through invoicing. We framed key design opportunities as "How Might We" questions to keep the team anchored on outcomes, not just features.</p>
+      <p>Moving into the design and validation phase, the focus shifted to migrating legacy functionality while addressing pain points across roles — admins, brokers, underwriters — across critical workflows like offer creation through invoicing. I framed key design opportunities as "How Might We" questions to keep the group anchored on outcomes, not just features.</p>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0;">
         <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
@@ -927,16 +1035,72 @@
 
       <h3>Experience 1 — Compare Policies & Offers</h3>
       <p>The "Compare Policies & Offers (Complex)" feature streamlines decision-making in MSA and renewal processes by letting users compare multiple policies, multiple offers, or a single policy against related offers. It supports advanced filtering and customizable comparisons across modules, variables, document groups, and bank accounts, with both on-screen and Excel export options. Users choose a source offer, pick target offers to compare against, and toggle between "View differences," "View similarities," or "View all" to cut through the noise. The tool only surfaces currently effective or non-end-dated records, keeping comparisons accurate for complex commercial case evaluations.</p>
-      <div class="media-grid-3">
-        <div class="media-container">
-          <img src="assets/compare-aggregate-offer-mgmt.png" alt="Aggregate offer management — compare offers action in the overflow menu">
+      <div class="shot-carousel" data-carousel="compare">
+        <div class="shot-track">
+        <div class="shot-slide active" data-index="0">
+          <div class="media-container">
+            <img src="assets/compare-aggregate-offer-mgmt.png" alt="Aggregate offer management — compare offers action in the overflow menu">
+          </div>
+          <p class="media-caption">Starting point — the Compare Offers action in the case overflow menu</p>
         </div>
-        <div class="media-container">
-          <img src="assets/compare-bank-accounts.jpg" alt="Offer comparison — bank accounts compared across source and target offers">
+        <div class="shot-slide" data-index="1">
+          <div class="media-container">
+            <img src="assets/compare-select-source-offer.jpg" alt="Offer comparison — selecting the source offer to compare from">
+          </div>
+          <p class="media-caption">Step 1 — select the source offer to compare from</p>
         </div>
-        <div class="media-container">
-          <img src="assets/compare-modules-viewing-options.jpg" alt="Offer comparison — modules table with View differences / similarities / all toggle">
+        <div class="shot-slide" data-index="2">
+          <div class="media-container">
+            <img src="assets/compare-select-offers.jpg" alt="Offer comparison — selecting one or more target offers">
+          </div>
+          <p class="media-caption">Step 2 — select one or more target offers to compare against</p>
         </div>
+        <div class="shot-slide" data-index="3">
+          <div class="media-container">
+            <img src="assets/compare-modules-checklist.jpg" alt="Offer comparison — modules table with per-offer variable checkboxes">
+          </div>
+          <p class="media-caption">Modules comparison — variables selected per offer</p>
+        </div>
+        <div class="shot-slide" data-index="4">
+          <div class="media-container">
+            <img src="assets/compare-modules-viewing-options.jpg" alt="Offer comparison — modules table with View differences / similarities / all toggle">
+          </div>
+          <p class="media-caption">Toggle between View differences, View similarities, or View all</p>
+        </div>
+        <div class="shot-slide" data-index="5">
+          <div class="media-container">
+            <img src="assets/compare-bank-accounts.jpg" alt="Offer comparison — bank accounts compared across source and target offers">
+          </div>
+          <p class="media-caption">Bank accounts compared across source and target offers</p>
+        </div>
+        <div class="shot-slide" data-index="6">
+          <div class="media-container">
+            <img src="assets/compare-bank-accounts-detail.jpg" alt="Offer comparison — multiple bank accounts per offer, primary account starred">
+          </div>
+          <p class="media-caption">Multiple accounts per offer, with the primary account starred</p>
+        </div>
+        <div class="shot-slide" data-index="7">
+          <div class="media-container">
+            <img src="assets/compare-document-group-recipients.jpg" alt="Offer comparison — document group with recipient-level detail for reminders, declarations and invoices">
+          </div>
+          <p class="media-caption">Document group comparison — reminders, declarations and invoices, down to recipient level</p>
+        </div>
+        </div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="shotPrev('compare')" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots" id="shotDots-compare">
+          <button class="shot-dot active" onclick="shotGoTo('compare', 0)" aria-label="Screen 1"></button>
+          <button class="shot-dot" onclick="shotGoTo('compare', 1)" aria-label="Screen 2"></button>
+          <button class="shot-dot" onclick="shotGoTo('compare', 2)" aria-label="Screen 3"></button>
+          <button class="shot-dot" onclick="shotGoTo('compare', 3)" aria-label="Screen 4"></button>
+          <button class="shot-dot" onclick="shotGoTo('compare', 4)" aria-label="Screen 5"></button>
+          <button class="shot-dot" onclick="shotGoTo('compare', 5)" aria-label="Screen 6"></button>
+          <button class="shot-dot" onclick="shotGoTo('compare', 6)" aria-label="Screen 7"></button>
+          <button class="shot-dot" onclick="shotGoTo('compare', 7)" aria-label="Screen 8"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="shotNext('compare')" aria-label="Next screen">&#8594;</button>
+        </div>
+        <div class="shot-counter" id="shotCounter-compare">1 / 8</div>
       </div>
 
       <h3>Experience 2 — Performance & Portfolio Dashboards</h3>
@@ -949,45 +1113,248 @@
 
       <h3>Experience 3 — Declarations &amp; Invoicing</h3>
       <p>Declarations sit at the center of the policy lifecycle — customers report turnover by country, buyer and trade sector, and the system calculates premium against it. The redesigned declaration table lets users configure which columns matter to them (buyer organisation, trade sector, region), expand any row for special or customer-reference notes, and switch into an "Edit details" mode for bulk changes — replacing a rigid, one-size-fits-all legacy grid. A dedicated Cash Transactions tab rolls declarations, premium &amp; other fees, and CL fees into running balances, so an account manager can see what's unpaid, issued, or pending without leaving the policy.</p>
-      <div class="media-grid-3">
-        <div class="media-container">
-          <img src="assets/declaration-list-add-column.jpg" alt="Declaration list with configurable columns — buyer organisation, trade sector, region">
+      <div class="shot-carousel" data-carousel="declaration">
+        <div class="shot-track">
+        <div class="shot-slide active" data-index="0">
+          <div class="media-container">
+            <img src="assets/declaration-create-additional-modal.png" alt="Create additional declaration — selecting the declaration period">
+          </div>
+          <p class="media-caption">Starting a new declaration — selecting the period before creation</p>
         </div>
-        <div class="media-container">
-          <img src="assets/declaration-edit-details-view.jpg" alt="Declaration edit-details view with expanded row notes">
+        <div class="shot-slide" data-index="1">
+          <div class="media-container">
+            <img src="assets/declaration-list-add-column.jpg" alt="Declaration list with configurable columns — buyer organisation, trade sector, region">
+          </div>
+          <p class="media-caption">Configurable columns — buyer organisation, trade sector, region</p>
         </div>
-        <div class="media-container">
-          <img src="assets/declaration-cash-transactions-tab.jpg" alt="Declarations and invoices — Cash Transactions tab with premium and CL fee balances">
+        <div class="shot-slide" data-index="2">
+          <div class="media-container">
+            <img src="assets/declaration-add-column-expanded.jpg" alt="Add Column menu open, with an expanded row showing special and customer reference notes">
+          </div>
+          <p class="media-caption">Add Column menu open, row expanded to show reference notes</p>
         </div>
+        <div class="shot-slide" data-index="3">
+          <div class="media-container">
+            <img src="assets/declaration-region-dropdown.jpg" alt="Declaration row with region populated — New South Wales, Victoria">
+          </div>
+          <p class="media-caption">Region populated once added as a column</p>
+        </div>
+        <div class="shot-slide" data-index="4">
+          <div class="media-container">
+            <img src="assets/declaration-payment-conditions-dropdown.jpg" alt="Declaration row — payment conditions dropdown open">
+          </div>
+          <p class="media-caption">Payment conditions — selecting from policy-level options</p>
+        </div>
+        <div class="shot-slide" data-index="5">
+          <div class="media-container">
+            <img src="assets/declaration-payment-conditions-options.jpg" alt="Declaration row — full payment conditions option set">
+          </div>
+          <p class="media-caption">Payment conditions — full option set for the selected country</p>
+        </div>
+        <div class="shot-slide" data-index="6">
+          <div class="media-container">
+            <img src="assets/declaration-reference-tooltip.jpg" alt="Special reference detail surfaced on hover">
+          </div>
+          <p class="media-caption">Special reference detail on hover, without opening the row</p>
+        </div>
+        <div class="shot-slide" data-index="7">
+          <div class="media-container">
+            <img src="assets/declaration-multi-row-expanded.jpg" alt="Declaration with multiple country rows, one expanded">
+          </div>
+          <p class="media-caption">Multiple countries on one declaration, each independently expandable</p>
+        </div>
+        <div class="shot-slide" data-index="8">
+          <div class="media-container">
+            <img src="assets/declaration-same-country-warning.jpg" alt="Inline warning — policy and buyer are the same country">
+          </div>
+          <p class="media-caption">Inline validation — flagging when policy and buyer share a country</p>
+        </div>
+        <div class="shot-slide" data-index="9">
+          <div class="media-container">
+            <img src="assets/declaration-edit-details-view.jpg" alt="Declaration edit-details view with expanded row notes">
+          </div>
+          <p class="media-caption">Edit-details mode for bulk changes across rows</p>
+        </div>
+        <div class="shot-slide" data-index="10">
+          <div class="media-container">
+            <img src="assets/declaration-cash-transactions-tab.jpg" alt="Declarations and invoices — Cash Transactions tab with premium and CL fee balances">
+          </div>
+          <p class="media-caption">Cash Transactions tab — declarations, premium and CL fees rolled into running balances</p>
+        </div>
+        </div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="shotPrev('declaration')" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots" id="shotDots-declaration">
+          <button class="shot-dot active" onclick="shotGoTo('declaration', 0)" aria-label="Screen 1"></button>
+          <button class="shot-dot" onclick="shotGoTo('declaration', 1)" aria-label="Screen 2"></button>
+          <button class="shot-dot" onclick="shotGoTo('declaration', 2)" aria-label="Screen 3"></button>
+          <button class="shot-dot" onclick="shotGoTo('declaration', 3)" aria-label="Screen 4"></button>
+          <button class="shot-dot" onclick="shotGoTo('declaration', 4)" aria-label="Screen 5"></button>
+          <button class="shot-dot" onclick="shotGoTo('declaration', 5)" aria-label="Screen 6"></button>
+          <button class="shot-dot" onclick="shotGoTo('declaration', 6)" aria-label="Screen 7"></button>
+          <button class="shot-dot" onclick="shotGoTo('declaration', 7)" aria-label="Screen 8"></button>
+          <button class="shot-dot" onclick="shotGoTo('declaration', 8)" aria-label="Screen 9"></button>
+          <button class="shot-dot" onclick="shotGoTo('declaration', 9)" aria-label="Screen 10"></button>
+          <button class="shot-dot" onclick="shotGoTo('declaration', 10)" aria-label="Screen 11"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="shotNext('declaration')" aria-label="Next screen">&#8594;</button>
+        </div>
+        <div class="shot-counter" id="shotCounter-declaration">1 / 11</div>
       </div>
 
       <h3>Experience 4 — Manual Events &amp; Premium Adjustment</h3>
-      <p>Not every charge fits the standard declaration flow — bonuses, surcharges, no-claim adjustments and CL fees often need a manual event: a bulk list of charge lines, each with its own line type, region, unit price and tax-suppression setting. Because tax calculation across dozens of lines can take real time, the flow makes that wait visible rather than hiding it: past a threshold, users choose between waiting for a live preview or submitting outright, and get a mobile alert the moment the tax summary is ready to review — commission impact included.</p>
-      <div class="media-grid-3">
+      <p>Not every charge fits the standard declaration flow — bonuses, surcharges, no-claim adjustments and CL fees often need a manual event: a bulk list of charge lines, each with its own line type, region, unit price and tax-suppression setting, frequently running to 70+ lines on a single policy. This is the feature I'll walk through in the most depth, because the interesting design problem in it — an async calculation with a real, visible wait — isn't one that gets solved by making the form prettier.</p>
+
+      <h4 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin: 32px 0 12px 0; color: var(--text);">The problem: a slow calculation with no good default</h4>
+      <p>Tax calculation across dozens of lines, each potentially in a different regulatory regime, takes real time — sometimes long enough that a spinner reads as broken rather than busy. Three broad options existed. Block the screen until the calculation finishes: simple, but for a 70-line event that could mean a frozen UI for minutes, with no way to tell whether it's working or hung. Run it silently in the background with no acknowledgment: keeps the user unblocked, but they'd have no idea the event was still processing, and no clear moment to come back to it. Or make the wait itself a decision: tell the user up front that this will take a while, and let them choose between waiting for a live preview or submitting without one — with a notification when the result is ready either way.</p>
+      <p>I designed toward the third option. Below a line-count threshold, the system just calculates and shows the summary — no extra step. Past that threshold, a warning surfaces before submission and hands the user a real choice, and if they walk away, a mobile alert tells them the moment the tax summary is ready to review, commission impact included.</p>
+
+      <div class="shot-carousel" data-carousel="manualEvent">
+        <div class="shot-track">
+        <div class="shot-slide active" data-index="0">
+          <div class="media-container">
+            <img src="assets/manual-event-create-form.jpg" alt="Create Manual Event — event type, start and end date">
+          </div>
+          <p class="media-caption">Create Manual Event — event type, start and end date</p>
+        </div>
+        <div class="shot-slide" data-index="1">
+          <div class="media-container">
+            <img src="assets/manual-event-create-single-row.jpg" alt="Cash event type — first charge line being added">
+          </div>
+          <p class="media-caption">Cash event type — adding the first charge line</p>
+        </div>
+        <div class="shot-slide" data-index="2">
+          <div class="media-container">
+            <img src="assets/manual-event-cash-lines-filled.jpg" alt="Manual event cash event type lines, filled with charge and export amounts">
+          </div>
+          <p class="media-caption">Charge and export amounts filled across multiple lines</p>
+        </div>
+        <div class="shot-slide" data-index="3">
+          <div class="media-container">
+            <img src="assets/manual-event-full-line-list-totals.jpg" alt="Manual event with a full multi-line list and running totals">
+          </div>
+          <p class="media-caption">A full multi-line event with running totals pinned at the bottom</p>
+        </div>
+        <div class="shot-slide" data-index="4">
+          <div class="media-container">
+            <img src="assets/manual-event-wait-warning.jpg" alt="Wait warning — preview calculated tax or submit without preview">
+          </div>
+          <p class="media-caption">The wait warning — preview calculated tax, or submit without preview</p>
+        </div>
+        <div class="shot-slide" data-index="5">
+          <div class="media-container">
+            <img src="assets/manual-event-tax-calculating-modal.jpg" alt="Tax summary calculating, with an explicit in-progress message">
+          </div>
+          <p class="media-caption">Tax summary calculating — acknowledged, not just a spinner</p>
+        </div>
+        <div class="shot-slide" data-index="6">
+          <div class="media-container">
+            <img src="assets/manual-event-tax-summary.jpg" alt="Tax summary with GST breakdown and broker commission impact">
+          </div>
+          <p class="media-caption">Tax summary with GST breakdown and broker commission impact</p>
+        </div>
+        <div class="shot-slide" data-index="7">
+          <div class="media-container">
+            <img src="assets/manual-event-tax-summary-alert.png" alt="Alert confirming the tax summary has been generated">
+          </div>
+          <p class="media-caption">The alert that fires once the tax summary is ready</p>
+        </div>
+        <div class="shot-slide" data-index="8">
+          <div class="media-container">
+            <img src="assets/manual-event-events-tab-list.jpg" alt="Declarations and invoices — Events tab listing processed, submitted and rejected events">
+          </div>
+          <p class="media-caption">Events tab — processed, submitted and rejected events at a glance</p>
+        </div>
+        <div class="shot-slide" data-index="9">
+          <div class="media-container">
+            <img src="assets/manual-event-mobile-alerts.png" alt="Mobile alert confirming the tax summary has finished calculating">
+          </div>
+          <p class="media-caption">Mobile alert confirming the tax summary has finished calculating</p>
+        </div>
+        </div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="shotPrev('manualEvent')" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots" id="shotDots-manualEvent">
+          <button class="shot-dot active" onclick="shotGoTo('manualEvent', 0)" aria-label="Screen 1"></button>
+          <button class="shot-dot" onclick="shotGoTo('manualEvent', 1)" aria-label="Screen 2"></button>
+          <button class="shot-dot" onclick="shotGoTo('manualEvent', 2)" aria-label="Screen 3"></button>
+          <button class="shot-dot" onclick="shotGoTo('manualEvent', 3)" aria-label="Screen 4"></button>
+          <button class="shot-dot" onclick="shotGoTo('manualEvent', 4)" aria-label="Screen 5"></button>
+          <button class="shot-dot" onclick="shotGoTo('manualEvent', 5)" aria-label="Screen 6"></button>
+          <button class="shot-dot" onclick="shotGoTo('manualEvent', 6)" aria-label="Screen 7"></button>
+          <button class="shot-dot" onclick="shotGoTo('manualEvent', 7)" aria-label="Screen 8"></button>
+          <button class="shot-dot" onclick="shotGoTo('manualEvent', 8)" aria-label="Screen 9"></button>
+          <button class="shot-dot" onclick="shotGoTo('manualEvent', 9)" aria-label="Screen 10"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="shotNext('manualEvent')" aria-label="Next screen">&#8594;</button>
+        </div>
+        <div class="shot-counter" id="shotCounter-manualEvent">1 / 10</div>
+      </div>
+
+      <h4 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin: 40px 0 12px 0; color: var(--text);">Before and after: what "actionable, not just present" actually meant</h4>
+      <p>This is the same principle the heuristic evaluation surfaced early on — data needed to be actionable, not just present — applied to a concrete screen. The legacy form dumps every field into one dense, undifferentiated grid with no visual grouping or priority. The manual event line list groups by what a user actually needs to check at a glance (line type, region, unit price, tax suppression, computed amount), keeps totals pinned at the bottom of the page instead of buried in the data, and separates "editing" from "reviewing" as distinct modes rather than one perpetually-editable table.</p>
+      <div class="media-grid-2">
         <div class="media-container">
-          <img src="assets/manual-event-create-form.jpg" alt="Create Manual Event — event type, start and end date">
+          <img src="assets/legacy-symphony-oracle-forms.png" alt="Legacy Oracle Forms interface — dense, ungrouped data entry">
         </div>
         <div class="media-container">
-          <img src="assets/manual-event-cash-lines-filled.jpg" alt="Manual event cash event type lines, filled with charge and export amounts">
+          <img src="assets/manual-event-cash-lines-filled.jpg" alt="Redesigned manual event line list — grouped columns, pinned totals, distinct edit and review modes">
         </div>
-        <div class="media-container">
-          <img src="assets/manual-event-wait-warning.jpg" alt="Wait warning — preview calculated tax or submit without preview">
+      </div>
+      <p class="media-caption">Before / after, same underlying task: structured, row-based data entry. Left: the legacy Oracle Forms pattern this replaces. Right: the redesigned manual event flow.</p>
+
+      <h4 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin: 40px 0 12px 0; color: var(--text);">What the demo actually surfaced</h4>
+      <p>I ran this flow past country reps and SMEs as part of a dedicated Premium Adjustment demo, with a structured feedback survey alongside it. The feedback was specific and mostly about honesty in the interface rather than aesthetics: a missing "Reject" option alongside submit, a "Submit" button whose label didn't match what it actually did — it previewed, it didn't commit — which I relabeled to "Preview" as a direct result, commission impact missing from that preview entirely, and a request that claim ratios always render to two decimal places so small rounding differences don't turn into disputes later. One thread went past the interface: whether bonus calculations, handled manually by account managers in France today, should keep routing through that manual review step even once the rest of the flow is automated — a process question I fed back to the product team rather than resolving unilaterally in the design.</p>
+
+      <div class="impact-card">
+        <div>
+          <svg viewBox="0 0 600 420" style="width: 100%; height: auto; overflow: visible;" role="img" aria-labelledby="demoResultsTitle demoResultsDesc">
+            <title id="demoResultsTitle">Demo results — usability vs. functionality</title>
+            <desc id="demoResultsDesc">A scatter chart plotting this demo's aggregate usability and functionality scores at 3.6 and 3.7 out of 5, landing in the Continue quadrant.</desc>
+            <!-- axes -->
+            <line x1="70" y1="20" x2="70" y2="370" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></line>
+            <line x1="70" y1="370" x2="560" y2="370" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></line>
+            <!-- tick labels -->
+            <g font-family="JetBrains Mono, monospace" font-size="11" fill="rgba(255,255,255,0.4)">
+              <text x="70" y="388" text-anchor="middle">0</text>
+              <text x="168" y="388" text-anchor="middle">1</text>
+              <text x="266" y="388" text-anchor="middle">2</text>
+              <text x="364" y="388" text-anchor="middle">3</text>
+              <text x="462" y="388" text-anchor="middle">4</text>
+              <text x="560" y="388" text-anchor="middle">5</text>
+              <text x="58" y="374" text-anchor="end">0</text>
+              <text x="58" y="304" text-anchor="end">1</text>
+              <text x="58" y="234" text-anchor="end">2</text>
+              <text x="58" y="164" text-anchor="end">3</text>
+              <text x="58" y="94" text-anchor="end">4</text>
+              <text x="58" y="26" text-anchor="end">5</text>
+            </g>
+            <!-- ambiguous zone -->
+            <ellipse cx="230" cy="230" rx="150" ry="95" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.18)" stroke-width="1.25" stroke-dasharray="4 5"></ellipse>
+            <text x="230" y="215" text-anchor="middle" font-size="11.5" fill="rgba(255,255,255,0.55)">Fix it</text>
+            <text x="230" y="232" text-anchor="middle" font-size="11.5" fill="rgba(255,255,255,0.55)">Add to backlog</text>
+            <text x="230" y="249" text-anchor="middle" font-size="11.5" fill="rgba(255,255,255,0.55)">False alarm</text>
+            <!-- threshold curve -->
+            <polyline points="70,69 109,111 148,150 188,178 227,199 266,216 315,234 364,251 413,271 462,293 511,325 560,360" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline>
+            <text x="112" y="345" font-size="13" fill="rgba(255,255,255,0.45)">Rebuild</text>
+            <text x="452" y="55" font-size="13" fill="rgba(255,255,255,0.45)">Continue</text>
+            <!-- data point -->
+            <circle cx="423" cy="111" r="8" fill="#c4a7ff"></circle>
+            <circle cx="423" cy="111" r="13" fill="none" stroke="#c4a7ff" stroke-width="1.5" opacity="0.45"></circle>
+            <!-- axis titles -->
+            <text x="315" y="412" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.06em" fill="rgba(255,255,255,0.5)">USABILITY</text>
+            <text x="-195" y="20" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.06em" fill="rgba(255,255,255,0.5)" transform="rotate(-90)">FUNCTIONALITY</text>
+          </svg>
         </div>
-        <div class="media-container">
-          <img src="assets/manual-event-tax-summary.jpg" alt="Tax summary with GST breakdown and broker commission impact">
-        </div>
-        <div class="media-container">
-          <img src="assets/manual-event-events-tab-list.jpg" alt="Declarations and invoices — Events tab listing processed, submitted and rejected events">
-        </div>
-        <div class="media-container">
-          <img src="assets/manual-event-mobile-alerts.png" alt="Mobile alert confirming the tax summary has finished calculating">
+        <div>
+          <div class="meta-label" style="margin-bottom: 10px;">Premium Adjustment demo — aggregate result</div>
+          <p style="color: var(--text); font-size: 1.4rem; font-weight: 600; font-family: var(--font-display); margin-bottom: 6px;">3.6 usability · 3.7 functionality</p>
+          <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 0;">Plotted against the same usability/functionality decision framework used across the program's demo evaluations, this session landed in the <strong style="color: var(--text); font-weight: 600;">Continue</strong> zone rather than the ambiguous middle — comfortably clear of "fix it" or "rebuild," which is why the fixes that came out of it (the button rename, the missing Reject option, commission impact on the preview) were treated as refinements to ship, not reasons to redesign the flow.</p>
         </div>
       </div>
 
       <h2>Usability Testing</h2>
-      <p>We ran multiple demo sessions with subject matter experts (SMEs) and product owners to showcase the features we'd designed. For these, I built interactive prototypes that let users experience key flows, behaviors, and system interactions firsthand — a hands-on approach that helped stakeholders understand design intent, not just look at static screens.</p>
-      <p>Alongside the demos, I created a structured feedback survey so users could share ratings, suggestions, and overall impressions across eight dimensions — clarity of the flow, efficiency gains, screen readability, availability of essential information, functional adequacy, regulatory fit, and expected impact on response time and service quality. Combining real-time interaction with targeted feedback gave a clear read on how well the designs matched user needs and expectations, and directly informed the next round of iteration.</p>
-      <p>The Premium Adjustment demo is a good example of the loop in practice. Country reps flagged specific, actionable gaps: a missing "Reject" option alongside submit, a "Submit" button whose label didn't match its actual behaviour (renamed to "Preview" as a result), commission impact missing from the preview screen, and a request that claim ratios always display to two decimal places to avoid rounding disputes. Some feedback surfaced process questions that reached beyond the interface itself — like whether bonus calculations, currently handled manually by account managers in France, should keep routing through that manual review step even after automation. Capturing that kind of feedback, not just star ratings, is what made the loop useful.</p>
+      <p>Beyond the Manual Events deep dive above, I ran the same demo-plus-survey pattern across the other Arcade features — multiple sessions with subject matter experts (SMEs) and product owners, each backed by interactive prototypes so stakeholders could experience real flows and behaviors rather than judge static screens. The structured feedback survey behind each demo covered eight dimensions: clarity of the flow, efficiency gains, screen readability, availability of essential information, functional adequacy, regulatory fit, and expected impact on response time and service quality. Combining real-time interaction with targeted feedback gave a consistent, comparable read across features on how well each design matched user needs — and, as with Manual Events, directly informed the next round of iteration.</p>
 
       <h2>Next steps</h2>
       <p>As the project continues, the focus is on optimizing the design process itself to deliver a more cohesive, user-centric product:</p>
@@ -1048,6 +1415,32 @@
     function personaNext() { personaShow(personaIndex + 1); }
     function personaPrev() { personaShow(personaIndex - 1); }
     function personaGoTo(i) { personaShow(i); }
+
+    // ---- Feature screenshot carousels (Compare / Declaration / Manual Event) ----
+    const shotState = {};
+
+    function shotShow(id, i) {
+      const track = document.querySelector('.shot-carousel[data-carousel="' + id + '"]');
+      if (!track) return;
+      const slides = track.querySelectorAll('.shot-slide');
+      const total = slides.length;
+      const index = ((i % total) + total) % total;
+      shotState[id] = index;
+      slides.forEach(function (slide, idx) {
+        slide.classList.toggle('active', idx === index);
+      });
+      const dotsWrap = document.getElementById('shotDots-' + id);
+      if (dotsWrap) {
+        dotsWrap.querySelectorAll('.shot-dot').forEach(function (dot, idx) {
+          dot.classList.toggle('active', idx === index);
+        });
+      }
+      const counter = document.getElementById('shotCounter-' + id);
+      if (counter) counter.textContent = (index + 1) + ' / ' + total;
+    }
+    function shotNext(id) { shotShow(id, (shotState[id] || 0) + 1); }
+    function shotPrev(id) { shotShow(id, (shotState[id] || 0) - 1); }
+    function shotGoTo(id, i) { shotShow(id, i); }
 
     let lastFocusedTrigger = null;
 
