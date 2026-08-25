@@ -902,7 +902,7 @@
       </div>
 
       <h3>User Journey Mapping & Opportunity Identification</h3>
-      <p>I created detailed user journey maps for the core personas — Mike and Daphne — visualizing the end-to-end experience across tasks like policy creation, credit risk analysis, and customer communication. Mapping each touchpoint let me:</p>
+      <p>I mapped storyline-format journeys for the core personas — Mike and Daphne — visualizing the end-to-end experience across credit limit decisions, declarations, and offer comparisons, each broken into timed phases with the underlying screen at every step. Mapping each touchpoint let me:</p>
       <ul>
         <li>Pinpoint moments of friction, such as redundant data entry or unclear navigation.</li>
         <li>Identify delays caused by manual processes or system dependencies.</li>
@@ -917,15 +917,46 @@
       </ul>
       <p>These opportunities directly informed the early wireframes.</p>
 
-      <div class="media-grid-2">
-        <div class="media-container">
-          <img src="assets/journey-mike.png" alt="Mike's user journey — Credit Limit Application requested on 3rd country risk (low risk)">
+      <div class="shot-carousel" data-carousel="journey">
+        <div class="shot-track">
+        <div class="shot-slide active" data-index="0">
+          <div class="media-container">
+            <img src="assets/journey-mike.png" alt="Mike&#x27;s user journey — Credit Limit Application requested on 3rd country risk (low risk)">
+          </div>
+          <p class="media-caption">Mike (Account Manager) — requesting a Credit Limit Application on a 3rd-country risk, from log-in through to sending the customer the amended policy package.</p>
         </div>
-        <div class="media-container">
-          <img src="assets/journey-daphne.png" alt="Daphne's user journey — Credit Limit Application requested for a country in the same risk class">
+        <div class="shot-slide" data-index="1">
+          <div class="media-container">
+            <img src="assets/journey-daphne.png" alt="Daphne&#x27;s user journey — Credit Limit Application requested for a country in the same risk class">
+          </div>
+          <p class="media-caption">Daphne (Customer Credit Manager) — a Credit Limit Application for a country already in the same risk class as the existing cover, referred for assessment before confirmation.</p>
         </div>
+        <div class="shot-slide" data-index="2">
+          <div class="media-container">
+            <img src="assets/journey-declaration-daphne.png" alt="Daphne&#x27;s user journey — declaring turnover on a multi-country policy">
+          </div>
+          <p class="media-caption">Daphne (Customer Credit Manager) — declaring turnover on a multi-country policy: country-conditional fields, auto-populated payment terms, and the validation that catches a missing region before it becomes a support ticket.</p>
+        </div>
+        <div class="shot-slide" data-index="3">
+          <div class="media-container">
+            <img src="assets/journey-compare-mike.png" alt="Mike&#x27;s user journey — comparing offers to close out a renewal">
+          </div>
+          <p class="media-caption">Mike (Account Manager) — comparing renewal offers side by side, from the commercial case overview through to exporting the comparison or picking the offer to recommend.</p>
+        </div>
+        </div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="shotPrev('journey')" aria-label="Previous journey">&#8592;</button>
+          <div class="shot-dots" id="shotDots-journey">
+          <button class="shot-dot active" onclick="shotGoTo('journey', 0)" aria-label="Journey 1"></button>
+          <button class="shot-dot" onclick="shotGoTo('journey', 1)" aria-label="Journey 2"></button>
+          <button class="shot-dot" onclick="shotGoTo('journey', 2)" aria-label="Journey 3"></button>
+          <button class="shot-dot" onclick="shotGoTo('journey', 3)" aria-label="Journey 4"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="shotNext('journey')" aria-label="Next journey">&#8594;</button>
+        </div>
+        <div class="shot-counter" id="shotCounter-journey">1 / 4</div>
       </div>
-      <p class="media-caption">Two of the ~15 storyline-format journeys mapped across personas — including Martina (Finance Director) and Damian (Broker) on the customer side — each broken into timed phases (Log in → Assess → Negotiate → End) to expose where minutes, and patience, were being lost.</p>
+      <p class="media-caption">Four of the ~15 storyline-format journeys mapped across personas — including Martina (Finance Director) and Damian (Broker) on the customer side — each broken into timed phases to expose where minutes, and patience, were being lost. The last two were built from the underlying Declaration and Compare Offers UI flows to fill gaps the first pass of journeys didn't cover.</p>
 
       <h3>Expert Evaluation</h3>
       <p>Alongside the generative research, a heuristic pass on the existing Symphony application surfaced several structural issues. The application is data-heavy, but screen space wasn't being used effectively due to a low target resolution. While the interface aimed to align with company branding, the style guide had real discrepancies — red tertiary buttons, for instance, could easily be misread as error states. Visual hierarchy was thin overall, leaving the interface feeling flat.</p>
@@ -1117,63 +1148,63 @@
         <div class="shot-track">
         <div class="shot-slide active" data-index="0">
           <div class="media-container">
-            <img src="assets/declaration-create-additional-modal.png" alt="Create additional declaration — selecting the declaration period">
+            <img src="assets/declaration-edit-details-view.jpg" alt="View Declaration — the landing view with the full populated list and an Edit details action">
           </div>
-          <p class="media-caption">Starting a new declaration — selecting the period before creation</p>
+          <p class="media-caption">Opening a declaration — the landing view, with Edit details one click away</p>
         </div>
         <div class="shot-slide" data-index="1">
+          <div class="media-container">
+            <img src="assets/declaration-create-additional-modal.png" alt="Create additional declaration — selecting the declaration period">
+          </div>
+          <p class="media-caption">Or starting a new one — selecting the period before creation</p>
+        </div>
+        <div class="shot-slide" data-index="2">
           <div class="media-container">
             <img src="assets/declaration-list-add-column.jpg" alt="Declaration list with configurable columns — buyer organisation, trade sector, region">
           </div>
           <p class="media-caption">Configurable columns — buyer organisation, trade sector, region</p>
         </div>
-        <div class="shot-slide" data-index="2">
+        <div class="shot-slide" data-index="3">
           <div class="media-container">
             <img src="assets/declaration-add-column-expanded.jpg" alt="Add Column menu open, with an expanded row showing special and customer reference notes">
           </div>
           <p class="media-caption">Add Column menu open, row expanded to show reference notes</p>
         </div>
-        <div class="shot-slide" data-index="3">
+        <div class="shot-slide" data-index="4">
           <div class="media-container">
             <img src="assets/declaration-region-dropdown.jpg" alt="Declaration row with region populated — New South Wales, Victoria">
           </div>
           <p class="media-caption">Region populated once added as a column</p>
         </div>
-        <div class="shot-slide" data-index="4">
+        <div class="shot-slide" data-index="5">
           <div class="media-container">
             <img src="assets/declaration-payment-conditions-dropdown.jpg" alt="Declaration row — payment conditions dropdown open">
           </div>
           <p class="media-caption">Payment conditions — selecting from policy-level options</p>
         </div>
-        <div class="shot-slide" data-index="5">
+        <div class="shot-slide" data-index="6">
           <div class="media-container">
             <img src="assets/declaration-payment-conditions-options.jpg" alt="Declaration row — full payment conditions option set">
           </div>
           <p class="media-caption">Payment conditions — full option set for the selected country</p>
         </div>
-        <div class="shot-slide" data-index="6">
+        <div class="shot-slide" data-index="7">
           <div class="media-container">
             <img src="assets/declaration-reference-tooltip.jpg" alt="Special reference detail surfaced on hover">
           </div>
           <p class="media-caption">Special reference detail on hover, without opening the row</p>
         </div>
-        <div class="shot-slide" data-index="7">
+        <div class="shot-slide" data-index="8">
           <div class="media-container">
             <img src="assets/declaration-multi-row-expanded.jpg" alt="Declaration with multiple country rows, one expanded">
           </div>
           <p class="media-caption">Multiple countries on one declaration, each independently expandable</p>
         </div>
-        <div class="shot-slide" data-index="8">
+        <div class="shot-slide" data-index="9">
           <div class="media-container">
             <img src="assets/declaration-same-country-warning.jpg" alt="Inline warning — policy and buyer are the same country">
           </div>
           <p class="media-caption">Inline validation — flagging when policy and buyer share a country</p>
-        </div>
-        <div class="shot-slide" data-index="9">
-          <div class="media-container">
-            <img src="assets/declaration-edit-details-view.jpg" alt="Declaration edit-details view with expanded row notes">
-          </div>
-          <p class="media-caption">Edit-details mode for bulk changes across rows</p>
         </div>
         <div class="shot-slide" data-index="10">
           <div class="media-container">
@@ -1201,6 +1232,12 @@
         </div>
         <div class="shot-counter" id="shotCounter-declaration">1 / 11</div>
       </div>
+
+      <p>The carousel above is a curated walk-through — the actual flow behind it branches considerably further: column-level validation (a disabled region field outside Canada/Australia, an error when a buyer-level premium rate doesn't match the country level), an autocomplete buyer-organisation picker, an auto-populated trade sector, and a save-time validation that blocks submission if a required region was never entered. I mapped the full thing before narrowing down to the screens worth showing individually.</p>
+      <div class="media-container">
+        <img src="assets/declaration-ui-flow.png" alt="Declaration feature UI flow — full flowchart from opening a declaration through column configuration, validation, and save">
+      </div>
+      <p class="media-caption">The underlying UI flow for Create Declaration — every branch and validation state mapped before any screen got built.</p>
 
       <h3>Experience 4 — Manual Events &amp; Premium Adjustment</h3>
       <p>Not every charge fits the standard declaration flow — bonuses, surcharges, no-claim adjustments and CL fees often need a manual event: a bulk list of charge lines, each with its own line type, region, unit price and tax-suppression setting, frequently running to 70+ lines on a single policy. This is the feature I'll walk through in the most depth, because the interesting design problem in it — an async calculation with a real, visible wait — isn't one that gets solved by making the form prettier.</p>
@@ -1291,20 +1328,8 @@
         <div class="shot-counter" id="shotCounter-manualEvent">1 / 10</div>
       </div>
 
-      <h4 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin: 40px 0 12px 0; color: var(--text);">Before and after: what "actionable, not just present" actually meant</h4>
-      <p>This is the same principle the heuristic evaluation surfaced early on — data needed to be actionable, not just present — applied to a concrete screen. The legacy form dumps every field into one dense, undifferentiated grid with no visual grouping or priority. The manual event line list groups by what a user actually needs to check at a glance (line type, region, unit price, tax suppression, computed amount), keeps totals pinned at the bottom of the page instead of buried in the data, and separates "editing" from "reviewing" as distinct modes rather than one perpetually-editable table.</p>
-      <div class="media-grid-2">
-        <div class="media-container">
-          <img src="assets/legacy-symphony-oracle-forms.png" alt="Legacy Oracle Forms interface — dense, ungrouped data entry">
-        </div>
-        <div class="media-container">
-          <img src="assets/manual-event-cash-lines-filled.jpg" alt="Redesigned manual event line list — grouped columns, pinned totals, distinct edit and review modes">
-        </div>
-      </div>
-      <p class="media-caption">Before / after, same underlying task: structured, row-based data entry. Left: the legacy Oracle Forms pattern this replaces. Right: the redesigned manual event flow.</p>
-
       <h4 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin: 40px 0 12px 0; color: var(--text);">What the demo actually surfaced</h4>
-      <p>I ran this flow past country reps and SMEs as part of a dedicated Premium Adjustment demo, with a structured feedback survey alongside it. The feedback was specific and mostly about honesty in the interface rather than aesthetics: a missing "Reject" option alongside submit, a "Submit" button whose label didn't match what it actually did — it previewed, it didn't commit — which I relabeled to "Preview" as a direct result, commission impact missing from that preview entirely, and a request that claim ratios always render to two decimal places so small rounding differences don't turn into disputes later. One thread went past the interface: whether bonus calculations, handled manually by account managers in France today, should keep routing through that manual review step even once the rest of the flow is automated — a process question I fed back to the product team rather than resolving unilaterally in the design.</p>
+      <p>The same principle the heuristic evaluation surfaced early on — data needed to be actionable, not just present — applied directly here: the manual event line list groups by what a user actually needs to check at a glance (line type, region, unit price, tax suppression, computed amount), keeps totals pinned at the bottom of the page instead of buried in the data, and separates "editing" from "reviewing" as distinct modes rather than one perpetually-editable table. I ran this flow past country reps and SMEs as part of a dedicated Premium Adjustment demo, with a structured feedback survey alongside it. The feedback was specific and mostly about honesty in the interface rather than aesthetics: a missing "Reject" option alongside submit, a "Submit" button whose label didn't match what it actually did — it previewed, it didn't commit — which I relabeled to "Preview" as a direct result, commission impact missing from that preview entirely, and a request that claim ratios always render to two decimal places so small rounding differences don't turn into disputes later. One thread went past the interface: whether bonus calculations, handled manually by account managers in France today, should keep routing through that manual review step even once the rest of the flow is automated — a process question I fed back to the product team rather than resolving unilaterally in the design.</p>
 
       <div class="impact-card">
         <div>
