@@ -801,16 +801,14 @@
       <p>The European Central Bank transitioned from its long-standing Statistical Data Warehouse (SDW) to the more advanced ECB Data Portal (EDP) — a significant upgrade in user experience while preserving the same underlying data structures, time-series keys, dataset identifiers, and codifications the SDW's expert users already relied on. That constraint shaped everything: this wasn't a from-scratch redesign, it was making a genuinely complex, trusted data system approachable to a much wider audience without breaking what already worked for the experts who used it daily.</p>
 
       <div class="media-grid-2">
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Existing SDW portal — snippet 1</div>
+        <div class="media-container">
+          <img src="assets/sdw-legacy-homepage.png" alt="Legacy SDW homepage with a dense indicator table, static/dynamic chart toggle, and a news ticker">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Existing SDW portal — snippet 2</div>
+        <div class="media-container">
+          <img src="assets/sdw-legacy-all-datasets.png" alt="Legacy All Datasets page listing every dataset as a flat, unfiltered table">
         </div>
       </div>
-      <p class="media-caption">Snippets of the legacy SDW portal.</p>
+      <p class="media-caption">The legacy SDW portal: a dense indicator table and chart bolted onto the homepage (left), and every dataset dropped into one flat, unfiltered table (right) — the two problems the redesign had to solve first.</p>
 
       <h2>Objectives</h2>
       <ul>
@@ -826,25 +824,47 @@
 
       <h3>Wireframing & Prototyping</h3>
       <p>The business had an existing style guide designers had to work within — the real design leverage was in deciding component choice, page layout, and information structure to improve the browsing experience. The process started by gathering input on Mural, where the business and IBM laid out what each page needed to contain, alongside release details and information architecture.</p>
-      <div class="img-placeholder">
-        <div class="ph-icon">🖼</div>
-        <div class="ph-label">Mural board — information architecture planning</div>
+      <div class="media-container">
+        <img src="assets/sdw-mural-board.png" alt="Mural board mapping the browsing journey across Browsing Level 1, Browsing Level 2, Browse result page, and Data detail page, with sticky notes flagging missing screens and open questions">
       </div>
-      <p class="media-caption">Using a Miro board to brainstorm with clients and map user journeys for each segment of the site.</p>
-      <div class="media-grid-3">
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Low-fidelity wireframe 1</div>
+      <p class="media-caption">Mapping the browsing journey on Mural with the business and IBM — Level 1 and Level 2 navigation, the results page, and the data detail page, with red-flagged notes marking screens that still needed a visual or a decision.</p>
+
+      <div class="shot-carousel" id="wireframes-carousel">
+        <div class="shot-track">
+          <div class="shot-slide active" data-index="0">
+            <div class="media-container"><img src="assets/sdw-wireframe-overview-carousel.png" alt="Low-fidelity wireframe of the homepage with a hero intro and a horizontal related time series carousel"></div>
+          </div>
+          <div class="shot-slide" data-index="1">
+            <div class="media-container"><img src="assets/sdw-wireframe-overview-cards.png" alt="Low-fidelity wireframe of the homepage using a three-card content row instead of a carousel"></div>
+          </div>
+          <div class="shot-slide" data-index="2">
+            <div class="media-container"><img src="assets/sdw-wireframe-tags-filters.png" alt="Low-fidelity wireframe of the Tags browse page with a left-hand facet filter sidebar and an alphabetical index"></div>
+          </div>
+          <div class="shot-slide" data-index="3">
+            <div class="media-container"><img src="assets/sdw-wireframe-tags-geography-dropdown.png" alt="Low-fidelity wireframe of the Tags browse page with the geography facet expanded into a searchable multi-column dropdown"></div>
+          </div>
+          <div class="shot-slide" data-index="4">
+            <div class="media-container"><img src="assets/sdw-wireframe-monetary-results.png" alt="Low-fidelity wireframe of a search results page with dataset rows and bulk actions for download, cart, compare, favourite, and notifications"></div>
+          </div>
+          <div class="shot-slide" data-index="5">
+            <div class="media-container"><img src="assets/sdw-wireframe-detail-blocks.png" alt="Low-fidelity wireframe of a content template using alternating image and text blocks"></div>
+          </div>
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Low-fidelity wireframe 2</div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="wireframesPrev()" aria-label="Previous wireframe">&#8592;</button>
+          <div class="shot-dots">
+            <button class="shot-dot active" onclick="wireframesGoTo(0)" aria-label="Homepage — carousel module"></button>
+            <button class="shot-dot" onclick="wireframesGoTo(1)" aria-label="Homepage — card row module"></button>
+            <button class="shot-dot" onclick="wireframesGoTo(2)" aria-label="Tags page — filters"></button>
+            <button class="shot-dot" onclick="wireframesGoTo(3)" aria-label="Tags page — geography dropdown expanded"></button>
+            <button class="shot-dot" onclick="wireframesGoTo(4)" aria-label="Search results — bulk actions"></button>
+            <button class="shot-dot" onclick="wireframesGoTo(5)" aria-label="Content template — alternating blocks"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="wireframesNext()" aria-label="Next wireframe">&#8594;</button>
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Low-fidelity wireframe 3</div>
-        </div>
+        <div class="shot-label" id="wireframes-label">Homepage — carousel module</div>
       </div>
+      <p class="media-caption">Low-fidelity wireframes built in the existing style guide's components — two homepage module options, the Tags browse page in its default and expanded states, a results page built around bulk actions, and a reusable alternating-block content template.</p>
 
       <h3>Information Architecture & Navigation</h3>
       <p>To address dataset discoverability, we overhauled the portal's information architecture:</p>
@@ -1125,6 +1145,26 @@
     function uiDesignsNext() { uiDesignsShow(uiDesignsIndex + 1); }
     function uiDesignsPrev() { uiDesignsShow(uiDesignsIndex - 1); }
     function uiDesignsGoTo(i) { uiDesignsShow(i); }
+
+    // ---- Low-fidelity wireframes carousel ----
+    let wireframesIndex = 0;
+    const wireframesTotal = 6;
+
+    function wireframesShow(i) {
+      wireframesIndex = (i + wireframesTotal) % wireframesTotal;
+      document.querySelectorAll('#wireframes-carousel .shot-slide').forEach(function (slide) {
+        slide.classList.toggle('active', Number(slide.dataset.index) === wireframesIndex);
+      });
+      document.querySelectorAll('#wireframes-carousel .shot-dot').forEach(function (dot, idx) {
+        dot.classList.toggle('active', idx === wireframesIndex);
+      });
+      const labels = ['Homepage — carousel module', 'Homepage — card row module', 'Tags page — filters', 'Tags page — geography dropdown expanded', 'Search results — bulk actions', 'Content template — alternating blocks'];
+      const labelEl = document.getElementById('wireframes-label');
+      if (labelEl) labelEl.textContent = labels[wireframesIndex];
+    }
+    function wireframesNext() { wireframesShow(wireframesIndex + 1); }
+    function wireframesPrev() { wireframesShow(wireframesIndex - 1); }
+    function wireframesGoTo(i) { wireframesShow(i); }
   </script>
 </body>
 </html>
