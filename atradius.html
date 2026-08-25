@@ -1259,7 +1259,7 @@
       </div>
       <p class="media-caption">The underlying UI flow for Create Declaration — every branch and validation state mapped before any screen got built. Click to open it full-size — it's dense, and worth reading at scale.</p>
 
-      <h3>Experience 4 — Manual Events &amp; Premium Adjustment</h3>
+      <h3>Experience 4 — Manual Events</h3>
       <p>Not every charge fits the standard declaration flow — bonuses, surcharges, no-claim adjustments and CL fees often need a manual event: a bulk list of charge lines, each with its own line type, region, unit price and tax-suppression setting, frequently running to 70+ lines on a single policy. This is the feature I'll walk through in the most depth, because the interesting design problem in it — an async calculation with a real, visible wait — isn't one that gets solved by making the form prettier.</p>
 
       <h4 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin: 32px 0 12px 0; color: var(--text);">The problem: a slow calculation with no good default</h4>
@@ -1270,57 +1270,57 @@
         <div class="shot-track">
         <div class="shot-slide active" data-index="0">
           <div class="media-container">
+            <img src="assets/manual-event-events-tab-entry.png" alt="Declarations and invoices — Events tab listing processed, submitted and rejected events, with Create Manual Event as the entry point">
+          </div>
+          <p class="media-caption">Starting from the Events tab — Create Manual Event one click away</p>
+        </div>
+        <div class="shot-slide" data-index="1">
+          <div class="media-container">
             <img src="assets/manual-event-create-form.jpg" alt="Create Manual Event — event type, start and end date">
           </div>
           <p class="media-caption">Create Manual Event — event type, start and end date</p>
         </div>
-        <div class="shot-slide" data-index="1">
+        <div class="shot-slide" data-index="2">
           <div class="media-container">
             <img src="assets/manual-event-create-single-row.jpg" alt="Cash event type — first charge line being added">
           </div>
           <p class="media-caption">Cash event type — adding the first charge line</p>
         </div>
-        <div class="shot-slide" data-index="2">
+        <div class="shot-slide" data-index="3">
           <div class="media-container">
             <img src="assets/manual-event-cash-lines-filled.jpg" alt="Manual event cash event type lines, filled with charge and export amounts">
           </div>
           <p class="media-caption">Charge and export amounts filled across multiple lines</p>
         </div>
-        <div class="shot-slide" data-index="3">
+        <div class="shot-slide" data-index="4">
           <div class="media-container">
             <img src="assets/manual-event-full-line-list-totals.jpg" alt="Manual event with a full multi-line list and running totals">
           </div>
           <p class="media-caption">A full multi-line event with running totals pinned at the bottom</p>
         </div>
-        <div class="shot-slide" data-index="4">
+        <div class="shot-slide" data-index="5">
           <div class="media-container">
             <img src="assets/manual-event-wait-warning.jpg" alt="Wait warning — preview calculated tax or submit without preview">
           </div>
           <p class="media-caption">The wait warning — preview calculated tax, or submit without preview</p>
         </div>
-        <div class="shot-slide" data-index="5">
+        <div class="shot-slide" data-index="6">
           <div class="media-container">
             <img src="assets/manual-event-tax-calculating-modal.jpg" alt="Tax summary calculating, with an explicit in-progress message">
           </div>
           <p class="media-caption">Tax summary calculating — acknowledged, not just a spinner</p>
         </div>
-        <div class="shot-slide" data-index="6">
+        <div class="shot-slide" data-index="7">
           <div class="media-container">
             <img src="assets/manual-event-tax-summary.jpg" alt="Tax summary with GST breakdown and broker commission impact">
           </div>
           <p class="media-caption">Tax summary with GST breakdown and broker commission impact</p>
         </div>
-        <div class="shot-slide" data-index="7">
+        <div class="shot-slide" data-index="8">
           <div class="media-container">
             <img src="assets/manual-event-tax-summary-alert.png" alt="Alert confirming the tax summary has been generated">
           </div>
           <p class="media-caption">The alert that fires once the tax summary is ready</p>
-        </div>
-        <div class="shot-slide" data-index="8">
-          <div class="media-container">
-            <img src="assets/manual-event-events-tab-list.jpg" alt="Declarations and invoices — Events tab listing processed, submitted and rejected events">
-          </div>
-          <p class="media-caption">Events tab — processed, submitted and rejected events at a glance</p>
         </div>
         <div class="shot-slide" data-index="9">
           <div class="media-container">
