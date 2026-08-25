@@ -1174,7 +1174,73 @@
         </div>
         <div class="shot-counter" id="shotCounter-performance">1 / 2</div>
       </div>
-      <p>Once screens were designed and user journeys updated, I built detailed UI flows and interactive prototypes so stakeholders could clearly understand each feature — including multiple scenarios and contextual explanations. These assets were central to a smooth handoff, giving development, services, and testing teams comprehensive documentation to work from. (The Performance dashboard's own UI flow diagram — date-range rules, the 4-month history view, and the export/report-generation flow — is mapped in the same Overflow.io format as the Declaration one below; I've seen it but don't have it as a standalone file yet, so it isn't embedded here — same treatment as the Declaration flow once I do.)</p>
+      <p>Once screens were designed and user journeys updated, I built detailed UI flows and interactive prototypes so stakeholders could clearly understand each feature — including multiple scenarios and contextual explanations. These assets were central to a smooth handoff, giving development, services, and testing teams comprehensive documentation to work from.</p>
+      <div class="media-container">
+        <img src="assets/performance-dashboard-ui-flow.png" alt="Performance dashboard UI flow — full flowchart from opening the dashboard through date-range validation and the export/report-generation flow">
+      </div>
+      <p class="media-caption">The underlying UI flow for the Performance dashboard — date-range validation rules and the full export/report-generation branch, mapped in the same format as the Create Declaration flow below. Click to open it full-size.</p>
+
+      <p>That flow's export branch is a feature in its own right: operations teams need to pull point-in-time reports out of the dashboard for downstream use, not just view it live — audit trails, rules, tax summaries, event summaries, exceptions, and BCT/FCT (and FCT/FIS) conversion detail. The Export tab treats this as a proper background job rather than a blocking download: pick a report type (each with its own conditional fields — an Event type selector only appears for an Event summary report, for instance), scope it to one of branch, business unit or steering unit — picking one disables the other two — and the system generates the file asynchronously, alerts the user once it's ready, and keeps a running table of everything that's been exported.</p>
+      <div class="shot-carousel" data-carousel="performanceExport">
+        <div class="shot-track">
+        <div class="shot-slide active" data-index="0">
+          <div class="media-container">
+            <img src="assets/pd-export-01-entry.png" alt="Performance dashboard — Export tab, empty exported-reports table with Generate report as the entry point">
+          </div>
+          <p class="media-caption">Export tab — empty state, Generate report the only action</p>
+        </div>
+        <div class="shot-slide" data-index="1">
+          <div class="media-container">
+            <img src="assets/pd-export-02-request-modal.png" alt="Request for Report modal — report type, date range, and a choice of branch, business unit or steering unit">
+          </div>
+          <p class="media-caption">Request for Report — type, date range, and one of branch / business unit / steering unit</p>
+        </div>
+        <div class="shot-slide" data-index="2">
+          <div class="media-container">
+            <img src="assets/pd-export-03-branch-selected.png" alt="Request for Report modal with a branch selected — business unit and steering unit fields disabled">
+          </div>
+          <p class="media-caption">Selecting one scope disables the other two, keeping the request unambiguous</p>
+        </div>
+        <div class="shot-slide" data-index="3">
+          <div class="media-container">
+            <img src="assets/pd-export-04-todate-picker.png" alt="Request for Report modal with the To date picker open">
+          </div>
+          <p class="media-caption">To date — bounded by the same date-range rules mapped in the flow diagram above</p>
+        </div>
+        <div class="shot-slide" data-index="4">
+          <div class="media-container">
+            <img src="assets/pd-export-05-reports-table.png" alt="Export tab with a generated report now listed in the Exported reports table">
+          </div>
+          <p class="media-caption">Once generated, the report lands in the Exported reports table</p>
+        </div>
+        <div class="shot-slide" data-index="5">
+          <div class="media-container">
+            <img src="assets/pd-export-06-document-detail.png" alt="Document detail view for a generated report, with file attachment ready to open">
+          </div>
+          <p class="media-caption">Opening a generated report — document detail, ready to download</p>
+        </div>
+        <div class="shot-slide" data-index="6">
+          <div class="media-container">
+            <img src="assets/pd-export-07-mobile-alerts.png" alt="Mobile alerts panel showing a file-exported-correctly notification">
+          </div>
+          <p class="media-caption">The mobile alert that fires once export finishes — no need to keep the tab open and wait</p>
+        </div>
+        </div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="shotPrev('performanceExport')" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots" id="shotDots-performanceExport">
+          <button class="shot-dot active" onclick="shotGoTo('performanceExport', 0)" aria-label="Screen 1"></button>
+          <button class="shot-dot" onclick="shotGoTo('performanceExport', 1)" aria-label="Screen 2"></button>
+          <button class="shot-dot" onclick="shotGoTo('performanceExport', 2)" aria-label="Screen 3"></button>
+          <button class="shot-dot" onclick="shotGoTo('performanceExport', 3)" aria-label="Screen 4"></button>
+          <button class="shot-dot" onclick="shotGoTo('performanceExport', 4)" aria-label="Screen 5"></button>
+          <button class="shot-dot" onclick="shotGoTo('performanceExport', 5)" aria-label="Screen 6"></button>
+          <button class="shot-dot" onclick="shotGoTo('performanceExport', 6)" aria-label="Screen 7"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="shotNext('performanceExport')" aria-label="Next screen">&#8594;</button>
+        </div>
+        <div class="shot-counter" id="shotCounter-performanceExport">1 / 7</div>
+      </div>
 
       <h3>Experience 3 — Declarations &amp; Invoicing</h3>
       <p>Declarations sit at the center of the policy lifecycle — customers report turnover by country, buyer and trade sector, and the system calculates premium against it. The redesigned declaration table lets users configure which columns matter to them (buyer organisation, trade sector, region), expand any row for special or customer-reference notes, and switch into an "Edit details" mode for bulk changes — replacing a rigid, one-size-fits-all legacy grid. A dedicated Cash Transactions tab rolls declarations, premium &amp; other fees, and CL fees into running balances, so an account manager can see what's unpaid, issued, or pending without leaving the policy.</p>
