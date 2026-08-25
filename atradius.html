@@ -744,10 +744,8 @@
 
     <!-- Framed Hero Image Container -->
     <div class="case-hero-container">
-      <div class="img-placeholder" style="margin: 0; border: none;">
-        <div class="ph-icon">🖼</div>
-        <div class="ph-label">Hero screenshot needed</div>
-        <div class="ph-desc">The performance dashboard, or another flagship screen, works well here — matches the treatment used on the PowerVC case study.</div>
+      <div class="case-hero-img">
+        <img src="assets/hero-commercial-case-overview.png" alt="Commercial case overview dashboard — prospect management, CDD status, credit limit decisions, portfolio analysis and case KPIs in one screen">
       </div>
     </div>
 
@@ -772,10 +770,27 @@
       <p>To ensure the redesigned platform aligned with the real needs of its end users, we developed key user personas grounded in stakeholder interviews — including Mike, an Account Manager, and Daphne, a Customer Credit Manager. These personas helped the team empathize with users' daily challenges, prioritize features, and design workflows that genuinely supported their goals, rather than just digitizing the old ones.</p>
       <p>After synthesizing insights from stakeholder interviews, user observations, and workflow analysis, we moved into the definition phase — translating findings into a strategic foundation for the rest of the design process.</p>
 
-      <div class="img-placeholder">
-        <div class="ph-icon">🖼</div>
-        <div class="ph-label">Discovery / persona artifacts needed</div>
-        <div class="ph-desc">Two images from the original deck go here — likely persona summaries or research synthesis boards.</div>
+      <div class="persona-carousel">
+        <div class="persona-track">
+          <div class="persona-slide active" data-index="0">
+            <div class="media-container">
+              <img src="assets/persona-daphne.png" alt="Daphne — Customer Credit Manager persona">
+            </div>
+          </div>
+          <div class="persona-slide" data-index="1">
+            <div class="media-container">
+              <img src="assets/persona-mike.png" alt="Mike — Senior Account Manager persona">
+            </div>
+          </div>
+        </div>
+        <div class="persona-nav">
+          <button class="persona-nav-btn" onclick="personaPrev()" aria-label="Previous persona">&#8592;</button>
+          <div class="persona-dots">
+            <button class="persona-dot active" onclick="personaGoTo(0)" aria-label="Daphne"></button>
+            <button class="persona-dot" onclick="personaGoTo(1)" aria-label="Mike"></button>
+          </div>
+          <button class="persona-nav-btn" onclick="personaNext()" aria-label="Next persona">&#8594;</button>
+        </div>
       </div>
 
       <h3>User Journey Mapping & Opportunity Identification</h3>
@@ -795,18 +810,23 @@
       <p>These opportunities directly informed the early wireframes.</p>
 
       <div class="media-grid-2">
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Journey map needed</div>
+        <div class="media-container">
+          <img src="assets/journey-mike.png" alt="Mike's user journey — Credit Limit Application requested on 3rd country risk (low risk)">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Opportunity map needed</div>
+        <div class="media-container">
+          <img src="assets/journey-daphne.png" alt="Daphne's user journey — Credit Limit Application requested for a country in the same risk class">
         </div>
       </div>
+      <p class="media-caption">Two of the ~15 storyline-format journeys mapped across personas — including Martina (Finance Director) and Damian (Broker) on the customer side — each broken into timed phases (Log in → Assess → Negotiate → End) to expose where minutes, and patience, were being lost.</p>
 
       <h3>Expert Evaluation</h3>
       <p>Alongside the generative research, a heuristic pass on the existing Symphony application surfaced several structural issues. The application is data-heavy, but screen space wasn't being used effectively due to a low target resolution. While the interface aimed to align with company branding, the style guide had real discrepancies — red tertiary buttons, for instance, could easily be misread as error states. Visual hierarchy was thin overall, leaving the interface feeling flat.</p>
+
+      <div class="media-container" style="max-width: 480px; margin-left: auto; margin-right: auto;">
+        <img src="assets/legacy-symphony-oracle-forms.png" alt="Legacy Symphony application — dense Oracle Forms interface being replaced">
+      </div>
+      <p class="media-caption">The legacy Symphony system — built on Oracle Forms — that the redesign is replacing screen by screen.</p>
+
       <p>Two takeaways guided the redesign directly:</p>
       <ul>
         <li>Navigation needed a clear structure so users could find their way around without guesswork.</li>
@@ -906,44 +926,68 @@
       <h2>Wireframes & Prototyping</h2>
 
       <h3>Experience 1 — Compare Policies & Offers</h3>
-      <p>The "Compare Policies & Offers (Complex)" feature streamlines decision-making in MSA and renewal processes by letting users compare multiple policies, multiple offers, or a single policy against related offers. It supports advanced filtering and customizable comparisons across modules, variables, document groups, and bank accounts, with both on-screen and Excel export options. The tool only surfaces currently effective or non-end-dated records, keeping comparisons accurate for complex commercial case evaluations.</p>
-      <div class="media-grid-2">
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Compare Policies & Offers — main screen</div>
+      <p>The "Compare Policies & Offers (Complex)" feature streamlines decision-making in MSA and renewal processes by letting users compare multiple policies, multiple offers, or a single policy against related offers. It supports advanced filtering and customizable comparisons across modules, variables, document groups, and bank accounts, with both on-screen and Excel export options. Users choose a source offer, pick target offers to compare against, and toggle between "View differences," "View similarities," or "View all" to cut through the noise. The tool only surfaces currently effective or non-end-dated records, keeping comparisons accurate for complex commercial case evaluations.</p>
+      <div class="media-grid-3">
+        <div class="media-container">
+          <img src="assets/compare-aggregate-offer-mgmt.png" alt="Aggregate offer management — compare offers action in the overflow menu">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Compare Policies & Offers — detail / export</div>
+        <div class="media-container">
+          <img src="assets/compare-bank-accounts.jpg" alt="Offer comparison — bank accounts compared across source and target offers">
+        </div>
+        <div class="media-container">
+          <img src="assets/compare-modules-viewing-options.jpg" alt="Offer comparison — modules table with View differences / similarities / all toggle">
         </div>
       </div>
 
-      <h3>Experience 2 — Performance Dashboard</h3>
-      <p>As part of a data-driven reporting solution, I designed and developed a dynamic dashboard giving users a real-time overview of transaction activity and operational performance. It displays event types and transaction counts for the current and previous two months, graphical summaries of support touchpoints (open/closed errors and business tasks), and conversion percentages across the same rolling three-month window — built for clarity, quick comparison, and actionable insight through visual cues and data segmentation.</p>
-      <p>Alongside it, a report generation module lets users filter and request detailed reports by branch, legal entity, geography, and date range, downloadable in Excel with options to view details or run custom trend analysis. Together, this significantly improved visibility, traceability, and operational decision-making for business units across regions.</p>
-      <div class="media-grid-2">
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Performance dashboard — overview</div>
+      <h3>Experience 2 — Performance & Portfolio Dashboards</h3>
+      <p>As part of a data-driven reporting solution, I designed a set of dashboards giving account managers a real-time overview of policy performance and operational activity. At the policy level, this means turnover, premium and APR estimates sitting alongside credit limit indications, credit limit applications, claims &amp; collections, and cash transaction balances — all on one screen, replacing what used to be a multi-system lookup. At the commercial case level, a broader overview rolls up prospect management, CDD status, aggregate offers, hold cover, credit limit decisions, and portfolio analysis into a single set of KPI tiles (see the hero screen above).</p>
+      <div class="media-container">
+        <img src="assets/policy-performance-overview.jpg" alt="Policy overview — Performance tab showing turnover, premium, credit limits, claims, collections and cash transactions">
+      </div>
+      <p class="media-caption">Policy-level performance overview — one screen replacing several legacy lookups.</p>
+      <p>Once screens were designed and user journeys updated, I built detailed UI flows and interactive prototypes so stakeholders could clearly understand each feature — including multiple scenarios and contextual explanations. These assets were central to a smooth handoff, giving development, services, and testing teams comprehensive documentation to work from.</p>
+
+      <h3>Experience 3 — Declarations &amp; Invoicing</h3>
+      <p>Declarations sit at the center of the policy lifecycle — customers report turnover by country, buyer and trade sector, and the system calculates premium against it. The redesigned declaration table lets users configure which columns matter to them (buyer organisation, trade sector, region), expand any row for special or customer-reference notes, and switch into an "Edit details" mode for bulk changes — replacing a rigid, one-size-fits-all legacy grid. A dedicated Cash Transactions tab rolls declarations, premium &amp; other fees, and CL fees into running balances, so an account manager can see what's unpaid, issued, or pending without leaving the policy.</p>
+      <div class="media-grid-3">
+        <div class="media-container">
+          <img src="assets/declaration-list-add-column.jpg" alt="Declaration list with configurable columns — buyer organisation, trade sector, region">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Performance dashboard — report generation</div>
+        <div class="media-container">
+          <img src="assets/declaration-edit-details-view.jpg" alt="Declaration edit-details view with expanded row notes">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Performance dashboard — trend view</div>
-        </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Performance dashboard — export detail</div>
+        <div class="media-container">
+          <img src="assets/declaration-cash-transactions-tab.jpg" alt="Declarations and invoices — Cash Transactions tab with premium and CL fee balances">
         </div>
       </div>
-      <p>Once screens were designed and user journeys updated, I built detailed UI flows and interactive prototypes so stakeholders could clearly understand each feature — including multiple scenarios and contextual explanations. These assets were central to a smooth handoff, giving development, services, and testing teams comprehensive documentation to work from.</p>
+
+      <h3>Experience 4 — Manual Events &amp; Premium Adjustment</h3>
+      <p>Not every charge fits the standard declaration flow — bonuses, surcharges, no-claim adjustments and CL fees often need a manual event: a bulk list of charge lines, each with its own line type, region, unit price and tax-suppression setting. Because tax calculation across dozens of lines can take real time, the flow makes that wait visible rather than hiding it: past a threshold, users choose between waiting for a live preview or submitting outright, and get a mobile alert the moment the tax summary is ready to review — commission impact included.</p>
+      <div class="media-grid-3">
+        <div class="media-container">
+          <img src="assets/manual-event-create-form.jpg" alt="Create Manual Event — event type, start and end date">
+        </div>
+        <div class="media-container">
+          <img src="assets/manual-event-cash-lines-filled.jpg" alt="Manual event cash event type lines, filled with charge and export amounts">
+        </div>
+        <div class="media-container">
+          <img src="assets/manual-event-wait-warning.jpg" alt="Wait warning — preview calculated tax or submit without preview">
+        </div>
+        <div class="media-container">
+          <img src="assets/manual-event-tax-summary.jpg" alt="Tax summary with GST breakdown and broker commission impact">
+        </div>
+        <div class="media-container">
+          <img src="assets/manual-event-events-tab-list.jpg" alt="Declarations and invoices — Events tab listing processed, submitted and rejected events">
+        </div>
+        <div class="media-container">
+          <img src="assets/manual-event-mobile-alerts.png" alt="Mobile alert confirming the tax summary has finished calculating">
+        </div>
+      </div>
 
       <h2>Usability Testing</h2>
       <p>We ran multiple demo sessions with subject matter experts (SMEs) and product owners to showcase the features we'd designed. For these, I built interactive prototypes that let users experience key flows, behaviors, and system interactions firsthand — a hands-on approach that helped stakeholders understand design intent, not just look at static screens.</p>
-      <p>Alongside the demos, I created a structured feedback survey so users could share ratings, suggestions, and overall impressions. Combining real-time interaction with targeted feedback gave a clear read on how well the designs matched user needs and expectations, and directly informed the next round of iteration.</p>
+      <p>Alongside the demos, I created a structured feedback survey so users could share ratings, suggestions, and overall impressions across eight dimensions — clarity of the flow, efficiency gains, screen readability, availability of essential information, functional adequacy, regulatory fit, and expected impact on response time and service quality. Combining real-time interaction with targeted feedback gave a clear read on how well the designs matched user needs and expectations, and directly informed the next round of iteration.</p>
+      <p>The Premium Adjustment demo is a good example of the loop in practice. Country reps flagged specific, actionable gaps: a missing "Reject" option alongside submit, a "Submit" button whose label didn't match its actual behaviour (renamed to "Preview" as a result), commission impact missing from the preview screen, and a request that claim ratios always display to two decimal places to avoid rounding disputes. Some feedback surfaced process questions that reached beyond the interface itself — like whether bonus calculations, currently handled manually by account managers in France, should keep routing through that manual review step even after automation. Capturing that kind of feedback, not just star ratings, is what made the loop useful.</p>
 
       <h2>Next steps</h2>
       <p>As the project continues, the focus is on optimizing the design process itself to deliver a more cohesive, user-centric product:</p>
@@ -988,6 +1032,23 @@
   </div>
 
   <script>
+    // ---- Persona carousel ----
+    let personaIndex = 0;
+    const personaTotal = 2;
+
+    function personaShow(i) {
+      personaIndex = (i + personaTotal) % personaTotal;
+      document.querySelectorAll('.persona-slide').forEach(function (slide) {
+        slide.classList.toggle('active', Number(slide.dataset.index) === personaIndex);
+      });
+      document.querySelectorAll('.persona-dot').forEach(function (dot, idx) {
+        dot.classList.toggle('active', idx === personaIndex);
+      });
+    }
+    function personaNext() { personaShow(personaIndex + 1); }
+    function personaPrev() { personaShow(personaIndex - 1); }
+    function personaGoTo(i) { personaShow(i); }
+
     let lastFocusedTrigger = null;
 
     function openLightbox(src, alt, triggerEl) {
