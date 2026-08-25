@@ -79,58 +79,11 @@
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 500;
-      padding: 10px 8px;
-      margin: -10px -8px;
-      border-radius: 8px;
-      display: inline-block;
-      transition: color 0.2s ease, background-color 0.2s ease;
+      transition: color 0.2s ease;
     }
 
-    .nav-link:hover,
-    .nav-link:focus-visible {
+    .nav-link:hover {
       color: var(--text);
-      background-color: rgba(255, 255, 255, 0.06);
-    }
-
-    .nav-link:active {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-items {
-      align-items: center;
-    }
-
-    @media (max-width: 640px) {
-      .nav-link {
-        padding: 12px 10px;
-        margin: -12px -6px;
-        font-size: 0.9rem;
-      }
-      .nav-items {
-        gap: 6px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .framer-navbar-inner {
-        flex-wrap: nowrap;
-      }
-      .brand-logo {
-        font-size: 0.95rem;
-        white-space: nowrap;
-      }
-      .nav-items {
-        gap: 2px;
-      }
-      .nav-link {
-        font-size: 0.78rem;
-        padding: 10px 6px;
-        margin: -10px -4px;
-        white-space: nowrap;
-      }
-      .nav-cta {
-        display: none;
-      }
     }
 
     .nav-cta {
@@ -1092,7 +1045,7 @@
       </div>
 
       <h3>Live today</h3>
-      <p>The redesign didn't stop at the mockup stage — it shipped. This is a walkthrough of the live ECB Data Portal at <strong>data.ecb.europa.eu</strong>: the homepage indicator dashboard, the same progressive-disclosure mega-menu shown earlier in this case study, and the editorial blog, all running in production.</p>
+      <p>The redesign didn't stop at the mockup stage — it shipped. These are walkthroughs of the live ECB Data Portal at <strong>data.ecb.europa.eu</strong>, recorded straight from production — the same screens designed and mocked up above, now in the hands of real users.</p>
       <div class="video-container">
         <video controls muted playsinline preload="metadata" poster="assets/sdw-live-demo-poster.jpg">
           <source src="assets/sdw-live-demo.webm" type="video/webm">
@@ -1100,7 +1053,16 @@
           Your browser doesn't support embedded video. You can view the live portal directly at data.ecb.europa.eu.
         </video>
       </div>
-      <p class="media-caption">Screen recording of the live site — homepage dashboard, global navigation, and the ECB Data Blog.</p>
+      <p class="media-caption">Homepage indicator dashboard, the progressive-disclosure mega-menu, and the editorial blog, all running in production.</p>
+
+      <div class="video-container">
+        <video controls muted playsinline preload="metadata" poster="assets/sdw-live-browsing-poster.jpg">
+          <source src="assets/sdw-live-browsing.webm" type="video/webm">
+          <source src="assets/sdw-live-browsing.mp4" type="video/mp4">
+          Your browser doesn't support embedded video. You can view the live portal directly at data.ecb.europa.eu.
+        </video>
+      </div>
+      <p class="media-caption">Browsing data categories down to a dataset, filtering to a monetary aggregate, and reading the live time series chart — the same flow shown as static screens above.</p>
 
       <h2>Learnings</h2>
       <p>Clear communication and collaborative workflows were as important to this project's success as the design decisions themselves.</p>
@@ -1126,7 +1088,7 @@
       </div>
       <div class="footer-links">
         <a href="mailto:sukhmanibedi1@gmail.com" class="footer-link">sukhmanibedi1@gmail.com ↗</a>
-        <a href="https://www.linkedin.com/in/sukhmanikaurbedi/" target="_blank" class="footer-link">LinkedIn ↗</a>
+        <a href="https://linkedin.com" target="_blank" class="footer-link">LinkedIn ↗</a>
       </div>
     </div>
   </footer>
