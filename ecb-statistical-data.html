@@ -1016,35 +1016,7 @@
         <li><strong>Performance monitoring:</strong> analytics tools tracking user behavior to inform ongoing enhancements and feature prioritization.</li>
       </ul>
 
-      <h2>UI Designs</h2>
-      <p>Three finished screens, each solving a different problem: bulk access to raw data, filtering a results set down to what matters, and combining multiple filter dimensions without losing track of what's applied.</p>
-      <div class="shot-carousel" id="ui-designs-carousel">
-        <div class="shot-track">
-          <div class="shot-slide active" data-index="0">
-            <div class="media-container"><img src="assets/sdw-dataset-table.png" alt="Dataset table with status indicators and CSV/SDMX bulk download"></div>
-            <p class="media-caption">Dataset table — every series at a glance with live/discontinued status, and one-click bulk download in CSV or SDMX2.1 for users who want to work with the raw data directly.</p>
-          </div>
-          <div class="shot-slide" data-index="1">
-            <div class="media-container"><img src="assets/sdw-monetary-results.png" alt="Monetary aggregates results with tag-based filter sidebar"></div>
-            <p class="media-caption">Search results with a persistent tag-based filter sidebar — narrow a large result set without losing the search itself or starting over.</p>
-          </div>
-          <div class="shot-slide" data-index="2">
-            <div class="media-container"><img src="assets/sdw-advanced-filters.png" alt="Advanced filters modal with faceted filtering across frequency, counterpart area, and reference sector"></div>
-            <p class="media-caption">Advanced filters — stacking multiple facets (frequency, counterpart area, reference sector) at once, with the resulting series count updating live so users can see the effect before committing.</p>
-          </div>
-        </div>
-        <div class="shot-nav">
-          <button class="shot-nav-btn" onclick="uiDesignsPrev()" aria-label="Previous screen">&#8592;</button>
-          <div class="shot-dots">
-            <button class="shot-dot active" onclick="uiDesignsGoTo(0)" aria-label="Dataset table"></button>
-            <button class="shot-dot" onclick="uiDesignsGoTo(1)" aria-label="Monetary aggregates results"></button>
-            <button class="shot-dot" onclick="uiDesignsGoTo(2)" aria-label="Advanced filters"></button>
-          </div>
-          <button class="shot-nav-btn" onclick="uiDesignsNext()" aria-label="Next screen">&#8594;</button>
-        </div>
-      </div>
-
-      <h3>Live today</h3>
+      <h2>Live today</h2>
       <p>The redesign didn't stop at the mockup stage — it shipped. These are walkthroughs of the live ECB Data Portal at <strong>data.ecb.europa.eu</strong>, recorded straight from production — the same screens designed and mocked up above, now in the hands of real users.</p>
       <div class="video-container">
         <video controls muted playsinline preload="metadata" poster="assets/sdw-live-demo-poster.jpg">
@@ -1062,7 +1034,7 @@
           Your browser doesn't support embedded video. You can view the live portal directly at data.ecb.europa.eu.
         </video>
       </div>
-      <p class="media-caption">Browsing data categories down to a dataset, filtering to a monetary aggregate, and reading the live time series chart — the same flow shown as static screens above.</p>
+      <p class="media-caption">Browsing data categories down to a dataset, filtering to a monetary aggregate, and reading the live time series chart.</p>
 
       <h2>Learnings</h2>
       <p>Clear communication and collaborative workflows were as important to this project's success as the design decisions themselves.</p>
@@ -1155,23 +1127,6 @@
     function loginFlowNext() { loginFlowShow(loginFlowIndex + 1); }
     function loginFlowPrev() { loginFlowShow(loginFlowIndex - 1); }
     function loginFlowGoTo(i) { loginFlowShow(i); }
-
-    // ---- UI Designs carousel ----
-    let uiDesignsIndex = 0;
-    const uiDesignsTotal = 3;
-
-    function uiDesignsShow(i) {
-      uiDesignsIndex = (i + uiDesignsTotal) % uiDesignsTotal;
-      document.querySelectorAll('#ui-designs-carousel .shot-slide').forEach(function (slide) {
-        slide.classList.toggle('active', Number(slide.dataset.index) === uiDesignsIndex);
-      });
-      document.querySelectorAll('#ui-designs-carousel .shot-dot').forEach(function (dot, idx) {
-        dot.classList.toggle('active', idx === uiDesignsIndex);
-      });
-    }
-    function uiDesignsNext() { uiDesignsShow(uiDesignsIndex + 1); }
-    function uiDesignsPrev() { uiDesignsShow(uiDesignsIndex - 1); }
-    function uiDesignsGoTo(i) { uiDesignsShow(i); }
 
     // ---- Low-fidelity wireframes carousel ----
     let wireframesIndex = 0;
