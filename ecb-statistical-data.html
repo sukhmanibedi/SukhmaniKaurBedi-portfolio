@@ -352,6 +352,23 @@
       font-weight: 500;
     }
 
+    /* Video frame — same framing language as media-container, sized for a screen recording */
+    .video-container {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 40px 0;
+      background: #000;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     /* Carousel Specific Component Styling */
     .carousel-container {
       width: 100%;
@@ -1026,6 +1043,17 @@
           <button class="shot-nav-btn" onclick="uiDesignsNext()" aria-label="Next screen">&#8594;</button>
         </div>
       </div>
+
+      <h3>Live today</h3>
+      <p>The redesign didn't stop at the mockup stage — it shipped. This is a walkthrough of the live ECB Data Portal at <strong>data.ecb.europa.eu</strong>: the homepage indicator dashboard, the same progressive-disclosure mega-menu shown earlier in this case study, and the editorial blog, all running in production.</p>
+      <div class="video-container">
+        <video controls muted playsinline preload="metadata" poster="assets/sdw-live-demo-poster.jpg">
+          <source src="assets/sdw-live-demo.webm" type="video/webm">
+          <source src="assets/sdw-live-demo.mp4" type="video/mp4">
+          Your browser doesn't support embedded video. You can view the live portal directly at data.ecb.europa.eu.
+        </video>
+      </div>
+      <p class="media-caption">Screen recording of the live site — homepage dashboard, global navigation, and the ECB Data Blog.</p>
 
       <h2>Learnings</h2>
       <p>Clear communication and collaborative workflows were as important to this project's success as the design decisions themselves.</p>
