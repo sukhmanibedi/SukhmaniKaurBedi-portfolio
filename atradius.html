@@ -881,9 +881,20 @@
         <li>Strengthen customer value through improved service accessibility and experience.</li>
       </ul>
 
-      <h3>The constraint underneath all of it: one interface, fifty regulatory regimes</h3>
-      <p>Atradius writes credit insurance in more than 50 countries, and that shows up in the product, not just the sales deck. The same declaration screen has to calculate GST in Australia and a different tax treatment in the EU; the same manual event form has to support region-specific tax suppression rules, per-country premium and CL fee structures, and business units like "Portugal Local" that carry their own language, currency and broker relationships. None of that can be hidden behind a single generic form the way a domestic product could get away with.</p>
-      <p>That's the constraint that actually shaped most of the harder decisions in this project — not "make it prettier," but "make one interface flexible enough to stay correct across fifty regulatory contexts without turning into a maze of conditional fields." The configurable-column declaration table, the region and tax-suppression fields on manual events, and the currency-aware summary screens later in this case study are all direct answers to that constraint, not generic best practice.</p>
+      <h2>System Architecture & Technical Constraints</h2>
+      <p>Three constraints outside the interface shaped almost every harder decision in this project — more than any visual-design preference did.</p>
+
+      <div class="highlight-box">
+        <p><strong>One interface, fifty regulatory regimes.</strong> Atradius writes credit insurance in more than 50 countries, and that shows up in the product, not just the sales deck. The same declaration screen has to calculate GST in Australia and a different tax treatment in the EU; the same manual event form has to support region-specific tax suppression rules, per-country premium and CL fee structures, and business units like "Portugal Local" that carry their own language, currency and broker relationships. None of that can be hidden behind a single generic form the way a domestic product could get away with. The configurable-column declaration table, the region and tax-suppression fields on manual events, and the currency-aware summary screens later in this case study are all direct answers to that constraint, not generic best practice.</p>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Tax calculations that can't run instantly.</strong> A manual event can carry 70+ charge lines, each potentially in a different regulatory regime — calculating tax across that takes real time, sometimes long enough that a spinner reads as broken rather than busy. Rather than block the screen or hide the wait entirely, I designed toward a third option: calculate silently below a line-count threshold, surface an explicit warning and a real choice above it, and send a mobile alert the moment the result is ready. Experience 4 — Manual Events, further down, walks through this in full.</p>
+      </div>
+
+      <div class="highlight-box">
+        <p><strong>Migrating without a hard cutover.</strong> The legacy Symphony platform and the new Arcade platform had to run in parallel through the transition — the <strong>Coexistence Principle</strong> — rather than a big-bang switch. That ruled out any redesign that assumed a clean slate; every screen had to make sense to someone who might still be working in the old system the same week.</p>
+      </div>
 
       <h2>Design process</h2>
 
