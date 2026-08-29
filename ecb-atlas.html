@@ -873,6 +873,40 @@
       </div>
       <p class="media-caption" id="writtenProc-caption">The Written Procedures list, scoped to the Supervisory Board.</p>
 
+      <h2>Meeting Creation</h2>
+      <p>Setting up a meeting was previously a manual, calendar-juggling exercise handled outside the system. The redesign brings scheduling directly into Atlas: a coordinator sees existing meetings for a body laid out across a full year at a glance, picks dates inline, and configures recurrence or multi-day sessions without leaving the form — including a bulk path for loading an existing schedule from Excel rather than re-entering it by hand.</p>
+
+      <div class="carousel-container" data-carousel="createMeeting">
+        <div class="carousel-slide-viewport">
+          <img id="createMeeting-img" src="assets/atlas-cm-blank-form.jpg" alt="Create New Meeting form" onclick="openLightbox(this.src, this.alt, this)">
+        </div>
+        <div class="carousel-controls">
+          <div class="carousel-counter" id="createMeeting-counter">1 / 5</div>
+          <div class="carousel-btns">
+            <button class="carousel-btn" type="button" onclick="carouselNav('createMeeting', -1)">← Prev</button>
+            <button class="carousel-btn" type="button" onclick="carouselNav('createMeeting', 1)">Next →</button>
+          </div>
+        </div>
+      </div>
+      <p class="media-caption" id="createMeeting-caption">The base Create New Meeting form.</p>
+
+      <h2>Agenda Management</h2>
+      <p>The agenda is where the actual governance work happens — items grouped into sections (meeting business, written procedures, delegations), each with its own numbering, timing, and status. Coordinators can drag items to reorder them, set discussion order and duration with start/end times recalculated automatically, add a new item mid-flight, and pull attendees straight from the ECB phonebook when managing each body's attendance and substitutions. Drilling into a single item opens its own record — outcome notes, its linked members and attendees, and direct links out to that item's prep and public Darwin space folders — so nothing about it lives outside Atlas.</p>
+
+      <div class="carousel-container" data-carousel="createAgenda">
+        <div class="carousel-slide-viewport">
+          <img id="createAgenda-img" src="assets/atlas-agenda-overview-default.jpg" alt="Agenda overview for a General Council meeting, with sections for Dinner/Seminar, Meeting, Written procedures and Delegations" onclick="openLightbox(this.src, this.alt, this)">
+        </div>
+        <div class="carousel-controls">
+          <div class="carousel-counter" id="createAgenda-counter">1 / 5</div>
+          <div class="carousel-btns">
+            <button class="carousel-btn" type="button" onclick="carouselNav('createAgenda', -1)">← Prev</button>
+            <button class="carousel-btn" type="button" onclick="carouselNav('createAgenda', 1)">Next →</button>
+          </div>
+        </div>
+      </div>
+      <p class="media-caption" id="createAgenda-caption">The agenda overview — sections, numbered items, and status at a glance.</p>
+
       <h2>Conclusion</h2>
       <p>The Atlas redesign succeeded through close collaboration, a genuinely user-centered approach, and clear communication with business stakeholders. Facilitating design sessions directly with the business established a continuous feedback loop that let me iteratively improve the experience while delivering something both functional and intuitive.</p>
       <p>Working under Alberto Valentin Cococi's guidance gave me valuable feedback that refined my design process, and the support to introduce new tools and design artifacts that streamlined how I communicated ideas with stakeholders.</p>
@@ -882,6 +916,12 @@
         <img src="assets/atlas-tracker-design-status-crop.png" data-full="assets/atlas-tracker-design-status-full.png" alt="Design-status tracker excerpt: a data field's status across SB SEC, EB SEC and GovC/GenC, with a stakeholder comment in red and a linked JIRA ticket number">
       </div>
       <p class="media-caption">An excerpt of the actual tracker — click to see the full sheet. Each row is one data field, scored per secretariat, with open negotiation captured in-line and traced to its JIRA epic.</p>
+
+      <p>The same agenda structure had to hold up under real institutional scale, not just a tidy demo. A Governing Council agenda routinely carries dozens of written-procedure and delegation matters alongside SSM-specific decisions — the identical section, numbering and edit pattern shown above, just with far more content to organize.</p>
+      <div class="media-container">
+        <img src="assets/atlas-agenda-govc-scale.jpg" alt="Governing Council meeting agenda with an extended Written procedures annex, a Delegations section, and a separate SSM written procedures section">
+      </div>
+      <p class="media-caption">The same agenda pattern, scaled to a full Governing Council session.</p>
 
       <div class="stats-row">
         <div class="stat-card">
@@ -977,9 +1017,23 @@
         { src: 'assets/atlas-wp-family-tree.png', alt: 'Full family tree diagram showing a written procedure\'s branching lineage of linked actions and procedures', caption: 'Every procedure can trace its full lineage — the "Full Family Tree" view of how one decision branched.' },
         { src: 'assets/atlas-wp-family-report.png', alt: 'Full family report listing every item linked to a written procedure\'s lineage', caption: 'The same lineage as a flat, exportable report.' },
         { src: 'assets/atlas-wp-list-gc-success.png', alt: 'Written Procedures list in the Governing Council context, with a success notification after creating a record', caption: 'The identical pattern reused for the Governing Council — same table, different governance body, with confirmation on save.' }
+      ],
+      createMeeting: [
+        { src: 'assets/atlas-cm-blank-form.jpg', alt: 'Create New Meeting form', caption: 'The base Create New Meeting form.' },
+        { src: 'assets/atlas-cm-calendar-overview.jpg', alt: 'Year-view calendar showing existing meetings for a body as colored pills across the months', caption: 'A year at a glance — every scheduled meeting for the body, before adding a new one.' },
+        { src: 'assets/atlas-cm-date-selection.jpg', alt: 'The same year-view calendar in date-selection mode, with dates highlighted and a Save dates action', caption: 'Dates are picked straight off the calendar, not typed in — then saved back to the form.' },
+        { src: 'assets/atlas-cm-recurring-bulk-upload.jpg', alt: 'Create Meeting form with a recurring-meeting checkbox for the whole year and an Upload Excel file option', caption: 'Recurring meetings for the year, or bulk-loading an existing schedule from Excel.' },
+        { src: 'assets/atlas-cm-two-day-meeting.jpg', alt: 'Create Meeting form configured for a two-day meeting, with separate Day 1 and Day 2 fields and a saved Meeting dates list', caption: 'Multi-day meetings get their own Day 1 / Day 2 fields, tracked as a single meeting.' }
+      ],
+      createAgenda: [
+        { src: 'assets/atlas-agenda-overview-default.jpg', alt: 'Agenda overview for a General Council meeting, with sections for Dinner/Seminar, Meeting, Written procedures and Delegations', caption: 'The agenda overview — sections, numbered items, and status at a glance.' },
+        { src: 'assets/atlas-agenda-edit-mode.jpg', alt: 'The same agenda in edit mode, with draggable rows and editable date, timeframe, duration and item-status fields', caption: 'Edit mode: drag to reorder, set discussion order and timing — start/end times update automatically.' },
+        { src: 'assets/atlas-agenda-add-item.jpg', alt: 'Add new agenda item form with Title, Business area, Section, Board members and Intended follow-up fields', caption: 'Adding a new item mid-agenda — routed to a section, business area and set of board members.' },
+        { src: 'assets/atlas-agenda-add-eb-members.jpg', alt: 'Executive Board members popup listing each member with a Presence dropdown and Comments field', caption: 'Executive Board attendance — presence and comments tracked per member.' },
+        { src: 'assets/atlas-agenda-add-govc-members.jpg', alt: 'Governing Council members popup with Name, Substitute, Presence and Comments columns', caption: 'Governing Council attendance adds a Substitute column — for the body where standing in for a member is routine.' }
       ]
     };
-    const carouselState = { tableIA: 0, writtenProc: 0 };
+    const carouselState = { tableIA: 0, writtenProc: 0, createMeeting: 0, createAgenda: 0 };
     function carouselRender(id) {
       const slides = carouselData[id];
       const i = carouselState[id];
