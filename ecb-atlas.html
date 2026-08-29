@@ -423,6 +423,7 @@
       width: 100%;
       height: auto;
       display: block;
+      cursor: zoom-in;
     }
 
     .carousel-controls {
@@ -784,10 +785,8 @@
     </div>
 
     <div class="case-hero-container">
-      <div class="img-placeholder" style="margin: 0; border: none;">
-        <div class="ph-icon">🖼</div>
-        <div class="ph-label">Hero screenshot needed</div>
-        <div class="ph-desc">The Atlas homepage — likely the same shot used on the original site — works well here.</div>
+      <div class="case-hero-img">
+        <img src="assets/atlas-hero-meetings.png" alt="Atlas meeting table homepage — bulk-select toolbar active with two rows checked, and a row-level menu open showing Comments, Date and Owner actions">
       </div>
     </div>
 
@@ -807,16 +806,12 @@
       <p>To structure that discovery work:</p>
       <ul>
         <li><strong>Documentation:</strong> user stories were logged in an Excel sheet, detailing required data fields, features, and functionality.</li>
-        <li><strong>Validation:</strong> co-design sessions validated our understanding and surfaced additional insight.</li>
+        <li><strong>Validation:</strong> co-design sessions validated my understanding and surfaced additional insight.</li>
         <li><strong>Analysis:</strong> the existing Atlas platform was analyzed directly to identify pain points and areas for improvement.</li>
       </ul>
-      <div class="img-placeholder">
-        <div class="ph-icon">🖼</div>
-        <div class="ph-label">User story tracking spreadsheet</div>
-      </div>
 
       <h2>Design strategy</h2>
-      <p>As UX Lead, I ran a multifaceted approach integrating stakeholder collaboration, iterative design, and UX best practices — anchored in four pillars.</p>
+      <p>Turning those objectives into a working platform meant running a multifaceted approach as UX Lead — anchored in four pillars.</p>
 
       <h3>1. User-Centered Research and Co-Design</h3>
       <p>In-depth user research explored the diverse needs of ECB officials relying on Atlas to manage procedures and meetings. Co-design sessions with stakeholders, including secretariat officials, surfaced real workflows and pain points — grounding the redesign in actual user experience rather than assumption.</p>
@@ -828,61 +823,78 @@
       <p>Detailed design specification documents outlined design rationale, user interactions, and technical requirements — a reference for developers and a review point for stakeholders to validate that every requirement had been accurately captured. Close collaboration with development teams, including IBM's, ensured the final build faithfully reflected the design intent.</p>
 
       <h3>4. Continuous Improvement and Future-Proofing</h3>
-      <p>Recognizing that user needs and technology both keep moving, we built in mechanisms for ongoing feedback and iterative improvement — keeping Atlas responsive to ECB's evolving operational landscape rather than static the moment it shipped.</p>
+      <p>Recognizing that user needs and technology both keep moving, I built in mechanisms for ongoing feedback and iterative improvement — keeping Atlas responsive to ECB's evolving operational landscape rather than static the moment it shipped.</p>
 
       <h2>Implementation</h2>
-      <p>The homepage was the key focal point of the transformation — it's the user's gateway into the system, used daily by secretariat staff, meeting coordinators, and data managers handling a genuinely high volume of information. We prioritized clarity, control, and customization to enable efficiency at scale.</p>
+      <p>The homepage was the key focal point of the transformation — it's the user's gateway into the system, used daily by secretariat staff, meeting coordinators, and data managers handling a genuinely high volume of information. I prioritized clarity, control, and customization to enable efficiency at scale.</p>
 
       <h3>1. Personalization and Contextual Entry Point</h3>
       <p>The design opens with a warm, contextual greeting ("Good morning, Eve") — humanizing the interface while confirming user identity, and quietly framing the system as responsive and personal rather than institutional and cold. Frequently used filters (Meeting Status, Meeting Body, Year) sit just below the welcome message for frictionless access to relevant data, letting users jump straight into their specific workflow instead of navigating through menu layers.</p>
 
-      <h3>2. Streamlined Left Navigation</h3>
-      <p>Two responsive navigation states were offered:</p>
+      <h3>2. Navigation and Table-Centric Information Architecture</h3>
+      <p>Two responsive navigation states were offered: an <strong>expanded left navigation</strong> with clearly labeled categories — Supervisory Board (SB), SC, SCDA, and others — for immediate visibility into organizational divisions, and a <strong>collapsed navigation</strong> that saves screen real estate for data-dense work while tooltips keep icon-only access usable. On narrow viewports, that same navigation collapses further into a full-screen drawer rather than disappearing into an unreachable menu.</p>
+      <p>Around that navigation sits a dynamic data table — the essential feature for ECB's procedural and meeting management needs:</p>
       <ul>
-        <li><strong>Expanded left navigation:</strong> clearly labeled categories — Supervisory Board (SB), SC, SCDA, and others — give immediate visibility into organizational divisions.</li>
-        <li><strong>Collapsed left navigation:</strong> saves screen real estate for data-dense interactions, while icon-based access with tooltips keeps usability intact.</li>
-      </ul>
-      <p>The design supports fast switching between meeting groups while keeping users oriented throughout.</p>
-
-      <h3>3. Table-Centric Information Architecture</h3>
-      <p>The homepage centers on a dynamic data table — the essential feature for ECB's procedural and meeting management needs:</p>
-      <ul>
-        <li><strong>Column flexibility:</strong> users can scan meetings by status, date, location, editing history, and comments.</li>
+        <li><strong>Column flexibility:</strong> users can scan meetings by status, date, location, editing history, and comments, or switch to a different column set entirely depending on what they need to track.</li>
         <li><strong>Inline editing:</strong> fields can be updated directly in the table, without navigating away from the main view.</li>
         <li><strong>Selectable rows with bulk actions:</strong> power users can export, delete, or copy across multiple entries at once — a real efficiency gain for administrative work.</li>
       </ul>
       <p>This wasn't a new coat of paint — it's a deeply informed, user-validated design solving real workflow challenges, delivered through careful planning, co-design sessions, and agile prototyping.</p>
 
-      <h3>Homepage</h3>
-      <div class="media-grid-2">
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Homepage — expanded navigation</div>
+      <div class="carousel-container" data-carousel="tableIA">
+        <div class="carousel-slide-viewport">
+          <img id="tableIA-img" src="assets/atlas-ia-comments-expanded.png" alt="Meeting table with a row's comment expanded inline, showing the full text without leaving the table" onclick="openLightbox(this.src, this.alt, this)">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Homepage — collapsed navigation</div>
+        <div class="carousel-controls">
+          <div class="carousel-counter" id="tableIA-counter">1 / 5</div>
+          <div class="carousel-btns">
+            <button class="carousel-btn" type="button" onclick="carouselNav('tableIA', -1)">← Prev</button>
+            <button class="carousel-btn" type="button" onclick="carouselNav('tableIA', 1)">Next →</button>
+          </div>
         </div>
       </div>
+      <p class="media-caption" id="tableIA-caption">Long comments expand inline — no modal, no lost place in the table.</p>
 
       <h2>Written Procedures</h2>
       <p>Written procedures are a critical part of ECB's formal decision-making process — structured, documented workflows spanning initiation, review, feedback, approval, and archival. The challenge was real complexity: multiple stakeholders, status stages, and document exchanges previously managed through email or offline tools with no single source of truth.</p>
-      <p>We centralized this into a streamlined, auditable, intuitive experience — designed with the same user empathy applied to the homepage, so procedural integrity could actually be tracked, operational metrics measured, and departments could collaborate without losing the thread.</p>
-      <div class="media-grid-2">
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Written Procedures — workflow view</div>
+      <p>I centralized this into a streamlined, auditable, intuitive experience — designed with the same user empathy applied to the homepage, so procedural integrity could actually be tracked, operational metrics measured, and departments could collaborate without losing the thread. The module scales from a simple list to a fully branching decision record: every written procedure can carry its own conditional fields, link out to related meetings, and trace its full lineage back through the board that raised it.</p>
+
+      <div class="carousel-container" data-carousel="writtenProc">
+        <div class="carousel-slide-viewport">
+          <img id="writtenProc-img" src="assets/atlas-wp-list-sb.png" alt="Written Procedures list for the Supervisory Board, filterable by XFile year, type and decision-making body" onclick="openLightbox(this.src, this.alt, this)">
         </div>
-        <div class="img-placeholder">
-          <div class="ph-icon">🖼</div>
-          <div class="ph-label">Written Procedures — status tracking</div>
+        <div class="carousel-controls">
+          <div class="carousel-counter" id="writtenProc-counter">1 / 7</div>
+          <div class="carousel-btns">
+            <button class="carousel-btn" type="button" onclick="carouselNav('writtenProc', -1)">← Prev</button>
+            <button class="carousel-btn" type="button" onclick="carouselNav('writtenProc', 1)">Next →</button>
+          </div>
+        </div>
+      </div>
+      <p class="media-caption" id="writtenProc-caption">The Written Procedures list, scoped to the Supervisory Board.</p>
+
+      <h2>Conclusion</h2>
+      <p>The Atlas redesign succeeded through close collaboration, a genuinely user-centered approach, and clear communication with business stakeholders. Facilitating design sessions directly with the business established a continuous feedback loop that let me iteratively improve the experience while delivering something both functional and intuitive.</p>
+      <p>Working under Alberto Valentin Cococi's guidance gave me valuable feedback that refined my design process, and the support to introduce new tools and design artifacts that streamlined how I communicated ideas with stakeholders.</p>
+      <p>One of the harder challenges was complexity introduced by multiple secretariats, each with unique requirements and data fields — fragmentation that made it difficult to track which features applied to which secretariat, with real risk of misalignment and feature gaps. Drawing on my experience as the "Voice of the User" on the PowerVC project, I introduced a structured feedback tracking process: a shared tracker mapping every data field to its design status and comments across each secretariat, with a direct reference to the JIRA epic tracking it. It became a living document used by both IBM and ECB stakeholders, ensuring transparency, accountability, and traceability of feedback throughout the sprint cycles — reducing information overload and making sure no critical insight got lost.</p>
+
+      <div class="media-container">
+        <img src="assets/atlas-tracker-design-status-crop.png" data-full="assets/atlas-tracker-design-status-full.png" alt="Design-status tracker excerpt: a data field's status across SB SEC, EB SEC and GovC/GenC, with a stakeholder comment in red and a linked JIRA ticket number">
+      </div>
+      <p class="media-caption">An excerpt of the actual tracker — click to see the full sheet. Each row is one data field, scored per secretariat, with open negotiation captured in-line and traced to its JIRA epic.</p>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Secretariats aligned in one shared tracker — SB SEC, EB SEC, GovC/GenC</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">JIRA</div>
+          <div class="stat-label">Every field traced to its own epic (e.g. ATLAS-39, ATLAS-56, ATLAS-60)</div>
         </div>
       </div>
 
-      <h2>Conclusion</h2>
-      <p>The Atlas redesign succeeded through close collaboration, a genuinely user-centered approach, and clear communication with business stakeholders. Facilitating design sessions directly with the business established a continuous feedback loop that let us iteratively improve the experience while delivering something both functional and intuitive.</p>
-      <p>Working under Alberto Valentin Cococi's guidance gave me valuable feedback that refined my design process, and the support to introduce new tools and design artifacts that streamlined how we communicated ideas with stakeholders.</p>
-      <p>One of the harder challenges was complexity introduced by multiple secretariats, each with unique requirements and data fields — fragmentation that made it difficult to track which features applied to which secretariat, with real risk of misalignment and feature gaps. Drawing on my experience as the "Voice of the User" on the PowerVC project, I introduced a structured feedback tracking process: a shared tracker mapping user stories to their corresponding design solutions and current status. It became a living document used by both IBM and ECB stakeholders, ensuring transparency, accountability, and traceability of feedback throughout the sprint cycles — reducing information overload and making sure no critical insight got lost. The result was a robust, scalable, user-friendly platform supporting ECB's internal operations with real clarity and precision.</p>
+      <p>The result was a robust, scalable, user-friendly platform supporting ECB's internal operations with real clarity and precision.</p>
 
     </div>
   </main>
@@ -936,12 +948,57 @@
         frame.setAttribute('tabindex', '0');
         frame.setAttribute('role', 'button');
         frame.setAttribute('aria-label', 'View larger: ' + (img.getAttribute('alt') || 'image'));
-        function trigger(e) { e.stopPropagation(); openLightbox(img.getAttribute('src'), img.getAttribute('alt'), frame); }
+        function trigger(e) {
+          e.stopPropagation();
+          const fullSrc = img.getAttribute('data-full') || img.getAttribute('src');
+          openLightbox(fullSrc, img.getAttribute('alt'), frame);
+        }
         frame.addEventListener('click', trigger);
         frame.addEventListener('keydown', function (e) {
           if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); trigger(e); }
         });
       });
+    });
+
+    /* Generic slide carousels — Table-Centric IA and Written Procedures */
+    const carouselData = {
+      tableIA: [
+        { src: 'assets/atlas-ia-comments-expanded.png', alt: "Meeting table with a row's comment expanded inline, showing the full text without leaving the table", caption: 'Long comments expand inline — no modal, no lost place in the table.' },
+        { src: 'assets/atlas-ia-columns-tooltip.png', alt: 'Meeting table showing an alternate column set (Location, Modified by) with view-mode tabs, and a tooltip naming the collapsed Supervisory Board icon', caption: 'Column sets switch per view, and collapsed nav icons stay legible via tooltips.' },
+        { src: 'assets/atlas-ia-bulk-select.png', alt: 'Two rows selected with a bulk-action toolbar (Copy, Move, Delete, Export, More Actions) and a row-level menu open', caption: 'Selectable rows with bulk actions — export, move or delete across many records at once.' },
+        { src: 'assets/atlas-ia-inline-editing.png', alt: 'A date field and a comment field both open for live inline editing, with a save icon', caption: 'Inline editing — update a field directly in the table, no separate screen.' },
+        { src: 'assets/atlas-ia-mobile-nav.png', alt: 'Full-screen navigation drawer used when the left navigation collapses further on narrow viewports', caption: "On narrow viewports, the same navigation becomes a full-screen drawer rather than disappearing." }
+      ],
+      writtenProc: [
+        { src: 'assets/atlas-wp-list-sb.png', alt: 'Written Procedures list for the Supervisory Board, filterable by XFile year, type and decision-making body', caption: 'The Written Procedures list, scoped to the Supervisory Board.' },
+        { src: 'assets/atlas-wp-create-form.png', alt: 'Create Written Procedure form with year, subject, type, RTBH and GovC fields, and a members table', caption: 'Creating a new written procedure — core fields plus the member list it will route to.' },
+        { src: 'assets/atlas-wp-detail-edit.png', alt: 'Written procedure detail and edit view, with external comments, classification, outcome and linked meetings', caption: 'The full record: external comments, classification, outcome, and every linked SB meeting in one place.' },
+        { src: 'assets/atlas-wp-create-form-expanded.png', alt: 'The same create form with RTBH set to Yes, revealing conditional RBTH Details and GovCX Details sections', caption: 'The form is conditional — answering RTBH "Yes" reveals the RBTH and GovC follow-on fields it actually needs.' },
+        { src: 'assets/atlas-wp-family-tree.png', alt: 'Full family tree diagram showing a written procedure\'s branching lineage of linked actions and procedures', caption: 'Every procedure can trace its full lineage — the "Full Family Tree" view of how one decision branched.' },
+        { src: 'assets/atlas-wp-family-report.png', alt: 'Full family report listing every item linked to a written procedure\'s lineage', caption: 'The same lineage as a flat, exportable report.' },
+        { src: 'assets/atlas-wp-list-gc-success.png', alt: 'Written Procedures list in the Governing Council context, with a success notification after creating a record', caption: 'The identical pattern reused for the Governing Council — same table, different governance body, with confirmation on save.' }
+      ]
+    };
+    const carouselState = { tableIA: 0, writtenProc: 0 };
+    function carouselRender(id) {
+      const slides = carouselData[id];
+      const i = carouselState[id];
+      const img = document.getElementById(id + '-img');
+      const counter = document.getElementById(id + '-counter');
+      const caption = document.getElementById(id + '-caption');
+      if (!img) return;
+      img.src = slides[i].src;
+      img.alt = slides[i].alt;
+      if (counter) counter.textContent = (i + 1) + ' / ' + slides.length;
+      if (caption) caption.textContent = slides[i].caption;
+    }
+    function carouselNav(id, delta) {
+      const len = carouselData[id].length;
+      carouselState[id] = (carouselState[id] + delta + len) % len;
+      carouselRender(id);
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      Object.keys(carouselData).forEach(carouselRender);
     });
   </script>
 </body>
