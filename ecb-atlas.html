@@ -403,63 +403,93 @@
       font-weight: 500;
     }
 
-    /* Carousel Specific Component Styling */
-    .carousel-container {
-      width: 100%;
+    /* Reusable shot carousel (standardized sitewide pattern — shared with atradius.html / powervc.html / ecb-statistical-data.html) */
+    .shot-carousel {
       margin: 40px 0;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      overflow: hidden;
     }
 
-    .carousel-slide-viewport {
-      width: 100%;
+    .shot-track {
       position: relative;
-      background: #ffffff;
+      border-radius: 16px;
     }
 
-    .carousel-slide-viewport img {
-      width: 100%;
-      height: auto;
+    .shot-slide {
+      display: none;
+    }
+
+    .shot-slide.active {
       display: block;
+    }
+
+    .shot-slide .media-container {
+      margin: 0 auto;
       cursor: zoom-in;
     }
 
-    .carousel-controls {
+    .shot-slide .media-caption {
+      margin-top: 14px;
+    }
+
+    .shot-nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 16px 24px;
-      border-top: 1px solid var(--border);
-      background: rgba(15, 15, 18, 0.9);
+      justify-content: center;
+      gap: 20px;
+      margin-top: 18px;
     }
 
-    .carousel-counter {
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .carousel-btns {
-      display: flex;
-      gap: 10px;
-    }
-
-    .carousel-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
+    .shot-nav-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-hover);
       color: var(--text);
-      padding: 6px 14px;
-      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
       cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex: none;
+      transition: background 0.15s ease;
     }
 
-    .carousel-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--border-hover);
+    .shot-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .shot-dots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+      max-width: 280px;
+    }
+
+    .shot-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border-hover);
+      background-clip: content-box;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .shot-dot.active {
+      background: var(--text);
+      transform: scale(1.3);
+    }
+
+    .shot-counter {
+      text-align: center;
+      margin-top: 10px;
+      font-family: var(--font-mono, var(--font-sans));
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
     }
 
     /* Content Typography */
@@ -841,71 +871,217 @@
       </ul>
       <p>This wasn't a new coat of paint — it's a deeply informed, user-validated design solving real workflow challenges, delivered through careful planning, co-design sessions, and agile prototyping.</p>
 
-      <div class="carousel-container" data-carousel="tableIA">
-        <div class="carousel-slide-viewport">
-          <img id="tableIA-img" src="assets/atlas-ia-comments-expanded.png" alt="Meeting table with a row's comment expanded inline, showing the full text without leaving the table" onclick="openLightbox(this.src, this.alt, this)">
-        </div>
-        <div class="carousel-controls">
-          <div class="carousel-counter" id="tableIA-counter">1 / 5</div>
-          <div class="carousel-btns">
-            <button class="carousel-btn" type="button" onclick="carouselNav('tableIA', -1)">← Prev</button>
-            <button class="carousel-btn" type="button" onclick="carouselNav('tableIA', 1)">Next →</button>
+      <div class="shot-carousel" data-carousel="tableIA">
+        <div class="shot-track">
+        <div class="shot-slide active" data-index="0">
+          <div class="media-container">
+            <img src="assets/atlas-ia-comments-expanded.png" alt="Meeting table with a row's comment expanded inline, showing the full text without leaving the table">
           </div>
+          <p class="media-caption">Long comments expand inline — no modal, no lost place in the table.</p>
         </div>
+        <div class="shot-slide" data-index="1">
+          <div class="media-container">
+            <img src="assets/atlas-ia-columns-tooltip.png" alt="Meeting table showing an alternate column set (Location, Modified by) with view-mode tabs, and a tooltip naming the collapsed Supervisory Board icon">
+          </div>
+          <p class="media-caption">Column sets switch per view, and collapsed nav icons stay legible via tooltips.</p>
+        </div>
+        <div class="shot-slide" data-index="2">
+          <div class="media-container">
+            <img src="assets/atlas-ia-bulk-select.png" alt="Two rows selected with a bulk-action toolbar (Copy, Move, Delete, Export, More Actions) and a row-level menu open">
+          </div>
+          <p class="media-caption">Selectable rows with bulk actions — export, move or delete across many records at once.</p>
+        </div>
+        <div class="shot-slide" data-index="3">
+          <div class="media-container">
+            <img src="assets/atlas-ia-inline-editing.png" alt="A date field and a comment field both open for live inline editing, with a save icon">
+          </div>
+          <p class="media-caption">Inline editing — update a field directly in the table, no separate screen.</p>
+        </div>
+        <div class="shot-slide" data-index="4">
+          <div class="media-container">
+            <img src="assets/atlas-ia-mobile-nav.png" alt="Full-screen navigation drawer used when the left navigation collapses further on narrow viewports">
+          </div>
+          <p class="media-caption">On narrow viewports, the same navigation becomes a full-screen drawer rather than disappearing.</p>
+        </div>
+        </div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="shotPrev('tableIA')" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots" id="shotDots-tableIA">
+          <button class="shot-dot active" onclick="shotGoTo('tableIA', 0)" aria-label="Screen 1"></button>
+          <button class="shot-dot" onclick="shotGoTo('tableIA', 1)" aria-label="Screen 2"></button>
+          <button class="shot-dot" onclick="shotGoTo('tableIA', 2)" aria-label="Screen 3"></button>
+          <button class="shot-dot" onclick="shotGoTo('tableIA', 3)" aria-label="Screen 4"></button>
+          <button class="shot-dot" onclick="shotGoTo('tableIA', 4)" aria-label="Screen 5"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="shotNext('tableIA')" aria-label="Next screen">&#8594;</button>
+        </div>
+        <div class="shot-counter" id="shotCounter-tableIA">1 / 5</div>
       </div>
-      <p class="media-caption" id="tableIA-caption">Long comments expand inline — no modal, no lost place in the table.</p>
 
       <h2>Written Procedures</h2>
       <p>Written procedures are a critical part of ECB's formal decision-making process — structured, documented workflows spanning initiation, review, feedback, approval, and archival. The challenge was real complexity: multiple stakeholders, status stages, and document exchanges previously managed through email or offline tools with no single source of truth.</p>
       <p>I centralized this into a streamlined, auditable, intuitive experience — designed with the same user empathy applied to the homepage, so procedural integrity could actually be tracked, operational metrics measured, and departments could collaborate without losing the thread. The module scales from a simple list to a fully branching decision record: every written procedure can carry its own conditional fields, link out to related meetings, and trace its full lineage back through the board that raised it.</p>
 
-      <div class="carousel-container" data-carousel="writtenProc">
-        <div class="carousel-slide-viewport">
-          <img id="writtenProc-img" src="assets/atlas-wp-list-sb.png" alt="Written Procedures list for the Supervisory Board, filterable by XFile year, type and decision-making body" onclick="openLightbox(this.src, this.alt, this)">
-        </div>
-        <div class="carousel-controls">
-          <div class="carousel-counter" id="writtenProc-counter">1 / 7</div>
-          <div class="carousel-btns">
-            <button class="carousel-btn" type="button" onclick="carouselNav('writtenProc', -1)">← Prev</button>
-            <button class="carousel-btn" type="button" onclick="carouselNav('writtenProc', 1)">Next →</button>
+      <div class="shot-carousel" data-carousel="writtenProc">
+        <div class="shot-track">
+        <div class="shot-slide active" data-index="0">
+          <div class="media-container">
+            <img src="assets/atlas-wp-list-sb.png" alt="Written Procedures list for the Supervisory Board, filterable by XFile year, type and decision-making body">
           </div>
+          <p class="media-caption">The Written Procedures list, scoped to the Supervisory Board.</p>
         </div>
+        <div class="shot-slide" data-index="1">
+          <div class="media-container">
+            <img src="assets/atlas-wp-create-form.png" alt="Create Written Procedure form with year, subject, type, RTBH and GovC fields, and a members table">
+          </div>
+          <p class="media-caption">Creating a new written procedure — core fields plus the member list it will route to.</p>
+        </div>
+        <div class="shot-slide" data-index="2">
+          <div class="media-container">
+            <img src="assets/atlas-wp-detail-edit.png" alt="Written procedure detail and edit view, with external comments, classification, outcome and linked meetings">
+          </div>
+          <p class="media-caption">The full record: external comments, classification, outcome, and every linked SB meeting in one place.</p>
+        </div>
+        <div class="shot-slide" data-index="3">
+          <div class="media-container">
+            <img src="assets/atlas-wp-create-form-expanded.png" alt="The same create form with RTBH set to Yes, revealing conditional RBTH Details and GovCX Details sections">
+          </div>
+          <p class="media-caption">The form is conditional — answering RTBH "Yes" reveals the RBTH and GovC follow-on fields it actually needs.</p>
+        </div>
+        <div class="shot-slide" data-index="4">
+          <div class="media-container">
+            <img src="assets/atlas-wp-family-tree.png" alt="Full family tree diagram showing a written procedure's branching lineage of linked actions and procedures">
+          </div>
+          <p class="media-caption">Every procedure can trace its full lineage — the "Full Family Tree" view of how one decision branched.</p>
+        </div>
+        <div class="shot-slide" data-index="5">
+          <div class="media-container">
+            <img src="assets/atlas-wp-family-report.png" alt="Full family report listing every item linked to a written procedure's lineage">
+          </div>
+          <p class="media-caption">The same lineage as a flat, exportable report.</p>
+        </div>
+        <div class="shot-slide" data-index="6">
+          <div class="media-container">
+            <img src="assets/atlas-wp-list-gc-success.png" alt="Written Procedures list in the Governing Council context, with a success notification after creating a record">
+          </div>
+          <p class="media-caption">The identical pattern reused for the Governing Council — same table, different governance body, with confirmation on save.</p>
+        </div>
+        </div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="shotPrev('writtenProc')" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots" id="shotDots-writtenProc">
+          <button class="shot-dot active" onclick="shotGoTo('writtenProc', 0)" aria-label="Screen 1"></button>
+          <button class="shot-dot" onclick="shotGoTo('writtenProc', 1)" aria-label="Screen 2"></button>
+          <button class="shot-dot" onclick="shotGoTo('writtenProc', 2)" aria-label="Screen 3"></button>
+          <button class="shot-dot" onclick="shotGoTo('writtenProc', 3)" aria-label="Screen 4"></button>
+          <button class="shot-dot" onclick="shotGoTo('writtenProc', 4)" aria-label="Screen 5"></button>
+          <button class="shot-dot" onclick="shotGoTo('writtenProc', 5)" aria-label="Screen 6"></button>
+          <button class="shot-dot" onclick="shotGoTo('writtenProc', 6)" aria-label="Screen 7"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="shotNext('writtenProc')" aria-label="Next screen">&#8594;</button>
+        </div>
+        <div class="shot-counter" id="shotCounter-writtenProc">1 / 7</div>
       </div>
-      <p class="media-caption" id="writtenProc-caption">The Written Procedures list, scoped to the Supervisory Board.</p>
 
       <h2>Meeting Creation</h2>
       <p>Setting up a meeting was previously a manual, calendar-juggling exercise handled outside the system. The redesign brings scheduling directly into Atlas: a coordinator sees existing meetings for a body laid out across a full year at a glance, picks dates inline, and configures recurrence or multi-day sessions without leaving the form — including a bulk path for loading an existing schedule from Excel rather than re-entering it by hand.</p>
 
-      <div class="carousel-container" data-carousel="createMeeting">
-        <div class="carousel-slide-viewport">
-          <img id="createMeeting-img" src="assets/atlas-cm-blank-form.jpg" alt="Create New Meeting form" onclick="openLightbox(this.src, this.alt, this)">
-        </div>
-        <div class="carousel-controls">
-          <div class="carousel-counter" id="createMeeting-counter">1 / 5</div>
-          <div class="carousel-btns">
-            <button class="carousel-btn" type="button" onclick="carouselNav('createMeeting', -1)">← Prev</button>
-            <button class="carousel-btn" type="button" onclick="carouselNav('createMeeting', 1)">Next →</button>
+      <div class="shot-carousel" data-carousel="createMeeting">
+        <div class="shot-track">
+        <div class="shot-slide active" data-index="0">
+          <div class="media-container">
+            <img src="assets/atlas-cm-blank-form.jpg" alt="Create New Meeting form">
           </div>
+          <p class="media-caption">The base Create New Meeting form.</p>
         </div>
+        <div class="shot-slide" data-index="1">
+          <div class="media-container">
+            <img src="assets/atlas-cm-calendar-overview.jpg" alt="Year-view calendar showing existing meetings for a body as colored pills across the months">
+          </div>
+          <p class="media-caption">A year at a glance — every scheduled meeting for the body, before adding a new one.</p>
+        </div>
+        <div class="shot-slide" data-index="2">
+          <div class="media-container">
+            <img src="assets/atlas-cm-date-selection.jpg" alt="The same year-view calendar in date-selection mode, with dates highlighted and a Save dates action">
+          </div>
+          <p class="media-caption">Dates are picked straight off the calendar, not typed in — then saved back to the form.</p>
+        </div>
+        <div class="shot-slide" data-index="3">
+          <div class="media-container">
+            <img src="assets/atlas-cm-recurring-bulk-upload.jpg" alt="Create Meeting form with a recurring-meeting checkbox for the whole year and an Upload Excel file option">
+          </div>
+          <p class="media-caption">Recurring meetings for the year, or bulk-loading an existing schedule from Excel.</p>
+        </div>
+        <div class="shot-slide" data-index="4">
+          <div class="media-container">
+            <img src="assets/atlas-cm-two-day-meeting.jpg" alt="Create Meeting form configured for a two-day meeting, with separate Day 1 and Day 2 fields and a saved Meeting dates list">
+          </div>
+          <p class="media-caption">Multi-day meetings get their own Day 1 / Day 2 fields, tracked as a single meeting.</p>
+        </div>
+        </div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="shotPrev('createMeeting')" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots" id="shotDots-createMeeting">
+          <button class="shot-dot active" onclick="shotGoTo('createMeeting', 0)" aria-label="Screen 1"></button>
+          <button class="shot-dot" onclick="shotGoTo('createMeeting', 1)" aria-label="Screen 2"></button>
+          <button class="shot-dot" onclick="shotGoTo('createMeeting', 2)" aria-label="Screen 3"></button>
+          <button class="shot-dot" onclick="shotGoTo('createMeeting', 3)" aria-label="Screen 4"></button>
+          <button class="shot-dot" onclick="shotGoTo('createMeeting', 4)" aria-label="Screen 5"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="shotNext('createMeeting')" aria-label="Next screen">&#8594;</button>
+        </div>
+        <div class="shot-counter" id="shotCounter-createMeeting">1 / 5</div>
       </div>
-      <p class="media-caption" id="createMeeting-caption">The base Create New Meeting form.</p>
 
       <h2>Agenda Management</h2>
       <p>The agenda is where the actual governance work happens — items grouped into sections (meeting business, written procedures, delegations), each with its own numbering, timing, and status. Coordinators can drag items to reorder them, set discussion order and duration with start/end times recalculated automatically, add a new item mid-flight, and pull attendees straight from the ECB phonebook when managing each body's attendance and substitutions. Drilling into a single item opens its own record — outcome notes, its linked members and attendees, and direct links out to that item's prep and public Darwin space folders — so nothing about it lives outside Atlas.</p>
 
-      <div class="carousel-container" data-carousel="createAgenda">
-        <div class="carousel-slide-viewport">
-          <img id="createAgenda-img" src="assets/atlas-agenda-overview-default.jpg" alt="Agenda overview for a General Council meeting, with sections for Dinner/Seminar, Meeting, Written procedures and Delegations" onclick="openLightbox(this.src, this.alt, this)">
-        </div>
-        <div class="carousel-controls">
-          <div class="carousel-counter" id="createAgenda-counter">1 / 5</div>
-          <div class="carousel-btns">
-            <button class="carousel-btn" type="button" onclick="carouselNav('createAgenda', -1)">← Prev</button>
-            <button class="carousel-btn" type="button" onclick="carouselNav('createAgenda', 1)">Next →</button>
+      <div class="shot-carousel" data-carousel="createAgenda">
+        <div class="shot-track">
+        <div class="shot-slide active" data-index="0">
+          <div class="media-container">
+            <img src="assets/atlas-agenda-overview-default.jpg" alt="Agenda overview for a General Council meeting, with sections for Dinner/Seminar, Meeting, Written procedures and Delegations">
           </div>
+          <p class="media-caption">The agenda overview — sections, numbered items, and status at a glance.</p>
         </div>
+        <div class="shot-slide" data-index="1">
+          <div class="media-container">
+            <img src="assets/atlas-agenda-edit-mode.jpg" alt="The same agenda in edit mode, with draggable rows and editable date, timeframe, duration and item-status fields">
+          </div>
+          <p class="media-caption">Edit mode: drag to reorder, set discussion order and timing — start/end times update automatically.</p>
+        </div>
+        <div class="shot-slide" data-index="2">
+          <div class="media-container">
+            <img src="assets/atlas-agenda-add-item.jpg" alt="Add new agenda item form with Title, Business area, Section, Board members and Intended follow-up fields">
+          </div>
+          <p class="media-caption">Adding a new item mid-agenda — routed to a section, business area and set of board members.</p>
+        </div>
+        <div class="shot-slide" data-index="3">
+          <div class="media-container">
+            <img src="assets/atlas-agenda-add-eb-members.jpg" alt="Executive Board members popup listing each member with a Presence dropdown and Comments field">
+          </div>
+          <p class="media-caption">Executive Board attendance — presence and comments tracked per member.</p>
+        </div>
+        <div class="shot-slide" data-index="4">
+          <div class="media-container">
+            <img src="assets/atlas-agenda-add-govc-members.jpg" alt="Governing Council members popup with Name, Substitute, Presence and Comments columns">
+          </div>
+          <p class="media-caption">Governing Council attendance adds a Substitute column — for the body where standing in for a member is routine.</p>
+        </div>
+        </div>
+        <div class="shot-nav">
+          <button class="shot-nav-btn" onclick="shotPrev('createAgenda')" aria-label="Previous screen">&#8592;</button>
+          <div class="shot-dots" id="shotDots-createAgenda">
+          <button class="shot-dot active" onclick="shotGoTo('createAgenda', 0)" aria-label="Screen 1"></button>
+          <button class="shot-dot" onclick="shotGoTo('createAgenda', 1)" aria-label="Screen 2"></button>
+          <button class="shot-dot" onclick="shotGoTo('createAgenda', 2)" aria-label="Screen 3"></button>
+          <button class="shot-dot" onclick="shotGoTo('createAgenda', 3)" aria-label="Screen 4"></button>
+          <button class="shot-dot" onclick="shotGoTo('createAgenda', 4)" aria-label="Screen 5"></button>
+          </div>
+          <button class="shot-nav-btn" onclick="shotNext('createAgenda')" aria-label="Next screen">&#8594;</button>
+        </div>
+        <div class="shot-counter" id="shotCounter-createAgenda">1 / 5</div>
       </div>
-      <p class="media-caption" id="createAgenda-caption">The agenda overview — sections, numbered items, and status at a glance.</p>
 
       <h2>Conclusion</h2>
       <p>The Atlas redesign succeeded through close collaboration, a genuinely user-centered approach, and clear communication with business stakeholders. Facilitating design sessions directly with the business established a continuous feedback loop that let me iteratively improve the experience while delivering something both functional and intuitive.</p>
@@ -1000,60 +1176,31 @@
       });
     });
 
-    /* Generic slide carousels — Table-Centric IA and Written Procedures */
-    const carouselData = {
-      tableIA: [
-        { src: 'assets/atlas-ia-comments-expanded.png', alt: "Meeting table with a row's comment expanded inline, showing the full text without leaving the table", caption: 'Long comments expand inline — no modal, no lost place in the table.' },
-        { src: 'assets/atlas-ia-columns-tooltip.png', alt: 'Meeting table showing an alternate column set (Location, Modified by) with view-mode tabs, and a tooltip naming the collapsed Supervisory Board icon', caption: 'Column sets switch per view, and collapsed nav icons stay legible via tooltips.' },
-        { src: 'assets/atlas-ia-bulk-select.png', alt: 'Two rows selected with a bulk-action toolbar (Copy, Move, Delete, Export, More Actions) and a row-level menu open', caption: 'Selectable rows with bulk actions — export, move or delete across many records at once.' },
-        { src: 'assets/atlas-ia-inline-editing.png', alt: 'A date field and a comment field both open for live inline editing, with a save icon', caption: 'Inline editing — update a field directly in the table, no separate screen.' },
-        { src: 'assets/atlas-ia-mobile-nav.png', alt: 'Full-screen navigation drawer used when the left navigation collapses further on narrow viewports', caption: "On narrow viewports, the same navigation becomes a full-screen drawer rather than disappearing." }
-      ],
-      writtenProc: [
-        { src: 'assets/atlas-wp-list-sb.png', alt: 'Written Procedures list for the Supervisory Board, filterable by XFile year, type and decision-making body', caption: 'The Written Procedures list, scoped to the Supervisory Board.' },
-        { src: 'assets/atlas-wp-create-form.png', alt: 'Create Written Procedure form with year, subject, type, RTBH and GovC fields, and a members table', caption: 'Creating a new written procedure — core fields plus the member list it will route to.' },
-        { src: 'assets/atlas-wp-detail-edit.png', alt: 'Written procedure detail and edit view, with external comments, classification, outcome and linked meetings', caption: 'The full record: external comments, classification, outcome, and every linked SB meeting in one place.' },
-        { src: 'assets/atlas-wp-create-form-expanded.png', alt: 'The same create form with RTBH set to Yes, revealing conditional RBTH Details and GovCX Details sections', caption: 'The form is conditional — answering RTBH "Yes" reveals the RBTH and GovC follow-on fields it actually needs.' },
-        { src: 'assets/atlas-wp-family-tree.png', alt: 'Full family tree diagram showing a written procedure\'s branching lineage of linked actions and procedures', caption: 'Every procedure can trace its full lineage — the "Full Family Tree" view of how one decision branched.' },
-        { src: 'assets/atlas-wp-family-report.png', alt: 'Full family report listing every item linked to a written procedure\'s lineage', caption: 'The same lineage as a flat, exportable report.' },
-        { src: 'assets/atlas-wp-list-gc-success.png', alt: 'Written Procedures list in the Governing Council context, with a success notification after creating a record', caption: 'The identical pattern reused for the Governing Council — same table, different governance body, with confirmation on save.' }
-      ],
-      createMeeting: [
-        { src: 'assets/atlas-cm-blank-form.jpg', alt: 'Create New Meeting form', caption: 'The base Create New Meeting form.' },
-        { src: 'assets/atlas-cm-calendar-overview.jpg', alt: 'Year-view calendar showing existing meetings for a body as colored pills across the months', caption: 'A year at a glance — every scheduled meeting for the body, before adding a new one.' },
-        { src: 'assets/atlas-cm-date-selection.jpg', alt: 'The same year-view calendar in date-selection mode, with dates highlighted and a Save dates action', caption: 'Dates are picked straight off the calendar, not typed in — then saved back to the form.' },
-        { src: 'assets/atlas-cm-recurring-bulk-upload.jpg', alt: 'Create Meeting form with a recurring-meeting checkbox for the whole year and an Upload Excel file option', caption: 'Recurring meetings for the year, or bulk-loading an existing schedule from Excel.' },
-        { src: 'assets/atlas-cm-two-day-meeting.jpg', alt: 'Create Meeting form configured for a two-day meeting, with separate Day 1 and Day 2 fields and a saved Meeting dates list', caption: 'Multi-day meetings get their own Day 1 / Day 2 fields, tracked as a single meeting.' }
-      ],
-      createAgenda: [
-        { src: 'assets/atlas-agenda-overview-default.jpg', alt: 'Agenda overview for a General Council meeting, with sections for Dinner/Seminar, Meeting, Written procedures and Delegations', caption: 'The agenda overview — sections, numbered items, and status at a glance.' },
-        { src: 'assets/atlas-agenda-edit-mode.jpg', alt: 'The same agenda in edit mode, with draggable rows and editable date, timeframe, duration and item-status fields', caption: 'Edit mode: drag to reorder, set discussion order and timing — start/end times update automatically.' },
-        { src: 'assets/atlas-agenda-add-item.jpg', alt: 'Add new agenda item form with Title, Business area, Section, Board members and Intended follow-up fields', caption: 'Adding a new item mid-agenda — routed to a section, business area and set of board members.' },
-        { src: 'assets/atlas-agenda-add-eb-members.jpg', alt: 'Executive Board members popup listing each member with a Presence dropdown and Comments field', caption: 'Executive Board attendance — presence and comments tracked per member.' },
-        { src: 'assets/atlas-agenda-add-govc-members.jpg', alt: 'Governing Council members popup with Name, Substitute, Presence and Comments columns', caption: 'Governing Council attendance adds a Substitute column — for the body where standing in for a member is routine.' }
-      ]
-    };
-    const carouselState = { tableIA: 0, writtenProc: 0, createMeeting: 0, createAgenda: 0 };
-    function carouselRender(id) {
-      const slides = carouselData[id];
-      const i = carouselState[id];
-      const img = document.getElementById(id + '-img');
-      const counter = document.getElementById(id + '-counter');
-      const caption = document.getElementById(id + '-caption');
-      if (!img) return;
-      img.src = slides[i].src;
-      img.alt = slides[i].alt;
-      if (counter) counter.textContent = (i + 1) + ' / ' + slides.length;
-      if (caption) caption.textContent = slides[i].caption;
+    // ---- Feature screenshot carousels (standardized sitewide pattern — shared with atradius.html / powervc.html / ecb-statistical-data.html) ----
+    const shotState = {};
+
+    function shotShow(id, i) {
+      const track = document.querySelector('.shot-carousel[data-carousel="' + id + '"]');
+      if (!track) return;
+      const slides = track.querySelectorAll('.shot-slide');
+      const total = slides.length;
+      const index = ((i % total) + total) % total;
+      shotState[id] = index;
+      slides.forEach(function (slide, idx) {
+        slide.classList.toggle('active', idx === index);
+      });
+      const dotsWrap = document.getElementById('shotDots-' + id);
+      if (dotsWrap) {
+        dotsWrap.querySelectorAll('.shot-dot').forEach(function (dot, idx) {
+          dot.classList.toggle('active', idx === index);
+        });
+      }
+      const counter = document.getElementById('shotCounter-' + id);
+      if (counter) counter.textContent = (index + 1) + ' / ' + total;
     }
-    function carouselNav(id, delta) {
-      const len = carouselData[id].length;
-      carouselState[id] = (carouselState[id] + delta + len) % len;
-      carouselRender(id);
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-      Object.keys(carouselData).forEach(carouselRender);
-    });
+    function shotNext(id) { shotShow(id, (shotState[id] || 0) + 1); }
+    function shotPrev(id) { shotShow(id, (shotState[id] || 0) - 1); }
+    function shotGoTo(id, i) { shotShow(id, i); }
   </script>
 </body>
 </html>
